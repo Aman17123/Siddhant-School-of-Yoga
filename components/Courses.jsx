@@ -1,56 +1,75 @@
-import { Container, SectionHeading, ProgramCard, ButtonLink } from './ui';
-import { teacherTrainings } from '@/data/coursesData';
-import { Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
+"use client";
+
+import { useState } from "react";
+import { Container, SectionHeading, ProgramCard, ButtonLink } from "./ui";
+import { teacherTrainings, kundaliniTrainings } from "@/data/coursesData";
+import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export default function Courses() {
+  const [activeTab, setActiveTab] = useState("all");
+
+  const tabs = [
+    { id: "all", label: "All TTC Programs" },
+    { id: "200", label: "200h TTC (Flagship)" },
+    { id: "300", label: "300h Advanced" },
+    { id: "500", label: "500h Master" },
+    { id: "100", label: "100h Foundation" },
+  ];
+
+  const filteredPrograms =
+    activeTab === "all"
+      ? teacherTrainings
+      : teacherTrainings.filter((p) => p.id.includes(activeTab));
+
   return (
-    <section id="courses" className="py-20 lg:py-28 bg-[#FAF6EE]/50 border-b border-[#EBE5D8] relative">
+    <section
+      id="courses"
+      className="py-14 sm:py-16 lg:py-20 bg-[#FAF6EE]/50 border-b border-[#EBE5D8] relative"
+    >
       <Container>
-        
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 lg:mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 lg:mb-10">
           <SectionHeading
-            eyebrow="Yoga Alliance Accredited"
-            title="Yoga Teacher Training in Rishikesh"
-            text="Internationally certified 100, 200, 300, and 500-hour residential programs designed to take you from foundational understanding to master-level instruction."
+            eyebrow="Yoga Alliance USA Approved • RYS 200, 300, 500"
+            title="Yoga Teacher Training in Rishikesh, India"
+            subtitle="Become an internationally recognized yoga master"
+            text="Four residential programs, each building on the last. Exact batch dates and fees are confirmed directly with Acharya Siddhant before you book — no guesswork, no hidden line items."
+            className="mb-0"
           />
-          <div className="shrink-0">
-            <ButtonLink href="#comparison" variant="outline" className="text-xs sm:text-sm">
-              <span>Compare All 4 Programs</span>
-              <ArrowRight className="w-4 h-4" />
-            </ButtonLink>
-          </div>
         </div>
 
-        {/* 4 Cards Grid - 4 cols desktop, 2 cols tablet, 1 col mobile */}
+        {/* Course Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 mb-12">
-          {teacherTrainings.map((prog) => (
+          {filteredPrograms.map((prog) => (
             <ProgramCard key={prog.id} program={prog} />
           ))}
         </div>
 
         {/* Bottom Guarantee Banner */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#EBE5D8] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#EBE5D8] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-terracotta/10 text-terracotta flex items-center justify-center shrink-0 border border-terracotta/20">
-              <Sparkles className="w-6 h-6 text-terracotta" />
+            <div className="w-12 h-12 rounded-2xl bg-[#f22924]/10 text-[#f22924] flex items-center justify-center shrink-0 border border-[#f22924]/20">
+              <Sparkles className="w-6 h-6 text-[#f22924]" />
             </div>
             <div>
-              <h4 className="text-base font-bold text-[#1F1E1D]">
-                Every Course Includes The Signature 100-Day Practice Schedule
+              <h4 className="font-belleza text-lg sm:text-xl font-normal text-[#1e2422] tracking-wide">
+                Early Bird Offer – Book 1-3 month in advance and get 10-20 % off
               </h4>
-              <p className="text-xs sm:text-sm text-stone-600">
-                We ensure your daily sadhana and spiritual discipline continue effortlessly once you return home.
+              <p className="font-figtree text-xs sm:text-sm text-stone-600 mt-0.5">
+                The sooner you plan your journey, the more you save on your
+                transformation.
               </p>
             </div>
           </div>
-          <ButtonLink href="#contact" variant="primary" className="shrink-0 text-xs sm:text-sm whitespace-nowrap">
+          <ButtonLink
+            href="#contact"
+            variant="primary"
+            className="shrink-0 text-xs sm:text-sm whitespace-nowrap"
+          >
             Check Upcoming Dates
           </ButtonLink>
         </div>
-
       </Container>
     </section>
   );
 }
-

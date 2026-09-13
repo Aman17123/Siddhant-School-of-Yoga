@@ -1,16 +1,27 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Fortune Parade";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/fortune-parade.woff2") format("woff2");
+}
+
 @theme {
-  --color-terracotta: #e8735a;
+  --color-terracotta: #f22924;
   --color-coral: #f08c5c;
   --color-marigold: #f5b860;
   --color-sunshine: #fbdd8e;
   --color-sunshine-bg: #faf6ee;
+  --font-belleza: var(--font-belleza), "Belleza", sans-serif;
+  --font-figtree: var(--font-figtree), "Figtree", sans-serif;
+  --font-fortune: "Fortune Parade", cursive, sans-serif;
 }
 
 @layer base {
   :root {
-    --color-terracotta: #e8735a;
+    --color-terracotta: #f22924;
     --color-coral: #f08c5c;
     --color-marigold: #f5b860;
     --color-sunshine: #fbdd8e;
@@ -42,12 +53,34 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: var(--font-manrope), var(--font-nunito-sans), system-ui, -apple-system, sans-serif;
+    font-family:
+      var(--font-figtree),
+      var(--font-manrope),
+      system-ui,
+      -apple-system,
+      sans-serif;
   }
 
-  h1, h2, h3, h4, .font-serif-hero {
-    font-family: var(--font-philosopher), var(--font-playfair), Georgia, serif;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family:
+      var(--font-belleza), var(--font-philosopher), var(--font-playfair),
+      sans-serif;
   }
+}
+
+.font-belleza {
+  font-family: var(--font-belleza), "Belleza", sans-serif;
+}
+
+.font-figtree {
+  font-family: var(--font-figtree), "Figtree", sans-serif;
+}
+
+.font-fortune {
+  font-family: "Fortune Parade", cursive, serif;
 }
 
 .font-marcellus {
@@ -64,27 +97,58 @@
 }
 
 /* Theme Token Utility Classes */
-.bg-terracotta { background-color: var(--color-terracotta); }
-.text-terracotta { color: var(--color-terracotta); }
-.border-terracotta { border-color: var(--color-terracotta); }
-.hover\:bg-coral:hover { background-color: var(--color-coral); }
-.hover\:text-coral:hover { color: var(--color-coral); }
-.hover\:border-coral:hover { border-color: var(--color-coral); }
-.bg-coral { background-color: var(--color-coral); }
-.text-coral { color: var(--color-coral); }
-.border-coral { border-color: var(--color-coral); }
-.bg-marigold { background-color: var(--color-marigold); }
-.text-marigold { color: var(--color-marigold); }
-.border-marigold { border-color: var(--color-marigold); }
-.bg-sunshine { background-color: var(--color-sunshine); }
-.bg-sunshine-bg { background-color: var(--color-sunshine-bg); }
-.border-sunshine { border-color: var(--color-sunshine); }
+.bg-terracotta {
+  background-color: var(--color-terracotta);
+}
+.text-terracotta {
+  color: var(--color-terracotta);
+}
+.border-terracotta {
+  border-color: var(--color-terracotta);
+}
+.hover\:bg-coral:hover {
+  background-color: var(--color-coral);
+}
+.hover\:text-coral:hover {
+  color: var(--color-coral);
+}
+.hover\:border-coral:hover {
+  border-color: var(--color-coral);
+}
+.bg-coral {
+  background-color: var(--color-coral);
+}
+.text-coral {
+  color: var(--color-coral);
+}
+.border-coral {
+  border-color: var(--color-coral);
+}
+.bg-marigold {
+  background-color: var(--color-marigold);
+}
+.text-marigold {
+  color: var(--color-marigold);
+}
+.border-marigold {
+  border-color: var(--color-marigold);
+}
+.bg-sunshine {
+  background-color: var(--color-sunshine);
+}
+.bg-sunshine-bg {
+  background-color: var(--color-sunshine-bg);
+}
+.border-sunshine {
+  border-color: var(--color-sunshine);
+}
 
 @keyframes shimmerSweep {
   0% {
     transform: translateX(-120%) skewX(-20deg);
   }
-  30%, 100% {
+  30%,
+  100% {
     transform: translateX(260%) skewX(-20deg);
   }
 }
@@ -189,7 +253,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {

@@ -2,7 +2,7 @@
   <!-- Left: Yoga Emblem -->
   <g transform="translate(10, 5)">
     <!-- Delicate Outer Circle Ring -->
-    <circle cx="35" cy="35" r="33" stroke="#e8735a" stroke-width="1.2" opacity="0.85" stroke-dasharray="2 0" />
+    <circle cx="35" cy="35" r="33" stroke="#f22924" stroke-width="1.2" opacity="0.85" stroke-dasharray="2 0" />
     <circle cx="35" cy="35" r="29.5" stroke="#c9a961" stroke-width="0.8" opacity="0.5" />
     
     <!-- Stylized Graceful Yogi in Natarajasana (Lord of the Dance Pose) / Vrksasana -->

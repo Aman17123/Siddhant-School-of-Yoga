@@ -8,7 +8,7 @@
     <!-- Traditional Multi-tiered Himalayan Ashram Temple (Right) -->
     <g transform="translate(195, 15) scale(0.85)">
       <!-- Temple Spire Kalash / Flag -->
-      <path d="M50 8 L50 2 M50 2 L56 5 L50 8" stroke="#e8735a" stroke-width="1.2" />
+      <path d="M50 8 L50 2 M50 2 L56 5 L50 8" stroke="#f22924" stroke-width="1.2" />
       <circle cx="50" cy="10" r="2.5" />
       
       <!-- Tier 1 (Top Shikhara) -->

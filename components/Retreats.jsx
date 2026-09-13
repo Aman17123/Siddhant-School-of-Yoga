@@ -1,58 +1,60 @@
-import { Container, SectionHeading, RetreatCard, ButtonLink } from './ui';
-import { retreats } from '@/data/coursesData';
-import { Sparkles, Calendar } from 'lucide-react';
-import { whatsappLink } from '@/data/siteData';
+import { Container, SectionHeading, RetreatCard, ButtonLink } from "./ui";
+import { retreats } from "@/data/coursesData";
+import { Sparkles, Calendar, ArrowRight } from "lucide-react";
+import { whatsappLink } from "@/data/siteData";
 
 export default function Retreats() {
   return (
-    <section id="retreats" className="py-20 lg:py-28 bg-[#FAF6EE] border-b border-[#EBE5D8]/60">
+    <section
+      id="retreats"
+      className="py-14 sm:py-16 lg:py-20 bg-[#FAF6EE] border-b border-[#EBE5D8]/60 font-figtree"
+    >
       <Container>
-        
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 lg:mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 lg:mb-10">
           <SectionHeading
-            eyebrow="Rest, Heal & Restore"
-            title="Yoga & Meditation Retreats in Rishikesh"
-            text="Step away from the noise of modern life. Experience authentic ashram tranquility, daily Ganga meditation, deep Pranayama, and nourishing sattvic meals."
+            eyebrow="Rest • Heal • Awaken"
+            title="Yoga Retreats in Rishikesh, India"
+            subtitle="Yoga is not an option, it is essential for a balanced life"
+            text="Step away from the hectic schedule of modern life. Experience authentic ashram tranquility, daily Ganga meditation, deep Pranayama, and nourishing sattvic meals across flexible 5, 7, 10, and 14-day formats."
+            className="mb-0"
           />
           <div className="shrink-0">
             <a
-              href={whatsappLink("Hi, I want to check retreat dates and room availability in Rishikesh.")}
+              href={whatsappLink(
+                "Namaste! I want to check retreat dates and room availability in Rishikesh.",
+              )}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#E8735A] hover:bg-[#F08C5C] text-white text-xs sm:text-sm font-semibold px-5 py-3 rounded-full shadow-sm hover:shadow-md transition-all"
+              className="inline-flex items-center gap-2 bg-[#f22924] hover:bg-[#d45d44] text-white text-xs sm:text-sm font-figtree font-semibold px-6 py-3 rounded-full shadow-xs hover:shadow-md transition-all"
             >
-              <Calendar className="w-4 h-4 text-[#F5B860]" />
-              <span>Check Retreat Dates</span>
+              <Calendar className="w-4 h-4 text-white" />
+              <span>Ask Retreat Dates</span>
             </a>
           </div>
         </div>
 
         {/* 6 Retreat Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
           {retreats.map((ret) => (
             <RetreatCard key={ret.id} retreat={ret} />
           ))}
         </div>
 
-        {/* Custom Retreat Consultation Note */}
-        <div className="text-center max-w-2xl mx-auto p-6 rounded-3xl bg-white border border-[#EBE5D8] shadow-xs">
-          <h4 className="text-sm font-bold text-[#1F1E1D] mb-1">
-            Need Help Choosing the Right Retreat?
-          </h4>
-          <p className="text-xs text-[#55564c] mb-4">
-            Whether you seek profound silent meditation, gentle beginner rest, or deep physical detox, our spiritual guides can tailor your dates and room preferences.
-          </p>
+        {/* Explore All Wellness Retreats Button */}
+        <div className="text-center mt-8">
           <a
-            href={whatsappLink("Hi, could you please guide me on which retreat is best suited for my goals?")}
+            href={whatsappLink(
+              "Namaste! I would like to explore all wellness retreats and dates offered at Siddhant School of Yoga in Rishikesh.",
+            )}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-bold text-[#e8735a] hover:text-[#E8735A] underline underline-offset-4 transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#f22924] hover:bg-[#d45d44] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
           >
-            Request Free Retreat Advisory on WhatsApp &rarr;
+            <span>Explore All Wellness Retreats</span>
+            <ArrowRight className="w-4 h-4 text-white" />
           </a>
         </div>
-
       </Container>
     </section>
   );

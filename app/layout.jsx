@@ -1,6 +1,20 @@
-import { Philosopher, Playfair_Display, Manrope, Nunito_Sans, Marcellus, Plus_Jakarta_Sans } from "next/font/google";
+import { Belleza, Figtree, Philosopher, Playfair_Display, Manrope, Nunito_Sans, Marcellus, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/siteData";
+
+const belleza = Belleza({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-belleza",
+  display: "swap",
+});
+
+const figtree = Figtree({
+  weight: ["300", "400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  variable: "--font-figtree",
+  display: "swap",
+});
 
 const philosopher = Philosopher({
   weight: ["400", "700"],
@@ -94,7 +108,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${philosopher.variable} ${playfair.variable} ${manrope.variable} ${nunitoSans.variable} ${marcellus.variable} ${plusJakartaSans.variable} scroll-smooth`}
+      className={`${belleza.variable} ${figtree.variable} ${philosopher.variable} ${playfair.variable} ${manrope.variable} ${nunitoSans.variable} ${marcellus.variable} ${plusJakartaSans.variable} scroll-smooth`}
     >
       <body className="bg-[#fbf8f1] text-[#202019] font-sans antialiased min-h-screen selection:bg-[#c9a961]/30 selection:text-[#175f52]">
         {children}

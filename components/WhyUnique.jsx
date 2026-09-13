@@ -54,14 +54,14 @@ export default function WhyUnique() {
   ];
 
   return (
-    <section id="unique" className="py-20 lg:py-28 bg-card/30">
+    <section id="unique" className="py-14 sm:py-16 lg:py-20 bg-card/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-10">
           <span className="inline-block px-4 py-1.5 rounded-full bg-accentLight/40 text-primary font-semibold text-xs tracking-wider uppercase mb-3">
             Our Distinct Identity
           </span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-textDark tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] mb-2">
             What Makes Us Unique
           </h2>
           <p className="font-body text-textMuted text-base sm:text-lg">

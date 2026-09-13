@@ -8,11 +8,16 @@ export const teacherTrainings = [
     duration: "14 Days",
     days: 14,
     certification: "Yoga Alliance USA (100-Hour Continuing Education / Part 1)",
-    price: "$599",
-    priceRange: "$599 – $749",
-    image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80",
+    price: "From $300",
+    priceRange: "$300 – $600",
+    pricing: {
+      triple: "$300",
+      shared: "$500",
+      private: "$600",
+    },
+    image: "/images/100-hour-yoga-ttc-rishikesh.png",
     description:
-      "A deeply transformative 2-week immersion in Rishikesh covering fundamental Hatha asanas, basic Ashtanga primary series, introductory Pranayama, yogic cleansing (Shatkarma), and fundamental yoga philosophy.",
+      "For newcomers who want the real fundamentals — posture, breath, and philosophy — before committing to a teaching certification.",
     highlights: [
       "Foundations of Classical Hatha & Ashtanga Yoga",
       "World's first Pranayama-focused breath curriculum",
@@ -30,9 +35,14 @@ export const teacherTrainings = [
     duration: "24–28 Days",
     days: 28,
     certification: "Yoga Alliance USA Registered RYT 200",
-    price: "$899",
-    priceRange: "$899 – $1,199",
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
+    price: "From $799",
+    priceRange: "$799 – $999",
+    pricing: {
+      triple: "$799",
+      shared: "$899",
+      private: "$999",
+    },
+    image: "/images/200-hour-yoga-ttc-rishikesh.png",
     description:
       "Our flagship Yoga Alliance accredited certification. Become an internationally recognized yoga instructor equipped with mastery in asana adjustments, Vedic philosophy, human anatomy, teaching methodology, and Acharya Siddhant's signature Pranayama science.",
     highlights: [
@@ -54,11 +64,16 @@ export const teacherTrainings = [
     duration: "28 Days",
     days: 28,
     certification: "Yoga Alliance USA Registered RYT 300 / 500 Eligible",
-    price: "$1,199",
-    priceRange: "$1,199 – $1,499",
-    image: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=800&q=80",
+    price: "From $1,599",
+    priceRange: "$1,599 – $1,999",
+    pricing: {
+      triple: "$1,599",
+      shared: "$1,799",
+      private: "$1,999",
+    },
+    image: "/images/300-hour-yoga-ttc-rishikesh.png",
     description:
-      "Elevate your teaching into mastery. Advanced Hatha variations, Mysore Ashtanga Vinyasa, deep Kundalini kriyas, advanced Pranayama, yoga therapy, and advanced philosophical inquiry for dedicated teachers.",
+      "Built for certified 200-hour teachers ready to deepen asana, philosophy and teaching methodology under direct guidance.",
     highlights: [
       "Advanced posture breakdown, hands-on adjustments & bandhas",
       "Therapeutic yoga for injuries and modern ailments",
@@ -76,11 +91,16 @@ export const teacherTrainings = [
     duration: "56 Days",
     days: 56,
     certification: "Yoga Alliance USA Registered RYT 500",
-    price: "$1,999",
-    priceRange: "$1,999 – $2,499",
-    image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
+    price: "From $1,699",
+    priceRange: "$1,699 – $2,299",
+    pricing: {
+      triple: "$1,699",
+      shared: "$1,999",
+      private: "$2,299",
+    },
+    image: "/images/500-hour-yoga-ttc-rishikesh.png",
     description:
-      "The definitive life-changing immersion combining the complete 200-hour and 300-hour curriculums. Designed for those seeking total personal transformation and the highest tier of international yoga teaching credentials.",
+      "The complete path for students committed to yoga as a profession, combining teaching mastery with foundational Ayurvedic principles.",
     highlights: [
       "Mastery of Classical Hatha, Ashtanga, Yin & Kundalini",
       "Direct personal mentorship under Acharya Siddhant",
@@ -94,30 +114,116 @@ export const teacherTrainings = [
 export const kundaliniTrainings = [
   {
     id: "100-hour-kundalini-ttc",
+    slug: "100-hour-kundalini-yoga-teacher-training-in-rishikesh",
     title: "100-Hour Kundalini Yoga TTC",
+    subtitle: "Chakra Awakening & Vital Energy",
+    level: "Beginner to Intermediate",
     duration: "14 Days",
-    certification: "Yoga Alliance Continuing Education",
-    price: "$649",
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80",
-    summary: "Awaken the dormant serpent energy through classical chakra kriya, pranayama, and sacred mantra chanting.",
+    days: 14,
+    certification: "Yoga Alliance USA (Continuing Education / Part 1)",
+    price: "From $499",
+    priceRange: "$499 – $699",
+    pricing: {
+      triple: "$499",
+      shared: "$599",
+      private: "$699",
+    },
+    image:
+      "/images/gallery_images/yoga-retreat-himalayan-mountains-rishikesh.webp",
+    description:
+      "Awaken the dormant serpent energy through classical chakra kriya, rhythmic breathwork, and sacred Vedic mantra chanting.",
+    highlights: [
+      "Awakening of Mooladhara to Sahasrara chakras",
+      "Traditional Kundalini kriyas & pranayama locks",
+      "Daily meditation & subtle energy body science",
+      "Private or shared room with 3 sattvic meals daily",
+    ],
+    badge: "Foundation Track",
   },
   {
     id: "200-hour-kundalini-ttc",
+    slug: "200-hour-kundalini-yoga-teacher-training-in-rishikesh",
     title: "200-Hour Kundalini Yoga TTC",
-    duration: "24 Days",
-    certification: "Yoga Alliance Certified RYT 200",
-    price: "$999",
-    image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80",
-    summary: "Complete teacher certification in classical Kundalini practices, esoteric anatomy, and powerful energetic cleansings.",
+    subtitle: "Sacred Tantra & Teacher Certification",
+    level: "All Levels (RYT 200)",
+    duration: "24–28 Days",
+    days: 28,
+    certification: "Yoga Alliance USA Registered RYT 200",
+    price: "From $899",
+    priceRange: "$899 – $1,199",
+    pricing: {
+      triple: "$899",
+      shared: "$999",
+      private: "$1,199",
+    },
+    image:
+      "/images/gallery_images/havan-fire-ritual-yoga-ceremony-rishikesh.webp",
+    description:
+      "Complete teacher certification in classical Kundalini practices, esoteric anatomy, and powerful energetic cleansings.",
+    highlights: [
+      "Yoga Alliance certified RYT 200 credential",
+      "In-depth Nadi Shodhana, Bandhas & Mudras",
+      "Tantric meditation & sacred fire puja sadhana",
+      "100-day post-course Kundalini sadhana plan",
+    ],
+    badge: "Most Popular",
+    featured: true,
   },
   {
     id: "300-hour-kundalini-ttc",
-    title: "300-Hour Kundalini Yoga TTC",
+    slug: "300-hour-kundalini-yoga-teacher-training-in-rishikesh",
+    title: "300-Hour Advanced Kundalini TTC",
+    subtitle: "Higher Tantra & Subtle Body Mastery",
+    level: "Intermediate to Advanced",
     duration: "28 Days",
-    certification: "Yoga Alliance Certified RYT 300",
-    price: "$1,299",
-    image: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=600&q=80",
-    summary: "Advanced Kundalini science, Tantra foundations, deep meditation, and subtle energy body mastery.",
+    days: 28,
+    certification: "Yoga Alliance USA Registered RYT 300",
+    price: "From $1,699",
+    priceRange: "$1,699 – $2,099",
+    pricing: {
+      triple: "$1,699",
+      shared: "$1,899",
+      private: "$2,099",
+    },
+    image:
+      "/images/gallery_images/warrior-pose-yoga-ganges-river-rishikesh.webp",
+    description:
+      "Advanced Kundalini science, Tantra foundations, deep meditation, and subtle energy body mastery under realized masters.",
+    highlights: [
+      "Advanced Kundalini kriyas & chakra resonance",
+      "Nada yoga, sound healing & mantra frequency",
+      "Therapeutic energetic healing & adjustments",
+      "Yoga Alliance RYT 300 / 500 eligibility",
+    ],
+    badge: "Advanced Tantra",
+  },
+  {
+    id: "500-hour-kundalini-ttc",
+    slug: "500-hour-kundalini-yoga-teacher-training-in-rishikesh",
+    title: "500-Hour Master Kundalini TTC",
+    subtitle: "Complete Tantra & Kundalini Mastery",
+    level: "Comprehensive Master Track",
+    duration: "56 Days",
+    days: 56,
+    certification: "Yoga Alliance USA Registered RYT 500",
+    price: "From $1,899",
+    priceRange: "$1,899 – $2,499",
+    pricing: {
+      triple: "$1,899",
+      shared: "$2,199",
+      private: "$2,499",
+    },
+    image:
+      "/images/gallery_images/yoga-philosophy-class-siddhant-school-of-yoga-rishikesh.webp",
+    description:
+      "The definitive life-changing immersion combining 200h and 300h Kundalini Tantra under personal guidance of Acharya Siddhant.",
+    highlights: [
+      "Mastery of Classical Kundalini, Tantra & Laya Yoga",
+      "Direct personal mentorship under Acharya Siddhant",
+      "Comprehensive Vedic philosophy & esoteric anatomy",
+      "Highest tier Yoga Alliance RYT 500 credential",
+    ],
+    badge: "Mastery Track",
   },
 ];
 
@@ -127,8 +233,10 @@ export const retreats = [
     title: "Yoga for Beginners Retreat",
     subtitle: "A Step Toward a Peaceful Life",
     duration: "3 to 7 Days",
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
-    tagline: "Gentle introduction to asana, breathwork, and ashram living in Rishikesh.",
+    image:
+      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
+    tagline:
+      "Gentle introduction to asana, breathwork, and ashram living in Rishikesh.",
     price: "From $249",
     features: [
       "Daily gentle Hatha yoga & alignment",
@@ -142,8 +250,10 @@ export const retreats = [
     title: "Yoga & Meditation Retreat",
     subtitle: "Revitalize Body, Mind & Prana",
     duration: "5 to 7 Days",
-    image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80",
-    tagline: "Harmonize outer health with inner serenity through balanced yogic practices.",
+    image:
+      "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80",
+    tagline:
+      "Harmonize outer health with inner serenity through balanced yogic practices.",
     price: "From $349",
     features: [
       "Pranayama & breath revitalisation classes",
@@ -157,7 +267,8 @@ export const retreats = [
     title: "Kundalini Awakening Retreat",
     subtitle: "Awaken Your Hidden Vital Energy",
     duration: "7 Days",
-    image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
     tagline: "Step-by-step chakra stimulation and sacred mantra resonance.",
     price: "From $449",
     features: [
@@ -172,8 +283,10 @@ export const retreats = [
     title: "Pranayama & Breathwork Retreat",
     subtitle: "Correct Your Breathing, Expand Your Life",
     duration: "5 to 7 Days",
-    image: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=800&q=80",
-    tagline: "Experience the profound science of Prana under world-first breath specialists.",
+    image:
+      "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=800&q=80",
+    tagline:
+      "Experience the profound science of Prana under world-first breath specialists.",
     price: "From $329",
     features: [
       "Diagnosis of individual breathing patterns",
@@ -187,8 +300,10 @@ export const retreats = [
     title: "Vipassana Silent Meditation",
     subtitle: "Witness the Mind Through Body Sensations",
     duration: "7 to 10 Days",
-    image: "https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?auto=format&fit=crop&w=800&q=80",
-    tagline: "Deep silent introspection amidst the sacred tranquility of Rishikesh.",
+    image:
+      "https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?auto=format&fit=crop&w=800&q=80",
+    tagline:
+      "Deep silent introspection amidst the sacred tranquility of Rishikesh.",
     price: "From $399",
     features: [
       "Noble silence (Mouna) environment",
@@ -202,8 +317,10 @@ export const retreats = [
     title: "Yogic Detox & Ayurveda Retreat",
     subtitle: "Holistic Purification for Body & Mind",
     duration: "5 to 7 Days",
-    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
-    tagline: "Combine ancient yogic Shatkarma kriyas with authentic Ayurvedic cleansing.",
+    image:
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+    tagline:
+      "Combine ancient yogic Shatkarma kriyas with authentic Ayurvedic cleansing.",
     price: "From $379",
     features: [
       "Gentle Shatkarmas (Jal Neti, Kunjal, Trataka)",

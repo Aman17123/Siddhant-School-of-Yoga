@@ -1,8 +1,15 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { Sparkles, Check, ArrowRight, Heart, Compass, Shield } from 'lucide-react';
-import { Container, SectionHeading, ButtonLink } from './ui';
-import { site, whatsappLink } from '@/data/siteData';
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Sparkles,
+  Check,
+  ArrowRight,
+  Heart,
+  Compass,
+  Shield,
+} from "lucide-react";
+import { Container, SectionHeading, ButtonLink } from "./ui";
+import { site, whatsappLink } from "@/data/siteData";
 
 export default function AboutPreview() {
   const points = [
@@ -25,39 +32,32 @@ export default function AboutPreview() {
   ];
 
   return (
-    <section id="about" className="py-20 lg:py-28 bg-[#FAF6EE] border-b border-[#EBE5D8]/60 overflow-hidden">
+    <section
+      id="about"
+      className="py-14 sm:py-16 lg:py-20 bg-[#FAF6EE] border-b border-[#EBE5D8]/60 overflow-hidden"
+    >
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          
           {/* Left: Text & Features */}
           <div>
             <SectionHeading
-              eyebrow="Ancient Wisdom, Modern Clarity"
-              title="A Sacred Sanctuary for True Yogic Transformation"
-              text="Siddhant School of Yoga is an officially registered Yoga Alliance school (RYS 200, 300, 500) located in Rishikesh along the foothills of the sacred Himalayas."
+              eyebrow="Ancient Wisdom • Modern Clarity"
+              title="Traditional Yoga Teacher Training in Rishikesh, India"
+              subtitle="Where ancient Himalayan scriptures meet living practice"
               className="mb-8"
             />
-
-            <p className="text-sm sm:text-base text-[#55564c] leading-relaxed mb-6">
-              Yoga is not merely physical exercise or body therapy—it is a journey from darkness to light, from suffering to bliss, from attachment to non-attachment, and from chaotic thoughts to inner silence. Founded by Acharya Siddhant, our mission is to reconnect genuine yoga with this generation.
+            <p className="font-figtree text-sm sm:text-base text-stone-700 leading-relaxed mb-6 font-normal">
+              Siddhant School of Yoga is an officially registered Yoga Teacher
+              Training school in Rishikesh — taught personally, start to finish,
+              by founder Acharya Siddhant rather than handed off to a rotating
+              roster of instructors.
             </p>
-
-            {/* Feature List */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              {points.map((pt, i) => (
-                <div key={i} className="p-4 rounded-2xl bg-white border border-[#EBE5D8] shadow-xs">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <div className="w-5 h-5 rounded-full bg-[#E8735A]/10 text-[#E8735A] flex items-center justify-center shrink-0">
-                      <Check className="w-3 h-3" />
-                    </div>
-                    <h4 className="text-xs font-bold text-[#1F1E1D] tracking-tight">{pt.title}</h4>
-                  </div>
-                  <p className="text-[12px] text-[#66675c] leading-relaxed pl-7">
-                    {pt.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <p className="font-figtree text-sm sm:text-base text-stone-700 leading-relaxed mb-6 font-normal">
+              Yoga is not merely physical exercise or posture therapy—it is a
+              journey from darkness to light, from suffering to bliss, from
+              attachment to non-attachment, and from chaotic thoughts to inner
+              silence.
+            </p>
 
             {/* Actions */}
             <div className="flex flex-wrap items-center gap-4">
@@ -74,11 +74,10 @@ export default function AboutPreview() {
           {/* Right: Rich Image Composition */}
           <div className="relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
-              
               {/* Main Photo */}
-              <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+              <div className="relative w-full aspect-[3/2] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <Image
-                  src="/images/gallery/hatha-yogashala-pernem-goa-hatha-yoga-asana-practice-shala-01.webp"
+                  src="/images/about-siddhant-yoga-school-in-rishikesh.png"
                   alt="Yoga teacher training students practicing alignment in Rishikesh"
                   fill
                   className="object-cover"
@@ -90,31 +89,15 @@ export default function AboutPreview() {
               {/* Floating Sub-Photo */}
               <div className="absolute -bottom-8 -left-6 sm:-left-10 w-44 sm:w-56 aspect-square rounded-2xl overflow-hidden shadow-xl border-4 border-white hidden sm:block">
                 <Image
-                  src="/images/gallery/hatha-yogashala-pernem-goa-candlelit-meditation-session-shala-01.webp"
+                  src="/images/about-siddhant-yoga-school.jpeg"
                   alt="Evening meditation and sound healing at Siddhant School of Yoga"
                   fill
                   className="object-cover"
                   sizes="240px"
                 />
               </div>
-
-              {/* Floating Quote Badge */}
-              <div className="absolute -top-6 -right-4 sm:-right-8 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-xl border border-[#EBE5D8] max-w-[240px]">
-                <div className="flex items-center gap-2 mb-1 text-[#e8735a]">
-                  <Sparkles className="w-4 h-4" />
-                  <span className="text-[11px] font-bold uppercase tracking-wider">Vedic Discipline</span>
-                </div>
-                <p className="text-xs text-[#1F1E1D] font-serif italic">
-                  &ldquo;Yoga is an art to live a life without complaint, in a grateful way.&rdquo;
-                </p>
-                <span className="text-[10px] text-[#77786e] font-semibold block mt-1">
-                  — Acharya Siddhant
-                </span>
-              </div>
-
             </div>
           </div>
-
         </div>
       </Container>
     </section>
