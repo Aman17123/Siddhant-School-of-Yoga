@@ -188,28 +188,72 @@ export const testimonials = [
 
 export const faqs = [
   {
-    q: "Is Siddhant School of Yoga certified with Yoga Alliance USA?",
-    a: "Yes! Siddhant School of Yoga (SSY) is an officially recognized Registered Yoga School (RYS 200, RYS 300, and RYS 500) with Yoga Alliance USA. Upon graduation, you are eligible to register as a Registered Yoga Teacher (RYT) and teach worldwide.",
+    q: "Is Siddhant School of Yoga registered with Yoga Alliance?",
+    a: "Yes. The school is registered with Yoga Alliance USA as RYS 200, RYS 300 and RYS 500. Graduates are eligible to register as RYT with Yoga Alliance.",
   },
   {
-    q: "Can a beginner join the Yoga Teacher Training courses?",
-    a: "Absolutely. Our 100-hour and 200-hour TTC programs are designed specifically to take students from foundational principles up to advanced understanding and teaching methodology. We meet every student at their current physical and spiritual level.",
+    q: "Why is Rishikesh considered the best place for yoga teacher training in India?",
+    a: "Rishikesh sits where the Ganga meets the Himalayan foothills and has been a centre of yoga practice for centuries. That setting, combined with a concentration of Yoga Alliance-registered schools, is why it's treated as the default destination for yoga teacher training in India.",
   },
   {
-    q: "What is included in the course fee?",
-    a: "The fee includes complete course tuition, Yoga Alliance certification, clean private or shared accommodation with mountain/ashram views, 3 nutritious sattvic vegetarian meals daily, herbal teas, course manuals, yogic cleansing kits (kriyas), and sacred weekend excursions in Rishikesh.",
+    q: "Where exactly is the school located?",
+    a: "The campus is in Veerbhadra, Rishikesh, Uttarakhand — close to the Ganga and the Himalayan foothills.",
   },
   {
-    q: "What makes Siddhant School of Yoga different from other Rishikesh schools?",
-    a: "We are the first school to center training on authentic Pranayama & Rhythmic Breath as the root of meditation and physical health. Furthermore, we provide every graduate with a personalized 100-day daily practice schedule and measurable growth parameters, ensuring your transformation lasts a lifetime.",
+    q: "Do I need previous yoga experience to join?",
+    a: "The 100-hour course and beginner retreats welcome newcomers. From 200-hour onward, basic familiarity with asana and breath practice is expected.",
   },
   {
-    q: "What kind of visa do I need to attend yoga training in India?",
-    a: "Most international students travel on an Indian Tourist e-Visa (available online for 30 days, 1 year, or 5 years). It is simple and fast to apply online and covers all course and retreat durations.",
+    q: "What is included in a residential course?",
+    a: "Accommodation, sattvic vegetarian meals, a course manual and daily supervised practice. Exact inclusions are confirmed in writing before you book.",
   },
   {
-    q: "What accommodation and food arrangements are provided?",
-    a: "Our ashram campus in Rishikesh provides serene, clean rooms with private bathrooms, hot water, and Wi-Fi. We serve 3 wholesome, freshly prepared vegetarian sattvic meals daily, designed specifically to nourish your body and support intensive yoga practice.",
+    q: "What happens after the course ends?",
+    a: "Every graduate receives a 100-day home practice schedule and can reach Acharya Siddhant directly with questions during that period.",
+  },
+  {
+    q: "Which visa should I apply for?",
+    a: "Most international students travel on a Tourist e-Visa for short courses. Requirements vary by nationality, so confirm before booking travel.",
+  },
+  {
+    q: "What is the best time of year to train in Rishikesh?",
+    a: "Batches run year-round. October to March offers the coolest, most comfortable climate for daily practice.",
+  },
+  {
+    q: "How do I secure my seat?",
+    a: "Message the school by WhatsApp or email, confirm your batch and course level with Acharya Siddhant, and complete registration once dates are agreed in writing.",
+  },
+  {
+    q: "What exactly is a Yoga Teacher Training Course (YTTC)?",
+    a: "A YTTC is a structured program — usually 100, 200, 300 or 500 hours — that teaches both personal yoga practice and how to teach it to others, following curriculum standards set by Yoga Alliance.",
+  },
+  {
+    q: "What is the difference between 100-hour and 200-hour yoga TTC?",
+    a: "The 100-hour course builds a personal foundation and ends with a course completion certificate. The 200-hour course is the internationally recognised entry point for teaching professionally, ending in RYS 200 certification.",
+  },
+  {
+    q: "What is the difference between 200-hour and 300-hour yoga TTC?",
+    a: "The 200-hour course is the base teaching certificate. The 300-hour course is an advanced program for already-certified 200-hour teachers, and completing both makes you eligible for RYT 500 — the highest Yoga Alliance teaching level.",
+  },
+  {
+    q: "Which is the best yoga teacher training in Rishikesh?",
+    a: '"Best" depends on what you need, but genuine Yoga Alliance registration, small batches, one consistent teacher throughout, and clear support after the course matter more than marketing claims. Siddhant School of Yoga is built around exactly those four points.',
+  },
+  {
+    q: "What is the best time for a 200-hour yoga TTC in Rishikesh?",
+    a: "Batches run all year. October to March has the coolest, most comfortable weather for long practice days, while many students also enjoy the quieter, greener monsoon months.",
+  },
+  {
+    q: "How much does yoga teacher training cost in Rishikesh?",
+    a: "Costs vary by course length, room type and season. Exact fees for each program are confirmed directly with Acharya Siddhant before you book, so there are no hidden charges later.",
+  },
+  {
+    q: "Do I need to be flexible or very fit to start a yoga TTC?",
+    a: "No. Courses are built to meet you at your current level and build up gradually — flexibility and fitness are things the course develops, not requirements you need to arrive with.",
+  },
+  {
+    q: "Can I complete yoga teacher training online instead of travelling to Rishikesh?",
+    a: "An online 200-hour option is available for students who cannot travel yet, though most graduates say practising in Rishikesh — near the Ganga and the Himalayas — adds something an online course cannot fully replace.",
   },
 ];
 
