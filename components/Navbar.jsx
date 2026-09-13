@@ -51,27 +51,16 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header
-      className={`site-header sticky top-0 z-50 w-full bg-white font-figtree transition-all duration-300 ${isScrolled ? "shadow-md" : ""}`}
-    >
-      {/* BACKGROUND SKETCHES (Ganga Aarti on left, Rishikesh Temples on right) */}
-      <div className="header-bg-decor" aria-hidden="true" />
-
-      {/* 1. TOPBAR (Deep emerald green #f22924) */}
-      <div
-        className={`bg-terracotta text-white transition-all duration-300 overflow-hidden relative z-10 ${isScrolled ? "max-h-0 py-0 opacity-0" : "max-h-12 py-2 opacity-100"}`}
-      >
+    <>
+      {/* 1. TOPBAR (Flows naturally above sticky header, scrolls off without layout shift) */}
+      <div className="bg-terracotta text-white py-2 relative z-20 overflow-hidden">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs font-medium">
           {/* Left: Email & Address */}
           <div className="flex items-center gap-6">
@@ -161,7 +150,15 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* 2. MIDDLE BOX (Call/WhatsApp Concierge | Brand Logo | Enroll Now) */}
+      <header
+        className={`site-header sticky top-0 z-50 w-full bg-white font-figtree transition-shadow duration-300 ${
+          isScrolled ? "shadow-md" : "shadow-xs"
+        }`}
+      >
+        {/* BACKGROUND SKETCHES (Ganga Aarti on left, Rishikesh Temples on right) */}
+        <div className="header-bg-decor" aria-hidden="true" />
+
+        {/* 2. MIDDLE BOX (Call/WhatsApp Concierge | Brand Logo | Enroll Now) */}
       <div className="relative z-10">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 grid grid-cols-2 md:grid-cols-12 items-center">
           {/* Left Column: Ashram Helpline / WhatsApp Concierge (Sleek Classy Pill) */}
@@ -766,5 +763,6 @@ export default function Navbar() {
         </div>
       )}
     </header>
+    </>
   );
 }

@@ -19,8 +19,8 @@ export default function Founder() {
               <div className="space-y-2 sm:space-y-2.5">
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border-2 border-white group">
                   <Image
-                    src="/images/acharya-siddhant.jpg"
-                    alt="Acharya Siddhant meditating on the banks of Ganga, Rishikesh"
+                    src="/images/founder/acharya-siddhant-founder-siddhant-school-of-yoga-rishikesh.webp"
+                    alt="Acharya Siddhant, Founder & Spiritual Director of Siddhant School of Yoga"
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 1024px) 50vw, 25vw"
@@ -28,21 +28,21 @@ export default function Founder() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <span className="absolute bottom-3 left-3 text-[11px] font-semibold text-white bg-black/40 backdrop-blur-xs px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                    Himalayan Sadhana
+                    Acharya Siddhant
                   </span>
                 </div>
 
                 <div className="relative aspect-square rounded-2xl overflow-hidden shadow-md border-2 border-white group">
                   <Image
-                    src="/images/gallery_images/havan-fire-ritual-yoga-ceremony-rishikesh.webp"
-                    alt="Sacred Vedic havan opening ceremony conducted by Acharya Siddhant in Rishikesh"
+                    src="/images/founder/acharya-siddhant-founder-meditation-rishikesh.webp"
+                    alt="Acharya Siddhant in deep meditation sadhana along the sacred Ganges in Rishikesh"
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 1024px) 50vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <span className="absolute bottom-3 left-3 text-[11px] font-semibold text-white bg-black/40 backdrop-blur-xs px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                    Sacred Havan Fire
+                    Himalayan Sadhana
                   </span>
                 </div>
               </div>
@@ -51,29 +51,29 @@ export default function Founder() {
               <div className="space-y-2 sm:space-y-2.5 pt-3 sm:pt-4">
                 <div className="relative aspect-square rounded-2xl overflow-hidden shadow-md border-2 border-white group">
                   <Image
-                    src="/images/gallery_images/yoga-philosophy-class-siddhant-school-of-yoga-rishikesh.webp"
-                    alt="Acharya Siddhant teaching traditional yoga philosophy and meditation"
+                    src="/images/founder/acharya-siddhant-founder-with-students-rishikesh.webp"
+                    alt="Acharya Siddhant mentoring yoga students in traditional yogashala setting"
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 1024px) 50vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <span className="absolute bottom-3 left-3 text-[11px] font-semibold text-white bg-black/40 backdrop-blur-xs px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                    Satsang &amp; Philosophy
+                    Traditional Mentorship
                   </span>
                 </div>
 
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border-2 border-white group">
                   <Image
-                    src="/images/gallery_images/yoga-guru-student-certificate-rishikesh-india.webp"
-                    alt="Acharya Siddhant with graduating yoga students in Rishikesh"
+                    src="/images/founder/acharya-siddhant-founder-certificate-ceremony-rishikesh.webp"
+                    alt="Acharya Siddhant conducting certificate graduation ceremony for international yoga students"
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 1024px) 50vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <span className="absolute bottom-3 left-3 text-[11px] font-semibold text-white bg-black/40 backdrop-blur-xs px-2.5 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                    Ashram Tradition
+                    Graduation Ceremony
                   </span>
                 </div>
               </div>
@@ -98,9 +98,6 @@ export default function Founder() {
             {/* Main Heading */}
             <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal text-[#1e2422] tracking-wide leading-[1.2] mb-2">
               Acharya Siddhant{" "}
-              <span className="text-base sm:text-xl font-figtree font-normal text-[#d45d44] block sm:inline sm:ml-2">
-                (Living Himalayan Tradition)
-              </span>
             </h2>
 
             {/* Pull-Quote Block */}

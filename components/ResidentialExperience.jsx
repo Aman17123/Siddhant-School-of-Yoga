@@ -131,7 +131,7 @@ export default function ResidentialExperience() {
           <div className="lg:col-span-6 grid grid-cols-2 gap-4">
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border-2 border-white">
               <Image
-                src="/images/gallery_images/yoga-retreat-himalayan-mountains-rishikesh.webp"
+                src="/images/gallery_images/food-gallery3.webp"
                 alt="Ashram exterior and serene Himalayan surroundings in Rishikesh"
                 fill
                 className="object-cover transition-transform duration-700 hover:scale-105"
@@ -140,7 +140,7 @@ export default function ResidentialExperience() {
             </div>
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border-2 border-white mt-6 sm:mt-10">
               <Image
-                src="/images/gallery_images/yoga-asana-practice-riverside-rishikesh.webp"
+                src="/images/gallery_images/food-gallery4.webp"
                 alt="Peaceful ashram sadhana environment in Rishikesh"
                 fill
                 className="object-cover transition-transform duration-700 hover:scale-105"

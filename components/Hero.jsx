@@ -69,14 +69,14 @@ export default function Hero() {
           certified.
         </p>
 
-        {/* 3. Hero Trust Bar (Matches Vinyasa Yoga Academy) */}
-        <div className="w-full max-w-3xl mx-auto bg-black/40 backdrop-blur-md rounded-2xl border border-white/15 p-4 sm:p-5 shadow-2xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-2 divide-y md:divide-y-0 md:divide-x divide-white/15">
+        {/* 3. Hero Trust Bar (Matches design reference) */}
+        <div className="w-full max-w-3xl mx-auto bg-black/60 backdrop-blur-xl rounded-2xl sm:rounded-[22px] border border-white/20 p-4 sm:p-5 shadow-[0_16px_40px_rgba(0,0,0,0.5)]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-2 divide-y md:divide-y-0 md:divide-x divide-white/20">
             <div className="flex flex-col items-center justify-center px-2 py-1">
               <span className="font-belleza text-2xl sm:text-3xl font-medium text-white tracking-tight">
                 5,000<span className="text-[#F5B860] font-light">+</span>
               </span>
-              <span className="font-figtree text-[10px] sm:text-[11px] text-white/80 font-medium uppercase tracking-[0.14em] mt-1">
+              <span className="font-figtree text-[10px] sm:text-[11px] text-white/85 font-medium uppercase tracking-[0.16em] mt-1 text-center">
                 Students Trained
               </span>
             </div>
@@ -85,7 +85,7 @@ export default function Hero() {
               <span className="font-belleza text-2xl sm:text-3xl font-medium text-white tracking-tight">
                 15<span className="text-[#F5B860] font-light">+</span>
               </span>
-              <span className="font-figtree text-[10px] sm:text-[11px] text-white/80 font-medium uppercase tracking-[0.14em] mt-1">
+              <span className="font-figtree text-[10px] sm:text-[11px] text-white/85 font-medium uppercase tracking-[0.16em] mt-1 text-center">
                 Years of Lineage
               </span>
             </div>
@@ -94,7 +94,7 @@ export default function Hero() {
               <span className="font-belleza text-2xl sm:text-3xl font-medium text-white tracking-tight">
                 60<span className="text-[#F5B860] font-light">+</span>
               </span>
-              <span className="font-figtree text-[10px] sm:text-[11px] text-white/80 font-medium uppercase tracking-[0.14em] mt-1">
+              <span className="font-figtree text-[10px] sm:text-[11px] text-white/85 font-medium uppercase tracking-[0.16em] mt-1 text-center">
                 Countries Worldwide
               </span>
             </div>
@@ -109,7 +109,7 @@ export default function Hero() {
               <span className="font-belleza text-2xl sm:text-3xl font-medium text-white tracking-tight flex items-center gap-1 group-hover/stat:text-[#F5B860] transition-colors">
                 4.9<span className="text-[#F5B860] text-xl">★</span>
               </span>
-              <span className="font-figtree text-[10px] sm:text-[11px] text-white/80 font-medium uppercase tracking-[0.14em] mt-1 group-hover/stat:text-white transition-colors">
+              <span className="font-figtree text-[10px] sm:text-[11px] text-white/85 font-medium uppercase tracking-[0.16em] mt-1 group-hover/stat:text-white transition-colors text-center">
                 48 Google Reviews
               </span>
             </a>

@@ -42,7 +42,7 @@ export function whatsappLink(message) {
 export const founder = {
   name: "Acharya Siddhant",
   role: "Founder & Spiritual Director",
-  image: "/images/acharya-siddhant.jpg",
+  image: "/images/founder/acharya-siddhant-founder-siddhant-school-of-yoga-rishikesh.webp",
   subtitle: "Master of Hatha, Ashtanga & Classical Pranayama",
   bio: `Acharya Siddhant was born and raised in the sacred land of the Himalayas. Guided by living realized masters and ancient yogic scriptures, he founded Siddhant School of Yoga with a revolutionary vision: to restore authentic Vedic yoga as a path for complete inner and outer growth rather than superficial exercise.
 
