@@ -98,7 +98,7 @@ export default function Teachers() {
       const cardWidth = firstCard.offsetWidth + 24; // 24 is gap-6
       const idx = Math.min(
         teachers.length - 1,
-        Math.max(0, Math.round(scrollLeft / cardWidth))
+        Math.max(0, Math.round(scrollLeft / cardWidth)),
       );
       setActiveIndex(idx);
     }
@@ -218,11 +218,6 @@ export default function Teachers() {
                 {/* Role */}
                 <p className="text-xs sm:text-[13px] font-figtree font-semibold text-[#f22924] mb-2">
                   {teacher.role}
-                </p>
-
-                {/* Specialty Pill / Bio Note */}
-                <p className="text-[11px] sm:text-xs font-figtree text-stone-500 font-light mt-auto">
-                  {teacher.specialty}
                 </p>
               </div>
             ))}
