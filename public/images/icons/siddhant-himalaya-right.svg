@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 180" width="380" height="180" fill="none">
+  <!-- Himalayan Peaks, Pine Forests, and Meditating Yogi (Bespoke Siddhant Artwork) -->
+  <g stroke="#175f52" stroke-width="0.85" opacity="0.32" stroke-linecap="round" stroke-linejoin="round">
+    
+    <!-- Rising Sun over Himalayan Ridge -->
+    <circle cx="270" cy="50" r="22" stroke-dasharray="3 3" />
+    <circle cx="270" cy="50" r="14" />
+    <!-- Sun Rays -->
+    <line x1="270" y1="22" x2="270" y2="14" stroke-dasharray="2 2" />
+    <line x1="292" y1="36" x2="298" y2="30" stroke-dasharray="2 2" />
+    <line x1="300" y1="50" x2="308" y2="50" stroke-dasharray="2 2" />
+    <line x1="248" y1="36" x2="242" y2="30" stroke-dasharray="2 2" />
+    <line x1="240" y1="50" x2="232" y2="50" stroke-dasharray="2 2" />
+
+    <!-- Back Himalayan Mountain Range (Distant) -->
+    <path d="M 60 115 L 115 65 L 155 98 L 210 48 L 265 92 L 315 52 L 380 100" stroke-width="0.75" stroke-dasharray="4 2" />
+    <!-- Mid Himalayan Mountain Range with Ridge Hatching -->
+    <path d="M 30 140 L 95 85 L 140 118 L 195 72 L 250 115 L 305 68 L 380 118" stroke-width="0.9" />
+    <!-- Ridge Hatching Lines -->
+    <line x1="95" y1="85" x2="110" y2="125" stroke-width="0.6" />
+    <line x1="102" y1="92" x2="115" y2="122" stroke-width="0.5" />
+    <line x1="195" y1="72" x2="208" y2="115" stroke-width="0.6" />
+    <line x1="202" y1="80" x2="214" y2="112" stroke-width="0.5" />
+    <line x1="305" y1="68" x2="320" y2="110" stroke-width="0.6" />
+
+    <!-- Pine Forest Silhouettes on Hillsides -->
+    <!-- Pine Tree 1 -->
+    <path d="M 125 135 L 125 110 M 125 110 L 120 118 M 125 110 L 130 118 M 125 118 L 118 126 M 125 118 L 132 126 M 125 126 L 116 134 M 125 126 L 134 134" stroke-width="0.65" />
+    <!-- Pine Tree 2 -->
+    <path d="M 140 138 L 140 118 M 140 118 L 136 124 M 140 118 L 144 124 M 140 124 L 134 130 M 140 124 L 146 130" stroke-width="0.65" />
+    <!-- Pine Tree 3 -->
+    <path d="M 152 142 L 152 125 M 152 125 L 149 130 M 152 125 L 155 130" stroke-width="0.6" />
+
+    <!-- Meditating Yogi in Padmasana on River Ghat Rock -->
+    <!-- Yogi Rock Platform -->
+    <path d="M 235 152 C 245 142, 275 142, 285 152" stroke-width="0.9" />
+    <!-- Yogi Torso & Head -->
+    <circle cx="260" cy="116" r="4.5" />
+    <!-- Yogi Hair Bun (Jata) -->
+    <circle cx="260" cy="110.5" r="2" />
+    <!-- Torso -->
+    <line x1="260" y1="120.5" x2="260" y2="136" stroke-width="1.2" />
+    <!-- Arms in Dhyana Mudra / Chin Mudra -->
+    <path d="M 260 125 L 250 134 L 254 138" stroke-width="0.9" />
+    <path d="M 260 125 L 270 134 L 266 138" stroke-width="0.9" />
+    <!-- Crossed Legs in Padmasana -->
+    <path d="M 248 138 C 252 135, 268 135, 272 138 C 274 142, 246 142, 248 138 Z" stroke-width="0.9" />
+    
+    <!-- Gentle Aura / Prana Radiance behind Yogi -->
+    <path d="M 248 116 C 248 108, 272 108, 272 116" stroke-dasharray="2 2" stroke-width="0.6" />
+
+    <!-- Holy Ganges River Waves in Foreground -->
+    <path d="M 0 148 C 50 142, 100 154, 160 146 C 220 138, 270 152, 330 144 C 355 141, 370 144, 380 142" stroke-width="0.75" />
+    <path d="M 0 158 C 45 152, 90 162, 150 156 C 210 150, 260 162, 320 154 C 350 150, 370 154, 380 152" stroke-width="0.75" stroke-dasharray="5 3" />
+    <path d="M 0 168 C 55 162, 110 172, 170 166 C 230 160, 280 170, 340 164 C 365 161, 375 164, 380 162" stroke-width="0.6" />
+    <path d="M 0 176 C 60 170, 120 180, 180 174 C 240 168, 290 178, 350 172 C 370 170, 378 172, 380 170" stroke-width="0.5" />
+  </g>
+</svg>

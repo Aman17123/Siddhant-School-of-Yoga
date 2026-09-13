@@ -1,0 +1,241 @@
+@import "tailwindcss";
+
+@theme {
+  --color-terracotta: #e8735a;
+  --color-coral: #f08c5c;
+  --color-marigold: #f5b860;
+  --color-sunshine: #fbdd8e;
+  --color-sunshine-bg: #faf6ee;
+}
+
+@layer base {
+  :root {
+    --color-terracotta: #e8735a;
+    --color-coral: #f08c5c;
+    --color-marigold: #f5b860;
+    --color-sunshine: #fbdd8e;
+    --color-sunshine-bg: #faf6ee;
+    --background: #faf6ee;
+    --foreground: #1f1e1d;
+    --primary: var(--color-terracotta);
+    --primary-light: var(--color-coral);
+    --primary-dark: #d45d44;
+    --secondary: var(--color-terracotta);
+    --secondary-hover: var(--color-coral);
+    --accent: var(--color-marigold);
+    --accent-light: var(--color-sunshine);
+    --cream: #faf6ee;
+    --surface: #faf6ee;
+    --surface-card: #ffffff;
+    --border: #ebe5d8;
+    --muted: #66675c;
+    --dark: #1f1e1d;
+    --dark-surface: #181716;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-manrope), var(--font-nunito-sans), system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, .font-serif-hero {
+    font-family: var(--font-philosopher), var(--font-playfair), Georgia, serif;
+  }
+}
+
+.font-marcellus {
+  font-family: var(--font-marcellus), serif;
+}
+
+.font-jakarta {
+  font-family: var(--font-plus-jakarta), sans-serif;
+}
+
+.font-btn-classy {
+  font-family: var(--font-marcellus), var(--font-philosopher), serif;
+  letter-spacing: 0.03em;
+}
+
+/* Theme Token Utility Classes */
+.bg-terracotta { background-color: var(--color-terracotta); }
+.text-terracotta { color: var(--color-terracotta); }
+.border-terracotta { border-color: var(--color-terracotta); }
+.hover\:bg-coral:hover { background-color: var(--color-coral); }
+.hover\:text-coral:hover { color: var(--color-coral); }
+.hover\:border-coral:hover { border-color: var(--color-coral); }
+.bg-coral { background-color: var(--color-coral); }
+.text-coral { color: var(--color-coral); }
+.border-coral { border-color: var(--color-coral); }
+.bg-marigold { background-color: var(--color-marigold); }
+.text-marigold { color: var(--color-marigold); }
+.border-marigold { border-color: var(--color-marigold); }
+.bg-sunshine { background-color: var(--color-sunshine); }
+.bg-sunshine-bg { background-color: var(--color-sunshine-bg); }
+.border-sunshine { border-color: var(--color-sunshine); }
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+  }
+  30%, 100% {
+    transform: translateX(260%) skewX(-20deg);
+  }
+}
+
+.animate-shimmer-sweep {
+  animation: shimmerSweep 4s ease-in-out infinite;
+}
+
+/* Call Icon Orbit Animation (from vinyasayogaacademy.com) */
+@keyframes callOrbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.call-orbit-ring {
+  position: absolute;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1.5px dotted var(--color-terracotta);
+  border-radius: 50%;
+  animation: callOrbit 14s linear infinite;
+}
+
+.enroll-ring {
+  position: absolute;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--color-terracotta);
+  border-radius: 50%;
+}
+
+/* Header Background Sketches (Ganga Aarti on left, Rishikesh on right) */
+.header-bg-decor {
+  position: absolute;
+  inset: 0;
+  top: 36px;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.header-bg-decor::before,
+.header-bg-decor::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  opacity: 0.35;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.header-bg-decor::before {
+  width: clamp(160px, 24vw, 320px);
+  background-image: url("/images/icons/siddhant-mandala-left.svg");
+  background-position: left bottom;
+  left: 0;
+}
+
+.header-bg-decor::after {
+  width: clamp(160px, 24vw, 320px);
+  background-image: url("/images/icons/siddhant-himalaya-right.svg");
+  background-position: right bottom;
+  right: 0;
+}
+
+@media (max-width: 991px) {
+  .header-bg-decor::before,
+  .header-bg-decor::after {
+    display: none;
+  }
+}
+
+/* Custom Animation Keyframes */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 40s linear infinite;
+}
+
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #faf6ee;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-terracotta);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-coral);
+}

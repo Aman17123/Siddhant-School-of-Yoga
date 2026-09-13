@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 80" width="380" height="80" fill="none">
+  <!-- Left: Yoga Emblem -->
+  <g transform="translate(10, 5)">
+    <!-- Delicate Outer Circle Ring -->
+    <circle cx="35" cy="35" r="33" stroke="#e8735a" stroke-width="1.2" opacity="0.85" stroke-dasharray="2 0" />
+    <circle cx="35" cy="35" r="29.5" stroke="#c9a961" stroke-width="0.8" opacity="0.5" />
+    
+    <!-- Stylized Graceful Yogi in Natarajasana (Lord of the Dance Pose) / Vrksasana -->
+    <!-- Head -->
+    <circle cx="35" cy="18" r="4.2" fill="#175f52" />
+    <!-- Torso and Arching Spine -->
+    <path d="M35 22.5 C35 28 32 35 34 42 C35 45 36 50 36 54" stroke="#175f52" stroke-width="2.6" stroke-linecap="round" />
+    <!-- Standing Leg -->
+    <path d="M36 54 L36 62" stroke="#175f52" stroke-width="2.6" stroke-linecap="round" />
+    <!-- Lifted Leg reaching back & up -->
+    <path d="M34 42 C30 40 22 36 21 28 C20.5 24 23 20 26 19 C28 18 31 20 33 24" stroke="#175f52" stroke-width="2.2" stroke-linecap="round" fill="none" />
+    <!-- Extended Front Arm in Mudra -->
+    <path d="M34 26 C38 27 46 29 52 30" stroke="#175f52" stroke-width="2.2" stroke-linecap="round" />
+    <!-- Hand Mudra -->
+    <circle cx="53" cy="30" r="1.5" fill="#175f52" />
+    <!-- Reaching Back Arm holding back foot -->
+    <path d="M34 26 C31 22 28 20 30 22" stroke="#175f52" stroke-width="2" stroke-linecap="round" />
+    <!-- Subtle Prana Rays / Lotus Petals at base -->
+    <path d="M26 62 C31 60 39 60 44 62" stroke="#c9a961" stroke-width="1.2" stroke-linecap="round" />
+  </g>
+
+  <!-- Right: Refined Typography -->
+  <g transform="translate(90, 16)">
+    <!-- SIDDHANT -->
+    <text x="0" y="27" font-family="'Philosopher', 'Playfair Display', Georgia, serif" font-size="28" font-weight="700" fill="#175f52" letter-spacing="1.5">
+      SIDDHANT
+    </text>
+    
+    <!-- SCHOOL OF YOGA -->
+    <text x="1.5" y="44" font-family="'Manrope', 'Nunito Sans', -apple-system, sans-serif" font-size="10.5" font-weight="600" fill="#202019" letter-spacing="3.8">
+      SCHOOL OF YOGA
+    </text>
+    
+    <!-- RISHIKESH • INDIA • RYS 200, 300, 500 -->
+    <text x="1.5" y="56" font-family="'Manrope', -apple-system, sans-serif" font-size="8" font-weight="600" fill="#c9a961" letter-spacing="2">
+      RISHIKESH • INDIA • RYS 200, 300, 500
+    </text>
+  </g>
+</svg>
