@@ -9,38 +9,50 @@
 }
 
 @theme {
-  --color-terracotta: #f22924;
+  --color-terracotta: #e22924;
+  --color-siddhant-red: #e22924;
+  --color-siddhant-green: #109347;
+  --color-siddhant-gold: #f5b860;
+  --color-siddhant-cream: #faf6ee;
+  --color-siddhant-dark: #1e2422;
+  --color-vedic-green: #109347;
+  --color-forest: #109347;
+  --color-deep-forest: #0d6e35;
   --color-coral: #f08c5c;
   --color-marigold: #f5b860;
   --color-sunshine: #fbdd8e;
   --color-sunshine-bg: #faf6ee;
   --font-belleza: var(--font-belleza), "Belleza", sans-serif;
   --font-figtree: var(--font-figtree), "Figtree", sans-serif;
-  --font-fortune: "Fortune Parade", cursive, sans-serif;
+  --font-fortune: var(--font-belleza), "Belleza", sans-serif;
 }
 
 @layer base {
   :root {
-    --color-terracotta: #f22924;
+    --color-terracotta: #e22924;
+    --color-siddhant-red: #e22924;
+    --color-siddhant-green: #109347;
+    --color-siddhant-gold: #f5b860;
+    --color-vedic-green: #109347;
     --color-coral: #f08c5c;
     --color-marigold: #f5b860;
     --color-sunshine: #fbdd8e;
     --color-sunshine-bg: #faf6ee;
     --background: #faf6ee;
-    --foreground: #1f1e1d;
-    --primary: var(--color-terracotta);
-    --primary-light: var(--color-coral);
-    --primary-dark: #d45d44;
-    --secondary: var(--color-terracotta);
-    --secondary-hover: var(--color-coral);
-    --accent: var(--color-marigold);
-    --accent-light: var(--color-sunshine);
+    --foreground: #1e2422;
+    --primary: #e22924;
+    --primary-light: #f08c5c;
+    --primary-dark: #c9241f;
+    --secondary: #109347;
+    --secondary-hover: #0d6e35;
+    --accent: #f5b860;
+    --accent-light: #fbdd8e;
     --cream: #faf6ee;
     --surface: #faf6ee;
     --surface-card: #ffffff;
     --border: #ebe5d8;
     --muted: #66675c;
-    --dark: #1f1e1d;
+    --dark: #1e2422;
     --dark-surface: #181716;
   }
 
@@ -48,11 +60,14 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
+    overflow-x: hidden;
+    max-width: 100vw;
     font-family:
       var(--font-figtree),
       var(--font-manrope),
@@ -80,7 +95,7 @@
 }
 
 .font-fortune {
-  font-family: "Fortune Parade", cursive, serif;
+  font-family: var(--font-belleza), "Belleza", sans-serif;
 }
 
 .font-marcellus {
@@ -105,6 +120,21 @@
 }
 .border-terracotta {
   border-color: var(--color-terracotta);
+}
+.bg-vedic-green {
+  background-color: #109347;
+}
+.text-vedic-green {
+  color: #109347;
+}
+.border-vedic-green {
+  border-color: #109347;
+}
+.bg-siddhant-red {
+  background-color: #e22924;
+}
+.text-siddhant-red {
+  color: #e22924;
 }
 .hover\:bg-coral:hover {
   background-color: var(--color-coral);

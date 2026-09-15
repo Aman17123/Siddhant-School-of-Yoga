@@ -17,7 +17,7 @@ module.exports = {
         sans: ["var(--font-figtree)", "var(--font-manrope)", "sans-serif"],
         belleza: ["var(--font-belleza)", "Belleza", "sans-serif"],
         figtree: ["var(--font-figtree)", "Figtree", "sans-serif"],
-        fortune: ['"Fortune Parade"', "cursive", "serif"],
+        fortune: ["var(--font-belleza)", "Belleza", "sans-serif"],
         serif: [
           "var(--font-belleza)",
           "var(--font-playfair)",
@@ -26,7 +26,7 @@ module.exports = {
         ],
         heading: ["var(--font-belleza)", "var(--font-figtree)", "sans-serif"],
         body: ["var(--font-figtree)", "sans-serif"],
-        accent: ['"Fortune Parade"', "var(--font-philosopher)", "serif"],
+        accent: ["var(--font-belleza)", "var(--font-philosopher)", "serif"],
       },
     },
   },

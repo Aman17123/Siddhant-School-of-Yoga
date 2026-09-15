@@ -58,10 +58,7 @@ export default function WhyUnique() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-10">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accentLight/40 text-primary font-semibold text-xs tracking-wider uppercase mb-3">
-            Our Distinct Identity
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] mb-2">
+          <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] mb-3">
             What Makes Us Unique
           </h2>
           <p className="font-body text-textMuted text-base sm:text-lg">
@@ -86,18 +83,9 @@ export default function WhyUnique() {
                     item.reversed ? 'lg:order-2' : 'lg:order-1'
                   }`}
                 >
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-card border border-accent/30 text-primary text-xs font-semibold">
-                    <IconComp className="w-4 h-4 text-accent" />
-                    <span>{item.badge}</span>
-                  </div>
-
                   <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-textDark leading-snug">
                     {item.title}
                   </h3>
-
-                  <p className="font-accent italic text-base sm:text-lg text-primary font-medium">
-                    {item.subtitle}
-                  </p>
 
                   <p className="font-body text-textMuted text-base leading-relaxed">
                     {item.description}

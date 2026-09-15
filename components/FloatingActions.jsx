@@ -9,7 +9,7 @@ export default function FloatingActions() {
     <>
       {/* 1. Floating WhatsApp Button on Left Side */}
       <div
-        className="fixed bottom-5 sm:bottom-6 left-5 sm:left-6 z-50 font-figtree"
+        className="fixed bottom-5 sm:bottom-6 left-5 sm:left-6 z-40 font-figtree"
         aria-label="WhatsApp Concierge"
       >
         <a
@@ -18,13 +18,13 @@ export default function FloatingActions() {
           )}
           target="_blank"
           rel="noopener noreferrer"
-          className="relative group w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95"
+          className="relative group w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#109347] hover:bg-[#0d6e35] text-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95"
           aria-label="Chat with us on WhatsApp"
         >
           <FaWhatsapp className="w-6 h-6 sm:w-7 sm:h-7" />
 
           {/* Notification Badge */}
-          <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#f22924] text-white text-[10px] font-bold rounded-full flex items-center justify-center ring-2 ring-white animate-pulse">
+          <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#e22924] text-white text-[10px] font-bold rounded-full flex items-center justify-center ring-2 ring-white animate-pulse">
             1
           </span>
 
@@ -37,7 +37,7 @@ export default function FloatingActions() {
 
       {/* 2. Floating Enquire Now Button on Right Side */}
       <div
-        className="fixed bottom-5 sm:bottom-6 right-5 sm:right-6 z-50 font-figtree"
+        className="fixed bottom-5 sm:bottom-6 right-5 sm:right-6 z-40 font-figtree"
         aria-label="Enquire Now"
       >
         <a
@@ -46,7 +46,7 @@ export default function FloatingActions() {
           )}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-[#f22924] hover:bg-[#d45d44] text-white text-xs sm:text-sm font-semibold shadow-2xl hover:shadow-[#f22924]/40 hover:scale-105 active:scale-95 transition-all duration-300 group"
+          className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-[#e22924] hover:bg-[#c9241f] text-white text-xs sm:text-sm font-semibold shadow-2xl hover:shadow-[#e22924]/40 hover:scale-105 active:scale-95 transition-all duration-300 group"
           aria-label="Enquire Now"
         >
           <Sparkles className="w-4 h-4 text-[#F5B860] group-hover:rotate-12 transition-transform" />

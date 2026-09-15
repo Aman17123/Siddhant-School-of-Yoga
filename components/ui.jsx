@@ -34,34 +34,32 @@ export function Eyebrow({ children, className = "" }) {
 }
 
 export function SectionHeading({
-  eyebrow,
   title,
-  subtitle,
-  cursiveSubtitle,
   text,
   description,
   center = false,
   className = "mb-8 lg:mb-10",
 }) {
-  const sub = subtitle || cursiveSubtitle;
   const desc = text || description;
   return (
     <div
-      className={`max-w-3xl ${center ? "mx-auto text-center" : ""} ${className}`}
+      className={`max-w-3xl ${
+        center
+          ? "mx-auto text-center"
+          : "text-center lg:text-left mx-auto lg:mx-0"
+      } ${className}`}
     >
-      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
       {title && (
         <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] mb-2 drop-shadow-2xs">
           {title}
         </h2>
       )}
-      {sub && (
-        <p className="font-fortune text-lg sm:text-xl md:text-2xl text-[#d45d44] mb-3 tracking-[0.02em] leading-snug">
-          {sub}
-        </p>
-      )}
       {desc && (
-        <p className="text-sm sm:text-[15px] font-figtree text-stone-600 leading-relaxed max-w-2xl">
+        <p
+          className={`text-sm sm:text-[15px] font-figtree text-stone-600 leading-relaxed max-w-2xl ${
+            center ? "mx-auto" : "mx-auto lg:mx-0"
+          }`}
+        >
           {desc}
         </p>
       )}
@@ -91,6 +89,9 @@ export function ButtonLink({
   } else if (variant === "gold") {
     styles =
       "bg-[#f22924] hover:bg-[#d45d44] text-white font-semibold hover:shadow-md hover:-translate-y-0.5";
+  } else if (variant === "green" || variant === "vedic") {
+    styles =
+      "bg-[#109347] hover:bg-[#0d6e35] text-white font-semibold hover:shadow-md hover:-translate-y-0.5 border border-[#109347]";
   }
 
   return (
