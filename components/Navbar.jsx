@@ -271,12 +271,12 @@ export default function Navbar() {
           aria-label="Main Navigation"
         >
           <div className="max-w-[1320px] mx-auto">
-            <ul className="flex items-center justify-center text-[13px] lg:text-[13.5px] font-semibold text-[#1F1E1D]">
+            <ul className="flex items-center justify-center text-[14px] lg:text-[14.5px] font-semibold text-[#1F1E1D]">
               {/* Home (First item has border-l and border-r) */}
               <li className="border-l border-r border-[#c8ece2] relative group">
                 <Link
                   href="/"
-                  className="inline-block py-2.5 px-4 lg:px-5 text-[#158b72] font-bold hover:text-[#3aab92] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-5 lg:px-6 text-[#158b72] font-bold hover:text-[#3aab92] transition-colors font-jakarta tracking-wide"
                 >
                   Home
                 </Link>
@@ -296,7 +296,7 @@ export default function Navbar() {
                       activeDropdown === "about" ? null : "about",
                     )
                   }
-                  className={`cursor-pointer py-2.5 px-4 lg:px-5 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
+                  className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "about"
                       ? "text-[#158b72] font-bold"
                       : "text-[#1F1E1D] hover:text-[#158b72]"
@@ -396,7 +396,7 @@ export default function Navbar() {
                   onClick={() =>
                     setActiveDropdown(activeDropdown === "yttc" ? null : "yttc")
                   }
-                  className={`cursor-pointer py-2.5 px-4 lg:px-5 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
+                  className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "yttc"
                       ? "text-[#158b72] font-bold"
                       : "text-[#1F1E1D] hover:text-[#158b72]"
@@ -488,7 +488,7 @@ export default function Navbar() {
                       activeDropdown === "kundalini" ? null : "kundalini",
                     )
                   }
-                  className={`cursor-pointer py-2.5 px-4 lg:px-5 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
+                  className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "kundalini"
                       ? "text-[#158b72] font-bold"
                       : "text-[#1F1E1D] hover:text-[#158b72]"
@@ -572,7 +572,7 @@ export default function Navbar() {
                       activeDropdown === "retreats" ? null : "retreats",
                     )
                   }
-                  className={`cursor-pointer py-2.5 px-4 lg:px-5 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
+                  className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "retreats"
                       ? "text-[#158b72] font-bold"
                       : "text-[#1F1E1D] hover:text-[#158b72]"
@@ -685,7 +685,7 @@ export default function Navbar() {
                       activeDropdown === "gallery" ? null : "gallery",
                     )
                   }
-                  className={`cursor-pointer py-2.5 px-4 lg:px-5 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
+                  className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "gallery"
                       ? "text-[#158b72] font-bold"
                       : "text-[#1F1E1D] hover:text-[#158b72]"
@@ -749,7 +749,7 @@ export default function Navbar() {
               <li className="border-r border-[#c8ece2] relative group">
                 <Link
                   href="/contact-us"
-                  className="inline-block py-2.5 px-4 lg:px-5 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
                 >
                   Contact Us
                 </Link>
@@ -762,7 +762,7 @@ export default function Navbar() {
                   href="https://www.siddhantschoolofyoga.com/blog/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block py-2.5 px-4 lg:px-5 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
                 >
                   Blog
                 </a>
@@ -773,7 +773,7 @@ export default function Navbar() {
               <li className="border-r border-[#c8ece2] relative group">
                 <Link
                   href="/payment"
-                  className="inline-block py-2.5 px-4 lg:px-5 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
                 >
                   Payment
                 </Link>

@@ -10,7 +10,7 @@ export default function Page() {
       <Navbar />
 
       {/* Main Home Content */}
-      <main className="flex-grow">
+      <main className="flex-grow overflow-x-hidden">
         <HomePage />
       </main>
 
