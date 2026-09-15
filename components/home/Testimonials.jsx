@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Star, ChevronLeft, ChevronRight, Quote, ArrowUpRight, CheckCircle2 } from "lucide-react";
-import { Container } from "../ui";
+import { Star, ChevronLeft, ChevronRight, Quote, ArrowUpRight } from "lucide-react";
+import { Container, Kicker, HeadingDivider } from "../ui";
 
 // Authentic student reviews from Google Business Profile & TripAdvisor for Siddhant School of Yoga, Rishikesh
 export const reviewsData = [
@@ -180,16 +180,18 @@ export default function Testimonials({ reviews = reviewsData }) {
   return (
     <section
       id="testimonials"
-      className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#EBE5D8]/60 overflow-hidden relative font-figtree"
+      className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/60 overflow-hidden relative font-figtree"
     >
       <Container>
         {/* Top Row: Section Heading & Google / TripAdvisor Verification Badges */}
         <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-5 mb-8 lg:mb-10 text-center lg:text-left">
           {/* Left: Heading */}
           <div className="max-w-2xl mx-auto lg:mx-0">
+            <Kicker>Testimonials</Kicker>
             <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2]">
               Words from Our Global Graduates
             </h2>
+            <HeadingDivider center={false} />
           </div>
 
           {/* Right: Live Google & TripAdvisor Rating Cards (Both visible and centered on phone) */}
@@ -198,11 +200,11 @@ export default function Testimonials({ reviews = reviewsData }) {
               href={GOOGLE_SEARCH_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white border border-[#EBE5D8] hover:border-[#f22924]/40 shadow-xs hover:shadow-md transition-all duration-300"
+              className="group inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white border border-[#c8ece2] hover:border-[#158b72]/40 shadow-xs hover:shadow-md transition-all duration-300"
               title="View all 48 reviews on Google for Siddhant School of Yoga"
             >
               {/* Google Official Vector Logo */}
-              <div className="shrink-0 flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#faf6ee] p-1 border border-stone-200">
+              <div className="shrink-0 flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#def4ee4d] p-1 border border-stone-200">
                 <Image
                   src="/logo/google.svg"
                   alt="Google"
@@ -218,18 +220,18 @@ export default function Testimonials({ reviews = reviewsData }) {
                   <span className="text-base sm:text-lg font-extrabold text-[#1F1E1D] leading-none font-figtree">
                     4.9
                   </span>
-                  <div className="flex text-[#F5B860]">
+                  <div className="flex text-[#158b72]">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className="w-3 h-3 fill-[#F5B860] text-[#F5B860]"
+                        className="w-3 h-3 fill-[#158b72] text-[#158b72]"
                       />
                     ))}
                   </div>
                 </div>
                 <div className="flex items-center gap-1 text-[10px] sm:text-[10.5px] text-stone-600 font-semibold font-figtree mt-0.5">
                   <span>48 Google reviews</span>
-                  <ArrowUpRight className="w-3 h-3 text-[#f22924] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-3 h-3 text-[#158b72] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </div>
             </a>
@@ -239,10 +241,10 @@ export default function Testimonials({ reviews = reviewsData }) {
               href="https://www.google.com/search?q=siddhant+school+of+yoga+tripadvisor"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white border border-[#EBE5D8] hover:border-[#00B386]/40 shadow-xs hover:shadow-md transition-all duration-300"
+              className="group inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white border border-[#c8ece2] hover:border-[#158b72]/40 shadow-xs hover:shadow-md transition-all duration-300"
               title="View TripAdvisor ratings for Siddhant School of Yoga"
             >
-              <div className="shrink-0 flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#e8f7f2] p-1 border border-[#00B386]/30">
+              <div className="shrink-0 flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#def4ee4d] p-1 border border-[#158b72]/30">
                 <Image
                   src="/logo/tripadvisor.svg"
                   alt="TripAdvisor"
@@ -252,7 +254,7 @@ export default function Testimonials({ reviews = reviewsData }) {
                 />
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-[9.5px] sm:text-[10px] uppercase tracking-wider text-[#023D38] font-bold leading-none mb-0.5 font-figtree">
+                <span className="text-[9.5px] sm:text-[10px] uppercase tracking-wider text-[#0f6b57] font-bold leading-none mb-0.5 font-figtree">
                   TripAdvisor
                 </span>
                 <span className="text-[10.5px] sm:text-[11px] font-semibold text-stone-700 font-figtree">
@@ -273,7 +275,7 @@ export default function Testimonials({ reviews = reviewsData }) {
             }}
             className={`px-3.5 py-1.5 rounded-full text-xs font-semibold font-figtree transition-all ${
               filter === "all"
-                ? "bg-[#f22924] text-white shadow-xs"
+                ? "bg-[#158b72] text-white shadow-xs"
                 : "bg-stone-100 hover:bg-stone-200 text-stone-700"
             }`}
           >
@@ -287,7 +289,7 @@ export default function Testimonials({ reviews = reviewsData }) {
             }}
             className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold font-figtree transition-all ${
               filter === "google"
-                ? "bg-[#f22924] text-white shadow-xs"
+                ? "bg-[#158b72] text-white shadow-xs"
                 : "bg-stone-100 hover:bg-stone-200 text-stone-700"
             }`}
           >
@@ -308,7 +310,7 @@ export default function Testimonials({ reviews = reviewsData }) {
             }}
             className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold font-figtree transition-all ${
               filter === "tripadvisor"
-                ? "bg-[#f22924] text-white shadow-xs"
+                ? "bg-[#158b72] text-white shadow-xs"
                 : "bg-stone-100 hover:bg-stone-200 text-stone-700"
             }`}
           >
@@ -331,7 +333,7 @@ export default function Testimonials({ reviews = reviewsData }) {
               type="button"
               onClick={handlePrev}
               aria-label="Previous testimonials"
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 sm:-translate-x-4 w-9 h-9 rounded-full bg-white border border-[#EBE5D8] shadow-md hover:shadow-lg flex items-center justify-center text-[#55564c] hover:text-[#f22924] hover:border-[#f22924] transition-all z-20 cursor-pointer"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 sm:-translate-x-4 w-9 h-9 rounded-full bg-white border border-[#c8ece2] shadow-md hover:shadow-lg flex items-center justify-center text-[#55564c] hover:text-[#158b72] hover:border-[#158b72] transition-all z-20 cursor-pointer"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -347,13 +349,13 @@ export default function Testimonials({ reviews = reviewsData }) {
             {visibleReviews.map((card) => (
               <div
                 key={card.id}
-                className="bg-white rounded-2xl p-4 sm:p-5 border border-[#EBE5D8] shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between max-w-lg mx-auto w-full"
+                className="bg-white rounded-2xl p-4 sm:p-5 border border-[#c8ece2] shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between max-w-lg mx-auto w-full"
               >
                 <div>
                   {/* Top Row: Avatar + Reviewer Name + Course + Source Icon */}
                   <div className="flex items-center justify-between gap-2.5 mb-3">
                     <div className="flex items-center gap-2.5">
-                      <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#f22924]/30 shrink-0 bg-[#faf6ee]">
+                      <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#158b72]/30 shrink-0 bg-[#def4ee4d]">
                         <Image
                           src={card.avatar}
                           alt={card.name}
@@ -365,14 +367,14 @@ export default function Testimonials({ reviews = reviewsData }) {
                         <h4 className="font-bold text-sm sm:text-base text-[#1F1E1D] leading-tight font-belleza">
                           {card.name}
                         </h4>
-                        <span className="text-[11px] text-[#f22924] font-medium block font-figtree">
+                        <span className="text-[11px] text-[#158b72] font-medium block font-figtree">
                           {card.course} • {card.country}
                         </span>
                       </div>
                     </div>
 
                     {/* Source Icon badge */}
-                    <div className="shrink-0 flex items-center justify-center bg-[#FAF6EE] rounded-full p-1 border border-[#EBE5D8]">
+                    <div className="shrink-0 flex items-center justify-center bg-[#def4ee4d] rounded-full p-1 border border-[#c8ece2]">
                       {card.isTripAdvisor ? (
                         <Image
                           src="/logo/tripadvisor.svg"
@@ -394,11 +396,11 @@ export default function Testimonials({ reviews = reviewsData }) {
                   </div>
 
                   {/* 5 Filled Gold Stars */}
-                  <div className="flex items-center gap-1 text-[#F5B860] mb-2">
+                  <div className="flex items-center gap-1 text-[#158b72] mb-2">
                     {[...Array(card.rating)].map((_, idx) => (
                       <Star
                         key={idx}
-                        className="w-3.5 h-3.5 fill-[#F5B860] text-[#F5B860]"
+                        className="w-3.5 h-3.5 fill-[#158b72] text-[#158b72]"
                       />
                     ))}
                     <span className="text-[11px] font-semibold text-stone-500 ml-1 font-figtree">
@@ -406,29 +408,14 @@ export default function Testimonials({ reviews = reviewsData }) {
                     </span>
                   </div>
 
-                  {/* Highlight pill */}
-                  {card.highlight && (
-                    <div className="inline-block px-2 py-0.5 rounded-md bg-[#FAF6EE] border border-[#EBE5D8] text-[10.5px] font-semibold text-[#f22924] mb-2 font-figtree line-clamp-1">
-                      &ldquo;{card.highlight}&rdquo;
-                    </div>
-                  )}
-
                   {/* Testimonial Text */}
                   <div className="relative">
-                    <Quote className="w-4 h-4 text-[#f22924]/20 mb-1" />
-                    <p className="text-xs sm:text-[13px] text-[#44453c] font-figtree leading-relaxed italic line-clamp-4 min-h-[64px]">
+                    <Quote className="w-4 h-4 text-[#158b72]/20 mb-1" />
+                    <p className="text-sm sm:text-[15px] text-[#44453c] font-figtree leading-relaxed italic h-[122px] overflow-y-auto pr-1.5 scrollbar-thin">
                       &ldquo;{card.text}&rdquo;
                     </p>
+                    <div className="pointer-events-none absolute bottom-0 left-0 right-1.5 h-6 bg-gradient-to-t from-white to-transparent" />
                   </div>
-                </div>
-
-                <div className="mt-3.5 pt-2.5 border-t border-[#EBE5D8]/80 flex items-center justify-between text-[11px] text-[#77786e] font-figtree">
-                  <span className="font-medium text-stone-600">
-                    {card.source}
-                  </span>
-                  <span className="text-[#3F6253] font-semibold flex items-center gap-1 text-[10.5px]">
-                    <CheckCircle2 className="w-3 h-3 text-[#3F6253]" /> Verified Alumnus
-                  </span>
                 </div>
               </div>
             ))}
@@ -440,7 +427,7 @@ export default function Testimonials({ reviews = reviewsData }) {
               type="button"
               onClick={handleNext}
               aria-label="Next testimonials"
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 sm:translate-x-4 w-9 h-9 rounded-full bg-white border border-[#EBE5D8] shadow-md hover:shadow-lg flex items-center justify-center text-[#55564c] hover:text-[#f22924] hover:border-[#f22924] transition-all z-20 cursor-pointer"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 sm:translate-x-4 w-9 h-9 rounded-full bg-white border border-[#c8ece2] shadow-md hover:shadow-lg flex items-center justify-center text-[#55564c] hover:text-[#158b72] hover:border-[#158b72] transition-all z-20 cursor-pointer"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -458,8 +445,8 @@ export default function Testimonials({ reviews = reviewsData }) {
                 aria-label={`Go to slide ${i + 1}`}
                 className={`transition-all duration-300 ${
                   startIndex === i
-                    ? "w-6 h-2 rounded-full bg-[#f22924]"
-                    : "w-2 h-2 rounded-full bg-[#EBE5D8] hover:bg-[#F5B860]"
+                    ? "w-6 h-2 rounded-full bg-[#158b72]"
+                    : "w-2 h-2 rounded-full bg-[#c8ece2] hover:bg-[#158b72]"
                 }`}
               />
             ))}
@@ -467,9 +454,9 @@ export default function Testimonials({ reviews = reviewsData }) {
         )}
 
         {/* Bottom Verification Banner & Link to Google Reviews */}
-        <div className="mt-6 pt-4 border-t border-[#EBE5D8] flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="mt-6 pt-4 border-t border-[#c8ece2] flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-xs text-stone-600 font-figtree text-center sm:text-left">
-            <span className="w-2 h-2 rounded-full bg-[#29A71A] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#158b72] animate-pulse" />
             <span>
               All reviews verified from official Google Business Profile &amp; TripAdvisor students of Siddhant School of Yoga, Rishikesh.
             </span>
@@ -479,7 +466,7 @@ export default function Testimonials({ reviews = reviewsData }) {
             href={GOOGLE_SEARCH_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FAF6EE] hover:bg-[#f22924] text-stone-800 hover:text-white border border-[#EBE5D8] hover:border-[#f22924] text-xs font-bold font-figtree transition-all duration-200 shadow-2xs shrink-0"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#def4ee4d] hover:bg-[#158b72] text-stone-800 hover:text-white border border-[#c8ece2] hover:border-[#158b72] text-xs font-bold font-figtree transition-all duration-200 shadow-2xs shrink-0"
           >
             <Image
               src="/logo/google.svg"

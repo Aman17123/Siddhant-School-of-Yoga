@@ -4,14 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#f22924",
-        primaryHover: "#F08C5C",
-        accent: "#F5B860",
-        accentLight: "#FBDD8E",
-        bg: "#FFF9F2",
-        card: "#FBF2E9",
-        textDark: "#4A3F3A",
-        textMuted: "#6B5D54",
+        primary: "#158b72",
+        primaryHover: "#0f6b57",
+        accent: "#158b72",
+        accentLight: "#3aab92",
+        bg: "#def4ee",
+        card: "#ffffff",
+        textDark: "#1e2422",
+        textMuted: "#66675c",
       },
       fontFamily: {
         sans: ["var(--font-figtree)", "var(--font-manrope)", "sans-serif"],

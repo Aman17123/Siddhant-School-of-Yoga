@@ -7,12 +7,13 @@ export default function Retreats() {
   return (
     <section
       id="retreats"
-      className="py-14 sm:py-16 lg:py-20 bg-[#FAF6EE] border-b border-[#EBE5D8]/60 font-figtree"
+      className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/60 font-figtree"
     >
       <Container>
         {/* Section Heading */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 lg:mb-10 items-center md:items-end text-center md:text-left">
           <SectionHeading
+            eyebrow="Yoga Retreats"
             title="Yoga Retreats in Rishikesh, India"
             text="Step away from the hectic schedule of modern life. Experience authentic ashram tranquility, daily Ganga meditation, deep Pranayama, and nourishing sattvic meals across flexible 5, 7, 10, and 14-day formats."
             className="mb-0"
@@ -24,7 +25,7 @@ export default function Retreats() {
               )}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#f22924] hover:bg-[#d45d44] text-white text-xs sm:text-sm font-figtree font-semibold px-6 py-3 rounded-full shadow-xs hover:shadow-md transition-all"
+              className="inline-flex items-center gap-2 bg-[#158b72] hover:bg-[#0f6b57] text-white text-xs sm:text-sm font-figtree font-semibold px-6 py-3 rounded-full shadow-xs hover:shadow-md transition-all"
             >
               <Calendar className="w-4 h-4 text-white" />
               <span>Ask Retreat Dates</span>
@@ -47,7 +48,7 @@ export default function Retreats() {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#f22924] hover:bg-[#d45d44] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
           >
             <span>Explore All Wellness Retreats</span>
             <ArrowRight className="w-4 h-4 text-white" />

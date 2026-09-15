@@ -92,18 +92,18 @@ export default function TrustStrip() {
   };
 
   return (
-    <section className="bg-[#FAF6EE] py-4 sm:py-6 lg:py-8 border-b border-[#EBE5D8] relative z-20 font-figtree">
+    <section className="bg-[#def4ee4d] py-4 sm:py-6 lg:py-8 border-b border-[#c8ece2] relative z-20 font-figtree">
       <Container>
         {/* ========================================================= */}
         {/* 1. PC & TABLET VIEW: Perfectly Aligned 4-Pillar Grid (md & lg) */}
         {/* ========================================================= */}
-        <div className="hidden md:block bg-white rounded-2xl lg:rounded-3xl border border-[#EBE5D8] shadow-[0_4px_24px_rgba(0,0,0,0.03)] p-4 lg:p-5">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[#EBE5D8]">
+        <div className="hidden md:block bg-white rounded-2xl lg:rounded-3xl border border-[#c8ece2] shadow-[0_4px_24px_rgba(0,0,0,0.03)] p-4 lg:p-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[#c8ece2]">
             {trustItems.map((item) => {
               const Content = (
                 <div className="flex items-center gap-3.5 px-4 lg:px-5 py-2 group cursor-pointer transition-all duration-200">
                   {/* Badge Frame: Fixed 48x48 on md, 52x52 on lg */}
-                  <div className="w-12 h-12 lg:w-13 lg:h-13 rounded-2xl bg-[#FAF6EE] border border-[#EBE5D8] group-hover:border-[#f5b860] group-hover:scale-105 transition-all duration-300 flex items-center justify-center shrink-0 p-2 shadow-2xs">
+                  <div className="w-12 h-12 lg:w-13 lg:h-13 rounded-2xl bg-[#def4ee4d] border border-[#c8ece2] group-hover:border-[#158b72] group-hover:scale-105 transition-all duration-300 flex items-center justify-center shrink-0 p-2 shadow-2xs">
                     <Image
                       src={item.badge}
                       alt={item.alt}
@@ -117,7 +117,7 @@ export default function TrustStrip() {
                   <div className="flex flex-col justify-center min-w-0 flex-grow">
                     {/* Line 1: Title */}
                     <div className="h-5 flex items-center gap-1.5 overflow-hidden">
-                      <span className="font-belleza text-[15px] lg:text-base text-[#1e2422] group-hover:text-[#f22924] transition-colors truncate leading-none">
+                      <span className="font-belleza text-[15px] lg:text-base text-[#1e2422] group-hover:text-[#158b72] transition-colors truncate leading-none">
                         {item.title}
                       </span>
                       {item.url && (
@@ -129,11 +129,11 @@ export default function TrustStrip() {
                     <div className="h-5 flex items-center gap-1 overflow-hidden my-0.5">
                       {item.hasStars ? (
                         <>
-                          <div className="flex items-center gap-0.5 text-[#f5b860] shrink-0">
+                          <div className="flex items-center gap-0.5 text-[#158b72] shrink-0">
                             {[...Array(5)].map((_, i) => (
                               <Star
                                 key={i}
-                                className="w-3 h-3 fill-[#f5b860] text-[#f5b860]"
+                                className="w-3 h-3 fill-[#158b72] text-[#158b72]"
                               />
                             ))}
                           </div>
@@ -142,7 +142,7 @@ export default function TrustStrip() {
                           </span>
                         </>
                       ) : (
-                        <span className="text-[11px] font-bold text-[#f22924] tracking-wide leading-none truncate">
+                        <span className="text-[11px] font-bold text-[#158b72] tracking-wide leading-none truncate">
                           {item.highlight}
                         </span>
                       )}
@@ -186,7 +186,7 @@ export default function TrustStrip() {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
-            className="relative bg-white rounded-2xl border border-[#EBE5D8] shadow-xs p-4 overflow-hidden"
+            className="relative bg-white rounded-2xl border border-[#c8ece2] shadow-xs p-4 overflow-hidden"
           >
             {/* Active Trust Card (Centered) */}
             {(() => {
@@ -194,7 +194,7 @@ export default function TrustStrip() {
               const cardContent = (
                 <div className="flex items-center justify-center gap-3.5 text-left px-6 py-1">
                   {/* Badge */}
-                  <div className="w-13 h-13 rounded-2xl bg-[#FAF6EE] border border-[#f5b860]/40 flex items-center justify-center shrink-0 p-2 shadow-2xs">
+                  <div className="w-13 h-13 rounded-2xl bg-[#def4ee4d] border border-[#158b72]/40 flex items-center justify-center shrink-0 p-2 shadow-2xs">
                     <Image
                       src={active.badge}
                       alt={active.alt}
@@ -211,18 +211,18 @@ export default function TrustStrip() {
                         {active.title}
                       </span>
                       {active.url && (
-                        <ExternalLink className="w-3 h-3 text-[#f22924]" />
+                        <ExternalLink className="w-3 h-3 text-[#158b72]" />
                       )}
                     </div>
 
                     <div className="flex items-center gap-1.5 my-1">
                       {active.hasStars ? (
                         <div className="flex items-center gap-1">
-                          <div className="flex items-center gap-0.5 text-[#f5b860]">
+                          <div className="flex items-center gap-0.5 text-[#158b72]">
                             {[...Array(5)].map((_, i) => (
                               <Star
                                 key={i}
-                                className="w-3 h-3 fill-[#f5b860] text-[#f5b860]"
+                                className="w-3 h-3 fill-[#158b72] text-[#158b72]"
                               />
                             ))}
                           </div>
@@ -231,7 +231,7 @@ export default function TrustStrip() {
                           </span>
                         </div>
                       ) : (
-                        <span className="text-xs font-bold text-[#f22924] tracking-wide">
+                        <span className="text-xs font-bold text-[#158b72] tracking-wide">
                           {active.highlight}
                         </span>
                       )}
@@ -265,7 +265,7 @@ export default function TrustStrip() {
               type="button"
               onClick={prevSlide}
               aria-label="Previous credential"
-              className="absolute left-1.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white border border-[#EBE5D8] flex items-center justify-center text-stone-600 shadow-xs hover:text-[#f22924] transition-colors"
+              className="absolute left-1.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white border border-[#c8ece2] flex items-center justify-center text-stone-600 shadow-xs hover:text-[#158b72] transition-colors"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -273,13 +273,13 @@ export default function TrustStrip() {
               type="button"
               onClick={nextSlide}
               aria-label="Next credential"
-              className="absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white border border-[#EBE5D8] flex items-center justify-center text-stone-600 shadow-xs hover:text-[#f22924] transition-colors"
+              className="absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white border border-[#c8ece2] flex items-center justify-center text-stone-600 shadow-xs hover:text-[#158b72] transition-colors"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
 
             {/* Pagination Dots */}
-            <div className="flex items-center justify-center gap-1.5 mt-3 pt-2 border-t border-[#EBE5D8]/50">
+            <div className="flex items-center justify-center gap-1.5 mt-3 pt-2 border-t border-[#c8ece2]/50">
               {trustItems.map((_, i) => (
                 <button
                   key={i}
@@ -288,8 +288,8 @@ export default function TrustStrip() {
                   aria-label={`Go to credential ${i + 1}`}
                   className={`transition-all duration-300 rounded-full ${
                     currentIndex === i
-                      ? "w-5 h-1.5 bg-[#f22924]"
-                      : "w-1.5 h-1.5 bg-stone-300 hover:bg-[#F5B860]"
+                      ? "w-5 h-1.5 bg-[#158b72]"
+                      : "w-1.5 h-1.5 bg-stone-300 hover:bg-[#158b72]"
                   }`}
                 />
               ))}

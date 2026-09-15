@@ -34,23 +34,24 @@ export default function AboutPreview() {
   return (
     <section
       id="about"
-      className="py-14 sm:py-16 lg:py-20 bg-[#FAF6EE] border-b border-[#EBE5D8]/60 overflow-hidden"
+      className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/60 overflow-hidden"
     >
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Text & Features */}
           <div className="text-center lg:text-left">
             <SectionHeading
+              eyebrow="About Us"
               title="Traditional Yoga Teacher Training in Rishikesh, India"
               className="mb-8"
             />
-            <p className="font-figtree text-sm sm:text-base text-stone-700 leading-relaxed mb-6 font-normal">
+            <p className="font-figtree text-sm sm:text-base text-stone-700 leading-relaxed mb-6 font-medium">
               Siddhant School of Yoga is an officially registered Yoga Teacher
               Training school in Rishikesh — taught personally, start to finish,
               by founder Acharya Siddhant rather than handed off to a rotating
               roster of instructors.
             </p>
-            <p className="font-figtree text-sm sm:text-base text-stone-700 leading-relaxed mb-6 font-normal">
+            <p className="font-figtree text-sm sm:text-base text-stone-700 leading-relaxed mb-6 font-medium">
               Yoga is not merely physical exercise or posture therapy—it is a
               journey from darkness to light, from suffering to bliss, from
               attachment to non-attachment, and from chaotic thoughts to inner
@@ -75,7 +76,7 @@ export default function AboutPreview() {
               {/* Main Photo */}
               <div className="relative w-full aspect-[3/2] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <Image
-                  src="/images/about-siddhant-yoga-school-in-rishikesh.png"
+                  src="/images/about-siddhant-school-of-yoga-ashram-rishikesh.png"
                   alt="Yoga teacher training students practicing alignment in Rishikesh"
                   fill
                   className="object-cover"

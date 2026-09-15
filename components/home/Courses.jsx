@@ -10,7 +10,7 @@ export default function Courses() {
 
   const tabs = [
     { id: "all", label: "All TTC Programs" },
-    { id: "200", label: "200h TTC (Flagship)" },
+    { id: "200", label: "200h TTC (Most Popular)" },
     { id: "300", label: "300h Advanced" },
     { id: "500", label: "500h Master" },
     { id: "100", label: "100h Foundation" },
@@ -24,12 +24,13 @@ export default function Courses() {
   return (
     <section
       id="courses"
-      className="py-14 sm:py-16 lg:py-20 bg-[#FAF6EE]/50 border-b border-[#EBE5D8] relative"
+      className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2] relative"
     >
       <Container>
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 lg:mb-10">
           <SectionHeading
+            eyebrow="Our Programs"
             title="Yoga Teacher Training in Rishikesh, India"
             text="Four residential programs, each building on the last. Exact batch dates and fees are confirmed directly with Acharya Siddhant before you book — no guesswork, no hidden line items."
             className="mb-0"
@@ -44,10 +45,10 @@ export default function Courses() {
         </div>
 
         {/* Bottom Guarantee Banner */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#EBE5D8] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#c8ece2] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#f22924]/10 text-[#f22924] flex items-center justify-center shrink-0 border border-[#f22924]/20 mx-auto sm:mx-0">
-              <Sparkles className="w-6 h-6 text-[#f22924]" />
+            <div className="w-12 h-12 rounded-2xl bg-[#158b72]/10 text-[#158b72] flex items-center justify-center shrink-0 border border-[#158b72]/20 mx-auto sm:mx-0">
+              <Sparkles className="w-6 h-6 text-[#158b72]" />
             </div>
             <div>
               <h4 className="font-belleza text-lg sm:text-xl font-normal text-[#1e2422] tracking-wide">

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Container, SectionHeading } from "../ui";
+import { Container, Kicker, HeadingDivider } from "../ui";
 import { Utensils, Home, Wifi, Sun, Sparkles, Check } from "lucide-react";
 
 export default function ResidentialExperience() {
@@ -77,15 +77,17 @@ export default function ResidentialExperience() {
   return (
     <section
       id="residential"
-      className="py-14 sm:py-16 lg:py-20 bg-[#FAF6EE] border-b border-[#EBE5D8]/60"
+      className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/60"
     >
       <Container>
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-8 lg:mb-10">
-          <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] mb-3 leading-[1.2]">
+          <Kicker>Our Ashram</Kicker>
+          <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2]">
             A Peaceful Sanctuary to Rest, Nourish &amp; Grow
           </h2>
-          <p className="font-figtree text-sm sm:text-base text-stone-600 leading-relaxed font-light max-w-2xl mx-auto">
+          <HeadingDivider className="mb-3" />
+          <p className="font-figtree text-sm sm:text-base text-stone-600 leading-relaxed font-medium max-w-2xl mx-auto">
             Your living environment is crucial to your yogic transformation. At
             Siddhant School of Yoga, we provide clean, serene accommodation,
             loving ashram staff, and freshly prepared Ayurvedic nourishment to
@@ -102,16 +104,16 @@ export default function ResidentialExperience() {
               return (
                 <div
                   key={i}
-                  className="p-5 rounded-2xl bg-white border border-[#EBE5D8] shadow-xs flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 hover:shadow-md transition-shadow"
+                  className="p-5 rounded-2xl bg-white border border-[#c8ece2] shadow-xs flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 hover:shadow-md transition-shadow"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-[#f22924]/10 text-[#f22924] flex items-center justify-center shrink-0 mt-0.5 mx-auto sm:mx-0">
-                    <Icon className="w-5 h-5 text-[#f22924]" />
+                  <div className="w-11 h-11 rounded-xl bg-[#158b72]/10 text-[#158b72] flex items-center justify-center shrink-0 mt-0.5 mx-auto sm:mx-0">
+                    <Icon className="w-5 h-5 text-[#158b72]" />
                   </div>
                   <div>
                     <h4 className="font-belleza text-base font-normal text-[#1e2422] tracking-wide mb-1">
                       {feat.title}
                     </h4>
-                    <p className="text-xs sm:text-[13px] text-stone-600 leading-relaxed font-light">
+                    <p className="text-[15px] text-stone-600 leading-relaxed font-medium">
                       {feat.desc}
                     </p>
                   </div>
@@ -144,17 +146,17 @@ export default function ResidentialExperience() {
         </div>
 
         {/* Daily Schedule Timeline Strip */}
-        <div className="p-7 sm:p-10 rounded-3xl bg-white border border-[#EBE5D8] shadow-sm font-figtree">
-          <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-[#EBE5D8] text-center sm:text-left">
+        <div className="p-7 sm:p-10 rounded-3xl bg-white border border-[#c8ece2] shadow-sm font-figtree">
+          <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-[#c8ece2] text-center sm:text-left">
             <div>
-              <span className="text-[11px] uppercase tracking-widest text-[#f22924] font-semibold block mb-1">
+              <span className="text-[11px] uppercase tracking-widest text-[#158b72] font-semibold block mb-1">
                 A Day in the Ashram
               </span>
               <h3 className="font-belleza text-2xl sm:text-3xl font-normal text-[#1e2422] tracking-wide">
                 Typical Daily Sadhana Schedule
               </h3>
             </div>
-            <span className="text-xs bg-[#FAF6EE] text-[#f22924] font-semibold px-4 py-2 rounded-full border border-[#f5b860]/40">
+            <span className="text-xs bg-[#def4ee4d] text-[#158b72] font-semibold px-4 py-2 rounded-full border border-[#158b72]/40">
               Monday – Saturday
             </span>
           </div>
@@ -163,16 +165,16 @@ export default function ResidentialExperience() {
             {schedule.map((s, idx) => (
               <div
                 key={idx}
-                className="p-4 rounded-2xl bg-[#FAF6EE]/60 border border-[#EBE5D8] flex flex-col justify-between text-center sm:text-left"
+                className="p-4 rounded-2xl bg-[#def4ee4d] border border-[#c8ece2] flex flex-col justify-between text-center sm:text-left"
               >
                 <div>
-                  <span className="text-xs font-bold text-[#f22924] tracking-wider block mb-1">
+                  <span className="text-xs font-bold text-[#158b72] tracking-wider block mb-1">
                     {s.time}
                   </span>
                   <h4 className="font-belleza text-base font-normal text-[#1e2422] tracking-wide mb-1">
                     {s.title}
                   </h4>
-                  <p className="text-xs text-stone-600 font-light leading-relaxed">
+                  <p className="text-[15px] text-stone-600 font-medium leading-relaxed">
                     {s.desc}
                   </p>
                 </div>

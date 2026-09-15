@@ -3,12 +3,14 @@ import TrustStrip from "./TrustStrip";
 import AboutPreview from "./AboutPreview";
 import WhatIsYttc from "./WhatIsYttc";
 import Courses from "./Courses";
+import YogaAllianceCertification from "./YogaAllianceCertification";
 import KundaliniSection from "./KundaliniSection";
 import WhyChooseUs from "./WhyChooseUs";
 import WhyRishikesh from "./WhyRishikesh";
 import Retreats from "./Retreats";
 import Founder from "./Founder";
 import Teachers from "./Teachers";
+import ShortsSection from "./ShortsSection";
 import CourseComparison from "./CourseComparison";
 import ResidentialExperience from "./ResidentialExperience";
 import Testimonials from "./Testimonials";
@@ -35,6 +37,9 @@ export default function HomePage() {
       {/* 5. Yoga Teacher Training Programs (100h, 200h, 300h, 500h) */}
       <Courses />
 
+      {/* 5b. Yoga Alliance USA Certification */}
+      <YogaAllianceCertification />
+
       {/* 6. Sacred Kundalini Yoga Teacher Training */}
       <KundaliniSection />
 
@@ -53,8 +58,11 @@ export default function HomePage() {
       {/* 11. Himalayan Faculty Masters */}
       <Teachers />
 
+      {/* 11b. Yoga Wisdom Shorts */}
+      <ShortsSection />
+
       {/* 12. Course Comparison Grid */}
-      <CourseComparison />
+      {/* <CourseComparison /> */}
 
       {/* 13. Residential Experience (Ashram Living & Sattvic Nutrition) */}
       <ResidentialExperience />

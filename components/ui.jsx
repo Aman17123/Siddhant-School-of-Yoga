@@ -25,15 +25,83 @@ export function Container({ children, className = "" }) {
 export function Eyebrow({ children, className = "" }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-[11px] sm:text-xs font-figtree font-semibold tracking-[0.2em] uppercase bg-[#FAF6EE] text-[#f22924] border border-[#f5b860]/40 shadow-xs mb-3 ${className}`}
+      className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-[11px] sm:text-xs font-figtree font-semibold tracking-[0.2em] uppercase bg-[#def4ee4d] text-[#158b72] border border-[#158b72]/40 shadow-xs mb-3 ${className}`}
     >
-      <Sparkles className="w-3.5 h-3.5 text-[#f5b860]" />
+      <Sparkles className="w-3.5 h-3.5 text-[#158b72]" />
       <span>{children}</span>
     </div>
   );
 }
 
+export function Kicker({ children, className = "" }) {
+  return (
+    <span
+      className={`block text-[1rem] font-figtree font-semibold tracking-[0.08em] text-[#158b72] mb-1.5 ${className}`}
+    >
+      {children}
+    </span>
+  );
+}
+
+// Small centered "live" accent line + pulsing dot shown under a heading.
+// Always visible for fully-centered headings; on headings that stay
+// left/right-aligned at desktop (center=false), it only shows on mobile
+// where the heading itself is centered.
+export function ChakraDot({ className = "", color = "#158b72" }) {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      className={`w-3 h-3 shrink-0 ${className}`}
+      fill="none"
+    >
+      <circle cx="10" cy="10" r="8" stroke={color} strokeWidth="1" opacity="0.9" />
+      <circle cx="10" cy="10" r="2" fill={color} />
+      {[0, 45, 90, 135].map((a) => (
+        <line
+          key={`t-${a}`}
+          x1="10"
+          y1="2"
+          x2="10"
+          y2="5"
+          stroke={color}
+          strokeWidth="1"
+          transform={`rotate(${a} 10 10)`}
+          opacity="0.85"
+        />
+      ))}
+      {[0, 45, 90, 135].map((a) => (
+        <line
+          key={`b-${a}`}
+          x1="10"
+          y1="18"
+          x2="10"
+          y2="15"
+          stroke={color}
+          strokeWidth="1"
+          transform={`rotate(${a} 10 10)`}
+          opacity="0.85"
+        />
+      ))}
+    </svg>
+  );
+}
+
+export function HeadingDivider({ center = true, className = "" }) {
+  return (
+    <span
+      className={`inline-flex items-center gap-2 mt-2.5 mb-1 ${
+        center ? "" : "lg:hidden"
+      } ${className}`}
+    >
+      <span className="h-px w-10 sm:w-14 bg-gradient-to-r from-transparent to-[#158b72]/70" />
+      <ChakraDot />
+      <span className="h-px w-10 sm:w-14 bg-gradient-to-l from-transparent to-[#158b72]/70" />
+    </span>
+  );
+}
+
 export function SectionHeading({
+  eyebrow,
   title,
   text,
   description,
@@ -49,11 +117,13 @@ export function SectionHeading({
           : "text-center lg:text-left mx-auto lg:mx-0"
       } ${className}`}
     >
+      {eyebrow && <Kicker>{eyebrow}</Kicker>}
       {title && (
         <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] mb-2 drop-shadow-2xs">
           {title}
         </h2>
       )}
+      <HeadingDivider center={center} />
       {desc && (
         <p
           className={`text-sm sm:text-[15px] font-figtree text-stone-600 leading-relaxed max-w-2xl ${
@@ -79,19 +149,19 @@ export function ButtonLink({
     "inline-flex items-center justify-center gap-2 font-figtree font-semibold text-xs sm:text-sm px-6 py-3 rounded-full transition-all duration-300 transform active:scale-95 shadow-sm";
 
   let styles =
-    "bg-[#f22924] hover:bg-[#d45d44] text-white hover:shadow-md hover:-translate-y-0.5 border border-[#f22924]";
+    "bg-[#158b72] hover:bg-[#0f6b57] text-white hover:shadow-md hover:-translate-y-0.5 border border-[#158b72]";
   if (variant === "secondary" || variant === "outline") {
     styles =
-      "bg-[#FAF6EE] border-2 border-[#f22924] text-[#f22924] hover:bg-[#f22924] hover:text-white font-semibold";
+      "bg-[#def4ee4d] border-2 border-[#158b72] text-[#158b72] hover:bg-[#158b72] hover:text-white font-semibold";
   } else if (variant === "white") {
     styles =
-      "bg-white text-[#f22924] hover:bg-[#FAF6EE] font-semibold shadow-md hover:shadow-lg hover:-translate-y-0.5";
+      "bg-white text-[#158b72] hover:bg-[#def4ee4d] font-semibold shadow-md hover:shadow-lg hover:-translate-y-0.5";
   } else if (variant === "gold") {
     styles =
-      "bg-[#f22924] hover:bg-[#d45d44] text-white font-semibold hover:shadow-md hover:-translate-y-0.5";
+      "bg-[#158b72] hover:bg-[#0f6b57] text-white font-semibold hover:shadow-md hover:-translate-y-0.5";
   } else if (variant === "green" || variant === "vedic") {
     styles =
-      "bg-[#109347] hover:bg-[#0d6e35] text-white font-semibold hover:shadow-md hover:-translate-y-0.5 border border-[#109347]";
+      "bg-[#158b72] hover:bg-[#0f6b57] text-white font-semibold hover:shadow-md hover:-translate-y-0.5 border border-[#158b72]";
   }
 
   return (
@@ -130,13 +200,13 @@ export function ProgramCard({ program }) {
     <div
       className={`group relative flex flex-col bg-white rounded-2xl overflow-hidden border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5 ${
         program.featured
-          ? "border-[#f22924] ring-2 ring-[#f22924]/25 shadow-lg"
-          : "border-[#EBE5D8]"
+          ? "border-[#158b72] ring-2 ring-[#158b72]/25 shadow-lg"
+          : "border-[#c8ece2]"
       }`}
     >
       {/* Overlapping circular certification badge on top-right */}
       {rysBadge && (
-        <div className="absolute top-3 right-3 z-20 w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-lg bg-white/95 p-1 border border-[#F5B860]/50 transition-transform duration-300 group-hover:scale-105">
+        <div className="absolute top-3 right-3 z-20 w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-lg bg-white/95 p-1 border border-[#158b72]/50 transition-transform duration-300 group-hover:scale-105">
           <Image
             src={rysBadge}
             alt="Yoga Alliance Certification Seal"
@@ -163,9 +233,6 @@ export function ProgramCard({ program }) {
           <h3 className="text-xl sm:text-2xl font-belleza font-normal leading-tight tracking-wide drop-shadow-md">
             {program.title}
           </h3>
-          <span className="text-[11px] sm:text-xs text-[#f5b860] font-figtree font-medium block mt-0.5">
-            {program.subtitle}
-          </span>
         </div>
       </div>
 
@@ -173,87 +240,40 @@ export function ProgramCard({ program }) {
       <div className="flex flex-col flex-grow p-5 sm:p-6 font-figtree">
         {/* Two info pills: Level & Duration */}
         <div className="flex items-center gap-2 flex-wrap text-xs font-semibold mb-3">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF6EE] text-stone-700 border border-[#FBDD8E]/70">
-            <Activity className="w-3.5 h-3.5 text-[#f22924]" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#def4ee4d] text-stone-700 border border-[#3aab92]/70">
+            <Activity className="w-3.5 h-3.5 text-[#158b72]" />
             <span>{levelText}</span>
           </span>
 
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF6EE] text-stone-700 border border-[#FBDD8E]/70">
-            <Clock className="w-3.5 h-3.5 text-[#d45d44]" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#def4ee4d] text-stone-700 border border-[#3aab92]/70">
+            <Clock className="w-3.5 h-3.5 text-[#0f6b57]" />
             <span>{program.duration}</span>
           </span>
         </div>
 
         {/* Colored divider line */}
-        <div className="h-0.5 w-full bg-gradient-to-r from-[#f5b860] via-[#f22924] to-transparent my-2" />
+        <div className="h-0.5 w-full bg-gradient-to-r from-[#158b72] via-[#158b72] to-transparent my-2" />
 
         {/* 2–3 line course description */}
-        <p className="text-xs sm:text-[13px] text-stone-600 line-clamp-3 leading-relaxed mb-4">
+        <p className="text-[15px] text-stone-600 line-clamp-4 leading-relaxed mb-4">
           {program.description}
         </p>
 
-        {/* Course Fee & Room Pricing breakdown */}
-        <div className="mt-auto mb-3 pt-3 border-t border-stone-100">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-bold text-stone-700 uppercase tracking-wider">
-              Course Fee (USD)
-            </span>
-            <span className="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/80 font-medium">
-              Food &amp; Stay Included
-            </span>
-          </div>
-
-          {program.pricing ? (
-            <div className="grid grid-cols-3 gap-1.5 p-2 rounded-xl bg-[#FAF6EE] border border-[#EBE5D8] text-center">
-              <div>
-                <span className="text-[10px] text-stone-500 font-medium block leading-tight">
-                  Triple Sharing
-                </span>
-                <span className="text-xs sm:text-sm font-bold text-stone-900 block mt-0.5">
-                  {program.pricing.triple}
-                </span>
-              </div>
-              <div className="border-x border-[#EBE5D8]">
-                <span className="text-[10px] text-stone-500 font-medium block leading-tight">
-                  Shared Room
-                </span>
-                <span className="text-xs sm:text-sm font-bold text-[#f22924] block mt-0.5">
-                  {program.pricing.shared}
-                </span>
-              </div>
-              <div>
-                <span className="text-[10px] text-stone-500 font-medium block leading-tight">
-                  Private Room
-                </span>
-                <span className="text-xs sm:text-sm font-bold text-stone-900 block mt-0.5">
-                  {program.pricing.private}
-                </span>
-              </div>
-            </div>
-          ) : (
-            <div className="flex items-baseline justify-between">
-              <span className="text-lg font-bold text-[#f22924] font-figtree">
-                {program.price}
-              </span>
-            </div>
-          )}
-        </div>
-
         {/* Two Action Buttons: Explore More & Enroll Now */}
-        <div className="pt-3 border-t border-stone-100 grid grid-cols-2 gap-2.5">
+        <div className="mt-auto pt-3 border-t border-stone-100 grid grid-cols-2 gap-2.5">
           <a
             href={whatsappLink(
               `Namaste! I would like to explore the ${program.title} at Siddhant School of Yoga in Rishikesh.`,
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-center py-2.5 px-2 rounded-full text-xs font-semibold bg-[#FAF6EE] border-2 border-[#f22924] text-[#f22924] hover:bg-[#f22924] hover:text-white transition-all"
+            className="inline-flex items-center justify-center text-center py-3 px-2 rounded-full text-xs font-semibold bg-[#def4ee4d] border-2 border-[#158b72] text-[#158b72] hover:bg-[#158b72] hover:text-white transition-all"
           >
             Explore More
           </a>
           <a
             href="#contact"
-            className="text-center py-2.5 px-2 rounded-full text-xs font-semibold bg-[#f22924] hover:bg-[#d45d44] text-white shadow-xs hover:shadow-md transition-all"
+            className="inline-flex items-center justify-center text-center py-3 px-2 rounded-full text-xs font-semibold bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-xs hover:shadow-md transition-all"
           >
             Enroll Now
           </a>
@@ -265,7 +285,7 @@ export function ProgramCard({ program }) {
 
 export function RetreatCard({ retreat }) {
   return (
-    <div className="flex flex-col bg-white rounded-2xl overflow-hidden border border-[#EBE5D8] shadow-xs hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 group font-figtree h-full">
+    <div className="flex flex-col bg-white rounded-2xl overflow-hidden border border-[#c8ece2] shadow-xs hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 group font-figtree h-full">
       {/* Photo with duration pill and overlaid title */}
       <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-stone-100 shrink-0">
         <Image
@@ -278,52 +298,41 @@ export function RetreatCard({ retreat }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
         {/* Duration badge */}
-        <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-xs text-[#f22924] text-xs font-semibold border border-[#f5b860]/40 shadow-xs">
-          <Clock className="w-3.5 h-3.5 text-[#d45d44]" />
+        <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-xs text-[#158b72] text-xs font-semibold border border-[#158b72]/40 shadow-xs">
+          <Clock className="w-3.5 h-3.5 text-[#0f6b57]" />
           <span>{retreat.duration}</span>
         </div>
 
-        {/* Title and subtitle overlaid */}
+        {/* Title overlaid */}
         <div className="absolute bottom-3 left-4 right-4 text-white z-10">
           <h3 className="text-xl sm:text-2xl font-belleza font-normal leading-tight tracking-wide drop-shadow-md line-clamp-1">
             {retreat.title}
           </h3>
-          <span className="text-[11px] sm:text-xs text-[#f5b860] font-figtree font-medium block mt-0.5 line-clamp-1">
-            {retreat.subtitle}
-          </span>
         </div>
       </div>
 
       {/* Body with guaranteed alignment */}
-      <div className="p-5 sm:p-6 flex flex-col flex-grow font-figtree">
-        {/* Tagline - with min-height and line-clamp-2 so every card aligns evenly */}
-        <p className="text-xs sm:text-[13px] text-stone-600 line-clamp-2 leading-relaxed mb-3 min-h-[38px]">
-          {retreat.tagline}
-        </p>
-
-        {/* Divider line */}
-        <div className="h-0.5 w-full bg-gradient-to-r from-[#f5b860] via-[#f22924] to-transparent my-1.5" />
-
+      <div className="p-4 sm:p-5 flex flex-col flex-grow font-figtree">
         {/* 3 Features with CheckCircle2 */}
-        <ul className="space-y-2 mb-4 flex-grow">
+        <ul className="space-y-2 mb-3 flex-grow">
           {retreat.features.slice(0, 3).map((f, i) => (
             <li
               key={i}
-              className="flex items-center gap-2 text-xs text-stone-700"
+              className="flex items-center gap-2 text-[1rem] text-stone-700"
             >
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#f22924] shrink-0" />
+              <CheckCircle2 className="w-4 h-4 text-[#158b72] shrink-0" />
               <span className="line-clamp-1">{f}</span>
             </li>
           ))}
         </ul>
 
         {/* Price & Included info */}
-        <div className="mt-auto mb-3 pt-3 border-t border-stone-100 flex items-center justify-between">
+        <div className="mt-auto mb-2.5 pt-2.5 border-t border-stone-100 flex items-center justify-between">
           <div>
             <span className="text-[10px] font-bold text-stone-500 uppercase tracking-wider block leading-tight">
-              Retreat Fee
+              Starting Fees
             </span>
-            <span className="text-base sm:text-lg font-bold text-[#f22924] font-figtree block leading-tight mt-0.5">
+            <span className="text-base sm:text-lg font-bold text-[#158b72] font-figtree block leading-tight mt-0.5">
               {retreat.price}
             </span>
           </div>
@@ -340,7 +349,7 @@ export function RetreatCard({ retreat }) {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-center py-2.5 px-2 rounded-full text-xs font-semibold bg-[#FAF6EE] border-2 border-[#f22924] text-[#f22924] hover:bg-[#f22924] hover:text-white transition-all"
+            className="inline-flex items-center justify-center text-center py-3 px-2 rounded-full text-xs font-semibold bg-[#def4ee4d] border-2 border-[#158b72] text-[#158b72] hover:bg-[#158b72] hover:text-white transition-all"
           >
             Explore More
           </a>
@@ -350,7 +359,7 @@ export function RetreatCard({ retreat }) {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-center py-2.5 px-2 rounded-full text-xs font-semibold bg-[#f22924] hover:bg-[#d45d44] text-white shadow-xs hover:shadow-md transition-all"
+            className="inline-flex items-center justify-center text-center py-3 px-2 rounded-full text-xs font-semibold bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-xs hover:shadow-md transition-all"
           >
             Book Dates
           </a>

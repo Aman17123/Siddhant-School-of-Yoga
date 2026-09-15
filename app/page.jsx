@@ -5,7 +5,7 @@ import HomePage from "@/components/home/HomePage";
 
 export default function Page() {
   return (
-    <div className="flex flex-col min-h-screen relative selection:bg-[#c9a961]/30 selection:text-[#175f52]">
+    <div className="flex flex-col min-h-screen relative selection:bg-[#158b72]/30 selection:text-[#0f6b57]">
       {/* Header & Navigation */}
       <Navbar />
 

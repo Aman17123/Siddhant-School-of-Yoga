@@ -60,7 +60,7 @@ export default function Navbar() {
   return (
     <>
       {/* 1. TOPBAR (Flows naturally above sticky header, scrolls off without layout shift) */}
-      <div className="bg-[#109347] text-white py-2 relative z-20 overflow-hidden border-b border-[#f5b860]/20">
+      <div className="bg-[#158b72] text-white py-2 relative z-20 overflow-hidden border-b border-[#158b72]/20">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs font-medium">
           {/* Left: Email & Address */}
           <div className="flex items-center gap-4 sm:gap-6">
@@ -117,7 +117,7 @@ export default function Navbar() {
                 href={site.socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#e22924] flex items-center justify-center transition-colors text-white"
+                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#158b72] flex items-center justify-center transition-colors text-white"
                 aria-label="Facebook"
               >
                 <FaFacebookF className="w-2.5 h-2.5" />
@@ -126,7 +126,7 @@ export default function Navbar() {
                 href={site.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#e22924] flex items-center justify-center transition-colors text-white"
+                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#158b72] flex items-center justify-center transition-colors text-white"
                 aria-label="Instagram"
               >
                 <FaInstagram className="w-2.5 h-2.5" />
@@ -135,7 +135,7 @@ export default function Navbar() {
                 href={site.socials.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#e22924] flex items-center justify-center transition-colors text-white"
+                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#158b72] flex items-center justify-center transition-colors text-white"
                 aria-label="YouTube"
               >
                 <FaYoutube className="w-2.5 h-2.5" />
@@ -144,7 +144,7 @@ export default function Navbar() {
                 href={site.socials.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#e22924] flex items-center justify-center transition-colors text-white"
+                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#158b72] flex items-center justify-center transition-colors text-white"
                 aria-label="Twitter"
               >
                 <FaTwitter className="w-2.5 h-2.5" />
@@ -155,8 +155,8 @@ export default function Navbar() {
       </div>
 
       <header
-        className={`site-header sticky top-0 z-50 w-full bg-white font-figtree transition-shadow duration-300 ${
-          isScrolled ? "shadow-md" : "shadow-xs"
+        className={`site-header sticky md:static top-0 z-50 w-full bg-white font-figtree transition-shadow duration-300 ${
+          isScrolled ? "shadow-md md:shadow-none" : "shadow-xs"
         }`}
       >
         {/* BACKGROUND SKETCHES (Ganga Aarti on left, Rishikesh Temples on right) */}
@@ -165,7 +165,7 @@ export default function Navbar() {
         {/* 2. MIDDLE BOX */}
         <div className="relative z-10 bg-white">
           {/* A. MOBILE VIEW (Screen < md): Clean Simple Logo + Hamburger */}
-          <div className="flex md:hidden items-center justify-between px-4 py-2.5 border-b border-[#EBE5D8]/80">
+          <div className="flex md:hidden items-center justify-between px-4 py-2.5 border-b border-[#c8ece2]/80">
             {/* Mobile Brand Logo */}
             <Link href="/" className="inline-block shrink-0">
               <Image
@@ -181,7 +181,7 @@ export default function Navbar() {
             {/* Simple Hamburger Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-stone-700 hover:text-[#e22924] hover:bg-stone-100 transition-colors focus:outline-none"
+              className="p-2 rounded-lg text-stone-700 hover:text-[#158b72] hover:bg-stone-100 transition-colors focus:outline-none"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? (
@@ -195,27 +195,27 @@ export default function Navbar() {
           {/* B. DESKTOP VIEW (Screen >= md): Classy 12-column grid layout */}
           <div className="hidden md:grid max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 md:grid-cols-12 items-center">
             {/* Left Column: Ashram Helpline / WhatsApp Concierge (3 cols) */}
-            <div className="md:col-span-3 flex items-center justify-start pr-6 border-r border-[#109347]/20">
+            <div className="md:col-span-3 flex items-center justify-start pr-6 border-r border-[#158b72]/20">
               <a
                 href={whatsappLink(
                   "Namaste! I would like to inquire about Yoga Teacher Training and Retreat courses at Siddhant School of Yoga.",
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white hover:bg-[#FAF6EE] border border-[#109347]/30 hover:border-[#109347] shadow-[0_2px_12px_rgba(16,147,71,0.08)] hover:shadow-[0_4px_18px_rgba(16,147,71,0.18)] transition-all duration-300 transform hover:-translate-y-0.5"
+                className="group relative inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white hover:bg-[#def4ee4d] border border-[#158b72]/30 hover:border-[#158b72] shadow-[0_2px_12px_rgba(16,147,71,0.08)] hover:shadow-[0_4px_18px_rgba(16,147,71,0.18)] transition-all duration-300 transform hover:-translate-y-0.5"
                 title="Connect on WhatsApp with Siddhant School of Yoga"
               >
-                <div className="relative w-8 h-8 rounded-full bg-[#109347] text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform duration-300">
+                <div className="relative w-8 h-8 rounded-full bg-[#158b72] text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform duration-300">
                   <FaWhatsapp className="w-4.5 h-4.5 text-white" />
                 </div>
 
                 <div className="flex flex-col text-left">
                   <div className="flex items-center gap-1.5 leading-tight">
-                    <span className="font-marcellus text-[10.5px] uppercase tracking-[0.14em] text-[#109347] font-bold">
+                    <span className="font-marcellus text-[10.5px] uppercase tracking-[0.14em] text-[#158b72] font-bold">
                       Call / Whatsapp
                     </span>
                   </div>
-                  <span className="font-marcellus text-[13.5px] font-bold text-[#1F1E1D] tracking-[0.03em] group-hover:text-[#109347] transition-colors leading-tight mt-0.5">
+                  <span className="font-marcellus text-[13.5px] font-bold text-[#1F1E1D] tracking-[0.03em] group-hover:text-[#158b72] transition-colors leading-tight mt-0.5">
                     +91 84497 85755
                   </span>
                 </div>
@@ -223,7 +223,7 @@ export default function Navbar() {
             </div>
 
             {/* Center Column: Professional Logo (6 cols) */}
-            <div className="md:col-span-6 flex items-center justify-center px-6 border-r border-[#109347]/20">
+            <div className="md:col-span-6 flex items-center justify-center px-6 border-r border-[#158b72]/20">
               <Link href="/" className="inline-block py-1">
                 <Image
                   src="/logo/siddhant-logo.svg"
@@ -240,7 +240,7 @@ export default function Navbar() {
             <div className="md:col-span-3 flex items-center justify-end pl-6 gap-3">
               <a
                 href="#courses"
-                className="inline-flex group relative items-center gap-3 px-5 py-2 rounded-full bg-[#e22924] hover:bg-[#c9241f] text-white shadow-[0_4px_16px_rgba(226,41,36,0.25)] hover:shadow-[0_6px_20px_rgba(201,36,31,0.35)] transition-all duration-300 transform hover:-translate-y-0.5 border border-white/20 hover:border-white/40 overflow-hidden"
+                className="inline-flex group relative items-center gap-3 px-5 py-2 rounded-full bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-[0_4px_16px_rgba(226,41,36,0.25)] hover:shadow-[0_6px_20px_rgba(201,36,31,0.35)] transition-all duration-300 transform hover:-translate-y-0.5 border border-white/20 hover:border-white/40 overflow-hidden"
                 title="Apply for Yoga Teacher Training Rishikesh"
               >
                 <div className="relative z-10 w-7 h-7 rounded-full bg-white/20 border border-white/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
@@ -265,25 +265,27 @@ export default function Navbar() {
 
         {/* 3. MAIN NAVBAR — Architectural Tabular Grid with Smooth Animated Dropdowns */}
         <nav
-          className="hidden md:block border-t border-b border-[#EBE5D8] bg-white relative z-20"
+          className={`hidden md:block md:sticky md:top-0 border-t border-b border-[#c8ece2] bg-white relative z-50 transition-shadow duration-300 ${
+            isScrolled ? "shadow-md" : ""
+          }`}
           aria-label="Main Navigation"
         >
           <div className="max-w-[1320px] mx-auto">
             <ul className="flex items-center justify-center text-[13px] lg:text-[13.5px] font-semibold text-[#1F1E1D]">
               {/* Home (First item has border-l and border-r) */}
-              <li className="border-l border-r border-[#EBE5D8] relative group">
+              <li className="border-l border-r border-[#c8ece2] relative group">
                 <Link
                   href="/"
-                  className="inline-block py-2.5 px-4 lg:px-5 text-[#f22924] font-bold hover:text-[#F08C5C] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-4 lg:px-5 text-[#158b72] font-bold hover:text-[#3aab92] transition-colors font-jakarta tracking-wide"
                 >
                   Home
                 </Link>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#f22924] rounded-full scale-x-100 transition-transform duration-300" />
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full scale-x-100 transition-transform duration-300" />
               </li>
 
               {/* About Us (Smooth Dropdown) */}
               <li
-                className="border-r border-[#EBE5D8] relative group"
+                className="border-r border-[#c8ece2] relative group"
                 onMouseEnter={() => handleMouseEnter("about")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -296,8 +298,8 @@ export default function Navbar() {
                   }
                   className={`cursor-pointer py-2.5 px-4 lg:px-5 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "about"
-                      ? "text-[#f22924] font-bold"
-                      : "text-[#1F1E1D] hover:text-[#f22924]"
+                      ? "text-[#158b72] font-bold"
+                      : "text-[#1F1E1D] hover:text-[#158b72]"
                   }`}
                 >
                   <span>About Us</span>
@@ -305,13 +307,13 @@ export default function Navbar() {
                     strokeWidth={1.75}
                     className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
                       activeDropdown === "about"
-                        ? "rotate-180 text-[#f22924]"
-                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#f22924]"
+                        ? "rotate-180 text-[#158b72]"
+                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#158b72]"
                     }`}
                   />
                 </button>
                 <span
-                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#f22924] rounded-full transition-transform duration-200 origin-center ${
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-200 origin-center ${
                     activeDropdown === "about"
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
@@ -367,15 +369,15 @@ export default function Navbar() {
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#f22924]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#f22924] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[13.5px] font-semibold text-stone-800 group-hover/item:text-[#f22924] transition-colors">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
+                            <span className="text-[13.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
                               {item.title}
                             </span>
                           </div>
-                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#f22924] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
+                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#158b72] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
                         </Link>
                       ))}
                     </div>
@@ -385,7 +387,7 @@ export default function Navbar() {
 
               {/* Yoga TTC (Smooth Dropdown) */}
               <li
-                className="border-r border-[#EBE5D8] relative group"
+                className="border-r border-[#c8ece2] relative group"
                 onMouseEnter={() => handleMouseEnter("yttc")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -396,8 +398,8 @@ export default function Navbar() {
                   }
                   className={`cursor-pointer py-2.5 px-4 lg:px-5 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "yttc"
-                      ? "text-[#f22924] font-bold"
-                      : "text-[#1F1E1D] hover:text-[#f22924]"
+                      ? "text-[#158b72] font-bold"
+                      : "text-[#1F1E1D] hover:text-[#158b72]"
                   }`}
                 >
                   <span>Yoga TTC</span>
@@ -405,13 +407,13 @@ export default function Navbar() {
                     strokeWidth={1.75}
                     className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
                       activeDropdown === "yttc"
-                        ? "rotate-180 text-[#f22924]"
-                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#f22924]"
+                        ? "rotate-180 text-[#158b72]"
+                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#158b72]"
                     }`}
                   />
                 </button>
                 <span
-                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#f22924] rounded-full transition-transform duration-200 origin-center ${
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-200 origin-center ${
                     activeDropdown === "yttc"
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
@@ -457,15 +459,15 @@ export default function Navbar() {
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#f22924]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#f22924] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[13.5px] font-semibold text-stone-800 group-hover/item:text-[#f22924] transition-colors">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
+                            <span className="text-[13.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
                               {item.title}
                             </span>
                           </div>
-                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#f22924] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
+                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#158b72] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
                         </Link>
                       ))}
                     </div>
@@ -475,7 +477,7 @@ export default function Navbar() {
 
               {/* Kundalini Yoga (Smooth Dropdown) */}
               <li
-                className="border-r border-[#EBE5D8] relative group"
+                className="border-r border-[#c8ece2] relative group"
                 onMouseEnter={() => handleMouseEnter("kundalini")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -488,8 +490,8 @@ export default function Navbar() {
                   }
                   className={`cursor-pointer py-2.5 px-4 lg:px-5 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "kundalini"
-                      ? "text-[#f22924] font-bold"
-                      : "text-[#1F1E1D] hover:text-[#f22924]"
+                      ? "text-[#158b72] font-bold"
+                      : "text-[#1F1E1D] hover:text-[#158b72]"
                   }`}
                 >
                   <span>Kundalini Yoga</span>
@@ -497,13 +499,13 @@ export default function Navbar() {
                     strokeWidth={1.75}
                     className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
                       activeDropdown === "kundalini"
-                        ? "rotate-180 text-[#f22924]"
-                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#f22924]"
+                        ? "rotate-180 text-[#158b72]"
+                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#158b72]"
                     }`}
                   />
                 </button>
                 <span
-                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#f22924] rounded-full transition-transform duration-200 origin-center ${
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-200 origin-center ${
                     activeDropdown === "kundalini"
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
@@ -541,15 +543,15 @@ export default function Navbar() {
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#f22924]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#f22924] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[13.5px] font-semibold text-stone-800 group-hover/item:text-[#f22924] transition-colors">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
+                            <span className="text-[13.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
                               {item.title}
                             </span>
                           </div>
-                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#f22924] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
+                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#158b72] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
                         </Link>
                       ))}
                     </div>
@@ -559,7 +561,7 @@ export default function Navbar() {
 
               {/* Yoga Retreat (Smooth Dropdown) */}
               <li
-                className="border-r border-[#EBE5D8] relative group"
+                className="border-r border-[#c8ece2] relative group"
                 onMouseEnter={() => handleMouseEnter("retreats")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -572,8 +574,8 @@ export default function Navbar() {
                   }
                   className={`cursor-pointer py-2.5 px-4 lg:px-5 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "retreats"
-                      ? "text-[#f22924] font-bold"
-                      : "text-[#1F1E1D] hover:text-[#f22924]"
+                      ? "text-[#158b72] font-bold"
+                      : "text-[#1F1E1D] hover:text-[#158b72]"
                   }`}
                 >
                   <span>Yoga Retreat</span>
@@ -581,13 +583,13 @@ export default function Navbar() {
                     strokeWidth={1.75}
                     className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
                       activeDropdown === "retreats"
-                        ? "rotate-180 text-[#f22924]"
-                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#f22924]"
+                        ? "rotate-180 text-[#158b72]"
+                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#158b72]"
                     }`}
                   />
                 </button>
                 <span
-                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#f22924] rounded-full transition-transform duration-200 origin-center ${
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-200 origin-center ${
                     activeDropdown === "retreats"
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
@@ -654,15 +656,15 @@ export default function Navbar() {
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-1.5 rounded-lg hover:bg-[#f22924]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-1.5 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#f22924] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[13px] font-semibold text-stone-800 group-hover/item:text-[#f22924] transition-colors">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
+                            <span className="text-[13px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
                               {item.title}
                             </span>
                           </div>
-                          <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover/item:text-[#f22924] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
+                          <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover/item:text-[#158b72] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
                         </Link>
                       ))}
                     </div>
@@ -672,7 +674,7 @@ export default function Navbar() {
 
               {/* Gallery (Smooth Dropdown) */}
               <li
-                className="border-r border-[#EBE5D8] relative group"
+                className="border-r border-[#c8ece2] relative group"
                 onMouseEnter={() => handleMouseEnter("gallery")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -685,8 +687,8 @@ export default function Navbar() {
                   }
                   className={`cursor-pointer py-2.5 px-4 lg:px-5 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "gallery"
-                      ? "text-[#f22924] font-bold"
-                      : "text-[#1F1E1D] hover:text-[#f22924]"
+                      ? "text-[#158b72] font-bold"
+                      : "text-[#1F1E1D] hover:text-[#158b72]"
                   }`}
                 >
                   <span>Gallery</span>
@@ -694,13 +696,13 @@ export default function Navbar() {
                     strokeWidth={1.75}
                     className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
                       activeDropdown === "gallery"
-                        ? "rotate-180 text-[#f22924]"
-                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#f22924]"
+                        ? "rotate-180 text-[#158b72]"
+                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#158b72]"
                     }`}
                   />
                 </button>
                 <span
-                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#f22924] rounded-full transition-transform duration-200 origin-center ${
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-200 origin-center ${
                     activeDropdown === "gallery"
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
@@ -727,15 +729,15 @@ export default function Navbar() {
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#f22924]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#f22924] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[13.5px] font-semibold text-stone-800 group-hover/item:text-[#f22924] transition-colors">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
+                            <span className="text-[13.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
                               {item.title}
                             </span>
                           </div>
-                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#f22924] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
+                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#158b72] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
                         </Link>
                       ))}
                     </div>
@@ -744,27 +746,38 @@ export default function Navbar() {
               </li>
 
               {/* Contact Us */}
-              <li className="border-r border-[#EBE5D8] relative group">
+              <li className="border-r border-[#c8ece2] relative group">
                 <Link
                   href="/contact-us"
-                  className="inline-block py-2.5 px-4 lg:px-5 hover:text-[#f22924] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-4 lg:px-5 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
                 >
                   Contact Us
                 </Link>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#f22924] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
               </li>
 
               {/* Blog */}
-              <li className="border-r border-[#EBE5D8] relative group">
+              <li className="border-r border-[#c8ece2] relative group">
                 <a
                   href="https://www.siddhantschoolofyoga.com/blog/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block py-2.5 px-4 lg:px-5 hover:text-[#f22924] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-4 lg:px-5 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
                 >
                   Blog
                 </a>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#f22924] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+              </li>
+
+              {/* Payment */}
+              <li className="border-r border-[#c8ece2] relative group">
+                <Link
+                  href="/payment"
+                  className="inline-block py-2.5 px-4 lg:px-5 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
+                >
+                  Payment
+                </Link>
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
               </li>
             </ul>
           </div>
@@ -772,68 +785,68 @@ export default function Navbar() {
 
         {/* 4. SIMPLE MOBILE DROPDOWN MENU */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-[#EBE5D8] shadow-2xl px-5 py-4 max-h-[80vh] overflow-y-auto">
+          <div className="md:hidden bg-white border-b border-[#c8ece2] shadow-2xl px-5 py-4 max-h-[80vh] overflow-y-auto">
             <div className="flex flex-col space-y-3 text-sm font-semibold text-stone-800">
               <Link
                 href="/"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 text-[#e22924] border-b border-[#FAF6EE]"
+                className="py-2 text-[#158b72] border-b border-[#def4ee]"
               >
                 Home
               </Link>
               <Link
                 href="/about-us"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#FAF6EE] hover:text-[#e22924] transition-colors"
+                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
               >
                 About Siddhant School of Yoga Rishikesh
               </Link>
               <Link
                 href="/200-hour-yoga-ttc-rishikesh"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#FAF6EE] hover:text-[#e22924] transition-colors"
+                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
               >
                 Yoga Teacher Training in Rishikesh (100h / 200h / 300h / 500h)
               </Link>
               <Link
                 href="/200-hour-kundalini-yoga-ttc"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#FAF6EE] hover:text-[#e22924] transition-colors"
+                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
               >
                 Kundalini Yoga TTC in Rishikesh
               </Link>
               <Link
                 href="/yoga-meditation-retreat"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#FAF6EE] hover:text-[#e22924] transition-colors"
+                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
               >
                 Yoga Retreats in Rishikesh
               </Link>
               <Link
                 href="/gallery"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#FAF6EE] hover:text-[#e22924] transition-colors"
+                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
               >
                 Photo &amp; Video Gallery Rishikesh
               </Link>
               <Link
                 href="/testimonials"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#FAF6EE] hover:text-[#e22924] transition-colors"
+                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
               >
                 Reviews &amp; Testimonials
               </Link>
               <Link
                 href="/faq"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#FAF6EE] hover:text-[#e22924] transition-colors"
+                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
               >
                 Yoga FAQ Rishikesh
               </Link>
               <Link
                 href="/contact-us"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#FAF6EE] hover:text-[#e22924] transition-colors"
+                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
               >
                 Contact Us Rishikesh
               </Link>
@@ -842,10 +855,17 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#FAF6EE] hover:text-[#e22924] transition-colors"
+                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
               >
                 Yoga Blog Rishikesh
               </a>
+              <Link
+                href="/payment"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
+              >
+                Payment
+              </Link>
 
               {/* Mobile Action CTAs */}
               <div className="pt-3 flex flex-col gap-2.5">
@@ -853,7 +873,7 @@ export default function Navbar() {
                   href={whatsappLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2.5 bg-[#109347] hover:bg-[#0d6e35] text-white py-3 rounded-full font-marcellus font-bold tracking-wide shadow-xs transition-all"
+                  className="flex items-center justify-center gap-2.5 bg-[#158b72] hover:bg-[#0f6b57] text-white py-3 rounded-full font-marcellus font-bold tracking-wide shadow-xs transition-all"
                 >
                   <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
                     <FaWhatsapp className="w-3.5 h-3.5 text-white" />
@@ -863,7 +883,7 @@ export default function Navbar() {
                 <a
                   href="#courses"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 bg-[#e22924] hover:bg-[#c9241f] text-white py-3 rounded-full font-marcellus font-bold tracking-wide shadow-xs transition-all"
+                  className="flex items-center justify-center gap-2 bg-[#158b72] hover:bg-[#0f6b57] text-white py-3 rounded-full font-marcellus font-bold tracking-wide shadow-xs transition-all"
                 >
                   <Sparkles className="w-4 h-4 text-white" />
                   <span>Enroll in Yoga Alliance TTC</span>

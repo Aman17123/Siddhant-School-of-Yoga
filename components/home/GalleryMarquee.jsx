@@ -70,10 +70,11 @@ export default function GalleryMarquee() {
   return (
     <section
       id="gallery"
-      className="py-14 sm:py-16 lg:py-20 bg-[#FAF6EE] border-b border-[#EBE5D8]/80 overflow-hidden relative font-figtree"
+      className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/80 overflow-hidden relative font-figtree"
     >
       <Container className="mb-8 lg:mb-10">
         <SectionHeading
+          eyebrow="Gallery"
           title="Life at Siddhant School of Yoga"
           description="A glimpse into our daily practice, sacred fire ceremonies, pranayama by the Ganga, and lifelong friendships forged in the spiritual heart of Rishikesh."
           center
@@ -134,9 +135,9 @@ export default function GalleryMarquee() {
           href="https://www.instagram.com/siddhant.yoga/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#EBE5D8] hover:border-[#f22924] text-[#1F1E1D] hover:text-[#f22924] text-xs font-semibold font-figtree shadow-xs hover:shadow-md transition-all"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#c8ece2] hover:border-[#158b72] text-[#1F1E1D] hover:text-[#158b72] text-xs font-semibold font-figtree shadow-xs hover:shadow-md transition-all"
         >
-          <FaInstagram className="w-3.5 h-3.5 text-[#f22924]" />
+          <FaInstagram className="w-3.5 h-3.5 text-[#158b72]" />
           <span>Follow @siddhant.yoga for Daily Ashram Updates</span>
         </a>
       </div>

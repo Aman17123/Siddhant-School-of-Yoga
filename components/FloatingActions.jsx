@@ -18,15 +18,10 @@ export default function FloatingActions() {
           )}
           target="_blank"
           rel="noopener noreferrer"
-          className="relative group w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#109347] hover:bg-[#0d6e35] text-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95"
+          className="relative group w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#0f6b57] hover:bg-[#158b72] text-white border border-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95"
           aria-label="Chat with us on WhatsApp"
         >
           <FaWhatsapp className="w-6 h-6 sm:w-7 sm:h-7" />
-
-          {/* Notification Badge */}
-          <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#e22924] text-white text-[10px] font-bold rounded-full flex items-center justify-center ring-2 ring-white animate-pulse">
-            1
-          </span>
 
           {/* Hover Tooltip on right side of button */}
           <span className="absolute left-16 top-1/2 -translate-y-1/2 px-3.5 py-1.5 bg-[#1F1E1D] text-white text-xs font-semibold rounded-xl whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity shadow-xl">
@@ -35,10 +30,10 @@ export default function FloatingActions() {
         </a>
       </div>
 
-      {/* 2. Floating Enquire Now Button on Right Side */}
+      {/* 2. Floating Quick Enquiry Button on Right Side */}
       <div
         className="fixed bottom-5 sm:bottom-6 right-5 sm:right-6 z-40 font-figtree"
-        aria-label="Enquire Now"
+        aria-label="Quick Enquiry"
       >
         <a
           href={whatsappLink(
@@ -46,11 +41,11 @@ export default function FloatingActions() {
           )}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-[#e22924] hover:bg-[#c9241f] text-white text-xs sm:text-sm font-semibold shadow-2xl hover:shadow-[#e22924]/40 hover:scale-105 active:scale-95 transition-all duration-300 group"
-          aria-label="Enquire Now"
+          className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-[#0f6b57] hover:bg-[#158b72] text-white border border-white text-xs sm:text-sm font-semibold shadow-2xl hover:shadow-[#158b72]/40 hover:scale-105 active:scale-95 transition-all duration-300 group"
+          aria-label="Quick Enquiry"
         >
-          <Sparkles className="w-4 h-4 text-[#F5B860] group-hover:rotate-12 transition-transform" />
-          <span>Enquire Now</span>
+          <Sparkles className="w-4 h-4 text-white group-hover:rotate-12 transition-transform" />
+          <span>Quick Enquiry</span>
         </a>
       </div>
     </>

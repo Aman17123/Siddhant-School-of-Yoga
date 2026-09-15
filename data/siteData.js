@@ -189,71 +189,95 @@ export const testimonials = [
 export const faqs = [
   {
     q: "Is Siddhant School of Yoga registered with Yoga Alliance?",
-    a: "Yes. The school is registered with Yoga Alliance USA as RYS 200, RYS 300 and RYS 500. Graduates are eligible to register as RYT with Yoga Alliance.",
+    a: "Yes, Siddhant School of Yoga is officially registered with Yoga Alliance USA as a Registered Yoga School (RYS 200, RYS 300, and RYS 500). This means every course follows Yoga Alliance's global curriculum standards for hours, subjects, and teacher qualifications. Graduates automatically become eligible to register as a Registered Yoga Teacher (RYT) with Yoga Alliance and teach internationally.",
   },
   {
     q: "Why is Rishikesh considered the best place for yoga teacher training in India?",
-    a: "Rishikesh sits where the Ganga meets the Himalayan foothills and has been a centre of yoga practice for centuries. That setting, combined with a concentration of Yoga Alliance-registered schools, is why it's treated as the default destination for yoga teacher training in India.",
+    a: "Rishikesh sits at the point where the sacred Ganga river meets the Himalayan foothills, and it has been a living center of yoga, meditation, and Vedic study for centuries. Training here means daily practice by the river, access to ashrams and temples, and a natural, distraction-free environment. Combined with the largest concentration of Yoga Alliance-registered schools in the world, this is why Rishikesh is widely called the Yoga Capital of the World.",
   },
   {
     q: "Where exactly is the school located?",
-    a: "The campus is in Veerbhadra, Rishikesh, Uttarakhand — close to the Ganga and the Himalayan foothills.",
+    a: "Siddhant School of Yoga is located in Veerbhadra, Rishikesh, Uttarakhand, India — a quiet residential area close to the Ganga river and the Himalayan foothills, a short distance from Laxman Jhula and Tapovan.",
   },
   {
     q: "Do I need previous yoga experience to join?",
-    a: "The 100-hour course and beginner retreats welcome newcomers. From 200-hour onward, basic familiarity with asana and breath practice is expected.",
+    a: "No prior experience is required for the 100-hour course or our beginner-friendly retreats — both are designed to welcome complete newcomers step by step. From the 200-hour course onward, basic familiarity with asana (postures) and breathing practice is helpful, though our teachers still guide every student at their own individual level.",
   },
   {
     q: "What is included in a residential course?",
-    a: "Accommodation, sattvic vegetarian meals, a course manual and daily supervised practice. Exact inclusions are confirmed in writing before you book.",
+    a: "A residential course includes private or shared accommodation, three sattvic vegetarian meals a day, a printed course manual, daily supervised practice, and use of the yoga shala and ashram facilities. Exact inclusions and room options are confirmed in writing with Acharya Siddhant before you book, so there is full clarity on what is covered.",
   },
   {
     q: "What happens after the course ends?",
-    a: "Every graduate receives a 100-day home practice schedule and can reach Acharya Siddhant directly with questions during that period.",
+    a: "Every graduate receives a structured 100-day home practice schedule to maintain discipline and deepen their skills after leaving Rishikesh. You also stay connected with Acharya Siddhant directly, so you can ask questions about your practice or teaching career at any point during that period.",
   },
   {
     q: "Which visa should I apply for?",
-    a: "Most international students travel on a Tourist e-Visa for short courses. Requirements vary by nationality, so confirm before booking travel.",
+    a: "Most international students travel to India on a Tourist e-Visa for short-term courses and retreats, which is usually sufficient for a 100 to 500-hour program. Visa rules vary by nationality and course length, so we recommend confirming the correct visa type with your local Indian embassy or consulate before booking flights.",
   },
   {
     q: "What is the best time of year to train in Rishikesh?",
-    a: "Batches run year-round. October to March offers the coolest, most comfortable climate for daily practice.",
+    a: "Yoga teacher training batches run year-round at Siddhant School of Yoga, so you can join whenever suits your schedule. October to March offers the coolest, most comfortable climate for long daily practice sessions, while the quieter monsoon months (July to September) attract students who enjoy a lush, green, and peaceful Rishikesh.",
   },
   {
     q: "How do I secure my seat?",
-    a: "Message the school by WhatsApp or email, confirm your batch and course level with Acharya Siddhant, and complete registration once dates are agreed in writing.",
+    a: "To secure your seat, message the school directly by WhatsApp or email with your preferred course and batch dates. Acharya Siddhant will confirm availability, course level, and fees with you personally, and your seat is locked in once dates and payment terms are agreed in writing.",
   },
   {
     q: "What exactly is a Yoga Teacher Training Course (YTTC)?",
-    a: "A YTTC is a structured program — usually 100, 200, 300 or 500 hours — that teaches both personal yoga practice and how to teach it to others, following curriculum standards set by Yoga Alliance.",
+    a: "A Yoga Teacher Training Course, or YTTC, is a structured program — typically 100, 200, 300, or 500 hours — that trains you in both personal yoga practice and how to safely teach it to others. Each course level follows curriculum standards set by Yoga Alliance, covering asana, pranayama, meditation, anatomy, philosophy, and teaching methodology.",
   },
   {
     q: "What is the difference between 100-hour and 200-hour yoga TTC?",
-    a: "The 100-hour course builds a personal foundation and ends with a course completion certificate. The 200-hour course is the internationally recognised entry point for teaching professionally, ending in RYS 200 certification.",
+    a: "The 100-hour yoga TTC builds a strong personal practice foundation and ends with a course completion certificate, making it ideal for beginners or those deepening their own practice. The 200-hour yoga TTC is the internationally recognised entry point for teaching professionally, ending in RYS 200 certification that qualifies you to register as a Yoga Alliance RYT-200 teacher.",
   },
   {
     q: "What is the difference between 200-hour and 300-hour yoga TTC?",
-    a: "The 200-hour course is the base teaching certificate. The 300-hour course is an advanced program for already-certified 200-hour teachers, and completing both makes you eligible for RYT 500 — the highest Yoga Alliance teaching level.",
+    a: "The 200-hour course is the foundational teaching certificate required before advancing further. The 300-hour course is an advanced-level program open only to already-certified 200-hour teachers, and completing both levels (500 hours total) makes you eligible for RYT 500 — the highest teaching credential recognised by Yoga Alliance worldwide.",
   },
   {
     q: "Which is the best yoga teacher training in Rishikesh?",
-    a: '"Best" depends on what you need, but genuine Yoga Alliance registration, small batches, one consistent teacher throughout, and clear support after the course matter more than marketing claims. Siddhant School of Yoga is built around exactly those four points.',
+    a: '"Best" depends on what a student actually needs, but genuine Yoga Alliance registration, small batch sizes, one consistent lead teacher throughout the course, and clear support after graduation matter far more than marketing claims. Siddhant School of Yoga is built around exactly those four points, which is why it consistently earns 4.9-star reviews from graduates in over 60 countries.',
   },
   {
     q: "What is the best time for a 200-hour yoga TTC in Rishikesh?",
-    a: "Batches run all year. October to March has the coolest, most comfortable weather for long practice days, while many students also enjoy the quieter, greener monsoon months.",
+    a: "Batches for the 200-hour yoga TTC run all year at Siddhant School of Yoga. October to March has the coolest, most comfortable weather for long practice days, while many students also enjoy the quieter, greener monsoon months for a more introspective training experience.",
   },
   {
     q: "How much does yoga teacher training cost in Rishikesh?",
-    a: "Costs vary by course length, room type and season. Exact fees for each program are confirmed directly with Acharya Siddhant before you book, so there are no hidden charges later.",
+    a: "Course fees in Rishikesh vary depending on the course length (100 to 500 hours), room type (shared, triple, or private), and season. At Siddhant School of Yoga, exact fees for each program — including accommodation and meals — are confirmed directly with Acharya Siddhant before you book, so there are no hidden charges or surprise costs later.",
   },
   {
     q: "Do I need to be flexible or very fit to start a yoga TTC?",
-    a: "No. Courses are built to meet you at your current level and build up gradually — flexibility and fitness are things the course develops, not requirements you need to arrive with.",
+    a: "No, you do not need to be flexible or highly fit to start a yoga teacher training course. Our courses are built to meet every student at their current level and build up gradually — flexibility, strength, and stamina are outcomes the training develops over time, not requirements you need to arrive with.",
   },
   {
     q: "Can I complete yoga teacher training online instead of travelling to Rishikesh?",
-    a: "An online 200-hour option is available for students who cannot travel yet, though most graduates say practising in Rishikesh — near the Ganga and the Himalayas — adds something an online course cannot fully replace.",
+    a: "Yes, an online 200-hour yoga TTC option is available for students who cannot travel to India yet, covering the same Yoga Alliance curriculum through live sessions. That said, most of our graduates say practising in person in Rishikesh — near the Ganga and the Himalayas, with hands-on adjustments from Acharya Siddhant — adds a depth of experience an online course cannot fully replace.",
+  },
+  {
+    q: "Do you offer airport pickup from Dehradun?",
+    a: "Yes, once your seat is confirmed we arrange a pickup from Dehradun (Jolly Grant) Airport, or from Haridwar or Rishikesh Railway Station, so you can travel directly to the ashram without navigating local transport on your own.",
+  },
+  {
+    q: "What should I pack for a yoga teacher training course?",
+    a: "Pack comfortable yoga wear, a light jacket for cool mornings and evenings, a refillable water bottle, sun protection, and a notebook for lectures. Yoga mats, props, and all study material are provided at the school, so you don't need to bring your own equipment.",
+  },
+  {
+    q: "Is there a minimum or maximum age to join?",
+    a: "Students who join our courses generally range from 18 to 65 years old, and there is no strict upper age limit — the training is adapted to each student's body, health, and prior experience rather than a fixed age requirement.",
+  },
+  {
+    q: "Can I get a refund if I need to cancel my course?",
+    a: "A partial refund is available if you cancel with sufficient advance notice before your batch start date. Full cancellation and refund terms, including deadlines and any non-refundable portion, are shared with you in writing at the time of booking so expectations are clear from the start.",
+  },
+  {
+    q: "Do you offer discounts for early booking or group registration?",
+    a: "Yes, Siddhant School of Yoga offers early bird discounts for students who book their course or retreat well in advance, along with group rates for friends, couples, or small groups registering together. Message us on WhatsApp for current offers, seasonal discounts, and upcoming batch dates.",
+  },
+  {
+    q: "What is the weather like in Rishikesh during retreats and courses?",
+    a: "Rishikesh enjoys a pleasant climate for most of the year, which is one reason batches run year-round. October to March is cool and comfortable, ideal for long practice sessions; April to June is warmer; and the monsoon season (July to September) brings lush green surroundings with occasional rainfall, offering a quieter, more introspective atmosphere for practice.",
   },
 ];
 

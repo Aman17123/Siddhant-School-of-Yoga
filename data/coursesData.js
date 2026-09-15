@@ -44,7 +44,7 @@ export const teacherTrainings = [
     },
     image: "/images/200-hour-yoga-ttc-rishikesh.png",
     description:
-      "Our flagship Yoga Alliance accredited certification. Become an internationally recognized yoga instructor equipped with mastery in asana adjustments, Vedic philosophy, human anatomy, teaching methodology, and Acharya Siddhant's signature Pranayama science.",
+      "Our most popular Yoga Alliance accredited certification. Become an internationally recognized yoga instructor equipped with mastery in asana adjustments, Vedic philosophy, human anatomy, teaching methodology, and Acharya Siddhant's signature Pranayama science.",
     highlights: [
       "Globally recognized Yoga Alliance RYT 200 credential",
       "In-depth Asana Alignment, Adjustment & Sequencing",
@@ -236,7 +236,7 @@ export const retreats = [
     image:
       "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
     tagline:
-      "Gentle introduction to asana, breathwork, and ashram living in Rishikesh.",
+      "A gentle, beginner-friendly yoga retreat in Rishikesh combining simple asana, breathwork, and peaceful ashram living beside the sacred Ganges river.",
     price: "From $249",
     features: [
       "Daily gentle Hatha yoga & alignment",
@@ -253,7 +253,7 @@ export const retreats = [
     image:
       "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80",
     tagline:
-      "Harmonize outer health with inner serenity through balanced yogic practices.",
+      "Balance your body and mind with daily yoga, guided meditation, and calming breathwork in a peaceful Himalayan ashram overlooking the Ganges.",
     price: "From $349",
     features: [
       "Pranayama & breath revitalisation classes",
@@ -269,7 +269,8 @@ export const retreats = [
     duration: "7 Days",
     image:
       "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
-    tagline: "Step-by-step chakra stimulation and sacred mantra resonance.",
+    tagline:
+      "Awaken your inner energy through gentle chakra activation, sacred mantra chanting, and guided kundalini kriyas in the spiritual heart of Rishikesh.",
     price: "From $449",
     features: [
       "Chakra balancing meditations & kriyas",
@@ -286,7 +287,7 @@ export const retreats = [
     image:
       "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=800&q=80",
     tagline:
-      "Experience the profound science of Prana under world-first breath specialists.",
+      "Learn authentic pranayama and breathwork techniques from expert teachers to calm your mind, boost your energy, and improve your overall health.",
     price: "From $329",
     features: [
       "Diagnosis of individual breathing patterns",
@@ -303,7 +304,7 @@ export const retreats = [
     image:
       "https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?auto=format&fit=crop&w=800&q=80",
     tagline:
-      "Deep silent introspection amidst the sacred tranquility of Rishikesh.",
+      "Go inward with a silent meditation retreat in Rishikesh, using mindful practice and gentle body awareness to bring lasting mental clarity.",
     price: "From $399",
     features: [
       "Noble silence (Mouna) environment",
@@ -320,7 +321,7 @@ export const retreats = [
     image:
       "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
     tagline:
-      "Combine ancient yogic Shatkarma kriyas with authentic Ayurvedic cleansing.",
+      "Cleanse your body and mind with traditional yogic detox practices and authentic Ayurvedic therapies in a peaceful Rishikesh ashram setting.",
     price: "From $379",
     features: [
       "Gentle Shatkarmas (Jal Neti, Kunjal, Trataka)",

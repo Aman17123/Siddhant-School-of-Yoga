@@ -1,7 +1,8 @@
-import { Container } from "../ui";
-import { Sparkles, ArrowRight, Check, PhoneCall } from "lucide-react";
+import Image from "next/image";
+import { Container, ChakraDot } from "../ui";
+import { Sparkles, ArrowRight, Check } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { whatsappLink, site } from "@/data/siteData";
+import { whatsappLink } from "@/data/siteData";
 
 export default function CtaBanner() {
   const perks = [
@@ -14,16 +15,32 @@ export default function CtaBanner() {
   return (
     <section
       id="contact"
-      className="py-14 sm:py-16 lg:py-20 bg-gradient-to-br from-[#f22924] via-[#d6654e] to-[#C85F47] text-white relative overflow-hidden"
+      className="py-16 sm:py-20 lg:py-24 text-white relative overflow-hidden"
     >
-      {/* Decorative background flourishes */}
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#F5B860]/15 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-black/20 blur-3xl pointer-events-none" />
+      {/* Cinematic background image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/gallery_images/yoga-retreat-himalayan-mountains-rishikesh.webp"
+          alt="Yoga teacher training students practicing together in the Himalayan mountains near Rishikesh"
+          fill
+          className="object-cover object-center brightness-[0.55]"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-black/85" />
+      </div>
 
       <Container className="relative z-10 text-center">
-        <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-white mb-4 max-w-4xl mx-auto leading-[1.2]">
+        <span className="block text-[1rem] font-figtree font-semibold tracking-[0.08em] text-[#def4ee] mb-1.5">
+          Enroll Now
+        </span>
+        <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-white max-w-4xl mx-auto leading-[1.2]">
           Step Onto The Mat Where Ancient Masters Walked
         </h2>
+        <span className="inline-flex items-center gap-2 mt-2.5 mb-2">
+          <span className="h-px w-10 sm:w-14 bg-gradient-to-r from-transparent to-white/60" />
+          <ChakraDot color="#ffffff" />
+          <span className="h-px w-10 sm:w-14 bg-gradient-to-l from-transparent to-white/60" />
+        </span>
 
         <p className="text-sm sm:text-base text-white/90 max-w-2xl mx-auto mb-8 font-figtree font-light leading-relaxed">
           Upcoming residential cohorts at our Rishikesh campus are filling
@@ -38,7 +55,7 @@ export default function CtaBanner() {
               key={i}
               className="flex items-center gap-2 bg-black/20 backdrop-blur-xs px-4 py-1.5 rounded-full border border-white/15 shadow-xs"
             >
-              <Check className="w-3.5 h-3.5 text-[#F5B860] shrink-0" />
+              <Check className="w-3.5 h-3.5 text-[#158b72] shrink-0" />
               <span>{perk}</span>
             </div>
           ))}
@@ -48,22 +65,22 @@ export default function CtaBanner() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           <a
             href={whatsappLink(
-              "Hi Siddhant School of Yoga, I would like to check course batch availability and register.",
+              "Hi Siddhant School of Yoga, I would like to ask about the early bird discount for upcoming batches.",
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white text-sm sm:text-base font-bold font-figtree px-8 py-4 rounded-full shadow-xl transition-all duration-300 hover:scale-105"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#0f6b57] hover:bg-[#158b72] text-white border border-white text-sm sm:text-base font-bold font-figtree px-8 py-4 rounded-full shadow-xl transition-all duration-300 hover:scale-105"
           >
             <FaWhatsapp className="w-5 h-5" />
-            <span>Chat on WhatsApp (+91 8449785755)</span>
+            <span>Ask About Early Bird Discount</span>
           </a>
 
           <a
-            href={`tel:${site.phone}`}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#f22924] text-sm sm:text-base font-bold font-figtree px-8 py-3.5 rounded-full backdrop-blur-xs transition-all duration-300 hover:scale-105"
+            href="#courses"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#158b72] text-sm sm:text-base font-bold font-figtree px-8 py-3.5 rounded-full backdrop-blur-xs transition-all duration-300 hover:scale-105"
           >
-            <PhoneCall className="w-4 h-4" />
-            <span>Call {site.phone}</span>
+            <ArrowRight className="w-4 h-4" />
+            <span>Enroll Now</span>
           </a>
         </div>
       </Container>

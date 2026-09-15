@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Sparkles, Quote, Award } from "lucide-react";
-import { Container } from "../ui";
+import { Container, Kicker, HeadingDivider } from "../ui";
 import { founder, whatsappLink } from "@/data/siteData";
 
 export default function Founder() {
@@ -80,7 +80,7 @@ export default function Founder() {
             </div>
 
             {/* Subtle floating badge */}
-            <div className="hidden sm:flex absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-[#FBDD8E] items-center gap-2 z-20">
+            <div className="hidden sm:flex absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-[#3aab92] items-center gap-2 z-20">
               <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
               <span className="text-xs font-bold text-[#1F1E1D] tracking-wide">
                 18+ Years Himalayan Sadhana &amp; Lineage
@@ -91,18 +91,17 @@ export default function Founder() {
           {/* Right: Founder Content */}
           <div className="lg:col-span-6 text-center lg:text-left">
             {/* Eyebrow */}
-            <span className="font-figtree text-xs font-semibold tracking-[0.2em] uppercase text-[#f22924] block mb-3">
-              FOUNDER &amp; SPIRITUAL DIRECTOR
-            </span>
+            <Kicker>Founder &amp; Spiritual Director</Kicker>
 
             {/* Main Heading */}
-            <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal text-[#1e2422] tracking-wide leading-[1.2] mb-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal text-[#1e2422] tracking-wide leading-[1.2] mb-1 lg:mb-2">
               Acharya Siddhant{" "}
             </h2>
+            <HeadingDivider center={false} className="mb-3" />
 
             {/* Pull-Quote Block */}
-            <div className="relative pl-5 py-4 border-l-4 border-[#f5b860] bg-[#FAF6EE] rounded-r-2xl mb-6 pr-4 shadow-2xs text-left">
-              <Quote className="w-5 h-5 text-[#f5b860]/80 mb-1" />
+            <div className="relative pl-5 py-4 border-l-4 border-[#158b72] bg-[#def4ee4d] rounded-r-2xl mb-6 pr-4 shadow-2xs text-left">
+              <Quote className="w-5 h-5 text-[#158b72]/80 mb-1" />
               <p className="font-figtree italic text-sm sm:text-base text-[#1e2422] leading-relaxed">
                 &ldquo;Yoga is a journey from darkness to light, from suffering
                 to bliss, from attachment to non-attachment, and from thoughts
@@ -110,14 +109,14 @@ export default function Founder() {
                 growth.&rdquo;
               </p>
               <div className="mt-2 text-right">
-                <span className="font-figtree text-xs font-semibold text-[#f22924] tracking-wider uppercase">
+                <span className="font-figtree text-xs font-semibold text-[#158b72] tracking-wider uppercase">
                   &mdash; Acharya Siddhant
                 </span>
               </div>
             </div>
 
             {/* Two Bio Paragraphs */}
-            <p className="font-figtree text-sm sm:text-base text-stone-600 leading-relaxed mb-4 font-light">
+            <p className="font-figtree text-sm sm:text-base text-stone-600 leading-relaxed mb-4 font-medium">
               Born and deeply steeped in the spiritual traditions of the
               Himalayas, Acharya Siddhant has dedicated over fifteen years to
               intensive sadhana, classical Hatha Yoga, Vedic philosophy, and
@@ -126,7 +125,7 @@ export default function Founder() {
               result-oriented teaching.
             </p>
 
-            <p className="font-figtree text-sm sm:text-base text-stone-600 leading-relaxed mb-8 font-light">
+            <p className="font-figtree text-sm sm:text-base text-stone-600 leading-relaxed mb-8 font-medium">
               He pioneered the world&apos;s first breathwork-centered Yoga
               Teacher Training curriculum and the signature 100-Day Daily
               Practice Schedule. At Siddhant School of Yoga, he personally
@@ -138,7 +137,7 @@ export default function Founder() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4">
               <a
                 href="#courses"
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#f22924] hover:bg-[#d45d44] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
               >
                 Enroll Now
               </a>
@@ -149,7 +148,7 @@ export default function Founder() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#FAF6EE] border-2 border-[#f22924] text-[#f22924] hover:bg-[#f22924] hover:text-white transition-all duration-300"
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#def4ee4d] border-2 border-[#158b72] text-[#158b72] hover:bg-[#158b72] hover:text-white transition-all duration-300"
               >
                 Chat With Master
               </a>

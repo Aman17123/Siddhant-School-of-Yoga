@@ -1,19 +1,23 @@
+import { Kicker, HeadingDivider } from "../ui";
+
 export default function WhatIsYttc() {
   return (
     <section
       id="what-is-yttc"
-      className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#EBE5D8]/70 font-figtree"
+      className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree"
     >
       <div className="w-[90%] max-w-[1440px] mx-auto">
         {/* Title & Subtitle (Centered, 90% width, matching site design system) */}
         <div className="text-center w-full mb-8 lg:mb-10">
-          <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] mb-2 drop-shadow-2xs">
+          <Kicker>YTTC Explained</Kicker>
+          <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] drop-shadow-2xs">
             What Is a Yoga Teacher Training Course (YTTC)?
           </h2>
+          <HeadingDivider />
         </div>
 
         {/* Explanatory Paragraphs (90% width, matching homepage font size) */}
-        <div className="text-center w-full space-y-3 text-sm sm:text-base text-stone-700 leading-relaxed font-normal mb-6">
+        <div className="text-center w-full space-y-3 text-sm sm:text-base text-stone-700 leading-relaxed font-medium mb-6">
           <p>
             A Yoga Teacher Training Course, usually written as YTTC, is a
             structured program that teaches you two things together: how to
@@ -46,15 +50,15 @@ export default function WhatIsYttc() {
         </div>
 
         {/* Quick Facts Table Box (90% width, slim & compact) */}
-        <div className="w-full rounded-2xl border border-[#EBE5D8] p-4 sm:p-5 bg-white shadow-2xs">
+        <div className="w-full rounded-2xl border border-[#c8ece2] p-4 sm:p-5 bg-white shadow-2xs">
           <h3 className="text-center font-belleza font-bold text-base sm:text-lg text-[#1e2422] mb-3">
             Yoga Teacher Training in Rishikesh — Quick Facts
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-0.5 text-xs sm:text-[13px]">
             {/* Item 1 */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#EBE5D8]/70 text-center sm:text-left">
-              <span className="text-[#f22924] font-medium shrink-0">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#c8ece2]/70 text-center sm:text-left">
+              <span className="text-[#158b72] font-medium shrink-0">
                 Course lengths
               </span>
               <span className="text-stone-800 font-normal sm:text-right">
@@ -63,8 +67,8 @@ export default function WhatIsYttc() {
             </div>
 
             {/* Item 2 */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#EBE5D8]/70 text-center sm:text-left">
-              <span className="text-[#f22924] font-medium shrink-0">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#c8ece2]/70 text-center sm:text-left">
+              <span className="text-[#158b72] font-medium shrink-0">
                 Location
               </span>
               <span className="text-stone-800 font-normal sm:text-right">
@@ -73,8 +77,8 @@ export default function WhatIsYttc() {
             </div>
 
             {/* Item 3 */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#EBE5D8]/70 text-center sm:text-left">
-              <span className="text-[#f22924] font-medium shrink-0">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#c8ece2]/70 text-center sm:text-left">
+              <span className="text-[#158b72] font-medium shrink-0">
                 Certification body
               </span>
               <span className="text-stone-800 font-normal sm:text-right">
@@ -83,8 +87,8 @@ export default function WhatIsYttc() {
             </div>
 
             {/* Item 4 */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#EBE5D8]/70 text-center sm:text-left">
-              <span className="text-[#f22924] font-medium shrink-0">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#c8ece2]/70 text-center sm:text-left">
+              <span className="text-[#158b72] font-medium shrink-0">
                 Lead teacher
               </span>
               <span className="text-stone-800 font-normal sm:text-right">
@@ -93,8 +97,8 @@ export default function WhatIsYttc() {
             </div>
 
             {/* Item 5 */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b md:border-b-0 border-[#EBE5D8]/70 text-center sm:text-left">
-              <span className="text-[#f22924] font-medium shrink-0">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b md:border-b-0 border-[#c8ece2]/70 text-center sm:text-left">
+              <span className="text-[#158b72] font-medium shrink-0">
                 What&apos;s included
               </span>
               <span className="text-stone-800 font-normal sm:text-right">
@@ -104,7 +108,7 @@ export default function WhatIsYttc() {
 
             {/* Item 6 */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 text-center sm:text-left">
-              <span className="text-[#f22924] font-medium shrink-0">
+              <span className="text-[#158b72] font-medium shrink-0">
                 After graduation
               </span>
               <span className="text-stone-800 font-normal sm:text-right">

@@ -9,19 +9,19 @@
 }
 
 @theme {
-  --color-terracotta: #e22924;
-  --color-siddhant-red: #e22924;
-  --color-siddhant-green: #109347;
-  --color-siddhant-gold: #f5b860;
-  --color-siddhant-cream: #faf6ee;
+  --color-terracotta: #158b72;
+  --color-siddhant-red: #158b72;
+  --color-siddhant-green: #158b72;
+  --color-siddhant-gold: #158b72;
+  --color-siddhant-cream: #def4ee;
   --color-siddhant-dark: #1e2422;
-  --color-vedic-green: #109347;
-  --color-forest: #109347;
-  --color-deep-forest: #0d6e35;
-  --color-coral: #f08c5c;
-  --color-marigold: #f5b860;
-  --color-sunshine: #fbdd8e;
-  --color-sunshine-bg: #faf6ee;
+  --color-vedic-green: #158b72;
+  --color-forest: #158b72;
+  --color-deep-forest: #0f6b57;
+  --color-coral: #3aab92;
+  --color-marigold: #158b72;
+  --color-sunshine: #3aab92;
+  --color-sunshine-bg: #def4ee;
   --font-belleza: var(--font-belleza), "Belleza", sans-serif;
   --font-figtree: var(--font-figtree), "Figtree", sans-serif;
   --font-fortune: var(--font-belleza), "Belleza", sans-serif;
@@ -29,28 +29,28 @@
 
 @layer base {
   :root {
-    --color-terracotta: #e22924;
-    --color-siddhant-red: #e22924;
-    --color-siddhant-green: #109347;
-    --color-siddhant-gold: #f5b860;
-    --color-vedic-green: #109347;
-    --color-coral: #f08c5c;
-    --color-marigold: #f5b860;
-    --color-sunshine: #fbdd8e;
-    --color-sunshine-bg: #faf6ee;
-    --background: #faf6ee;
+    --color-terracotta: #158b72;
+    --color-siddhant-red: #158b72;
+    --color-siddhant-green: #158b72;
+    --color-siddhant-gold: #158b72;
+    --color-vedic-green: #158b72;
+    --color-coral: #3aab92;
+    --color-marigold: #158b72;
+    --color-sunshine: #3aab92;
+    --color-sunshine-bg: #def4ee;
+    --background: #def4ee4d;
     --foreground: #1e2422;
-    --primary: #e22924;
-    --primary-light: #f08c5c;
-    --primary-dark: #c9241f;
-    --secondary: #109347;
-    --secondary-hover: #0d6e35;
-    --accent: #f5b860;
-    --accent-light: #fbdd8e;
-    --cream: #faf6ee;
-    --surface: #faf6ee;
+    --primary: #158b72;
+    --primary-light: #3aab92;
+    --primary-dark: #0f6b57;
+    --secondary: #158b72;
+    --secondary-hover: #0f6b57;
+    --accent: #158b72;
+    --accent-light: #3aab92;
+    --cream: #def4ee;
+    --surface: #def4ee;
     --surface-card: #ffffff;
-    --border: #ebe5d8;
+    --border: #c8ece2;
     --muted: #66675c;
     --dark: #1e2422;
     --dark-surface: #181716;
@@ -112,6 +112,9 @@
 }
 
 /* Theme Token Utility Classes */
+.bg {
+  background-color: #def4ee4d;
+}
 .bg-terracotta {
   background-color: var(--color-terracotta);
 }
@@ -122,19 +125,19 @@
   border-color: var(--color-terracotta);
 }
 .bg-vedic-green {
-  background-color: #109347;
+  background-color: #158b72;
 }
 .text-vedic-green {
-  color: #109347;
+  color: #158b72;
 }
 .border-vedic-green {
-  border-color: #109347;
+  border-color: #158b72;
 }
 .bg-siddhant-red {
-  background-color: #e22924;
+  background-color: #158b72;
 }
 .text-siddhant-red {
-  color: #e22924;
+  color: #158b72;
 }
 .hover\:bg-coral:hover {
   background-color: var(--color-coral);
@@ -323,7 +326,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #faf6ee;
+  background: #def4ee;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -333,4 +336,28 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-coral);
+}
+
+/* Thin scrollbar for small in-card scroll areas */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #158b72 transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #158b72;
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #0f6b57;
 }

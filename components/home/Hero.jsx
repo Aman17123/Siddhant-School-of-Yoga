@@ -19,35 +19,43 @@ export default function Hero() {
       {/* 1. Cinematic Background Image / Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-rishikesh-ashram.png"
+          src="/images/gallery_images/warrior-pose-yoga-ganges-river-rishikesh.webp"
           alt="Yoga teacher training meditation and spiritual practice overlooking the Ganges in Rishikesh, India"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center scale-105 transition-transform duration-1000"
+          className="object-cover object-center scale-105 transition-transform duration-1000 brightness-[0.68]"
         />
         {/* Atmospheric Cinematic Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/80 z-1" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/68 via-black/45 to-black/85 z-1" />
+        {/* Centered radial vignette for extra text contrast */}
+        <div
+          className="absolute inset-0 z-1"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 65% at 50% 45%, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0) 80%)",
+          }}
+        />
       </div>
 
       {/* 2. Hero Content (Centered, 1060px max-width) */}
       <div className="relative z-10 max-w-[1060px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 sm:py-20 lg:py-24 text-center text-white flex flex-col items-center">
         {/* Eyebrow with Sacred Flourishes */}
-        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-[#F5B860]/40 mb-4 sm:mb-5 shadow-lg max-w-[95%]">
-          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#F5B860] animate-pulse shrink-0" />
-          <span className="font-figtree text-[9px] sm:text-xs font-semibold uppercase tracking-[0.12em] sm:tracking-[0.24em] text-[#f2e6cb] truncate">
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-[#158b72]/40 mb-4 sm:mb-5 shadow-lg max-w-[95%]">
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#158b72] animate-pulse shrink-0" />
+          <span className="font-figtree text-[9px] sm:text-xs font-semibold uppercase tracking-[0.12em] sm:tracking-[0.24em] text-[#def4ee] truncate">
             Traditional Himalayan Ashram • Rishikesh, India
           </span>
         </div>
 
         {/* Hero Title (SEO h1) */}
         <h1 className="font-belleza text-[28px] xs:text-3xl sm:text-5xl md:text-6xl lg:text-[62px] font-normal tracking-wide text-white leading-[1.15] mb-3 drop-shadow-2xl">
-          <span className="text-[#F22924] font-normal">Siddhant</span> School of
+          <span className="text-[#158b72] font-normal">Siddhant</span> School of
           Yoga
         </h1>
 
         {/* Ornamental Lotus / Sacred Divider */}
-        <div className="my-2 sm:my-3 flex items-center justify-center gap-3 text-[#F5B860]/80">
+        <div className="my-2 sm:my-3 flex items-center justify-center gap-3 text-[#158b72]/80">
           <div className="w-12 sm:w-20 h-[1px] bg-gradient-to-r from-transparent to-[#FFFFFF]" />
           <svg
             className="w-5 h-5 sm:w-6 sm:h-6 text-[#ffffff] fill-current drop-shadow-sm"
@@ -75,7 +83,7 @@ export default function Hero() {
             {/* Stat 1 */}
             <div className="flex flex-col items-center justify-center px-1 sm:px-2 py-2.5 border-r border-b md:border-b-0 border-white/15">
               <span className="font-belleza text-2xl sm:text-3xl font-medium text-white tracking-tight leading-none">
-                5,000<span className="text-[#F5B860] font-light">+</span>
+                5,000<span className="text-[#158b72] font-light">+</span>
               </span>
               <span className="font-figtree text-[9px] sm:text-[11px] text-white/85 font-medium uppercase tracking-[0.06em] sm:tracking-[0.16em] mt-1.5 text-center">
                 Students Trained
@@ -85,7 +93,7 @@ export default function Hero() {
             {/* Stat 2 */}
             <div className="flex flex-col items-center justify-center px-1 sm:px-2 py-2.5 border-b md:border-b-0 md:border-r border-white/15">
               <span className="font-belleza text-2xl sm:text-3xl font-medium text-white tracking-tight leading-none">
-                15<span className="text-[#F5B860] font-light">+</span>
+                15<span className="text-[#158b72] font-light">+</span>
               </span>
               <span className="font-figtree text-[9px] sm:text-[11px] text-white/85 font-medium uppercase tracking-[0.06em] sm:tracking-[0.16em] mt-1.5 text-center">
                 Years of Lineage
@@ -95,7 +103,7 @@ export default function Hero() {
             {/* Stat 3 */}
             <div className="flex flex-col items-center justify-center px-1 sm:px-2 py-2.5 pt-3 md:pt-2.5 border-r border-white/15">
               <span className="font-belleza text-2xl sm:text-3xl font-medium text-white tracking-tight leading-none">
-                60<span className="text-[#F5B860] font-light">+</span>
+                60<span className="text-[#158b72] font-light">+</span>
               </span>
               <span className="font-figtree text-[9px] sm:text-[11px] text-white/85 font-medium uppercase tracking-[0.06em] sm:tracking-[0.16em] mt-1.5 text-center">
                 Countries Worldwide
@@ -110,8 +118,8 @@ export default function Hero() {
               className="flex flex-col items-center justify-center px-1 sm:px-2 py-2.5 pt-3 md:pt-2.5 group/stat transition-opacity cursor-pointer"
               title="View Siddhant School of Yoga 4.9 rating on Google (48 reviews)"
             >
-              <span className="font-belleza text-2xl sm:text-3xl font-medium text-white tracking-tight leading-none flex items-center gap-1 group-hover/stat:text-[#F5B860] transition-colors">
-                4.9<span className="text-[#F5B860] text-xl">★</span>
+              <span className="font-belleza text-2xl sm:text-3xl font-medium text-white tracking-tight leading-none flex items-center gap-1 group-hover/stat:text-[#158b72] transition-colors">
+                4.9<span className="text-[#158b72] text-xl">★</span>
               </span>
               <span className="font-figtree text-[9px] sm:text-[11px] text-white/85 font-medium uppercase tracking-[0.06em] sm:tracking-[0.16em] mt-1.5 group-hover/stat:text-white transition-colors text-center">
                 48 Google Reviews
@@ -127,7 +135,7 @@ export default function Hero() {
         className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-10 text-white/70 hover:text-white transition-colors flex flex-col items-center focus:outline-none animate-bounce"
         aria-label="Scroll down to explore"
       >
-        <span className="text-[10px] uppercase tracking-widest text-[#F5B860] font-semibold mb-1">
+        <span className="text-[10px] uppercase tracking-widest text-[#158b72] font-semibold mb-1">
           Explore
         </span>
         <ChevronDown className="w-5 h-5 text-white" />
