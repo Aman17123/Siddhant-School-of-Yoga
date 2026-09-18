@@ -231,7 +231,13 @@ export function ProgramCard({ program }) {
         {/* Title overlaid at bottom of photo */}
         <div className="absolute bottom-3 left-4 right-4 text-white z-10">
           <h3 className="text-xl sm:text-2xl font-belleza font-normal leading-tight tracking-wide drop-shadow-md">
-            {program.title}
+            {["100-hour-yoga-ttc", "200-hour-yoga-ttc"].includes(program.id) ? (
+              <Link href={`/${program.slug}`} className="hover:text-[#def4ee] transition-colors">
+                {program.title}
+              </Link>
+            ) : (
+              program.title
+            )}
           </h3>
         </div>
       </div>
@@ -261,16 +267,25 @@ export function ProgramCard({ program }) {
 
         {/* Two Action Buttons: Explore More & Enroll Now */}
         <div className="mt-auto pt-3 border-t border-stone-100 grid grid-cols-2 gap-2.5">
-          <a
-            href={whatsappLink(
-              `Namaste! I would like to explore the ${program.title} at Siddhant School of Yoga in Rishikesh.`,
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center text-center py-3 px-2 rounded-full text-xs font-semibold bg-[#def4ee4d] border-2 border-[#158b72] text-[#158b72] hover:bg-[#158b72] hover:text-white transition-all"
-          >
-            Explore More
-          </a>
+          {["100-hour-yoga-ttc", "200-hour-yoga-ttc"].includes(program.id) ? (
+            <Link
+              href={`/${program.slug}`}
+              className="inline-flex items-center justify-center text-center py-3 px-2 rounded-full text-xs font-semibold bg-[#def4ee4d] border-2 border-[#158b72] text-[#158b72] hover:bg-[#158b72] hover:text-white transition-all"
+            >
+              Explore More
+            </Link>
+          ) : (
+            <a
+              href={whatsappLink(
+                `Namaste! I would like to explore the ${program.title} at Siddhant School of Yoga in Rishikesh.`,
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center text-center py-3 px-2 rounded-full text-xs font-semibold bg-[#def4ee4d] border-2 border-[#158b72] text-[#158b72] hover:bg-[#158b72] hover:text-white transition-all"
+            >
+              Explore More
+            </a>
+          )}
           <a
             href="#contact"
             className="inline-flex items-center justify-center text-center py-3 px-2 rounded-full text-xs font-semibold bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-xs hover:shadow-md transition-all"

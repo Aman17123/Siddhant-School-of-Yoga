@@ -141,7 +141,7 @@ export default function Teachers() {
   return (
     <section
       id="teachers"
-      className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/80 relative overflow-hidden"
+      className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/80 relative overflow-hidden"
     >
       {/* Background accents */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#158b72]/10 rounded-full blur-3xl pointer-events-none" />

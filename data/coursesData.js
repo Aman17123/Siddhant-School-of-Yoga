@@ -1,13 +1,13 @@
 export const teacherTrainings = [
   {
     id: "100-hour-yoga-ttc",
-    slug: "100-hour-yoga-teacher-training-in-rishikesh",
+    slug: "100-hour-yoga-teacher-training-in-rishikesh-india",
     title: "100-Hour Yoga Teacher Training",
     subtitle: "Foundational Immersion & Alignment",
     level: "Beginner to Intermediate",
     duration: "14 Days",
     days: 14,
-    certification: "Yoga Alliance USA (100-Hour Continuing Education / Part 1)",
+    certification: "Siddhant School of Yoga Certificate of Completion",
     price: "From $300",
     priceRange: "$300 – $600",
     pricing: {
@@ -28,7 +28,7 @@ export const teacherTrainings = [
   },
   {
     id: "200-hour-yoga-ttc",
-    slug: "200-hour-yoga-teacher-training-in-rishikesh",
+    slug: "200-hour-yoga-teacher-training-in-rishikesh-india",
     title: "200-Hour Yoga Teacher Training",
     subtitle: "Complete Professional Certification",
     level: "All Levels (Beginner to Advanced)",
@@ -120,7 +120,7 @@ export const kundaliniTrainings = [
     level: "Beginner to Intermediate",
     duration: "14 Days",
     days: 14,
-    certification: "Yoga Alliance USA (Continuing Education / Part 1)",
+    certification: "Siddhant School of Yoga Certificate of Completion",
     price: "From $499",
     priceRange: "$499 – $699",
     pricing: {

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Container, Kicker, HeadingDivider } from "../ui";
 import { Utensils, Home, Wifi, Sun, Sparkles, Check } from "lucide-react";
 
-export default function ResidentialExperience() {
+export default function ResidentialExperience({ showSchedule = true }) {
   const schedule = [
     {
       time: "05:30 AM",
@@ -146,42 +146,44 @@ export default function ResidentialExperience() {
         </div>
 
         {/* Daily Schedule Timeline Strip */}
-        <div className="p-7 sm:p-10 rounded-3xl bg-white border border-[#c8ece2] shadow-sm font-figtree">
-          <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-[#c8ece2] text-center sm:text-left">
-            <div>
-              <span className="text-[11px] uppercase tracking-widest text-[#158b72] font-semibold block mb-1">
-                A Day in the Ashram
-              </span>
-              <h3 className="font-belleza text-2xl sm:text-3xl font-normal text-[#1e2422] tracking-wide">
-                Typical Daily Sadhana Schedule
-              </h3>
-            </div>
-            <span className="text-xs bg-[#def4ee4d] text-[#158b72] font-semibold px-4 py-2 rounded-full border border-[#158b72]/40">
-              Monday – Saturday
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {schedule.map((s, idx) => (
-              <div
-                key={idx}
-                className="p-4 rounded-2xl bg-[#def4ee4d] border border-[#c8ece2] flex flex-col justify-between text-center sm:text-left"
-              >
-                <div>
-                  <span className="text-xs font-bold text-[#158b72] tracking-wider block mb-1">
-                    {s.time}
-                  </span>
-                  <h4 className="font-belleza text-base font-normal text-[#1e2422] tracking-wide mb-1">
-                    {s.title}
-                  </h4>
-                  <p className="text-[15px] text-stone-600 font-medium leading-relaxed">
-                    {s.desc}
-                  </p>
-                </div>
+        {showSchedule && (
+          <div className="p-7 sm:p-10 rounded-3xl bg-white border border-[#c8ece2] shadow-sm font-figtree">
+            <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-[#c8ece2] text-center sm:text-left">
+              <div>
+                <span className="text-[11px] uppercase tracking-widest text-[#158b72] font-semibold block mb-1">
+                  A Day in the Ashram
+                </span>
+                <h3 className="font-belleza text-2xl sm:text-3xl font-normal text-[#1e2422] tracking-wide">
+                  Typical Daily Sadhana Schedule
+                </h3>
               </div>
-            ))}
+              <span className="text-xs bg-[#def4ee4d] text-[#158b72] font-semibold px-4 py-2 rounded-full border border-[#158b72]/40">
+                Monday – Saturday
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {schedule.map((s, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-2xl bg-[#def4ee4d] border border-[#c8ece2] flex flex-col justify-between text-center sm:text-left"
+                >
+                  <div>
+                    <span className="text-xs font-bold text-[#158b72] tracking-wider block mb-1">
+                      {s.time}
+                    </span>
+                    <h4 className="font-belleza text-base font-normal text-[#1e2422] tracking-wide mb-1">
+                      {s.title}
+                    </h4>
+                    <p className="text-[15px] text-stone-600 font-medium leading-relaxed">
+                      {s.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </Container>
     </section>
   );

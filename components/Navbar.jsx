@@ -25,9 +25,78 @@ import {
 } from "react-icons/fa";
 import { site, whatsappLink } from "@/data/siteData";
 
+const navMenu = [
+  { type: "link", key: "home", label: "Home", href: "/" },
+  {
+    type: "dropdown",
+    key: "about",
+    label: "About Us",
+    items: [
+      { title: "About Siddhant School", href: "/about-us" },
+      { title: "Our Yoga Teachers", href: "/yoga-teachers-rishikesh" },
+      { title: "About Acharya Siddhant Ji", href: "/siddhant-yoga-guru-rishikesh" },
+      { title: "Food & Accommodation", href: "/food-accommodation-rishikesh" },
+      { title: "About Rishikesh", href: "/rishikesh-yoga-capital-india" },
+      { title: "Privacy Policy", href: "/privacy-policy" },
+    ],
+  },
+  {
+    type: "dropdown",
+    key: "yttc",
+    label: "Yoga TTC",
+    items: [
+      { title: "Online 200 Hour Yoga TTC from Rishikesh", href: "/online-200-hour-yoga-ttc" },
+      { title: "100 Hour Yoga TTC in Rishikesh", href: "/100-hour-yoga-teacher-training-in-rishikesh-india" },
+      { title: "200 Hour Yoga TTC in Rishikesh", href: "/200-hour-yoga-teacher-training-in-rishikesh-india" },
+      { title: "300 Hour Yoga TTC in Rishikesh", href: "/300-hour-yoga-ttc-rishikesh" },
+      { title: "500 Hour Yoga TTC in Rishikesh", href: "/500-hour-yoga-ttc-rishikesh" },
+      { title: "500hrs Yoga & Ayurveda TTC in Rishikesh", href: "/500-hour-yoga-ayurveda-ttc" },
+    ],
+  },
+  {
+    type: "dropdown",
+    key: "kundalini",
+    label: "Kundalini Yoga",
+    items: [
+      { title: "100 Hour Kundalini Yoga TTC in Rishikesh", href: "/100-hour-kundalini-yoga-ttc" },
+      { title: "200 Hour Kundalini Yoga TTC in Rishikesh", href: "/200-hour-kundalini-yoga-ttc" },
+      { title: "300 Hour Kundalini Yoga TTC in Rishikesh", href: "/300-hour-kundalini-yoga-ttc" },
+      { title: "500 Hour Kundalini Yoga TTC in Rishikesh", href: "/500-hour-kundalini-yoga-ttc" },
+    ],
+  },
+  {
+    type: "dropdown",
+    key: "retreats",
+    label: "Yoga Retreat",
+    items: [
+      { title: "Yoga for Beginners in Rishikesh", href: "/yoga-for-beginners-rishikesh" },
+      { title: "Yoga & Meditation Retreat in Rishikesh", href: "/yoga-meditation-retreat" },
+      { title: "07 Days Yoga & Meditation Retreat in Rishikesh", href: "/7-day-yoga-meditation-retreat" },
+      { title: "Kundalini Retreat in Rishikesh", href: "/kundalini-retreat-rishikesh" },
+      { title: "Pranayama Retreat in Rishikesh", href: "/pranayama-retreat-rishikesh" },
+      { title: "Vipassana Retreat in Rishikesh", href: "/vipassana-retreat-rishikesh" },
+      { title: "Detox Retreat in Rishikesh", href: "/detox-retreat-rishikesh" },
+      { title: "3 Days Detox Retreat in Rishikesh", href: "/3-day-detox-retreat" },
+      { title: "Mantra Yoga Retreat in Rishikesh", href: "/mantra-yoga-meditation-retreat" },
+      { title: "Yoga & Ayurveda Retreat in Rishikesh", href: "/yoga-ayurveda-retreat" },
+      { title: "Meditation & Pranayama Retreat in Rishikesh", href: "/5-day-meditation-pranayama-retreat" },
+    ],
+  },
+  { type: "link", key: "gallery", label: "Gallery", href: "/gallery" },
+  { type: "link", key: "payment", label: "Payment", href: "/payment" },
+  {
+    type: "external",
+    key: "blog",
+    label: "Blogs",
+    href: "https://www.siddhantschoolofyoga.com/blog/",
+  },
+  { type: "link", key: "contact", label: "Contact Us", href: "/contact-us" },
+];
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileOpenGroup, setMobileOpenGroup] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const timeoutRef = useRef(null);
 
@@ -56,6 +125,13 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <>
@@ -86,7 +162,7 @@ export default function Navbar() {
               href={site.mapUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-white/95 hover:text-white transition-colors"
+              className="hidden md:flex items-center gap-2 text-white/95 hover:text-white transition-colors"
               title="Ashram Location in Rishikesh"
             >
               <div className="w-5 h-5 rounded-xs bg-white/15 flex items-center justify-center shrink-0">
@@ -98,11 +174,8 @@ export default function Navbar() {
                   className="brightness-0 invert"
                 />
               </div>
-              <span className="hidden md:inline">
+              <span>
                 Behind Shiva Temple, Veerbhadra, Rishikesh, Uttarakhand 249202
-              </span>
-              <span className="inline md:hidden text-[11px] truncate max-w-[170px] sm:max-w-none">
-                Rishikesh, India
               </span>
             </a>
           </div>
@@ -329,51 +402,42 @@ export default function Navbar() {
                   }`}
                 >
                   <div className="w-[350px] bg-white rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
-                    <div className="flex flex-col space-y-1">
+                    <div className="flex flex-col space-y-1.5">
                       {[
                         {
-                          title: "Siddhant School Of Yoga Rishikesh",
+                          title: "About Siddhant School",
                           href: "/about-us",
                         },
                         {
-                          title: "Our Yoga Teachers in Rishikesh",
+                          title: "Our Yoga Teachers",
                           href: "/yoga-teachers-rishikesh",
                         },
                         {
-                          title: "About Siddhant (Yoga Guru Rishikesh)",
+                          title: "About Acharya Siddhant Ji",
                           href: "/siddhant-yoga-guru-rishikesh",
                         },
                         {
-                          title: "Our Ideal / Master in Rishikesh",
-                          href: "/yoga-philosophy-rishikesh",
-                        },
-                        {
-                          title: "Food & Accommodation in Rishikesh",
+                          title: "Food & Accommodation",
                           href: "/food-accommodation-rishikesh",
                         },
                         {
-                          title: "About Rishikesh (Yoga Capital of India)",
+                          title: "About Rishikesh",
                           href: "/rishikesh-yoga-capital-india",
                         },
                         {
-                          title: "Our Yoga TTC Syllabus in Rishikesh",
-                          href: "/yoga-ttc-syllabus",
+                          title: "Privacy Policy",
+                          href: "/privacy-policy",
                         },
-                        {
-                          title: "Student Testimonials Rishikesh",
-                          href: "/testimonials",
-                        },
-                        { title: "Yoga FAQ Rishikesh", href: "/faq" },
                       ].map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[13.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
+                            <span className="text-[14.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
                               {item.title}
                             </span>
                           </div>
@@ -428,7 +492,7 @@ export default function Navbar() {
                   }`}
                 >
                   <div className="w-[380px] bg-white rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
-                    <div className="flex flex-col space-y-1">
+                    <div className="flex flex-col space-y-1.5">
                       {[
                         {
                           title: "Online 200 Hour Yoga TTC from Rishikesh",
@@ -436,11 +500,11 @@ export default function Navbar() {
                         },
                         {
                           title: "100 Hour Yoga TTC in Rishikesh",
-                          href: "/100-hour-yoga-ttc-rishikesh",
+                          href: "/100-hour-yoga-teacher-training-in-rishikesh-india",
                         },
                         {
                           title: "200 Hour Yoga TTC in Rishikesh",
-                          href: "/200-hour-yoga-ttc-rishikesh",
+                          href: "/200-hour-yoga-teacher-training-in-rishikesh-india",
                         },
                         {
                           title: "300 Hour Yoga TTC in Rishikesh",
@@ -459,11 +523,11 @@ export default function Navbar() {
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[13.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
+                            <span className="text-[14.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
                               {item.title}
                             </span>
                           </div>
@@ -520,7 +584,7 @@ export default function Navbar() {
                   }`}
                 >
                   <div className="w-[390px] bg-white rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
-                    <div className="flex flex-col space-y-1">
+                    <div className="flex flex-col space-y-1.5">
                       {[
                         {
                           title: "100 Hour Kundalini Yoga TTC in Rishikesh",
@@ -543,11 +607,11 @@ export default function Navbar() {
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[13.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
+                            <span className="text-[14.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
                               {item.title}
                             </span>
                           </div>
@@ -604,7 +668,7 @@ export default function Navbar() {
                   }`}
                 >
                   <div className="w-[410px] max-h-[78vh] overflow-y-auto bg-white rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 p-2.5">
-                    <div className="flex flex-col space-y-1">
+                    <div className="flex flex-col space-y-1.5">
                       {[
                         {
                           title: "Yoga for Beginners in Rishikesh",
@@ -656,11 +720,11 @@ export default function Navbar() {
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-1.5 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[13px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
+                            <span className="text-[14px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
                               {item.title}
                             </span>
                           </div>
@@ -672,100 +736,14 @@ export default function Navbar() {
                 </div>
               </li>
 
-              {/* Gallery (Smooth Dropdown) */}
-              <li
-                className="border-r border-[#c8ece2] relative group"
-                onMouseEnter={() => handleMouseEnter("gallery")}
-                onMouseLeave={handleMouseLeave}
-              >
-                <button
-                  type="button"
-                  onClick={() =>
-                    setActiveDropdown(
-                      activeDropdown === "gallery" ? null : "gallery",
-                    )
-                  }
-                  className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
-                    activeDropdown === "gallery"
-                      ? "text-[#158b72] font-bold"
-                      : "text-[#1F1E1D] hover:text-[#158b72]"
-                  }`}
-                >
-                  <span>Gallery</span>
-                  <ChevronDown
-                    strokeWidth={1.75}
-                    className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
-                      activeDropdown === "gallery"
-                        ? "rotate-180 text-[#158b72]"
-                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#158b72]"
-                    }`}
-                  />
-                </button>
-                <span
-                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-200 origin-center ${
-                    activeDropdown === "gallery"
-                      ? "scale-x-100"
-                      : "scale-x-0 group-hover:scale-x-100"
-                  }`}
-                />
-
-                <div
-                  className={`absolute top-full left-0 pt-2 z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                    activeDropdown === "gallery"
-                      ? "opacity-100 visible translate-y-0 scale-100 pointer-events-auto"
-                      : "opacity-0 invisible -translate-y-2 scale-[0.98] pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto"
-                  }`}
-                >
-                  <div className="w-[260px] bg-white rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
-                    <div className="flex flex-col space-y-1">
-                      {[
-                        { title: "Photo Gallery Rishikesh", href: "/gallery" },
-                        {
-                          title: "Video Gallery Rishikesh",
-                          href: "/video-gallery",
-                        },
-                      ].map((item) => (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
-                        >
-                          <div className="flex items-center gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[13.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
-                              {item.title}
-                            </span>
-                          </div>
-                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#158b72] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-              {/* Contact Us */}
+              {/* Gallery */}
               <li className="border-r border-[#c8ece2] relative group">
                 <Link
-                  href="/contact-us"
+                  href="/gallery"
                   className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
                 >
-                  Contact Us
+                  Gallery
                 </Link>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
-              </li>
-
-              {/* Blog */}
-              <li className="border-r border-[#c8ece2] relative group">
-                <a
-                  href="https://www.siddhantschoolofyoga.com/blog/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
-                >
-                  Blog
-                </a>
                 <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
               </li>
 
@@ -779,120 +757,181 @@ export default function Navbar() {
                 </Link>
                 <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
               </li>
+
+              {/* Blog */}
+              <li className="border-r border-[#c8ece2] relative group">
+                <a
+                  href="https://www.siddhantschoolofyoga.com/blog/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
+                >
+                  Blogs
+                </a>
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+              </li>
+
+              {/* Contact Us */}
+              <li className="border-r border-[#c8ece2] relative group">
+                <Link
+                  href="/contact-us"
+                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
+                >
+                  Contact Us
+                </Link>
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+              </li>
             </ul>
           </div>
         </nav>
 
-        {/* 4. SIMPLE MOBILE DROPDOWN MENU */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-[#c8ece2] shadow-2xl px-5 py-4 max-h-[80vh] overflow-y-auto">
-            <div className="flex flex-col space-y-3 text-sm font-semibold text-stone-800">
-              <Link
-                href="/"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 text-[#158b72] border-b border-[#def4ee]"
-              >
-                Home
-              </Link>
-              <Link
-                href="/about-us"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
-              >
-                About Siddhant School of Yoga Rishikesh
-              </Link>
-              <Link
-                href="/200-hour-yoga-ttc-rishikesh"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
-              >
-                Yoga Teacher Training in Rishikesh (100h / 200h / 300h / 500h)
-              </Link>
-              <Link
-                href="/200-hour-kundalini-yoga-ttc"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
-              >
-                Kundalini Yoga TTC in Rishikesh
-              </Link>
-              <Link
-                href="/yoga-meditation-retreat"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
-              >
-                Yoga Retreats in Rishikesh
-              </Link>
-              <Link
-                href="/gallery"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
-              >
-                Photo &amp; Video Gallery Rishikesh
-              </Link>
-              <Link
-                href="/testimonials"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
-              >
-                Reviews &amp; Testimonials
-              </Link>
-              <Link
-                href="/faq"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
-              >
-                Yoga FAQ Rishikesh
-              </Link>
-              <Link
-                href="/contact-us"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
-              >
-                Contact Us Rishikesh
-              </Link>
-              <a
-                href="https://www.siddhantschoolofyoga.com/blog/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
-              >
-                Yoga Blog Rishikesh
-              </a>
-              <Link
-                href="/payment"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-[#def4ee] hover:text-[#158b72] transition-colors"
-              >
-                Payment
-              </Link>
+        {/* 4. MOBILE SLIDE-IN DRAWER MENU */}
+        {/* Backdrop */}
+        <div
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+          className={`md:hidden fixed inset-0 bg-black/50 backdrop-blur-xs z-[60] transition-opacity duration-300 ${
+            mobileMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
+        />
 
-              {/* Mobile Action CTAs */}
-              <div className="pt-3 flex flex-col gap-2.5">
-                <a
-                  href={whatsappLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2.5 bg-[#158b72] hover:bg-[#0f6b57] text-white py-3 rounded-full font-marcellus font-bold tracking-wide shadow-xs transition-all"
-                >
-                  <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
-                    <FaWhatsapp className="w-3.5 h-3.5 text-white" />
+        {/* Drawer */}
+        <div
+          className={`md:hidden fixed top-0 left-0 h-full w-[85%] max-w-[340px] bg-white z-[70] shadow-2xl flex flex-col transition-transform duration-300 ease-out ${
+            mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation menu"
+        >
+          {/* Drawer Header */}
+          <div className="flex items-center justify-between px-5 py-4 border-b border-[#c8ece2]/80 shrink-0">
+            <Image
+              src="/logo/siddhant-logo.svg"
+              alt="Siddhant School of Yoga"
+              width={160}
+              height={40}
+              className="h-9 w-auto object-contain"
+            />
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label="Close navigation menu"
+              className="p-2 rounded-lg text-stone-600 hover:text-[#158b72] hover:bg-[#def4ee4d] transition-colors focus:outline-none"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Drawer Links (mirrors desktop nav: same items + nested dropdowns) */}
+          <div className="flex-1 overflow-y-auto px-3 py-4 scrollbar-thin">
+            <div className="flex flex-col text-[15px] font-semibold text-stone-800">
+              {navMenu.map((entry) => {
+                if (entry.type === "link") {
+                  return (
+                    <Link
+                      key={entry.key}
+                      href={entry.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`py-3 px-3 rounded-xl transition-colors ${
+                        entry.key === "home"
+                          ? "text-[#158b72] bg-[#def4ee4d]"
+                          : "hover:text-[#158b72] hover:bg-[#def4ee4d]"
+                      }`}
+                    >
+                      {entry.label}
+                    </Link>
+                  );
+                }
+
+                if (entry.type === "external") {
+                  return (
+                    <a
+                      key={entry.key}
+                      href={entry.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="py-3 px-3 rounded-xl hover:text-[#158b72] hover:bg-[#def4ee4d] transition-colors"
+                    >
+                      {entry.label}
+                    </a>
+                  );
+                }
+
+                // Dropdown group (accordion)
+                const isOpen = mobileOpenGroup === entry.key;
+                return (
+                  <div key={entry.key} className="border-b border-[#def4ee4d] last:border-b-0">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setMobileOpenGroup(isOpen ? null : entry.key)
+                      }
+                      className={`w-full flex items-center justify-between py-3 px-3 rounded-xl transition-colors ${
+                        isOpen
+                          ? "text-[#158b72] bg-[#def4ee4d]"
+                          : "hover:text-[#158b72] hover:bg-[#def4ee4d]"
+                      }`}
+                    >
+                      <span>{entry.label}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 shrink-0 transition-transform duration-200 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-out ${
+                        isOpen ? "max-h-[1200px]" : "max-h-0"
+                      }`}
+                    >
+                      <div className="pl-4 pb-2 pt-1 flex flex-col space-y-0.5">
+                        {entry.items.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="group/item flex items-center gap-2.5 py-2.5 px-3 rounded-lg text-[14px] font-medium text-stone-600 hover:text-[#158b72] hover:bg-[#def4ee4d] transition-colors"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
+                            <span>{item.title}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <span>Chat on WhatsApp (+91 84497 85755)</span>
-                </a>
-                <a
-                  href="#courses"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 bg-[#158b72] hover:bg-[#0f6b57] text-white py-3 rounded-full font-marcellus font-bold tracking-wide shadow-xs transition-all"
-                >
-                  <Sparkles className="w-4 h-4 text-white" />
-                  <span>Enroll in Yoga Alliance TTC</span>
-                  <ArrowUpRight className="w-4 h-4 text-white" />
-                </a>
-              </div>
+                );
+              })}
             </div>
           </div>
-        )}
+
+          {/* Drawer Action CTAs */}
+          <div className="px-5 py-4 border-t border-[#c8ece2]/80 shrink-0 flex flex-col gap-2.5">
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2.5 bg-white border-2 border-[#158b72] hover:bg-[#158b72] text-[#158b72] hover:text-white py-3 rounded-full font-marcellus font-bold tracking-wide transition-all text-sm group"
+            >
+              <div className="w-5 h-5 rounded-full bg-[#158b72]/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
+                <FaWhatsapp className="w-3.5 h-3.5 text-[#158b72] group-hover:text-white transition-colors" />
+              </div>
+              <span>Chat on WhatsApp</span>
+            </a>
+            <a
+              href="#courses"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-2 bg-[#158b72] hover:bg-[#0f6b57] text-white py-3 rounded-full font-marcellus font-bold tracking-wide shadow-xs transition-all text-sm"
+            >
+              <Sparkles className="w-4 h-4 text-white" />
+              <span>Enroll Now</span>
+              <ArrowUpRight className="w-4 h-4 text-white" />
+            </a>
+          </div>
+        </div>
       </header>
     </>
   );

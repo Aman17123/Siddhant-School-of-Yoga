@@ -43,11 +43,11 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1 pr-2">
             <Link href="/" className="inline-block mb-3.5">
               <Image
-                src="/logo/siddhant-logo.svg"
+                src="/images/siddhant-yoga-whote-logo.png"
                 alt="Siddhant School of Yoga"
                 width={200}
                 height={58}
-                className="h-10 sm:h-11 w-auto object-contain brightness-0 invert"
+                className="h-10 sm:h-11 w-auto object-contain"
               />
             </Link>
 
@@ -388,6 +388,21 @@ export default function Footer() {
               <ArrowUp className="w-3.5 h-3.5" />
             </button>
           </div>
+        </div>
+      </div>
+
+      {/* 4. CREDIT STRIP */}
+      <div className="relative z-10 border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 text-center text-[11px] font-figtree text-white/50">
+          <span>All Rights Reserved | Designed by </span>
+          <a
+            href="https://www.devbhoomiinfotech.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/70 hover:text-white transition-colors font-medium"
+          >
+            Devbhoomi Infotech
+          </a>
         </div>
       </div>
     </footer>

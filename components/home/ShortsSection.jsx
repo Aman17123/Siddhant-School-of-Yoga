@@ -81,10 +81,6 @@ export default function ShortsSection() {
 
         {/* Horizontal Scrolling Shorts Rail */}
         <div className="relative">
-          {/* Edge fades */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-12 bg-gradient-to-r from-white to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-12 bg-gradient-to-l from-white to-transparent z-10" />
-
           <div
             ref={scrollRef}
             className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-thin pb-3 -mx-4 px-4 sm:mx-0 sm:px-0"
@@ -95,7 +91,7 @@ export default function ShortsSection() {
                 type="button"
                 data-short-card
                 onClick={() => setActiveId(short.id)}
-                className="group relative shrink-0 w-[85%] sm:w-[46%] md:w-[31%] lg:w-[calc((100%-3rem)/4)] max-w-[280px] aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-[#c8ece2] shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 snap-start cursor-pointer"
+                className="group relative shrink-0 w-[62%] sm:w-[46%] md:w-[31%] lg:w-[calc((100%-3rem)/4)] max-w-[280px] aspect-[9/12] sm:aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-[#c8ece2] transition-all duration-300 hover:-translate-y-1 snap-start cursor-pointer"
               >
                 <Image
                   src={`https://i.ytimg.com/vi/${short.id}/hqdefault.jpg`}
