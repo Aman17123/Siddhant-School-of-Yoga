@@ -32,12 +32,12 @@ const navMenu = [
     key: "about",
     label: "About Us",
     items: [
-      { title: "About Siddhant School", href: "/about-us" },
-      { title: "Our Yoga Teachers", href: "/yoga-teachers-rishikesh" },
-      { title: "About Acharya Siddhant Ji", href: "/siddhant-yoga-guru-rishikesh" },
-      { title: "Food & Accommodation", href: "/food-accommodation-rishikesh" },
-      { title: "About Rishikesh", href: "/rishikesh-yoga-capital-india" },
-      { title: "Privacy Policy", href: "/privacy-policy" },
+      { title: "About Siddhant School", href: "/about" },
+      { title: "Our Yoga Teachers", href: "/teacher" },
+      { title: "About Acharya Siddhant Ji", href: "/yogi-siddhant-rishikesh-india" },
+      { title: "Food & Accommodation", href: "/food-accommodation" },
+      { title: "About Rishikesh", href: "/rishikesh-india" },
+      { title: "FAQs", href: "/faq" },
     ],
   },
   {
@@ -312,7 +312,7 @@ export default function Navbar() {
             {/* Right Column: Distinctive Siddhant Red Enroll CTA Button (3 cols) */}
             <div className="md:col-span-3 flex items-center justify-end pl-6 gap-3">
               <a
-                href="#courses"
+                href="/book-my-yoga-in-rishikesh-india"
                 className="inline-flex group relative items-center gap-3 px-5 py-2 rounded-full bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-[0_4px_16px_rgba(226,41,36,0.25)] hover:shadow-[0_6px_20px_rgba(201,36,31,0.35)] transition-all duration-300 transform hover:-translate-y-0.5 border border-white/20 hover:border-white/40 overflow-hidden"
                 title="Apply for Yoga Teacher Training Rishikesh"
               >
@@ -406,27 +406,27 @@ export default function Navbar() {
                       {[
                         {
                           title: "About Siddhant School",
-                          href: "/about-us",
+                          href: "/about",
                         },
                         {
                           title: "Our Yoga Teachers",
-                          href: "/yoga-teachers-rishikesh",
+                          href: "/teacher",
                         },
                         {
                           title: "About Acharya Siddhant Ji",
-                          href: "/siddhant-yoga-guru-rishikesh",
+                          href: "/yogi-siddhant-rishikesh-india",
                         },
                         {
                           title: "Food & Accommodation",
-                          href: "/food-accommodation-rishikesh",
+                          href: "/food-accommodation",
                         },
                         {
                           title: "About Rishikesh",
-                          href: "/rishikesh-yoga-capital-india",
+                          href: "/rishikesh-india",
                         },
                         {
-                          title: "Privacy Policy",
-                          href: "/privacy-policy",
+                          title: "FAQs",
+                          href: "/faq",
                         },
                       ].map((item) => (
                         <Link
@@ -922,7 +922,7 @@ export default function Navbar() {
               <span>Chat on WhatsApp</span>
             </a>
             <a
-              href="#courses"
+              href="/book-my-yoga-in-rishikesh-india"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center gap-2 bg-[#158b72] hover:bg-[#0f6b57] text-white py-3 rounded-full font-marcellus font-bold tracking-wide shadow-xs transition-all text-sm"
             >

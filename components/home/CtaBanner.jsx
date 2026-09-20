@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Container, ChakraDot } from "../ui";
 import { Sparkles, ArrowRight, Check } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
@@ -75,13 +76,13 @@ export default function CtaBanner() {
             <span>Ask About Early Bird Discount</span>
           </a>
 
-          <a
-            href="#courses"
+          <Link
+            href="/book-my-yoga-in-rishikesh-india"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#158b72] text-sm sm:text-base font-bold font-figtree px-8 py-3.5 rounded-full backdrop-blur-xs transition-all duration-300 hover:scale-105"
           >
             <ArrowRight className="w-4 h-4" />
             <span>Enroll Now</span>
-          </a>
+          </Link>
         </div>
       </Container>
     </section>

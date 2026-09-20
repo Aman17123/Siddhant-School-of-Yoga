@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Star, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { Container } from "../ui";
 
-export default function TrustStrip() {
+export default function TrustStrip({ bgClassName = "bg-[#def4ee4d]" }) {
   const trustItems = [
     {
       id: "yoga-alliance",
@@ -92,7 +92,7 @@ export default function TrustStrip() {
   };
 
   return (
-    <section className="bg-[#def4ee4d] py-4 sm:py-6 lg:py-8 border-b border-[#c8ece2] relative z-20 font-figtree">
+    <section className={`${bgClassName} py-4 sm:py-6 lg:py-8 border-b border-[#c8ece2] relative z-20 font-figtree`}>
       <Container>
         {/* ========================================================= */}
         {/* 1. PC & TABLET VIEW: Perfectly Aligned 4-Pillar Grid (md & lg) */}

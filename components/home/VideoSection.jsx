@@ -8,7 +8,7 @@ import { Container, SectionHeading } from "../ui";
 
 const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/c/SiddhantSchoolofYoga";
 
-const videos = [
+const defaultVideos = [
   {
     id: "w4_12OUppgM",
     title: "Siddhant School of Yoga Review: My Amazing 200 Hour Yoga Teacher Training in Rishikesh",
@@ -47,7 +47,12 @@ const videos = [
   },
 ];
 
-export default function VideoSection() {
+export default function VideoSection({
+  videos = defaultVideos,
+  eyebrow = "Video Gallery",
+  title = "Experience Life at Siddhant School of Yoga",
+  text = "Watch authentic moments from our Rishikesh ashram — student transformations, sacred Vedic mantra chanting, Kundalini energy awakening, and daily sadhana.",
+}) {
   const [activeVideoId, setActiveVideoId] = useState(null);
 
   // Close modal on Escape key
@@ -82,9 +87,9 @@ export default function VideoSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 lg:mb-10 items-center md:items-end text-center md:text-left">
           <SectionHeading
-            eyebrow="Video Gallery"
-            title="Experience Life at Siddhant School of Yoga"
-            text="Watch authentic moments from our Rishikesh ashram — student transformations, sacred Vedic mantra chanting, Kundalini energy awakening, and daily sadhana."
+            eyebrow={eyebrow}
+            title={title}
+            text={text}
             className="mb-0"
           />
 

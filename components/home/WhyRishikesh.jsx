@@ -53,18 +53,35 @@ export default function WhyRishikesh() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 font-figtree">
               {highlights.map((h, idx) => {
                 const Icon = h.icon;
+                const isFeatured = idx === 0;
                 return (
                   <div
                     key={idx}
-                    className="p-5 rounded-2xl bg-white border border-[#c8ece2] shadow-xs hover:shadow-md transition-shadow flex flex-col items-center sm:items-start text-center sm:text-left"
+                    className={`p-5 rounded-2xl border shadow-xs hover:shadow-md transition-shadow flex flex-col items-center sm:items-start text-center sm:text-left ${
+                      isFeatured
+                        ? "bg-gradient-to-br from-[#158b72] via-[#0f6b57] to-[#0f6b57] border-[#158b72]"
+                        : "bg-white border-[#c8ece2]"
+                    }`}
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#158b72]/10 text-[#158b72] flex items-center justify-center mb-3 mx-auto sm:mx-0">
-                      <Icon className="w-5 h-5 text-[#158b72]" />
+                    <div
+                      className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 mx-auto sm:mx-0 ${
+                        isFeatured ? "bg-white/15" : "bg-[#158b72]/10"
+                      }`}
+                    >
+                      <Icon className={`w-5 h-5 ${isFeatured ? "text-white" : "text-[#158b72]"}`} />
                     </div>
-                    <h4 className="font-belleza text-lg font-normal text-[#158b72] tracking-wide mb-1.5">
+                    <h4
+                      className={`font-belleza text-lg font-normal tracking-wide mb-1.5 ${
+                        isFeatured ? "text-white" : "text-[#158b72]"
+                      }`}
+                    >
                       {h.title}
                     </h4>
-                    <p className="text-[15px] text-stone-600 leading-relaxed font-medium">
+                    <p
+                      className={`text-[15px] leading-relaxed font-medium ${
+                        isFeatured ? "text-white/85" : "text-stone-600"
+                      }`}
+                    >
                       {h.desc}
                     </p>
                   </div>

@@ -63,7 +63,7 @@ export const teachers = [
     exp: "18+ Years Sadhana",
     specialty: "Yoga Philosophy, Meditation & Pranayama",
     image: "/images/teachers/siddhant-ji-yoga-teacher-rishikesh.webp",
-    bio: "Deeply steeped in Himalayan sadhana, bridging classical scriptures, Patanjali Sutras, and authentic Kumbhaka breath science.",
+    bio: "Siddhant left home after completing his B.Sc. in search of true knowledge, spending years training with Sadhus and Yogis across the Himalayas and all of India. Under their guidance, he mastered many forms of yoga — Hatha, Kundalini, Mantra, Kriya and more — along with Pranayama, Bandhas, Mudras, yoga philosophy and deep meditation practice.\n\nHe later founded Siddhant School of Yoga in Rishikesh, where he now guides students personally in yoga philosophy, meditation and pranayama. His teaching builds real understanding and gratitude, helping seekers from every part of the world transform their practice and discover their true selves. His personal guidance has helped countless students build lasting discipline and quiet confidence in their own daily practice.",
   },
   {
     name: "Manpreet",
@@ -71,7 +71,7 @@ export const teachers = [
     exp: "15+ Years Practice",
     specialty: "Meditation, Mantra Chanting & Ayurveda",
     image: "/images/teachers/manpreet-yoga-teacher-rishikesh.webp",
-    bio: "Devoted yoga and spiritual practitioner for over 15 years, specializing in Ayurveda, Naturopathy, and Mantra Chanting.",
+    bio: "Manpreet is a dedicated yoga and spiritual practitioner with 15 years of experience in Ayurveda, Naturopathy and yoga anatomy. She stays closely engaged with the spiritual and yogic traditions of Indian culture, and is known among students and staff for being practical, punctual and deeply sincere in her work.\n\nAs a skilled teacher of meditation and mantra chanting, she helps students slow down, breathe correctly and find real stillness of mind. Her classes blend traditional wisdom with a warm, approachable teaching style, making even complex spiritual practices feel simple, achievable and personally meaningful. Students often describe her sessions as calming, grounding and genuinely transformative for both body and mind, session after session.",
   },
   {
     name: "Sandeep",
@@ -79,7 +79,7 @@ export const teachers = [
     exp: "5+ Years Experience",
     specialty: "Mantra Science, Fire Ceremonies & Hatha",
     image: "/images/teachers/sandeep-yoga-teacher-rishikesh.webp",
-    bio: "Specialized in Sanskrit, Vedas, Gita, Upanishads & conducting sacred fire ceremonies (Yajnas) with body alignment.",
+    bio: "Sandeep lives in Rishikesh and has a special interest in Sanskrit and sacred texts such as the Gita, the Upanishads and the Yoga Sutras, which makes him especially skilled in mantra science. He also conducts traditional fire ceremonies (Yajnas) as a meaningful part of his teaching practice.\n\nWith five years of experience in Hatha Yoga and Ashtanga Vinyasa, he brings a strong, practical understanding of body alignment and adjustment to every class. He is also a capable teacher of Pranayama and meditation, always aiming to share deep knowledge in a genuinely yogic way. His classes are known for their calm, grounded energy and clear, step-by-step guidance for every single student who joins.",
   },
   {
     name: "Hemlata",
@@ -87,7 +87,7 @@ export const teachers = [
     exp: "Lead Physiotherapist",
     specialty: "Yoga Anatomy, Biomechanics & Therapy",
     image: "/images/teachers/hemlata-yoga-anatomy-teacher-rishikesh.webp",
-    bio: "Professional physiotherapist in Rishikesh with command over human anatomy, physiology, and therapeutic yogic biomechanics.",
+    bio: "Hemlata works as a qualified physiotherapist at a reputed hospital in Rishikesh, and has worked hard to become a specialist Yoga Anatomy teacher — a subject that is genuinely challenging to teach well. With a strong command of human anatomy and physiology, she brings real medical understanding into every class.\n\nShe teaches in a clear, digital and practical way, so students can get their yoga anatomy questions properly answered. She is kind and disciplined, and because she works in both medicine and yoga, she helps students understand health from a truly yogic perspective. Her calm, patient approach makes even complicated anatomy topics feel clear and genuinely useful for daily practice.",
   },
   {
     name: "Vishal",
@@ -95,7 +95,7 @@ export const teachers = [
     exp: "Master in Yogic Science",
     specialty: "Hatha Yoga, Ashtanga & Iyengar Yoga",
     image: "/images/teachers/vishal-yoga-teacher-rishikesh.webp",
-    bio: "Born in Rishikesh with a Master's Degree in Yogic Science from Uttarakhand Sanskrit University, expert in traditional alignment.",
+    bio: "Born in the holy city of Rishikesh, Vishal holds a Master's Degree in Yogic Science from Uttarakhand Sanskrit University and has taught Hatha, Iyengar and Ashtanga Yoga for many years. He also runs his own yoga center in Rishikesh town, teaching local Indian students with genuine dedication and a strong focus on correct, safe alignment.\n\nVishal has been part of our school for a long time, valued for his ability to improvise and his sound, practical understanding of both Hatha and Ashtanga Yoga. His classes combine classical alignment with a natural teaching flow that puts every student at ease, whatever their starting level of experience or background in yoga practice.",
   },
   {
     name: "Varun",
@@ -103,7 +103,7 @@ export const teachers = [
     exp: "Certified RYT Instructor",
     specialty: "Ashtanga Vinyasa, Pranayama & Asana Flow",
     image: "/images/teachers/varun-yoga-teacher-rishikesh.webp",
-    bio: "Born in Rishikesh Himalayas, dedicated to living a traditional yogic lifestyle with dynamic Ashtanga flow and Pranayama.",
+    bio: "Varun was born in the Rishikesh Himalayas, and after completing his graduation, stepped into the world of yoga — first with a one-year diploma course, and later a 200-hour YTTC. He has always tried to help others since childhood, and yoga gave that instinct real, focused direction and a genuine sense of purpose.\n\nFor the last three years, Varun has lived a genuinely yogic lifestyle, practicing Pranayama, meditation, Hatha Yoga and his personal favorite, Ashtanga Yoga, every single day. His goal is simple: to keep gaining knowledge of yoga and share it with everyone he teaches, with the same sincerity and quiet discipline he brings to his own daily practice.",
   },
   {
     name: "Kokil Nath",
@@ -111,7 +111,7 @@ export const teachers = [
     exp: "Dedicated Yogi & Seeker",
     specialty: "Asana, Pranayama & Spiritual Inward Growth",
     image: "/images/teachers/kokil-nath-yoga-teacher-rishikesh.webp",
-    bio: "From Assam, Kokil brings an honest, authentic seeker's attitude to Asana, Pranayama, Meditation, and yogic philosophy.",
+    bio: "Kokil comes from Assam, in the north-east of India, and is not only a yoga teacher but a genuine seeker of truth. He holds a sound knowledge of Asana, Pranayama, Meditation and yoga philosophy, built through years of honest, personal practice, reflection and steady inward growth.\n\nBecause of his seeking nature, Kokil remains honest, authentic and truthful to both himself and his students. He teaches at Siddhant School of Yoga while continuing his own yoga and spiritual growth, in an environment that genuinely supports students and teachers alike. His quiet, thoughtful presence makes him easy to learn from, both inside and outside the classroom, and students value his calm, honest guidance.",
   },
   {
     name: "Chittaranjan",
@@ -119,7 +119,7 @@ export const teachers = [
     exp: "Senior Pranayama Master",
     specialty: "Pranayama, Bandhas, Mudras & Shatkarmas",
     image: "/images/teachers/chittaranjan-yoga-teacher-rishikesh.webp",
-    bio: "Expert in authentic Kumbhaka, yogic locks, mudras, shatkarma purification methods, Ashtanga, and classical Hatha Yoga.",
+    bio: "Chittaranjan is hardworking, sincere, confident and enthusiastic in everything he teaches. His classes cover Pranayama, yogic locks, yogic gestures and purification methods, alongside Ashtanga Yoga and classical Hatha Yoga, all taught with real care, patience and close, thoughtful attention to every small detail and movement.\n\nWith strong willpower and a genuine love of learning new things, he believes deeply in teamwork and adapts easily to any environment. He brings strong problem-solving skills to his teaching and always welcomes a new challenge — guided simply by dedication and perfection. Students appreciate his patience and the steady, quiet confidence he brings into every single class he leads and teaches, week after week.",
   },
 ];
 

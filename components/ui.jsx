@@ -286,12 +286,12 @@ export function ProgramCard({ program }) {
               Explore More
             </a>
           )}
-          <a
-            href="#contact"
+          <Link
+            href="/book-my-yoga-in-rishikesh-india"
             className="inline-flex items-center justify-center text-center py-3 px-2 rounded-full text-xs font-semibold bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-xs hover:shadow-md transition-all"
           >
             Enroll Now
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -135,12 +135,12 @@ export default function Founder() {
 
             {/* Two CTA Buttons Side by Side */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4">
-              <a
-                href="#courses"
+              <Link
+                href="/book-my-yoga-in-rishikesh-india"
                 className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
               >
                 Enroll Now
-              </a>
+              </Link>
 
               <a
                 href={whatsappLink(
