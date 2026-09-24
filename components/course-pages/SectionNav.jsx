@@ -64,7 +64,7 @@ export default function SectionNav({ items, showAfterPx = 520 }) {
                 onClick={() => handleClick(item.id)}
                 className={`rounded-full px-4 xl:px-5 py-2 text-[13px] xl:text-sm font-figtree font-semibold whitespace-nowrap transition-colors cursor-pointer ${
                   isActive
-                    ? "bg-[#158b72] text-white"
+                    ? "bg-[#1c3b2b] text-white"
                     : "text-white/70 hover:text-white"
                 }`}
               >

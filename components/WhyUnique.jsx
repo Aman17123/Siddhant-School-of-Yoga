@@ -57,7 +57,7 @@ export default function WhyUnique() {
     <section id="unique" className="py-14 sm:py-16 lg:py-20 bg-card/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
           <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] mb-3">
             What Makes Us Unique
           </h2>

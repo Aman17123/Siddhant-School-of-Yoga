@@ -101,7 +101,7 @@ export default function CourseGallerySection({
                 />
                 <div className="absolute inset-0 bg-black/20" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 text-[#158b72] flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#158b72] group-hover:text-white transition-all duration-300 pl-0.5">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 text-[#1c3b2b] flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#1c3b2b] group-hover:text-white transition-all duration-300 pl-0.5">
                     <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
                   </div>
                 </div>
@@ -129,7 +129,7 @@ export default function CourseGallerySection({
                       onClick={() => setLightboxOpen(true)}
                       className="absolute inset-0 bg-black/50 hover:bg-black/60 transition-colors flex items-center justify-center cursor-pointer"
                     >
-                      <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-1 sm:px-3.5 sm:py-2 rounded-full bg-white text-[#1e2422] text-[11px] sm:text-sm font-semibold shadow-lg">
+                      <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-1 sm:px-3.5 sm:py-2 rounded-full bg-[#fdfbf7] text-[#1e2422] text-[11px] sm:text-sm font-semibold shadow-lg">
                         <Images className="w-3 h-3 sm:w-4 sm:h-4" />
                         View All
                       </span>
@@ -153,7 +153,7 @@ export default function CourseGallerySection({
             <button
               onClick={() => setVideoOpen(false)}
               aria-label="Close video player"
-              className="absolute top-3 right-3 z-20 w-10 h-10 rounded-full bg-black/70 hover:bg-[#158b72] text-white flex items-center justify-center transition-colors border border-white/20"
+              className="absolute top-3 right-3 z-20 w-10 h-10 rounded-full bg-black/70 hover:bg-[#1c3b2b] text-white flex items-center justify-center transition-colors border border-white/20"
             >
               <X className="w-5 h-5" />
             </button>
@@ -183,7 +183,7 @@ export default function CourseGallerySection({
             <button
               onClick={() => setLightboxOpen(false)}
               aria-label="Close gallery"
-              className="absolute top-3 right-3 z-20 w-10 h-10 rounded-full bg-black/70 hover:bg-[#158b72] text-white flex items-center justify-center transition-colors border border-white/20"
+              className="absolute top-3 right-3 z-20 w-10 h-10 rounded-full bg-black/70 hover:bg-[#1c3b2b] text-white flex items-center justify-center transition-colors border border-white/20"
             >
               <X className="w-5 h-5" />
             </button>

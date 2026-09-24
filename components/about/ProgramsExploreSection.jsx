@@ -26,7 +26,7 @@ const programs = [
 
 export default function ProgramsExploreSection() {
   return (
-    <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+    <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
       <Container>
         <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
           <Kicker>Find Your Path</Kicker>
@@ -56,7 +56,7 @@ export default function ProgramsExploreSection() {
                 {p.label}
               </span>
 
-              <span className="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 text-white flex items-center justify-center transition-all duration-300 group-hover:bg-[#158b72] group-hover:border-[#158b72] group-hover:rotate-45">
+              <span className="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 text-white flex items-center justify-center transition-all duration-300 group-hover:bg-[#1c3b2b] group-hover:border-[#1c3b2b] group-hover:rotate-45">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
 

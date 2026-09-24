@@ -32,7 +32,7 @@ const roomTypes = [
   {
     title: "Triple Share Room",
     tag: "Most Economical",
-    image: "/images/gallery_images/food-gallery3.webp",
+    image: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
     alt: "Triple share room accommodation at Siddhant School of Yoga in Rishikesh",
     desc: "Three single beds in one comfortable room — a great way to meet fellow students and build lasting friendships during your course.",
     features: [
@@ -45,7 +45,7 @@ const roomTypes = [
   {
     title: "Double Share Room",
     tag: "Budget Friendly",
-    image: "/images/gallery_images/food-gallery4.webp",
+    image: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
     alt: "Double share room accommodation at Siddhant School of Yoga in Rishikesh",
     desc: "A comfortable twin-sharing room, ideal if you're traveling with a friend or would like a roommate during your training.",
     features: [
@@ -58,7 +58,7 @@ const roomTypes = [
   {
     title: "Private Room",
     tag: "Most Popular",
-    image: "/images/gallery_images/food-gallery3.webp",
+    image: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
     alt: "Private room accommodation at Siddhant School of Yoga in Rishikesh",
     desc: "Your own quiet space to rest and reflect after each day of practice — ideal for students who prefer privacy during their training.",
     features: [
@@ -99,15 +99,15 @@ const mealDetails = [
     icon: Coffee,
     title: "Morning Herbal Tea",
     time: "6:00 AM",
-    image: "/images/gallery_images/food-gallery3.webp",
-    alt: "Morning herbal tea served at Siddhant School of Yoga in Rishikesh",
+    image: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+    alt: "Ashram dining hall where morning herbal tea is served at Siddhant School of Yoga in Rishikesh",
     desc: "Just after waking up, your muscles and mind are not yet in action mode — they need something gentle to boost themselves, and that's where hot water or herbal tea helps. At Siddhant School of Yoga, morning tea is served at 6 AM: herbal tea, green tea without caffeine, or lemon-ginger tea with honey. We do not serve black coffee, black tea, or caffeinated green tea, keeping your first sip in line with a true sattvic, yogic morning.",
   },
   {
     icon: Sunrise,
     title: "Breakfast",
     time: "8:30 – 9:00 AM",
-    image: "/images/gallery_images/food-gallery4.webp",
+    image: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
     alt: "Wholesome breakfast served at Siddhant School of Yoga in Rishikesh",
     desc: "A proper breakfast matters for every yoga practitioner, and since we serve a light dinner, breakfast here is generous. Expect sprouts and fresh seasonal fruit salad, brown bread with mango, guava or pineapple jam, and butter or peanut butter. Our daily-changing Indian spread includes paratha, poha, pancakes, upma, aloo puri, dalia, oats, cornflakes, stuffed bread and halwa chana, alongside mango, banana or papaya shakes. We stay genuinely conscious about your food — nourishing, varied and true to authentic yoga education.",
   },
@@ -115,7 +115,7 @@ const mealDetails = [
     icon: Sun,
     title: "Lunch",
     time: "1:00 – 2:00 PM",
-    image: "/images/gallery_images/food-gallery3.webp",
+    image: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
     alt: "Vegetarian lunch thali served at Siddhant School of Yoga in Rishikesh",
     desc: "Lunch is served between 1 PM and 2 PM, with rice, a variety of dal, green mixed boiled vegetables, curry and green mix curry, yogurt, papad, Indian pickle and green salad, chapati, matar mushroom, matar paneer and more — depending on weather and seasonal availability. Once a week, we also serve a traditional Indian sweet as a treat. Every dish is prepared fresh, balancing taste and nutrition so you leave the table satisfied but never heavy for your afternoon practice.",
   },
@@ -123,40 +123,40 @@ const mealDetails = [
     icon: Sunset,
     title: "Evening Tea",
     time: "3:30 – 4:30 PM",
-    image: "/images/gallery_images/food-gallery4.webp",
-    alt: "Evening herbal tea served at Siddhant School of Yoga in Rishikesh",
+    image: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
+    alt: "Evening tea and a light snack served at Siddhant School of Yoga in Rishikesh",
     desc: "Evening tea is served between 3:30 and 4:30 PM — herbal tea, lemon-ginger tea or honey tea, and occasionally milk tea when available, though it isn't compulsory since it can sometimes upset digestion. Black coffee isn't part of our official offering either, as it isn't the healthiest habit for a yoga practitioner; if you truly want it, you're welcome to arrange your own. This light pause between afternoon sessions keeps you gently refreshed without disturbing your evening practice or digestion before dinner.",
   },
   {
     icon: Moon,
     title: "Dinner",
     time: "7:30 PM",
-    image: "/images/gallery_images/food-gallery3.webp",
+    image: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
     alt: "Simple sattvic dinner served at Siddhant School of Yoga in Rishikesh",
     desc: "Dinner here is kept simple and easy to digest. A fresh soup — corn, beetroot, pumpkin-tomato, mushroom, mixed vegetable, or hot and sour — is always served just before the meal, followed by rice, dal, chapati and curry. We skip pickle, papad, curd and salad at dinner, since Indian weather, yoga and Ayurveda all agree they don't suit an evening meal. The result is food that's genuinely healthy, tasty and nutritious, letting your body rest and digest well through the night.",
   },
 ];
 
 const foodGalleryImages = [
-  { src: "/images/gallery_images/food-gallery3.webp", alt: "Freshly prepared sattvic meal at Siddhant School of Yoga", caption: "Sattvic Meals" },
-  { src: "/images/gallery_images/food-gallery4.webp", alt: "Ashram dining and sattvic food at Siddhant School of Yoga", caption: "Ashram Dining" },
-  { src: "/images/gallery_images/yoga-asana-practice-riverside-rishikesh.webp", alt: "Yoga practice on the Ganges riverbank in Rishikesh", caption: "Riverside Practice" },
-  { src: "/images/gallery_images/havan-fire-ritual-yoga-ceremony-rishikesh.webp", alt: "Sacred Vedic havan fire ritual in Rishikesh", caption: "Sacred Fire Ritual" },
-  { src: "/images/gallery_images/yoga-philosophy-class-siddhant-school-of-yoga-rishikesh.webp", alt: "Yoga philosophy class at Siddhant School of Yoga", caption: "Philosophy Satsang" },
-  { src: "/images/gallery_images/yoga-retreat-himalayan-mountains-rishikesh.webp", alt: "Ashram in the Himalayan foothills of Rishikesh", caption: "Himalayan Ashram" },
-  { src: "/images/gallery_images/yoga-students-temple-visit-rishikesh-india.webp", alt: "Yoga students on a temple excursion in Rishikesh", caption: "Temple Excursion" },
-  { src: "/images/gallery_images/warrior-pose-yoga-ganges-river-rishikesh.webp", alt: "Warrior pose yoga practice by the Ganges river in Rishikesh", caption: "Ganges Sadhana" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg", alt: "Freshly prepared sattvic meal at Siddhant School of Yoga", caption: "Sattvic Meals" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg", alt: "Ashram dining hall and kitchen at Siddhant School of Yoga", caption: "Ashram Dining" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg", alt: "Fresh juice and lunch tray at Siddhant School of Yoga", caption: "Fresh Juice & Tea" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg", alt: "Vegetarian pulao and sabzi lunch at Siddhant School of Yoga", caption: "Vegetarian Thali" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg", alt: "Traditional thali served on a banana leaf at Siddhant School of Yoga", caption: "Traditional Thali" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg", alt: "Ashram kitchen at Siddhant School of Yoga", caption: "Ashram Kitchen" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg", alt: "Wholesome sattvic meal at Siddhant School of Yoga", caption: "Wholesome Meals" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg", alt: "Dining hall meal at Siddhant School of Yoga", caption: "Dining Hall" },
 ];
 
 const accommodationGalleryImages = [
-  { src: "/images/gallery_images/food-gallery3.webp", alt: "Comfortable ashram room at Siddhant School of Yoga", caption: "Ashram Rooms" },
-  { src: "/images/gallery_images/food-gallery4.webp", alt: "Peaceful ashram surroundings at Siddhant School of Yoga", caption: "Peaceful Surroundings" },
-  { src: "/images/gallery_images/yoga-retreat-himalayan-mountains-rishikesh.webp", alt: "Himalayan mountain views from the ashram in Rishikesh", caption: "Mountain Views" },
-  { src: "/images/gallery_images/yoga-philosophy-class-siddhant-school-of-yoga-rishikesh.webp", alt: "Rooftop yoga shala at Siddhant School of Yoga", caption: "Rooftop Yoga Shala" },
-  { src: "/images/gallery_images/yoga-asana-practice-riverside-rishikesh.webp", alt: "Garden courtyard at the ashram in Rishikesh", caption: "Garden Courtyard" },
-  { src: "/images/gallery_images/yoga-students-temple-visit-rishikesh-india.webp", alt: "Ashram life at Siddhant School of Yoga in Rishikesh", caption: "Ashram Life" },
-  { src: "/images/gallery_images/havan-fire-ritual-yoga-ceremony-rishikesh.webp", alt: "Quiet evening corners of the ashram in Rishikesh", caption: "Quiet Corners" },
-  { src: "/images/gallery_images/warrior-pose-yoga-ganges-river-rishikesh.webp", alt: "Evening calm by the Ganges near the ashram in Rishikesh", caption: "Evening Calm" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg", alt: "Attached bathroom at Siddhant School of Yoga", caption: "Attached Bathroom" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg", alt: "Washroom with 24/7 hot water shower at Siddhant School of Yoga", caption: "Hot Water Shower" },
+  { src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg", alt: "Ashram building exterior at Siddhant School of Yoga in Rishikesh", caption: "Ashram Exterior" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png", alt: "Room bed and wardrobe at Siddhant School of Yoga", caption: "Comfortable Rooms" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg", alt: "Triple sharing room at the ashram in Rishikesh", caption: "Triple Sharing" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg", alt: "Twin sharing room at Siddhant School of Yoga in Rishikesh", caption: "Twin Sharing" },
+  { src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg", alt: "Private room accommodation at Siddhant School of Yoga", caption: "Private Rooms" },
+  { src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg", alt: "Ashram grounds at Siddhant School of Yoga in Rishikesh", caption: "Ashram Grounds" },
 ];
 
 const facilities = [
@@ -189,10 +189,10 @@ const faqs = [
 
 export default function FoodAccommodationPage() {
   return (
-    <div className="flex flex-col min-h-screen relative selection:bg-[#158b72]/30 selection:text-[#0f6b57]">
+    <div className="flex flex-col min-h-screen relative selection:bg-[#1c3b2b]/30 selection:text-[#142b1e]">
       <Navbar />
 
-      <main className="flex-grow bg-white">
+      <main className="flex-grow bg-[#fdfbf7]">
         {/* Hero Banner */}
         <section className="relative min-h-fit sm:min-h-[500px] lg:h-[70vh] lg:max-h-[740px] w-full flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
@@ -211,17 +211,17 @@ export default function FoodAccommodationPage() {
               <div className="w-full lg:w-1/2 max-w-xl text-left">
                 <nav
                   aria-label="Breadcrumb"
-                  className="flex items-center justify-start gap-1.5 mb-3 text-xs sm:text-sm font-figtree font-medium text-[#0f6b57]/80"
+                  className="flex items-center justify-start gap-1.5 mb-3 text-xs sm:text-sm font-figtree font-medium text-[#142b1e]/80"
                 >
                   <Link
                     href="/"
-                    className="flex items-center gap-1 hover:text-[#158b72] transition-colors"
+                    className="flex items-center gap-1 hover:text-[#1c3b2b] transition-colors"
                   >
                     <HomeIcon className="w-3.5 h-3.5" />
                     <span>Home</span>
                   </Link>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#0f6b57]/50 shrink-0" />
-                  <span className="text-[#0f6b57] font-semibold">Food &amp; Accommodation</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#142b1e]/50 shrink-0" />
+                  <span className="text-[#142b1e] font-semibold">Food &amp; Accommodation</span>
                 </nav>
 
                 <h1 className="font-belleza tracking-wide text-[#1e2422] leading-[1.2]">
@@ -233,7 +233,7 @@ export default function FoodAccommodationPage() {
                   </span>
                 </h1>
 
-                <p className="mt-3 text-sm sm:text-[15px] font-figtree font-medium text-[#0f6b57]/90 leading-relaxed max-w-md">
+                <p className="mt-3 text-sm sm:text-[15px] font-figtree font-medium text-[#142b1e]/90 leading-relaxed max-w-md">
                   Clean, peaceful rooms and freshly prepared sattvic vegetarian meals — everything you need to rest, nourish and grow during your stay in Rishikesh.
                 </p>
               </div>
@@ -241,7 +241,7 @@ export default function FoodAccommodationPage() {
               <div className="w-full lg:w-1/2 py-0 sm:py-6 lg:py-16">
                 <div className="relative w-full aspect-[16/9] rounded-3xl overflow-hidden shadow-xl border-4 border-white">
                   <Image
-                    src="/images/gallery_images/food-gallery3.webp"
+                    src="/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg"
                     alt="Sattvic meals and comfortable ashram accommodation at Siddhant School of Yoga"
                     fill
                     priority
@@ -255,13 +255,13 @@ export default function FoodAccommodationPage() {
         </section>
 
         {/* Food */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-12">
               {/* Left: Photo */}
               <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden shadow-lg border-2 border-white order-2 lg:order-1">
                 <Image
-                  src="/images/gallery_images/food-gallery3.webp"
+                  src="/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg"
                   alt="Sattvic vegetarian food served at Siddhant School of Yoga in Rishikesh"
                   fill
                   className="object-cover"
@@ -293,9 +293,9 @@ export default function FoodAccommodationPage() {
                 return (
                   <div
                     key={meal.title}
-                    className="bg-[#def4ee4d] rounded-2xl border border-[#c8ece2] p-4 sm:p-5 text-center hover:shadow-md transition-shadow"
+                    className="bg-[#f4efe6] rounded-2xl border border-[#e3dac9] p-4 sm:p-5 text-center hover:shadow-md transition-shadow"
                   >
-                    <span className="inline-flex w-11 h-11 rounded-xl bg-white text-[#158b72] items-center justify-center mb-3 shadow-2xs">
+                    <span className="inline-flex w-11 h-11 rounded-xl bg-[#fdfbf7] text-[#1c3b2b] items-center justify-center mb-3 shadow-2xs">
                       <Icon className="w-5 h-5" />
                     </span>
                     <h4 className="font-belleza text-base sm:text-lg font-normal text-[#1e2422] tracking-wide mb-1">
@@ -336,7 +336,7 @@ export default function FoodAccommodationPage() {
         </section>
 
         {/* Three Kinds of Food */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-14">
               <Kicker>The Yogic View of Food</Kicker>
@@ -353,7 +353,7 @@ export default function FoodAccommodationPage() {
               {threeFoodTypes.map((food) => (
                 <div
                   key={food.title}
-                  className="bg-white rounded-2xl border border-[#c8ece2] p-6 sm:p-7 shadow-xs"
+                  className="bg-[#fdfbf7] rounded-2xl border border-[#e3dac9] p-6 sm:p-7 shadow-xs"
                 >
                   <h3 className="font-belleza text-xl sm:text-2xl font-normal text-[#1e2422] tracking-wide mb-3">
                     {food.title}
@@ -368,12 +368,12 @@ export default function FoodAccommodationPage() {
         </section>
 
         {/* Daily Meal Details */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-14">
               <Kicker>Your Day, One Meal at a Time</Kicker>
               <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] drop-shadow-2xs">
-                What You'll Eat, and When
+                What You&apos;ll Eat, and When
               </h2>
               <HeadingDivider />
             </div>
@@ -385,20 +385,20 @@ export default function FoodAccommodationPage() {
                 return (
                   <div
                     key={meal.title}
-                    className={`group bg-white rounded-2xl overflow-hidden border border-[#c8ece2] shadow-xs hover:shadow-md transition-shadow duration-300 flex flex-col ${
+                    className={`group bg-[#fdfbf7] rounded-2xl overflow-hidden border border-[#e3dac9] shadow-xs hover:shadow-md transition-shadow duration-300 flex flex-col ${
                       reversed ? "sm:flex-row-reverse" : "sm:flex-row"
                     }`}
                   >
                     <div className="p-6 sm:p-8 sm:w-2/3 flex flex-col justify-center">
                       <div className="flex items-center gap-3 mb-3">
-                        <span className="w-10 h-10 rounded-full bg-[#158b72]/10 text-[#158b72] flex items-center justify-center shrink-0">
+                        <span className="w-10 h-10 rounded-full bg-[#1c3b2b]/10 text-[#1c3b2b] flex items-center justify-center shrink-0">
                           <Icon className="w-5 h-5" />
                         </span>
                         <div>
                           <h3 className="text-xl sm:text-2xl font-belleza font-normal tracking-wide text-[#1e2422]">
                             {meal.title}
                           </h3>
-                          <span className="text-xs font-bold text-[#158b72] tracking-wide">
+                          <span className="text-xs font-bold text-[#1c3b2b] tracking-wide">
                             {meal.time}
                           </span>
                         </div>
@@ -425,7 +425,7 @@ export default function FoodAccommodationPage() {
         </section>
 
         {/* Accommodation — Room Types */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
               <Kicker>Accommodation</Kicker>
@@ -439,7 +439,7 @@ export default function FoodAccommodationPage() {
               {roomTypes.map((room) => (
                 <div
                   key={room.title}
-                  className="bg-white rounded-3xl overflow-hidden border border-[#c8ece2] shadow-xs hover:shadow-lg transition-shadow"
+                  className="bg-[#fdfbf7] rounded-3xl overflow-hidden border border-[#e3dac9] shadow-xs hover:shadow-lg transition-shadow"
                 >
                   <div className="relative h-52 sm:h-56 w-full">
                     <Image
@@ -450,7 +450,7 @@ export default function FoodAccommodationPage() {
                       sizes="(max-width: 640px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                    <span className="absolute top-3 left-3 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/95 text-[#158b72] shadow-2xs">
+                    <span className="absolute top-3 left-3 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/95 text-[#1c3b2b] shadow-2xs">
                       {room.tag}
                     </span>
                     <h3 className="absolute bottom-3 left-4 right-4 font-belleza text-xl sm:text-2xl font-normal text-white drop-shadow-md">
@@ -464,7 +464,7 @@ export default function FoodAccommodationPage() {
                     <ul className="space-y-2.5">
                       {room.features.map((f) => (
                         <li key={f} className="flex items-start gap-2.5 text-sm text-stone-700 leading-relaxed">
-                          <Check className="w-4 h-4 text-[#158b72] shrink-0 mt-0.5" />
+                          <Check className="w-4 h-4 text-[#1c3b2b] shrink-0 mt-0.5" />
                           <span>{f}</span>
                         </li>
                       ))}
@@ -477,13 +477,13 @@ export default function FoodAccommodationPage() {
         </section>
 
         {/* Ashram Lifestyle */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-12">
               {/* Left: Photo */}
               <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden shadow-lg border-2 border-white order-2 lg:order-1">
                 <Image
-                  src="/images/gallery_images/food-gallery4.webp"
+                  src="/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png"
                   alt="Clean and comfortable ashram accommodation at Siddhant School of Yoga in Rishikesh"
                   fill
                   className="object-cover"
@@ -535,7 +535,7 @@ export default function FoodAccommodationPage() {
         </section>
 
         {/* Ashram Facilities */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
               <Kicker>Around the Ashram</Kicker>
@@ -551,9 +551,9 @@ export default function FoodAccommodationPage() {
                 return (
                   <div
                     key={f.title}
-                    className="flex items-start gap-3.5 bg-white rounded-2xl border border-[#c8ece2] p-5 hover:shadow-md transition-shadow"
+                    className="flex items-start gap-3.5 bg-[#fdfbf7] rounded-2xl border border-[#e3dac9] p-5 hover:shadow-md transition-shadow"
                   >
-                    <span className="shrink-0 w-11 h-11 rounded-xl bg-[#158b72]/10 text-[#158b72] flex items-center justify-center">
+                    <span className="shrink-0 w-11 h-11 rounded-xl bg-[#1c3b2b]/10 text-[#1c3b2b] flex items-center justify-center">
                       <Icon className="w-5 h-5" />
                     </span>
                     <div>
@@ -572,7 +572,7 @@ export default function FoodAccommodationPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-white font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] font-figtree">
           <div className="max-w-3xl mx-auto px-4">
             <div className="text-center mb-8 lg:mb-10">
               <Kicker>Questions</Kicker>
@@ -586,7 +586,7 @@ export default function FoodAccommodationPage() {
               {faqs.map((faq) => (
                 <div
                   key={faq.q}
-                  className="bg-[#def4ee4d] rounded-2xl border border-[#c8ece2] p-5 sm:p-6"
+                  className="bg-[#f4efe6] rounded-2xl border border-[#e3dac9] p-5 sm:p-6"
                 >
                   <h4 className="font-belleza text-base sm:text-lg font-normal text-[#1e2422] tracking-wide mb-2">
                     {faq.q}

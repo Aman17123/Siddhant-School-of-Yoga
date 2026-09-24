@@ -1,12 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ChevronRight, Home } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import CourseGallerySection from "@/components/CourseGallerySection";
+import CourseHero from "@/components/course-pages/CourseHero";
 import TwoHundredHourContent from "@/components/course-pages/TwoHundredHourContent";
 import { Kicker, HeadingDivider } from "@/components/ui";
+
+const heroBadges = [
+  { icon: "Clock", label: "24 Days Residential" },
+  { icon: "Award", label: "Yoga Alliance USA RYT 200" },
+  { icon: "Users", label: "All Levels · Most Popular" },
+];
 
 export const metadata = {
   title: "200 Hour Yoga Teacher Training in Rishikesh, India | Siddhant School of Yoga",
@@ -16,77 +20,23 @@ export const metadata = {
 
 export default function TwoHundredHourYogaTTCPage() {
   return (
-    <div className="flex flex-col min-h-screen relative selection:bg-[#158b72]/30 selection:text-[#0f6b57]">
+    <div className="flex flex-col min-h-screen relative selection:bg-[#1c3b2b]/30 selection:text-[#142b1e]">
       <Navbar />
 
-      <main className="flex-grow bg-white">
-        {/* Hero Banner */}
-        <section className="relative min-h-fit sm:min-h-[500px] lg:h-[70vh] lg:max-h-[740px] w-full flex items-center overflow-hidden">
-          {/* Background image */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/hero-bg.webp"
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-center"
-            />
-          </div>
-
-          <div className="relative z-10 w-full px-4 sm:px-8 lg:px-16 pt-8 sm:pt-14 lg:pt-16 pb-20 sm:pb-28 lg:pb-36">
-            <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
-              {/* Left: Breadcrumb + Heading */}
-              <div className="w-full lg:w-1/2 max-w-xl text-left">
-                {/* Breadcrumb */}
-                <nav
-                  aria-label="Breadcrumb"
-                  className="flex items-center justify-start gap-1.5 mb-3 text-xs sm:text-sm font-figtree font-medium text-[#0f6b57]/80"
-                >
-                  <Link
-                    href="/"
-                    className="flex items-center gap-1 hover:text-[#158b72] transition-colors"
-                  >
-                    <Home className="w-3.5 h-3.5" />
-                    <span>Home</span>
-                  </Link>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#0f6b57]/50 shrink-0" />
-                  <span className="text-[#0f6b57] font-semibold">200-Hour Yoga TTC in Rishikesh</span>
-                </nav>
-
-                <h1 className="font-belleza tracking-wide text-[#1e2422] leading-[1.2]">
-                  <span className="block text-3xl sm:text-4xl lg:text-[48px] font-normal">
-                    200-Hour
-                  </span>
-                  <span className="block text-2xl sm:text-3xl font-normal">
-                    Yoga Teacher Training in Rishikesh
-                  </span>
-                </h1>
-
-                <p className="mt-3 text-sm sm:text-[15px] font-figtree font-medium text-[#0f6b57]/90 leading-relaxed max-w-md">
-                  Our most popular, Yoga Alliance USA RYT 200 registered TTC in Rishikesh — complete professional certification in Hatha &amp; Ashtanga, pranayama, anatomy and teaching methodology, taught personally by Acharya Siddhant.
-                </p>
-              </div>
-
-              {/* Right: Image */}
-              <div className="w-full lg:w-1/2 py-0 sm:py-6 lg:py-16">
-                <div className="relative w-full aspect-[16/9] rounded-3xl overflow-hidden shadow-xl border-4 border-white">
-                  <Image
-                    src="/images/gallery_images/200-hour-yoga-teacher-training-graduates-rishikesh.webp"
-                    alt="200-Hour Yoga Teacher Training graduates in Rishikesh"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-center"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      <main className="flex-grow bg-[#fdfbf7]">
+        <CourseHero
+          kickerIcon="Sparkles"
+          kickerText="Complete Professional Certification"
+          title="200-Hour Yoga Teacher Training in Rishikesh"
+          subtitle="Our most popular, Yoga Alliance USA RYT 200 registered TTC in Rishikesh — complete professional certification in Hatha & Ashtanga, pranayama, anatomy and teaching methodology, taught personally by Acharya Siddhant."
+          badges={heroBadges}
+          bgImage="/images/gallery_images/200-hour-yoga-teacher-training-graduates-rishikesh.webp"
+          bgImageAlt="200-Hour Yoga Teacher Training graduates in Rishikesh"
+          whatsappIntro="Namaste! I'd like to know more about the 200-Hour Yoga TTC in Rishikesh."
+        />
 
         {/* What Is the 200-Hour Yoga TTC */}
-        <section id="overview" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+        <section id="overview" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
           <div className="w-[90%] max-w-[1320px] mx-auto">
             {/* Title & Subtitle */}
             <div className="text-center w-full mb-8 lg:mb-10">
@@ -113,14 +63,14 @@ export default function TwoHundredHourYogaTTCPage() {
             </div>
 
             {/* Quick Facts Table Box */}
-            <div className="w-full rounded-2xl border border-[#c8ece2] p-4 sm:p-5 bg-white shadow-2xs">
+            <div className="w-full rounded-2xl border border-[#e3dac9] p-4 sm:p-5 bg-[#fdfbf7] shadow-2xs">
               <h3 className="text-center font-belleza font-bold text-base sm:text-lg text-[#1e2422] mb-3">
                 200-Hour Yoga TTC in Rishikesh — Quick Facts
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-0.5 text-xs sm:text-[13px]">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#c8ece2]/70 text-center sm:text-left">
-                  <span className="text-[#158b72] font-medium shrink-0">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                  <span className="text-[#1c3b2b] font-medium shrink-0">
                     Course length
                   </span>
                   <span className="text-stone-800 font-normal sm:text-right">
@@ -128,8 +78,8 @@ export default function TwoHundredHourYogaTTCPage() {
                   </span>
                 </div>
 
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#c8ece2]/70 text-center sm:text-left">
-                  <span className="text-[#158b72] font-medium shrink-0">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                  <span className="text-[#1c3b2b] font-medium shrink-0">
                     Level
                   </span>
                   <span className="text-stone-800 font-normal sm:text-right">
@@ -137,8 +87,8 @@ export default function TwoHundredHourYogaTTCPage() {
                   </span>
                 </div>
 
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#c8ece2]/70 text-center sm:text-left">
-                  <span className="text-[#158b72] font-medium shrink-0">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                  <span className="text-[#1c3b2b] font-medium shrink-0">
                     Certification
                   </span>
                   <span className="text-stone-800 font-normal sm:text-right">
@@ -146,8 +96,8 @@ export default function TwoHundredHourYogaTTCPage() {
                   </span>
                 </div>
 
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#c8ece2]/70 text-center sm:text-left">
-                  <span className="text-[#158b72] font-medium shrink-0">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                  <span className="text-[#1c3b2b] font-medium shrink-0">
                     Lead teacher
                   </span>
                   <span className="text-stone-800 font-normal sm:text-right">
@@ -155,8 +105,8 @@ export default function TwoHundredHourYogaTTCPage() {
                   </span>
                 </div>
 
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b md:border-b-0 border-[#c8ece2]/70 text-center sm:text-left">
-                  <span className="text-[#158b72] font-medium shrink-0">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b md:border-b-0 border-[#e3dac9]/70 text-center sm:text-left">
+                  <span className="text-[#1c3b2b] font-medium shrink-0">
                     What&apos;s included
                   </span>
                   <span className="text-stone-800 font-normal sm:text-right">
@@ -165,7 +115,7 @@ export default function TwoHundredHourYogaTTCPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 text-center sm:text-left">
-                  <span className="text-[#158b72] font-medium shrink-0">
+                  <span className="text-[#1c3b2b] font-medium shrink-0">
                     Ideal for
                   </span>
                   <span className="text-stone-800 font-normal sm:text-right">
@@ -200,7 +150,7 @@ export default function TwoHundredHourYogaTTCPage() {
                   alt: "Students on a temple visit in Rishikesh",
                 },
                 {
-                  src: "/images/gallery_images/food-gallery4.webp",
+                  src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
                   alt: "Sattvic vegetarian meals at Siddhant School of Yoga",
                 },
               ]}

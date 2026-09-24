@@ -75,10 +75,10 @@ const yogaGurus = [
 
 export default function TeacherPage() {
   return (
-    <div className="flex flex-col min-h-screen relative selection:bg-[#158b72]/30 selection:text-[#0f6b57]">
+    <div className="flex flex-col min-h-screen relative selection:bg-[#1c3b2b]/30 selection:text-[#142b1e]">
       <Navbar />
 
-      <main className="flex-grow bg-white">
+      <main className="flex-grow bg-[#fdfbf7]">
         {/* Hero Banner */}
         <section className="relative min-h-fit sm:min-h-[500px] lg:h-[70vh] lg:max-h-[740px] w-full flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
@@ -97,21 +97,21 @@ export default function TeacherPage() {
               <div className="w-full lg:w-1/2 max-w-xl text-left">
                 <nav
                   aria-label="Breadcrumb"
-                  className="flex items-center justify-start gap-1.5 mb-3 text-xs sm:text-sm font-figtree font-medium text-[#0f6b57]/80"
+                  className="flex items-center justify-start gap-1.5 mb-3 text-xs sm:text-sm font-figtree font-medium text-[#142b1e]/80"
                 >
                   <Link
                     href="/"
-                    className="flex items-center gap-1 hover:text-[#158b72] transition-colors"
+                    className="flex items-center gap-1 hover:text-[#1c3b2b] transition-colors"
                   >
                     <Home className="w-3.5 h-3.5" />
                     <span>Home</span>
                   </Link>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#0f6b57]/50 shrink-0" />
-                  <Link href="/about" className="hover:text-[#158b72] transition-colors">
+                  <ChevronRight className="w-3.5 h-3.5 text-[#142b1e]/50 shrink-0" />
+                  <Link href="/about" className="hover:text-[#1c3b2b] transition-colors">
                     About Us
                   </Link>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#0f6b57]/50 shrink-0" />
-                  <span className="text-[#0f6b57] font-semibold">Our Teachers</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#142b1e]/50 shrink-0" />
+                  <span className="text-[#142b1e] font-semibold">Our Teachers</span>
                 </nav>
 
                 <h1 className="font-belleza tracking-wide text-[#1e2422] leading-[1.2]">
@@ -123,7 +123,7 @@ export default function TeacherPage() {
                   </span>
                 </h1>
 
-                <p className="mt-3 text-sm sm:text-[15px] font-figtree font-medium text-[#0f6b57]/90 leading-relaxed max-w-md">
+                <p className="mt-3 text-sm sm:text-[15px] font-figtree font-medium text-[#142b1e]/90 leading-relaxed max-w-md">
                   Meet the faculty of Siddhant School of Yoga — Acharya Siddhant and a team of dedicated Himalayan teachers, each a specialist in their own subject.
                 </p>
               </div>
@@ -145,7 +145,7 @@ export default function TeacherPage() {
         </section>
 
         {/* Yoga Gurus */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
               <Kicker>Yoga Gurus</Kicker>
@@ -168,7 +168,7 @@ export default function TeacherPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-4xl mx-auto mb-10">
-              <div className="bg-white rounded-2xl border border-[#c8ece2] p-6 shadow-xs">
+              <div className="bg-[#fdfbf7] rounded-2xl border border-[#e3dac9] p-6 shadow-xs">
                 <h3 className="font-belleza text-lg text-[#1e2422] mb-3 text-center sm:text-left">
                   Qualities for a Healthy Society
                 </h3>
@@ -188,14 +188,14 @@ export default function TeacherPage() {
                     "Gratitude attitude",
                   ].map((q) => (
                     <li key={q} className="flex items-start gap-1.5 text-xs sm:text-[13px] text-stone-700">
-                      <Check className="w-3.5 h-3.5 text-[#158b72] mt-0.5 shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#1c3b2b] mt-0.5 shrink-0" />
                       <span>{q}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="bg-white rounded-2xl border border-[#c8ece2] p-6 shadow-xs">
+              <div className="bg-[#fdfbf7] rounded-2xl border border-[#e3dac9] p-6 shadow-xs">
                 <h3 className="font-belleza text-lg text-[#1e2422] mb-3 text-center sm:text-left">
                   What Makes Our Teachers Different
                 </h3>
@@ -211,7 +211,7 @@ export default function TeacherPage() {
                     "Dedicated self-practitioner",
                   ].map((q) => (
                     <li key={q} className="flex items-start gap-1.5 text-xs sm:text-[13px] text-stone-700">
-                      <Check className="w-3.5 h-3.5 text-[#158b72] mt-0.5 shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#1c3b2b] mt-0.5 shrink-0" />
                       <span>{q}</span>
                     </li>
                   ))}
@@ -231,7 +231,7 @@ export default function TeacherPage() {
         </section>
 
         {/* Idols of Our Lineage */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-14">
               <Kicker>Yoga Gurus Who Inspired Us</Kicker>
@@ -248,9 +248,9 @@ export default function TeacherPage() {
               {yogaGurus.map((guru) => (
                 <div
                   key={guru.name}
-                  className="group bg-white rounded-2xl border border-[#c8ece2]/70 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 p-5 sm:p-6 flex flex-col items-center text-center"
+                  className="group bg-[#fdfbf7] rounded-2xl border border-[#e3dac9]/70 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 p-5 sm:p-6 flex flex-col items-center text-center"
                 >
-                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-[#c8ece2] shrink-0 mb-3">
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-[#e3dac9] shrink-0 mb-3">
                     <Image
                       src={guru.image}
                       alt={guru.name}
@@ -262,7 +262,7 @@ export default function TeacherPage() {
                   <h3 className="font-belleza text-base sm:text-lg text-[#1e2422] mb-1.5 leading-snug">
                     {guru.name}
                   </h3>
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-[#158b72]/10 text-[#158b72] text-[10px] sm:text-[11px] font-bold uppercase tracking-wide mb-2">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-[#1c3b2b]/10 text-[#1c3b2b] text-[10px] sm:text-[11px] font-bold uppercase tracking-wide mb-2">
                     {guru.tag}
                   </span>
                   <p className="text-xs sm:text-sm text-stone-500 leading-snug">
@@ -275,7 +275,7 @@ export default function TeacherPage() {
         </section>
 
         {/* Teachers Grid */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
               <Kicker>Meet Our Teacher</Kicker>
@@ -294,7 +294,7 @@ export default function TeacherPage() {
                 return (
                   <div
                     key={teacher.name}
-                    className={`group bg-white rounded-2xl overflow-hidden border border-[#c8ece2] shadow-xs hover:shadow-md transition-shadow duration-300 flex flex-col ${
+                    className={`group bg-[#fdfbf7] rounded-2xl overflow-hidden border border-[#e3dac9] shadow-xs hover:shadow-md transition-shadow duration-300 flex flex-col ${
                       reversed ? "sm:flex-row-reverse" : "sm:flex-row"
                     }`}
                   >
@@ -302,7 +302,7 @@ export default function TeacherPage() {
                       <h3 className="text-2xl sm:text-3xl font-belleza font-normal tracking-wide text-[#1e2422] mb-3">
                         {teacher.name}
                       </h3>
-                      <span className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-[#158b72] text-white text-[11px] font-bold mb-4">
+                      <span className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-[#1c3b2b] text-white text-[11px] font-bold mb-4">
                         {teacher.role}
                       </span>
                       <div className="space-y-3">
@@ -322,7 +322,7 @@ export default function TeacherPage() {
                         className="object-cover object-top"
                         sizes="(max-width: 640px) 100vw, 50vw"
                       />
-                      <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 text-[#158b72] text-[11px] font-bold shadow-2xs">
+                      <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 text-[#1c3b2b] text-[11px] font-bold shadow-2xs">
                         <Award className="w-3 h-3" />
                         {teacher.exp}
                       </span>

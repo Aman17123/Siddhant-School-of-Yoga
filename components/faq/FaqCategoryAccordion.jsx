@@ -99,7 +99,7 @@ const categories = [
                 "Kids are not allowed to accompany",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#158b72] shrink-0" />
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#1c3b2b] shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -134,7 +134,7 @@ const categories = [
                 "A valid Indian Tourist Visa, arranged before traveling to India",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#158b72] shrink-0" />
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#1c3b2b] shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -167,7 +167,7 @@ const categories = [
             <p>
               Students may arrive one day before the course starts. On arrival, you'll check into your room, complete your application form, and pay any remaining course fees.
             </p>
-            <p className="font-semibold text-[#158b72]">Day 1 schedule:</p>
+            <p className="font-semibold text-[#1c3b2b]">Day 1 schedule:</p>
             <ul className="space-y-1.5 pl-1">
               {[
                 "8:00–9:00 AM — Hatha Yoga class, followed by breakfast",
@@ -177,7 +177,7 @@ const categories = [
                 "Evening — Ashtanga Yoga class (official course start)",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#158b72] shrink-0" />
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#1c3b2b] shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -213,7 +213,7 @@ const categories = [
                 "Personal items, and optionally a musical instrument or MP3 player",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#158b72] shrink-0" />
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#1c3b2b] shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -281,8 +281,8 @@ function AccordionItem({ item, isOpen, onToggle }) {
     <div
       className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
         isOpen
-          ? "border-[#158b72] bg-white shadow-md"
-          : "border-[#c8ece2] bg-white/95 hover:border-[#158b72] shadow-2xs"
+          ? "border-[#1c3b2b] bg-[#fdfbf7] shadow-md"
+          : "border-[#e3dac9] bg-white/95 hover:border-[#1c3b2b] shadow-2xs"
       }`}
     >
       <button
@@ -292,7 +292,7 @@ function AccordionItem({ item, isOpen, onToggle }) {
       >
         <span
           className={`text-sm sm:text-base font-belleza font-bold tracking-wide transition-colors ${
-            isOpen ? "text-[#158b72]" : "text-[#1F1E1D]"
+            isOpen ? "text-[#1c3b2b]" : "text-[#1F1E1D]"
           }`}
         >
           {item.q}
@@ -300,8 +300,8 @@ function AccordionItem({ item, isOpen, onToggle }) {
         <div
           className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
             isOpen
-              ? "bg-[#158b72] text-white"
-              : "bg-[#def4ee4d] text-[#77786e] hover:bg-[#158b72]/20"
+              ? "bg-[#1c3b2b] text-white"
+              : "bg-[#f4efe6] text-[#77786e] hover:bg-[#1c3b2b]/20"
           }`}
         >
           {isOpen ? (
@@ -351,8 +351,8 @@ export default function FaqCategoryAccordion() {
               onClick={() => handleTabClick(i)}
               className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-figtree font-semibold transition-all duration-300 cursor-pointer ${
                 isActive
-                  ? "bg-[#158b72] text-white shadow-sm"
-                  : "bg-[#def4ee4d] border border-[#158b72]/30 text-[#158b72] hover:border-[#158b72]"
+                  ? "bg-[#1c3b2b] text-white shadow-sm"
+                  : "bg-[#f4efe6] border border-[#1c3b2b]/30 text-[#1c3b2b] hover:border-[#1c3b2b]"
               }`}
             >
               <Icon className="w-3.5 h-3.5" />

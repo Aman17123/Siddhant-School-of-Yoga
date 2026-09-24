@@ -5,12 +5,12 @@ export default function KundaliniSection() {
   return (
     <section
       id="kundalini"
-      className="py-14 sm:py-16 lg:py-20 bg-[#158b72] overflow-hidden relative font-figtree"
+      className="py-14 sm:py-16 lg:py-20 bg-[#1c3b2b] overflow-hidden relative font-figtree"
     >
       <Container className="relative z-10">
         {/* Header (Full Width & Aligned cleanly) */}
         <div className="w-full mb-8 lg:mb-10 text-center lg:text-left">
-          <span className="block text-[1rem] font-figtree font-semibold tracking-[0.08em] text-[#def4ee] mb-1.5">
+          <span className="block text-[1rem] font-figtree font-semibold tracking-[0.08em] text-[#f4efe6] mb-1.5">
             Kundalini Yoga
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-white leading-[1.2] mb-1 lg:mb-3 drop-shadow-xs">

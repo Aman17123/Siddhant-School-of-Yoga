@@ -45,12 +45,12 @@ const navMenu = [
     key: "yttc",
     label: "Yoga TTC",
     items: [
-      { title: "Online 200 Hour Yoga TTC from Rishikesh", href: "/online-200-hour-yoga-ttc" },
+      { title: "Online 200 Hour Yoga TTC from Rishikesh", href: "/online-200-hour-yoga-teacher-training-in-rishikesh-india" },
       { title: "100 Hour Yoga TTC in Rishikesh", href: "/100-hour-yoga-teacher-training-in-rishikesh-india" },
       { title: "200 Hour Yoga TTC in Rishikesh", href: "/200-hour-yoga-teacher-training-in-rishikesh-india" },
-      { title: "300 Hour Yoga TTC in Rishikesh", href: "/300-hour-yoga-ttc-rishikesh" },
-      { title: "500 Hour Yoga TTC in Rishikesh", href: "/500-hour-yoga-ttc-rishikesh" },
-      { title: "500hrs Yoga & Ayurveda TTC in Rishikesh", href: "/500-hour-yoga-ayurveda-ttc" },
+      { title: "300 Hour Yoga TTC in Rishikesh", href: "/300-hour-yoga-teacher-training-in-rishikesh-india" },
+      { title: "500 Hour Yoga TTC in Rishikesh", href: "/500-hour-yoga-teacher-training-in-rishikesh-india" },
+      { title: "500hrs Yoga & Ayurveda TTC in Rishikesh", href: "/500-hour-yoga-ayurveda-teacher-training-in-rishikesh-india" },
     ],
   },
   {
@@ -58,10 +58,10 @@ const navMenu = [
     key: "kundalini",
     label: "Kundalini Yoga",
     items: [
-      { title: "100 Hour Kundalini Yoga TTC in Rishikesh", href: "/100-hour-kundalini-yoga-ttc" },
-      { title: "200 Hour Kundalini Yoga TTC in Rishikesh", href: "/200-hour-kundalini-yoga-ttc" },
-      { title: "300 Hour Kundalini Yoga TTC in Rishikesh", href: "/300-hour-kundalini-yoga-ttc" },
-      { title: "500 Hour Kundalini Yoga TTC in Rishikesh", href: "/500-hour-kundalini-yoga-ttc" },
+      { title: "100 Hour Kundalini Yoga TTC in Rishikesh", href: "/100-hours-kundalini-yoga-teacher-training-in-rishikesh-india" },
+      { title: "200 Hour Kundalini Yoga TTC in Rishikesh", href: "/200-hours-kundalini-yoga-teacher-training-in-rishikesh-india" },
+      { title: "300 Hour Kundalini Yoga TTC in Rishikesh", href: "/300-hours-kundalini-yoga-teacher-training-in-rishikesh-india" },
+      { title: "500 Hour Kundalini Yoga TTC in Rishikesh", href: "/500-hours-kundalini-yoga-teacher-training-in-rishikesh-india" },
     ],
   },
   {
@@ -69,36 +69,40 @@ const navMenu = [
     key: "retreats",
     label: "Yoga Retreat",
     items: [
-      { title: "Yoga for Beginners in Rishikesh", href: "/yoga-for-beginners-rishikesh" },
-      { title: "Yoga & Meditation Retreat in Rishikesh", href: "/yoga-meditation-retreat" },
-      { title: "07 Days Yoga & Meditation Retreat in Rishikesh", href: "/7-day-yoga-meditation-retreat" },
-      { title: "Kundalini Retreat in Rishikesh", href: "/kundalini-retreat-rishikesh" },
-      { title: "Pranayama Retreat in Rishikesh", href: "/pranayama-retreat-rishikesh" },
-      { title: "Vipassana Retreat in Rishikesh", href: "/vipassana-retreat-rishikesh" },
-      { title: "Detox Retreat in Rishikesh", href: "/detox-retreat-rishikesh" },
-      { title: "3 Days Detox Retreat in Rishikesh", href: "/3-day-detox-retreat" },
-      { title: "Mantra Yoga Retreat in Rishikesh", href: "/mantra-yoga-meditation-retreat" },
-      { title: "Yoga & Ayurveda Retreat in Rishikesh", href: "/yoga-ayurveda-retreat" },
-      { title: "Meditation & Pranayama Retreat in Rishikesh", href: "/5-day-meditation-pranayama-retreat" },
+      { title: "Yoga for Beginners in Rishikesh", href: "/yoga-course-for-beginners-in-rishikesh-india" },
+      { title: "Yoga & Meditation Retreat in Rishikesh", href: "/yoga-meditation-retreat-in-rishikesh-india" },
+      { title: "07 Days Yoga & Meditation Retreat in Rishikesh", href: "/07-days-yoga-meditation-retreat-in-rishikesh-india" },
+      { title: "Kundalini Retreat in Rishikesh", href: "/kundalini-retreat-in-rishikesh-india" },
+      { title: "Pranayama Retreat in Rishikesh", href: "/pranayama-retreat-rishikesh-india" },
+      { title: "Vipassana Retreat in Rishikesh", href: "/vipassana-retreat-rishikesh-india" },
+      { title: "Detox Retreat in Rishikesh", href: "/detox-retreat-rishikesh-india" },
+      { title: "3 Days Detox Retreat in Rishikesh", href: "/3-days-detox-retreat-rishikesh-india" },
+      { title: "Mantra Yoga Retreat in Rishikesh", href: "/mantra-yoga-meditation-retreat-rishikesh" },
+      { title: "Yoga & Ayurveda Retreat in Rishikesh", href: "/yoga-and-ayurveda-retreat-in-rishikesh" },
+      { title: "Meditation & Pranayama Retreat in Rishikesh", href: "/05-days-meditation-pranayama-retreat-in-rishikesh" },
     ],
   },
   { type: "link", key: "gallery", label: "Gallery", href: "/gallery" },
-  { type: "link", key: "payment", label: "Payment", href: "/payment" },
-  {
-    type: "external",
-    key: "blog",
-    label: "Blogs",
-    href: "https://www.siddhantschoolofyoga.com/blog/",
-  },
-  { type: "link", key: "contact", label: "Contact Us", href: "/contact-us" },
+  { type: "link", key: "payment", label: "Payment", href: "/yoga-course-payment" },
+  // {
+  //   type: "external",
+  //   key: "blog",
+  //   label: "Blogs",
+  //   href: "https://www.siddhantschoolofyoga.com/blog/",
+  // },
+  { type: "link", key: "contact", label: "Contact Us", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hideHeader, setHideHeader] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileOpenGroup, setMobileOpenGroup] = useState(null);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const timeoutRef = useRef(null);
+  const lastScrollY = useRef(0);
+  const navRef = useRef(null);
+  const [navHeight, setNavHeight] = useState(0);
 
   const handleMouseEnter = (menuKey) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -119,8 +123,26 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    if (navRef.current) setNavHeight(navRef.current.offsetHeight);
+    const handleResize = () => {
+      if (navRef.current) setNavHeight(navRef.current.offsetHeight);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentY = window.scrollY;
+      setIsScrolled(currentY > 20);
+
+      if (currentY > lastScrollY.current && currentY > 10) {
+        setHideHeader(true);
+        setActiveDropdown(null);
+      } else {
+        setHideHeader(false);
+      }
+      lastScrollY.current = currentY;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -136,7 +158,7 @@ export default function Navbar() {
   return (
     <>
       {/* 1. TOPBAR (Flows naturally above sticky header, scrolls off without layout shift) */}
-      <div className="bg-[#158b72] text-white py-2 relative z-20 overflow-hidden border-b border-[#158b72]/20">
+      <div className="bg-[#1c3b2b] text-white py-2 relative z-20 overflow-hidden border-b border-[#1c3b2b]/20">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs font-medium">
           {/* Left: Email & Address */}
           <div className="flex items-center gap-4 sm:gap-6">
@@ -190,7 +212,7 @@ export default function Navbar() {
                 href={site.socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#158b72] flex items-center justify-center transition-colors text-white"
+                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#1c3b2b] flex items-center justify-center transition-colors text-white"
                 aria-label="Facebook"
               >
                 <FaFacebookF className="w-2.5 h-2.5" />
@@ -199,7 +221,7 @@ export default function Navbar() {
                 href={site.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#158b72] flex items-center justify-center transition-colors text-white"
+                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#1c3b2b] flex items-center justify-center transition-colors text-white"
                 aria-label="Instagram"
               >
                 <FaInstagram className="w-2.5 h-2.5" />
@@ -208,7 +230,7 @@ export default function Navbar() {
                 href={site.socials.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#158b72] flex items-center justify-center transition-colors text-white"
+                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#1c3b2b] flex items-center justify-center transition-colors text-white"
                 aria-label="YouTube"
               >
                 <FaYoutube className="w-2.5 h-2.5" />
@@ -217,7 +239,7 @@ export default function Navbar() {
                 href={site.socials.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#158b72] flex items-center justify-center transition-colors text-white"
+                className="w-5 h-5 rounded-xs bg-white/15 hover:bg-[#1c3b2b] flex items-center justify-center transition-colors text-white"
                 aria-label="Twitter"
               >
                 <FaTwitter className="w-2.5 h-2.5" />
@@ -228,7 +250,7 @@ export default function Navbar() {
       </div>
 
       <header
-        className={`site-header sticky md:static top-0 z-50 w-full bg-white font-figtree transition-shadow duration-300 ${
+        className={`site-header sticky md:static top-0 z-50 w-full bg-[#fdfbf7] font-figtree transition-shadow duration-300 ${
           isScrolled ? "shadow-md md:shadow-none" : "shadow-xs"
         }`}
       >
@@ -236,9 +258,9 @@ export default function Navbar() {
         <div className="header-bg-decor" aria-hidden="true" />
 
         {/* 2. MIDDLE BOX */}
-        <div className="relative z-10 bg-white">
+        <div className="relative z-10 bg-[#fdfbf7]">
           {/* A. MOBILE VIEW (Screen < md): Clean Simple Logo + Hamburger */}
-          <div className="flex md:hidden items-center justify-between px-4 py-2.5 border-b border-[#c8ece2]/80">
+          <div className="flex md:hidden items-center justify-between px-4 py-2.5 border-b border-[#e3dac9]/80">
             {/* Mobile Brand Logo */}
             <Link href="/" className="inline-block shrink-0">
               <Image
@@ -254,7 +276,7 @@ export default function Navbar() {
             {/* Simple Hamburger Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-stone-700 hover:text-[#158b72] hover:bg-stone-100 transition-colors focus:outline-none"
+              className="p-2 rounded-lg text-stone-700 hover:text-[#1c3b2b] hover:bg-stone-100 transition-colors focus:outline-none"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? (
@@ -268,27 +290,27 @@ export default function Navbar() {
           {/* B. DESKTOP VIEW (Screen >= md): Classy 12-column grid layout */}
           <div className="hidden md:grid max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 md:grid-cols-12 items-center">
             {/* Left Column: Ashram Helpline / WhatsApp Concierge (3 cols) */}
-            <div className="md:col-span-3 flex items-center justify-start pr-6 border-r border-[#158b72]/20">
+            <div className="md:col-span-3 flex items-center justify-start pr-6 border-r border-[#1c3b2b]/20">
               <a
                 href={whatsappLink(
                   "Namaste! I would like to inquire about Yoga Teacher Training and Retreat courses at Siddhant School of Yoga.",
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white hover:bg-[#def4ee4d] border border-[#158b72]/30 hover:border-[#158b72] shadow-[0_2px_12px_rgba(16,147,71,0.08)] hover:shadow-[0_4px_18px_rgba(16,147,71,0.18)] transition-all duration-300 transform hover:-translate-y-0.5"
+                className="group relative inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#fdfbf7] hover:bg-[#f4efe6] border border-[#1c3b2b]/30 hover:border-[#1c3b2b] shadow-[0_2px_12px_rgba(28,59,43,0.08)] hover:shadow-[0_4px_18px_rgba(28,59,43,0.18)] transition-all duration-300 transform hover:-translate-y-0.5"
                 title="Connect on WhatsApp with Siddhant School of Yoga"
               >
-                <div className="relative w-8 h-8 rounded-full bg-[#158b72] text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform duration-300">
+                <div className="relative w-8 h-8 rounded-full bg-[#1c3b2b] text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform duration-300">
                   <FaWhatsapp className="w-4.5 h-4.5 text-white" />
                 </div>
 
                 <div className="flex flex-col text-left">
                   <div className="flex items-center gap-1.5 leading-tight">
-                    <span className="font-marcellus text-[10.5px] uppercase tracking-[0.14em] text-[#158b72] font-bold">
+                    <span className="font-marcellus text-[10.5px] uppercase tracking-[0.14em] text-[#1c3b2b] font-bold">
                       Call / Whatsapp
                     </span>
                   </div>
-                  <span className="font-marcellus text-[13.5px] font-bold text-[#1F1E1D] tracking-[0.03em] group-hover:text-[#158b72] transition-colors leading-tight mt-0.5">
+                  <span className="font-marcellus text-[13.5px] font-bold text-[#1F1E1D] tracking-[0.03em] group-hover:text-[#1c3b2b] transition-colors leading-tight mt-0.5">
                     +91 84497 85755
                   </span>
                 </div>
@@ -296,7 +318,7 @@ export default function Navbar() {
             </div>
 
             {/* Center Column: Professional Logo (6 cols) */}
-            <div className="md:col-span-6 flex items-center justify-center px-6 border-r border-[#158b72]/20">
+            <div className="md:col-span-6 flex items-center justify-center px-6 border-r border-[#1c3b2b]/20">
               <Link href="/" className="inline-block py-1">
                 <Image
                   src="/logo/siddhant-logo.svg"
@@ -309,11 +331,11 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Right Column: Distinctive Siddhant Red Enroll CTA Button (3 cols) */}
+            {/* Right Column: Distinctive Deep Saffron Enroll CTA Button (3 cols) */}
             <div className="md:col-span-3 flex items-center justify-end pl-6 gap-3">
               <a
                 href="/book-my-yoga-in-rishikesh-india"
-                className="inline-flex group relative items-center gap-3 px-5 py-2 rounded-full bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-[0_4px_16px_rgba(226,41,36,0.25)] hover:shadow-[0_6px_20px_rgba(201,36,31,0.35)] transition-all duration-300 transform hover:-translate-y-0.5 border border-white/20 hover:border-white/40 overflow-hidden"
+                className="inline-flex group relative items-center gap-3 px-5 py-2 rounded-full bg-[#b85c00] hover:bg-[#96490a] text-white shadow-[0_4px_16px_rgba(184,92,0,0.25)] hover:shadow-[0_6px_20px_rgba(150,73,10,0.35)] transition-all duration-300 transform hover:-translate-y-0.5 border border-white/20 hover:border-white/40 overflow-hidden"
                 title="Apply for Yoga Teacher Training Rishikesh"
               >
                 <div className="relative z-10 w-7 h-7 rounded-full bg-white/20 border border-white/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
@@ -336,29 +358,35 @@ export default function Navbar() {
           </div>
         </div>
 
+        {/* Spacer to prevent content jump once the nav below becomes fixed */}
+        {isScrolled && (
+          <div className="hidden md:block" style={{ height: navHeight }} aria-hidden="true" />
+        )}
+
         {/* 3. MAIN NAVBAR — Architectural Tabular Grid with Smooth Animated Dropdowns */}
         <nav
-          className={`hidden md:block md:sticky md:top-0 border-t border-b border-[#c8ece2] bg-white relative z-50 transition-shadow duration-300 ${
-            isScrolled ? "shadow-md" : ""
-          }`}
+          ref={navRef}
+          className={`hidden md:block border-t border-b border-[#e3dac9] bg-[#fdfbf7] z-50 transition-transform duration-300 ${
+            isScrolled ? "md:fixed md:top-0 md:left-0 md:right-0" : ""
+          } ${hideHeader ? "md:-translate-y-full" : "md:translate-y-0"} ${isScrolled ? "shadow-md" : ""}`}
           aria-label="Main Navigation"
         >
           <div className="max-w-[1320px] mx-auto">
             <ul className="flex items-center justify-center text-[14px] lg:text-[14.5px] font-semibold text-[#1F1E1D]">
               {/* Home (First item has border-l and border-r) */}
-              <li className="border-l border-r border-[#c8ece2] relative group">
+              <li className="border-l border-r border-[#e3dac9] relative group">
                 <Link
                   href="/"
-                  className="inline-block py-2.5 px-5 lg:px-6 text-[#158b72] font-bold hover:text-[#3aab92] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-5 lg:px-6 text-[#1c3b2b] font-bold hover:text-[#4c7c65] transition-colors font-jakarta tracking-wide"
                 >
                   Home
                 </Link>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full scale-x-100 transition-transform duration-300" />
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full scale-x-100 transition-transform duration-300" />
               </li>
 
               {/* About Us (Smooth Dropdown) */}
               <li
-                className="border-r border-[#c8ece2] relative group"
+                className="border-r border-[#e3dac9] relative group"
                 onMouseEnter={() => handleMouseEnter("about")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -371,8 +399,8 @@ export default function Navbar() {
                   }
                   className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "about"
-                      ? "text-[#158b72] font-bold"
-                      : "text-[#1F1E1D] hover:text-[#158b72]"
+                      ? "text-[#1c3b2b] font-bold"
+                      : "text-[#1F1E1D] hover:text-[#1c3b2b]"
                   }`}
                 >
                   <span>About Us</span>
@@ -380,13 +408,13 @@ export default function Navbar() {
                     strokeWidth={1.75}
                     className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
                       activeDropdown === "about"
-                        ? "rotate-180 text-[#158b72]"
-                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#158b72]"
+                        ? "rotate-180 text-[#1c3b2b]"
+                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#1c3b2b]"
                     }`}
                   />
                 </button>
                 <span
-                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-200 origin-center ${
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-200 origin-center ${
                     activeDropdown === "about"
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
@@ -401,7 +429,7 @@ export default function Navbar() {
                       : "opacity-0 invisible -translate-y-2 scale-[0.98] pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto"
                   }`}
                 >
-                  <div className="w-[350px] bg-white rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
+                  <div className="w-[350px] bg-[#fdfbf7] rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
                     <div className="flex flex-col space-y-1.5">
                       {[
                         {
@@ -433,15 +461,15 @@ export default function Navbar() {
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#1c3b2b]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[14.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#1c3b2b] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
+                            <span className="text-[14.5px] font-semibold text-stone-800 group-hover/item:text-[#1c3b2b] transition-colors">
                               {item.title}
                             </span>
                           </div>
-                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#158b72] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
+                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#1c3b2b] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
                         </Link>
                       ))}
                     </div>
@@ -451,7 +479,7 @@ export default function Navbar() {
 
               {/* Yoga TTC (Smooth Dropdown) */}
               <li
-                className="border-r border-[#c8ece2] relative group"
+                className="border-r border-[#e3dac9] relative group"
                 onMouseEnter={() => handleMouseEnter("yttc")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -462,8 +490,8 @@ export default function Navbar() {
                   }
                   className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "yttc"
-                      ? "text-[#158b72] font-bold"
-                      : "text-[#1F1E1D] hover:text-[#158b72]"
+                      ? "text-[#1c3b2b] font-bold"
+                      : "text-[#1F1E1D] hover:text-[#1c3b2b]"
                   }`}
                 >
                   <span>Yoga TTC</span>
@@ -471,13 +499,13 @@ export default function Navbar() {
                     strokeWidth={1.75}
                     className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
                       activeDropdown === "yttc"
-                        ? "rotate-180 text-[#158b72]"
-                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#158b72]"
+                        ? "rotate-180 text-[#1c3b2b]"
+                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#1c3b2b]"
                     }`}
                   />
                 </button>
                 <span
-                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-200 origin-center ${
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-200 origin-center ${
                     activeDropdown === "yttc"
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
@@ -491,12 +519,12 @@ export default function Navbar() {
                       : "opacity-0 invisible -translate-y-2 scale-[0.98] pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto"
                   }`}
                 >
-                  <div className="w-[380px] bg-white rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
+                  <div className="w-[380px] bg-[#fdfbf7] rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
                     <div className="flex flex-col space-y-1.5">
                       {[
                         {
                           title: "Online 200 Hour Yoga TTC from Rishikesh",
-                          href: "/online-200-hour-yoga-ttc",
+                          href: "/online-200-hour-yoga-teacher-training-in-rishikesh-india",
                         },
                         {
                           title: "100 Hour Yoga TTC in Rishikesh",
@@ -508,30 +536,30 @@ export default function Navbar() {
                         },
                         {
                           title: "300 Hour Yoga TTC in Rishikesh",
-                          href: "/300-hour-yoga-ttc-rishikesh",
+                          href: "/300-hour-yoga-teacher-training-in-rishikesh-india",
                         },
                         {
                           title: "500 Hour Yoga TTC in Rishikesh",
-                          href: "/500-hour-yoga-ttc-rishikesh",
+                          href: "/500-hour-yoga-teacher-training-in-rishikesh-india",
                         },
                         {
                           title: "500hrs Yoga & Ayurveda TTC in Rishikesh",
-                          href: "/500-hour-yoga-ayurveda-ttc",
+                          href: "/500-hour-yoga-ayurveda-teacher-training-in-rishikesh-india",
                         },
                       ].map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#1c3b2b]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[14.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#1c3b2b] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
+                            <span className="text-[14.5px] font-semibold text-stone-800 group-hover/item:text-[#1c3b2b] transition-colors">
                               {item.title}
                             </span>
                           </div>
-                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#158b72] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
+                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#1c3b2b] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
                         </Link>
                       ))}
                     </div>
@@ -541,7 +569,7 @@ export default function Navbar() {
 
               {/* Kundalini Yoga (Smooth Dropdown) */}
               <li
-                className="border-r border-[#c8ece2] relative group"
+                className="border-r border-[#e3dac9] relative group"
                 onMouseEnter={() => handleMouseEnter("kundalini")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -554,8 +582,8 @@ export default function Navbar() {
                   }
                   className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "kundalini"
-                      ? "text-[#158b72] font-bold"
-                      : "text-[#1F1E1D] hover:text-[#158b72]"
+                      ? "text-[#1c3b2b] font-bold"
+                      : "text-[#1F1E1D] hover:text-[#1c3b2b]"
                   }`}
                 >
                   <span>Kundalini Yoga</span>
@@ -563,13 +591,13 @@ export default function Navbar() {
                     strokeWidth={1.75}
                     className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
                       activeDropdown === "kundalini"
-                        ? "rotate-180 text-[#158b72]"
-                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#158b72]"
+                        ? "rotate-180 text-[#1c3b2b]"
+                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#1c3b2b]"
                     }`}
                   />
                 </button>
                 <span
-                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-200 origin-center ${
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-200 origin-center ${
                     activeDropdown === "kundalini"
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
@@ -583,39 +611,39 @@ export default function Navbar() {
                       : "opacity-0 invisible -translate-y-2 scale-[0.98] pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto"
                   }`}
                 >
-                  <div className="w-[390px] bg-white rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
+                  <div className="w-[390px] bg-[#fdfbf7] rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
                     <div className="flex flex-col space-y-1.5">
                       {[
                         {
                           title: "100 Hour Kundalini Yoga TTC in Rishikesh",
-                          href: "/100-hour-kundalini-yoga-ttc",
+                          href: "/100-hours-kundalini-yoga-teacher-training-in-rishikesh-india",
                         },
                         {
                           title: "200 Hour Kundalini Yoga TTC in Rishikesh",
-                          href: "/200-hour-kundalini-yoga-ttc",
+                          href: "/200-hours-kundalini-yoga-teacher-training-in-rishikesh-india",
                         },
                         {
                           title: "300 Hour Kundalini Yoga TTC in Rishikesh",
-                          href: "/300-hour-kundalini-yoga-ttc",
+                          href: "/300-hours-kundalini-yoga-teacher-training-in-rishikesh-india",
                         },
                         {
                           title: "500 Hour Kundalini Yoga TTC in Rishikesh",
-                          href: "/500-hour-kundalini-yoga-ttc",
+                          href: "/500-hours-kundalini-yoga-teacher-training-in-rishikesh-india",
                         },
                       ].map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#1c3b2b]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[14.5px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#1c3b2b] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
+                            <span className="text-[14.5px] font-semibold text-stone-800 group-hover/item:text-[#1c3b2b] transition-colors">
                               {item.title}
                             </span>
                           </div>
-                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#158b72] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
+                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#1c3b2b] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
                         </Link>
                       ))}
                     </div>
@@ -625,7 +653,7 @@ export default function Navbar() {
 
               {/* Yoga Retreat (Smooth Dropdown) */}
               <li
-                className="border-r border-[#c8ece2] relative group"
+                className="border-r border-[#e3dac9] relative group"
                 onMouseEnter={() => handleMouseEnter("retreats")}
                 onMouseLeave={handleMouseLeave}
               >
@@ -638,8 +666,8 @@ export default function Navbar() {
                   }
                   className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "retreats"
-                      ? "text-[#158b72] font-bold"
-                      : "text-[#1F1E1D] hover:text-[#158b72]"
+                      ? "text-[#1c3b2b] font-bold"
+                      : "text-[#1F1E1D] hover:text-[#1c3b2b]"
                   }`}
                 >
                   <span>Yoga Retreat</span>
@@ -647,13 +675,13 @@ export default function Navbar() {
                     strokeWidth={1.75}
                     className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
                       activeDropdown === "retreats"
-                        ? "rotate-180 text-[#158b72]"
-                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#158b72]"
+                        ? "rotate-180 text-[#1c3b2b]"
+                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#1c3b2b]"
                     }`}
                   />
                 </button>
                 <span
-                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-200 origin-center ${
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-200 origin-center ${
                     activeDropdown === "retreats"
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
@@ -667,68 +695,68 @@ export default function Navbar() {
                       : "opacity-0 invisible -translate-y-2 scale-[0.98] pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto"
                   }`}
                 >
-                  <div className="w-[410px] max-h-[78vh] overflow-y-auto bg-white rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 p-2.5">
+                  <div className="w-[410px] max-h-[78vh] overflow-y-auto bg-[#fdfbf7] rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 p-2.5">
                     <div className="flex flex-col space-y-1.5">
                       {[
                         {
                           title: "Yoga for Beginners in Rishikesh",
-                          href: "/yoga-for-beginners-rishikesh",
+                          href: "/yoga-course-for-beginners-in-rishikesh-india",
                         },
                         {
                           title: "Yoga & Meditation Retreat in Rishikesh",
-                          href: "/yoga-meditation-retreat",
+                          href: "/yoga-meditation-retreat-in-rishikesh-india",
                         },
                         {
                           title:
                             "07 Days Yoga & Meditation Retreat in Rishikesh",
-                          href: "/7-day-yoga-meditation-retreat",
+                          href: "/07-days-yoga-meditation-retreat-in-rishikesh-india",
                         },
                         {
                           title: "Kundalini Retreat in Rishikesh",
-                          href: "/kundalini-retreat-rishikesh",
+                          href: "/kundalini-retreat-in-rishikesh-india",
                         },
                         {
                           title: "Pranayama Retreat in Rishikesh",
-                          href: "/pranayama-retreat-rishikesh",
+                          href: "/pranayama-retreat-rishikesh-india",
                         },
                         {
                           title: "Vipassana Retreat in Rishikesh",
-                          href: "/vipassana-retreat-rishikesh",
+                          href: "/vipassana-retreat-rishikesh-india",
                         },
                         {
                           title: "Detox Retreat in Rishikesh",
-                          href: "/detox-retreat-rishikesh",
+                          href: "/detox-retreat-rishikesh-india",
                         },
                         {
                           title: "3 Days Detox Retreat in Rishikesh",
-                          href: "/3-day-detox-retreat",
+                          href: "/3-days-detox-retreat-rishikesh-india",
                         },
                         {
                           title: "Mantra Yoga Retreat in Rishikesh",
-                          href: "/mantra-yoga-meditation-retreat",
+                          href: "/mantra-yoga-meditation-retreat-rishikesh",
                         },
                         {
                           title: "Yoga & Ayurveda Retreat in Rishikesh",
-                          href: "/yoga-ayurveda-retreat",
+                          href: "/yoga-and-ayurveda-retreat-in-rishikesh",
                         },
                         {
                           title: "Meditation & Pranayama Retreat in Rishikesh",
-                          href: "/5-day-meditation-pranayama-retreat",
+                          href: "/05-days-meditation-pranayama-retreat-in-rishikesh",
                         },
                       ].map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#158b72]/[0.06] transition-all duration-150"
+                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg hover:bg-[#1c3b2b]/[0.06] transition-all duration-150"
                         >
                           <div className="flex items-center gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
-                            <span className="text-[14px] font-semibold text-stone-800 group-hover/item:text-[#158b72] transition-colors">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#1c3b2b] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
+                            <span className="text-[14px] font-semibold text-stone-800 group-hover/item:text-[#1c3b2b] transition-colors">
                               {item.title}
                             </span>
                           </div>
-                          <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover/item:text-[#158b72] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
+                          <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover/item:text-[#1c3b2b] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
                         </Link>
                       ))}
                     </div>
@@ -737,49 +765,49 @@ export default function Navbar() {
               </li>
 
               {/* Gallery */}
-              <li className="border-r border-[#c8ece2] relative group">
+              <li className="border-r border-[#e3dac9] relative group">
                 <Link
                   href="/gallery"
-                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
                 >
                   Gallery
                 </Link>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
               </li>
 
               {/* Payment */}
-              <li className="border-r border-[#c8ece2] relative group">
+              <li className="border-r border-[#e3dac9] relative group">
                 <Link
-                  href="/payment"
-                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
+                  href="/yoga-course-payment"
+                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
                 >
                   Payment
                 </Link>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
               </li>
 
-              {/* Blog */}
-              <li className="border-r border-[#c8ece2] relative group">
+              {/* Blog — commented out for now */}
+              {/* <li className="border-r border-[#e3dac9] relative group">
                 <a
                   href="https://www.siddhantschoolofyoga.com/blog/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
                 >
                   Blogs
                 </a>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
-              </li>
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+              </li> */}
 
               {/* Contact Us */}
-              <li className="border-r border-[#c8ece2] relative group">
+              <li className="border-r border-[#e3dac9] relative group">
                 <Link
-                  href="/contact-us"
-                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#158b72] transition-colors font-jakarta tracking-wide"
+                  href="/contact"
+                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
                 >
                   Contact Us
                 </Link>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#158b72] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
               </li>
             </ul>
           </div>
@@ -799,7 +827,7 @@ export default function Navbar() {
 
         {/* Drawer */}
         <div
-          className={`md:hidden fixed top-0 left-0 h-full w-[85%] max-w-[340px] bg-white z-[70] shadow-2xl flex flex-col transition-transform duration-300 ease-out ${
+          className={`md:hidden fixed top-0 left-0 h-full w-[85%] max-w-[340px] bg-[#fdfbf7] z-[70] shadow-2xl flex flex-col transition-transform duration-300 ease-out ${
             mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
           }`}
           role="dialog"
@@ -807,7 +835,7 @@ export default function Navbar() {
           aria-label="Mobile navigation menu"
         >
           {/* Drawer Header */}
-          <div className="flex items-center justify-between px-5 py-4 border-b border-[#c8ece2]/80 shrink-0">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-[#e3dac9]/80 shrink-0">
             <Image
               src="/logo/siddhant-logo.svg"
               alt="Siddhant School of Yoga"
@@ -818,7 +846,7 @@ export default function Navbar() {
             <button
               onClick={() => setMobileMenuOpen(false)}
               aria-label="Close navigation menu"
-              className="p-2 rounded-lg text-stone-600 hover:text-[#158b72] hover:bg-[#def4ee4d] transition-colors focus:outline-none"
+              className="p-2 rounded-lg text-stone-600 hover:text-[#1c3b2b] hover:bg-[#f4efe6] transition-colors focus:outline-none"
             >
               <X className="w-5 h-5" />
             </button>
@@ -836,8 +864,8 @@ export default function Navbar() {
                       onClick={() => setMobileMenuOpen(false)}
                       className={`py-3 px-3 rounded-xl transition-colors ${
                         entry.key === "home"
-                          ? "text-[#158b72] bg-[#def4ee4d]"
-                          : "hover:text-[#158b72] hover:bg-[#def4ee4d]"
+                          ? "text-[#1c3b2b] bg-[#f4efe6]"
+                          : "hover:text-[#1c3b2b] hover:bg-[#f4efe6]"
                       }`}
                     >
                       {entry.label}
@@ -853,7 +881,7 @@ export default function Navbar() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="py-3 px-3 rounded-xl hover:text-[#158b72] hover:bg-[#def4ee4d] transition-colors"
+                      className="py-3 px-3 rounded-xl hover:text-[#1c3b2b] hover:bg-[#f4efe6] transition-colors"
                     >
                       {entry.label}
                     </a>
@@ -863,7 +891,7 @@ export default function Navbar() {
                 // Dropdown group (accordion)
                 const isOpen = mobileOpenGroup === entry.key;
                 return (
-                  <div key={entry.key} className="border-b border-[#def4ee4d] last:border-b-0">
+                  <div key={entry.key} className="border-b border-[#f4efe6] last:border-b-0">
                     <button
                       type="button"
                       onClick={() =>
@@ -871,8 +899,8 @@ export default function Navbar() {
                       }
                       className={`w-full flex items-center justify-between py-3 px-3 rounded-xl transition-colors ${
                         isOpen
-                          ? "text-[#158b72] bg-[#def4ee4d]"
-                          : "hover:text-[#158b72] hover:bg-[#def4ee4d]"
+                          ? "text-[#1c3b2b] bg-[#f4efe6]"
+                          : "hover:text-[#1c3b2b] hover:bg-[#f4efe6]"
                       }`}
                     >
                       <span>{entry.label}</span>
@@ -894,9 +922,9 @@ export default function Navbar() {
                             key={item.href}
                             href={item.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="group/item flex items-center gap-2.5 py-2.5 px-3 rounded-lg text-[14px] font-medium text-stone-600 hover:text-[#158b72] hover:bg-[#def4ee4d] transition-colors"
+                            className="group/item flex items-center gap-2.5 py-2.5 px-3 rounded-lg text-[14px] font-medium text-stone-600 hover:text-[#1c3b2b] hover:bg-[#f4efe6] transition-colors"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#158b72] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#1c3b2b] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
                             <span>{item.title}</span>
                           </Link>
                         ))}
@@ -909,22 +937,22 @@ export default function Navbar() {
           </div>
 
           {/* Drawer Action CTAs */}
-          <div className="px-5 py-4 border-t border-[#c8ece2]/80 shrink-0 flex flex-col gap-2.5">
+          <div className="px-5 py-4 border-t border-[#e3dac9]/80 shrink-0 flex flex-col gap-2.5">
             <a
               href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5 bg-white border-2 border-[#158b72] hover:bg-[#158b72] text-[#158b72] hover:text-white py-3 rounded-full font-marcellus font-bold tracking-wide transition-all text-sm group"
+              className="flex items-center justify-center gap-2.5 bg-[#fdfbf7] border-2 border-[#1c3b2b] hover:bg-[#1c3b2b] text-[#1c3b2b] hover:text-white py-3 rounded-full font-marcellus font-bold tracking-wide transition-all text-sm group"
             >
-              <div className="w-5 h-5 rounded-full bg-[#158b72]/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-                <FaWhatsapp className="w-3.5 h-3.5 text-[#158b72] group-hover:text-white transition-colors" />
+              <div className="w-5 h-5 rounded-full bg-[#1c3b2b]/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
+                <FaWhatsapp className="w-3.5 h-3.5 text-[#1c3b2b] group-hover:text-white transition-colors" />
               </div>
               <span>Chat on WhatsApp</span>
             </a>
             <a
               href="/book-my-yoga-in-rishikesh-india"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 bg-[#158b72] hover:bg-[#0f6b57] text-white py-3 rounded-full font-marcellus font-bold tracking-wide shadow-xs transition-all text-sm"
+              className="flex items-center justify-center gap-2 bg-[#b85c00] hover:bg-[#96490a] text-white py-3 rounded-full font-marcellus font-bold tracking-wide shadow-xs transition-all text-sm"
             >
               <Sparkles className="w-4 h-4 text-white" />
               <span>Enroll Now</span>

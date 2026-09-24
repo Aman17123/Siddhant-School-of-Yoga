@@ -25,7 +25,7 @@ export default function PranayamaPreview() {
   ];
 
   return (
-    <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 relative overflow-hidden">
+    <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 relative overflow-hidden">
       {/* Subtle wind wave accents */}
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -50,10 +50,10 @@ export default function PranayamaPreview() {
               {breathPillars.map((p, i) => (
                 <div
                   key={i}
-                  className="p-4 rounded-2xl bg-white border border-[#c8ece2] shadow-xs hover:shadow-md transition-shadow"
+                  className="p-4 rounded-2xl bg-[#fdfbf7] border border-[#e3dac9] shadow-xs hover:shadow-md transition-shadow"
                 >
                   <div className="flex items-center gap-2 mb-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#158b72] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#1c3b2b] shrink-0" />
                     <h4 className="font-belleza text-sm font-normal text-[#1e2422] tracking-wide">
                       {p.title}
                     </h4>
@@ -76,7 +76,7 @@ export default function PranayamaPreview() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-figtree font-semibold text-[#158b72] hover:text-[#0f6b57] px-4 py-3 transition-colors"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-figtree font-semibold text-[#1c3b2b] hover:text-[#142b1e] px-4 py-3 transition-colors"
               >
                 <span>Consult Master on WhatsApp &rarr;</span>
               </a>
@@ -96,7 +96,7 @@ export default function PranayamaPreview() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <span className="font-figtree text-[11px] uppercase tracking-widest text-[#158b72] font-semibold block mb-1">
+                  <span className="font-figtree text-[11px] uppercase tracking-widest text-[#1c3b2b] font-semibold block mb-1">
                     Daily Morning Sadhana
                   </span>
                   <p className="font-figtree text-sm sm:text-base leading-relaxed tracking-normal text-white/90">

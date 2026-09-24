@@ -34,7 +34,7 @@ export default function AboutPreview() {
   return (
     <section
       id="about"
-      className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/60 overflow-hidden"
+      className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/60 overflow-hidden"
     >
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">

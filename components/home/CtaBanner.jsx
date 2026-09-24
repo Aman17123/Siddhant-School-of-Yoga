@@ -31,7 +31,7 @@ export default function CtaBanner() {
       </div>
 
       <Container className="relative z-10 text-center">
-        <span className="block text-[1rem] font-figtree font-semibold tracking-[0.08em] text-[#def4ee] mb-1.5">
+        <span className="block text-[1rem] font-figtree font-semibold tracking-[0.08em] text-[#f4efe6] mb-1.5">
           Enroll Now
         </span>
         <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-white max-w-4xl mx-auto leading-[1.2]">
@@ -56,7 +56,7 @@ export default function CtaBanner() {
               key={i}
               className="flex items-center gap-2 bg-black/20 backdrop-blur-xs px-4 py-1.5 rounded-full border border-white/15 shadow-xs"
             >
-              <Check className="w-3.5 h-3.5 text-[#158b72] shrink-0" />
+              <Check className="w-3.5 h-3.5 text-[#1c3b2b] shrink-0" />
               <span>{perk}</span>
             </div>
           ))}
@@ -70,7 +70,7 @@ export default function CtaBanner() {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#0f6b57] hover:bg-[#158b72] text-white border border-white text-sm sm:text-base font-bold font-figtree px-8 py-4 rounded-full shadow-xl transition-all duration-300 hover:scale-105"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#142b1e] hover:bg-[#1c3b2b] text-white border border-white text-sm sm:text-base font-bold font-figtree px-8 py-4 rounded-full shadow-xl transition-all duration-300 hover:scale-105"
           >
             <FaWhatsapp className="w-5 h-5" />
             <span>Ask About Early Bird Discount</span>
@@ -78,7 +78,7 @@ export default function CtaBanner() {
 
           <Link
             href="/book-my-yoga-in-rishikesh-india"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#158b72] text-sm sm:text-base font-bold font-figtree px-8 py-3.5 rounded-full backdrop-blur-xs transition-all duration-300 hover:scale-105"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-[#fdfbf7] hover:text-[#b85c00] text-sm sm:text-base font-bold font-figtree px-8 py-3.5 rounded-full backdrop-blur-xs transition-all duration-300 hover:scale-105"
           >
             <ArrowRight className="w-4 h-4" />
             <span>Enroll Now</span>

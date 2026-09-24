@@ -20,7 +20,7 @@ export default function YogaAllianceCertification() {
   return (
     <section
       id="certification"
-      className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70"
+      className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70"
     >
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -44,7 +44,7 @@ export default function YogaAllianceCertification() {
             <ul className="space-y-3 mb-8 max-w-2xl mx-auto lg:mx-0 text-left">
               {points.map((point, i) => (
                 <li key={i} className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-5 h-5 text-[#158b72] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#1c3b2b] shrink-0 mt-0.5" />
                   <span className="text-[15px] text-stone-700 leading-relaxed">
                     {point}
                   </span>
@@ -81,9 +81,9 @@ export default function YogaAllianceCertification() {
         </div>
 
         {/* Accreditation Badges Strip */}
-        <div className="mt-12 lg:mt-16 pt-8 border-t border-[#c8ece2]/70">
+        <div className="mt-12 lg:mt-16 pt-8 border-t border-[#e3dac9]/70">
           <div className="flex items-center justify-center gap-2 mb-5 text-stone-500">
-            <Award className="w-4 h-4 text-[#158b72]" />
+            <Award className="w-4 h-4 text-[#1c3b2b]" />
             <span className="text-[11px] sm:text-xs font-figtree font-semibold uppercase tracking-[0.16em]">
               Official Accreditations
             </span>

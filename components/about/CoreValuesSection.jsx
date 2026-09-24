@@ -40,7 +40,7 @@ export default function CoreValuesSection() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+    <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
       <Container>
         <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
           <Kicker>What We Stand For</Kicker>
@@ -99,7 +99,7 @@ export default function CoreValuesSection() {
                     isActive ? "opacity-100 delay-150" : "opacity-0 pointer-events-none"
                   }`}
                 >
-                  <span className="inline-flex w-11 h-11 rounded-full bg-[#158b72] items-center justify-center mb-4">
+                  <span className="inline-flex w-11 h-11 rounded-full bg-[#1c3b2b] items-center justify-center mb-4">
                     <Icon className="w-5 h-5 text-white" />
                   </span>
                   <h3 className="text-white text-xl sm:text-2xl font-belleza font-normal mb-2 drop-shadow-md">
@@ -136,7 +136,7 @@ export default function CoreValuesSection() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <span className="inline-flex w-10 h-10 rounded-full bg-[#158b72] items-center justify-center mb-3">
+                  <span className="inline-flex w-10 h-10 rounded-full bg-[#1c3b2b] items-center justify-center mb-3">
                     <Icon className="w-4.5 h-4.5 text-white" />
                   </span>
                   <h3 className="text-white text-lg font-belleza font-normal mb-1.5 drop-shadow-md">

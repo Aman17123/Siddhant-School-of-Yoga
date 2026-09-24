@@ -45,38 +45,16 @@ export default function ShortsSection() {
   return (
     <section
       id="shorts"
-      className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 relative overflow-hidden"
+      className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 relative overflow-hidden"
     >
       <Container className="relative z-10">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8 lg:mb-10 text-center sm:text-left">
-          <div>
-            <Kicker>Watch &amp; Learn</Kicker>
-            <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2]">
-              Quick Yoga Wisdom From Acharya Siddhant
-            </h2>
-            <HeadingDivider />
-          </div>
-
-          {/* Desktop scroll arrows */}
-          <div className="hidden sm:flex items-center gap-2.5 shrink-0 pb-1">
-            <button
-              type="button"
-              onClick={() => scrollByCard(-1)}
-              aria-label="Scroll shorts left"
-              className="w-10 h-10 rounded-full bg-white border border-[#c8ece2] shadow-xs hover:shadow-md hover:border-[#158b72] hover:text-[#158b72] flex items-center justify-center text-[#55564c] transition-all cursor-pointer"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollByCard(1)}
-              aria-label="Scroll shorts right"
-              className="w-10 h-10 rounded-full bg-white border border-[#c8ece2] shadow-xs hover:shadow-md hover:border-[#158b72] hover:text-[#158b72] flex items-center justify-center text-[#55564c] transition-all cursor-pointer"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
+        <div className="text-center mb-8 lg:mb-10">
+          <Kicker>Watch &amp; Learn</Kicker>
+          <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2]">
+            Quick Yoga Wisdom From Acharya Siddhant
+          </h2>
+          <HeadingDivider />
         </div>
 
         {/* Horizontal Scrolling Shorts Rail */}
@@ -91,7 +69,7 @@ export default function ShortsSection() {
                 type="button"
                 data-short-card
                 onClick={() => setActiveId(short.id)}
-                className="group relative shrink-0 w-[62%] sm:w-[46%] md:w-[31%] lg:w-[calc((100%-3rem)/4)] max-w-[280px] aspect-[9/12] sm:aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-[#c8ece2] transition-all duration-300 hover:-translate-y-1 snap-start cursor-pointer"
+                className="group relative shrink-0 w-[62%] sm:w-[46%] md:w-[31%] lg:w-[calc((100%-3rem)/4)] max-w-[280px] aspect-[9/12] sm:aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-[#e3dac9] transition-all duration-300 hover:-translate-y-1 snap-start cursor-pointer"
               >
                 <Image
                   src={`https://i.ytimg.com/vi/${short.id}/hqdefault.jpg`}
@@ -105,7 +83,7 @@ export default function ShortsSection() {
 
                 {/* Play button */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/95 text-[#158b72] flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#158b72] group-hover:text-white transition-all duration-300 pl-0.5">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/95 text-[#1c3b2b] flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#1c3b2b] group-hover:text-white transition-all duration-300 pl-0.5">
                     <Play className="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-current" />
                   </div>
                 </div>
@@ -120,13 +98,33 @@ export default function ShortsSection() {
           </div>
         </div>
 
+        {/* Desktop scroll arrows */}
+        <div className="hidden sm:flex items-center justify-center gap-2.5 mt-6">
+          <button
+            type="button"
+            onClick={() => scrollByCard(-1)}
+            aria-label="Scroll shorts left"
+            className="w-10 h-10 rounded-full bg-[#fdfbf7] border border-[#e3dac9] shadow-xs hover:shadow-md hover:border-[#1c3b2b] hover:text-[#1c3b2b] flex items-center justify-center text-[#55564c] transition-all cursor-pointer"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollByCard(1)}
+            aria-label="Scroll shorts right"
+            className="w-10 h-10 rounded-full bg-[#fdfbf7] border border-[#e3dac9] shadow-xs hover:shadow-md hover:border-[#1c3b2b] hover:text-[#1c3b2b] flex items-center justify-center text-[#55564c] transition-all cursor-pointer"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+
         {/* Watch More CTA */}
         <div className="mt-8 lg:mt-10 text-center">
           <a
             href="https://www.youtube.com/@AcharyaSiddhant/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white hover:bg-[#158b72] text-[#1e2422] hover:text-white border border-[#c8ece2] hover:border-[#158b72] text-sm font-semibold transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-0.5 group"
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#fdfbf7] hover:bg-[#1c3b2b] text-[#1e2422] hover:text-white border border-[#e3dac9] hover:border-[#1c3b2b] text-sm font-semibold transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-0.5 group"
           >
             <FaYoutube className="w-4 h-4 text-red-600 group-hover:text-white transition-colors" />
             <span>Watch More Videos</span>
@@ -147,7 +145,7 @@ export default function ShortsSection() {
             <button
               onClick={() => setActiveId(null)}
               aria-label="Close video player"
-              className="absolute top-3 right-3 z-20 w-9 h-9 rounded-full bg-black/70 hover:bg-[#158b72] text-white flex items-center justify-center transition-colors border border-white/20"
+              className="absolute top-3 right-3 z-20 w-9 h-9 rounded-full bg-black/70 hover:bg-[#1c3b2b] text-white flex items-center justify-center transition-colors border border-white/20"
             >
               <X className="w-4.5 h-4.5" />
             </button>

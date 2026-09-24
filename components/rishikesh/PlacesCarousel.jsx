@@ -16,8 +16,8 @@ const places = [
   {
     title: "Parmarth Niketan Ashram",
     tag: "Yoga & Spiritual",
-    image: "/images/gallery_images/yoga-philosophy-class-siddhant-school-of-yoga-rishikesh.webp",
-    alt: "Parmarth Niketan Ashram grounds in Rishikesh",
+    image: "/images/holi-festival-celebration.png",
+    alt: "Holi festival celebration during the International Yoga Festival at Parmarth Niketan Ashram, Rishikesh",
     desc: "One of the largest ashrams on the Ganges, hosting the International Yoga Festival and daily satsang, chanting and Aarti by the river.",
   },
   {
@@ -89,7 +89,7 @@ export default function PlacesCarousel() {
   };
 
   return (
-    <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+    <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
       <Container className="relative z-10">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8 lg:mb-10 text-center sm:text-left">
           <div>
@@ -105,7 +105,7 @@ export default function PlacesCarousel() {
               type="button"
               onClick={() => scrollByCard(-1)}
               aria-label="Scroll places left"
-              className="w-10 h-10 rounded-full bg-white border border-[#c8ece2] shadow-xs hover:shadow-md hover:border-[#158b72] hover:text-[#158b72] flex items-center justify-center text-[#55564c] transition-all cursor-pointer"
+              className="w-10 h-10 rounded-full bg-[#fdfbf7] border border-[#e3dac9] shadow-xs hover:shadow-md hover:border-[#1c3b2b] hover:text-[#1c3b2b] flex items-center justify-center text-[#55564c] transition-all cursor-pointer"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -113,7 +113,7 @@ export default function PlacesCarousel() {
               type="button"
               onClick={() => scrollByCard(1)}
               aria-label="Scroll places right"
-              className="w-10 h-10 rounded-full bg-white border border-[#c8ece2] shadow-xs hover:shadow-md hover:border-[#158b72] hover:text-[#158b72] flex items-center justify-center text-[#55564c] transition-all cursor-pointer"
+              className="w-10 h-10 rounded-full bg-[#fdfbf7] border border-[#e3dac9] shadow-xs hover:shadow-md hover:border-[#1c3b2b] hover:text-[#1c3b2b] flex items-center justify-center text-[#55564c] transition-all cursor-pointer"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -128,7 +128,7 @@ export default function PlacesCarousel() {
             <div
               key={place.title}
               data-place-card
-              className="group shrink-0 w-[80%] sm:w-[46%] lg:w-[calc((100%-4rem)/3)] max-w-[360px] bg-white rounded-2xl overflow-hidden border border-[#c8ece2] shadow-xs hover:shadow-lg transition-all duration-300 snap-start"
+              className="group shrink-0 w-[80%] sm:w-[46%] lg:w-[calc((100%-4rem)/3)] max-w-[360px] bg-[#fdfbf7] rounded-2xl overflow-hidden border border-[#e3dac9] shadow-xs hover:shadow-lg transition-all duration-300 snap-start"
             >
               <div className="relative h-48 w-full overflow-hidden">
                 <Image
@@ -139,7 +139,7 @@ export default function PlacesCarousel() {
                   sizes="(max-width: 640px) 80vw, (max-width: 1024px) 46vw, 360px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 text-[#158b72] text-[10px] font-bold uppercase tracking-wider shadow-2xs">
+                <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 text-[#1c3b2b] text-[10px] font-bold uppercase tracking-wider shadow-2xs">
                   <MapPin className="w-3 h-3" />
                   {place.tag}
                 </span>

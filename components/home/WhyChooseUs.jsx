@@ -65,15 +65,15 @@ export default function WhyChooseUs() {
   return (
     <section
       id="why-choose-us"
-      className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-y border-[#3aab92]/40 relative overflow-hidden"
+      className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-y border-[#4c7c65]/40 relative overflow-hidden"
     >
       {/* Subtle decorative background blur shapes */}
-      <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-[#3aab92]/30 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-[#158b72]/10 blur-3xl pointer-events-none" />
+      <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-[#4c7c65]/30 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-[#1c3b2b]/10 blur-3xl pointer-events-none" />
 
       <Container className="relative z-10">
         {/* Main Heading */}
-        <div className="text-center max-w-4xl mx-auto mb-8 lg:mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
           <Kicker>Why Choose Us</Kicker>
           <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2]">
             Why Choose Siddhant School of Yoga in Rishikesh
@@ -97,10 +97,10 @@ export default function WhyChooseUs() {
             return (
               <div
                 key={item.id}
-                className={`group relative bg-white rounded-3xl p-7 lg:p-8 shadow-xs hover:shadow-2xl transition-all duration-300 border border-[#c8ece2] hover:-translate-y-1.5 flex flex-col justify-between font-figtree ${
+                className={`group relative bg-[#fdfbf7] rounded-3xl p-7 lg:p-8 shadow-xs hover:shadow-2xl transition-all duration-300 border border-[#e3dac9] hover:-translate-y-1.5 flex flex-col justify-between font-figtree ${
                   isTerracotta
-                    ? "border-t-4 border-t-[#158b72]"
-                    : "border-t-4 border-t-[#158b72]"
+                    ? "border-t-4 border-t-[#1c3b2b]"
+                    : "border-t-4 border-t-[#1c3b2b]"
                 }`}
               >
                 <div>
@@ -109,8 +109,8 @@ export default function WhyChooseUs() {
                     <div
                       className={`w-13 h-13 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-xs ${
                         isTerracotta
-                          ? "bg-[#158b72]/10 text-[#158b72] group-hover:bg-[#158b72] group-hover:text-white group-hover:scale-105"
-                          : "bg-[#158b72]/15 text-[#0f6b57] group-hover:bg-[#158b72] group-hover:text-white group-hover:scale-105"
+                          ? "bg-[#1c3b2b]/10 text-[#1c3b2b] group-hover:bg-[#1c3b2b] group-hover:text-white group-hover:scale-105"
+                          : "bg-[#1c3b2b]/15 text-[#142b1e] group-hover:bg-[#1c3b2b] group-hover:text-white group-hover:scale-105"
                       }`}
                     >
                       <Icon className="w-6 h-6" />
@@ -121,7 +121,7 @@ export default function WhyChooseUs() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-belleza font-normal text-[#1e2422] tracking-wide mb-1 group-hover:text-[#158b72] transition-colors">
+                  <h3 className="text-xl font-belleza font-normal text-[#1e2422] tracking-wide mb-1 group-hover:text-[#1c3b2b] transition-colors">
                     {item.title}
                   </h3>
 

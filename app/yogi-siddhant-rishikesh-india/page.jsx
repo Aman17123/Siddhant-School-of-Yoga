@@ -60,10 +60,10 @@ const siddhantVideos = [
 
 export default function AcharyaSiddhantPage() {
   return (
-    <div className="flex flex-col min-h-screen relative selection:bg-[#158b72]/30 selection:text-[#0f6b57]">
+    <div className="flex flex-col min-h-screen relative selection:bg-[#1c3b2b]/30 selection:text-[#142b1e]">
       <Navbar />
 
-      <main className="flex-grow bg-white">
+      <main className="flex-grow bg-[#fdfbf7]">
         {/* Hero Banner */}
         <section className="relative min-h-fit sm:min-h-[500px] lg:h-[70vh] lg:max-h-[740px] w-full flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
@@ -82,21 +82,21 @@ export default function AcharyaSiddhantPage() {
               <div className="w-full lg:w-1/2 max-w-xl text-left">
                 <nav
                   aria-label="Breadcrumb"
-                  className="flex items-center justify-start gap-1.5 mb-3 text-xs sm:text-sm font-figtree font-medium text-[#0f6b57]/80"
+                  className="flex items-center justify-start gap-1.5 mb-3 text-xs sm:text-sm font-figtree font-medium text-[#142b1e]/80"
                 >
                   <Link
                     href="/"
-                    className="flex items-center gap-1 hover:text-[#158b72] transition-colors"
+                    className="flex items-center gap-1 hover:text-[#1c3b2b] transition-colors"
                   >
                     <Home className="w-3.5 h-3.5" />
                     <span>Home</span>
                   </Link>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#0f6b57]/50 shrink-0" />
-                  <Link href="/about" className="hover:text-[#158b72] transition-colors">
+                  <ChevronRight className="w-3.5 h-3.5 text-[#142b1e]/50 shrink-0" />
+                  <Link href="/about" className="hover:text-[#1c3b2b] transition-colors">
                     About Us
                   </Link>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#0f6b57]/50 shrink-0" />
-                  <span className="text-[#0f6b57] font-semibold">Acharya Siddhant</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#142b1e]/50 shrink-0" />
+                  <span className="text-[#142b1e] font-semibold">Acharya Siddhant</span>
                 </nav>
 
                 <h1 className="font-belleza tracking-wide text-[#1e2422] leading-[1.2]">
@@ -108,7 +108,7 @@ export default function AcharyaSiddhantPage() {
                   </span>
                 </h1>
 
-                <p className="mt-3 text-sm sm:text-[15px] font-figtree font-medium text-[#0f6b57]/90 leading-relaxed max-w-md">
+                <p className="mt-3 text-sm sm:text-[15px] font-figtree font-medium text-[#142b1e]/90 leading-relaxed max-w-md">
                   Founder &amp; Spiritual Director of Siddhant School of Yoga — a lifelong sadhak, teacher and guide for students from every part of the world.
                 </p>
               </div>
@@ -132,7 +132,7 @@ export default function AcharyaSiddhantPage() {
         <Founder />
 
         {/* His Journey */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
               <Kicker>His Journey</Kicker>
@@ -157,7 +157,7 @@ export default function AcharyaSiddhantPage() {
         </section>
 
         {/* Signature Teachings */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
               <Kicker>His Philosophy</Kicker>
@@ -173,9 +173,9 @@ export default function AcharyaSiddhantPage() {
                 return (
                   <div
                     key={teaching}
-                    className="flex items-start gap-3 bg-[#def4ee4d] rounded-2xl border border-[#c8ece2] p-5"
+                    className="flex items-start gap-3 bg-[#f4efe6] rounded-2xl border border-[#e3dac9] p-5"
                   >
-                    <span className="shrink-0 w-10 h-10 rounded-full bg-[#158b72]/10 text-[#158b72] flex items-center justify-center">
+                    <span className="shrink-0 w-10 h-10 rounded-full bg-[#1c3b2b]/10 text-[#1c3b2b] flex items-center justify-center">
                       <Icon className="w-5 h-5" />
                     </span>
                     <p className="text-sm sm:text-[15px] text-stone-700 leading-relaxed font-medium">
@@ -198,13 +198,13 @@ export default function AcharyaSiddhantPage() {
         <ShortsSection />
 
         {/* Words From Siddhant */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] font-figtree">
           <div className="max-w-2xl mx-auto px-4 text-center">
-            <Quote className="w-9 h-9 text-[#158b72]/25 mx-auto mb-3" />
+            <Quote className="w-9 h-9 text-[#1c3b2b]/25 mx-auto mb-3" />
             <p className="text-lg sm:text-xl font-belleza font-normal text-[#1e2422] leading-relaxed">
               &ldquo;{founder.quote}&rdquo;
             </p>
-            <p className="mt-4 text-[#158b72] font-figtree font-semibold text-sm">
+            <p className="mt-4 text-[#1c3b2b] font-figtree font-semibold text-sm">
               — {founder.name}
             </p>
           </div>

@@ -9,19 +9,19 @@
 }
 
 @theme {
-  --color-terracotta: #158b72;
-  --color-siddhant-red: #158b72;
-  --color-siddhant-green: #158b72;
-  --color-siddhant-gold: #158b72;
-  --color-siddhant-cream: #def4ee;
+  --color-terracotta: #1c3b2b;
+  --color-siddhant-red: #1c3b2b;
+  --color-siddhant-green: #1c3b2b;
+  --color-siddhant-gold: #1c3b2b;
+  --color-siddhant-cream: #f4efe6;
   --color-siddhant-dark: #1e2422;
-  --color-vedic-green: #158b72;
-  --color-forest: #158b72;
-  --color-deep-forest: #0f6b57;
-  --color-coral: #3aab92;
-  --color-marigold: #158b72;
-  --color-sunshine: #3aab92;
-  --color-sunshine-bg: #def4ee;
+  --color-vedic-green: #1c3b2b;
+  --color-forest: #1c3b2b;
+  --color-deep-forest: #142b1e;
+  --color-coral: #4c7c65;
+  --color-marigold: #1c3b2b;
+  --color-sunshine: #4c7c65;
+  --color-sunshine-bg: #f4efe6;
   --font-belleza: var(--font-belleza), "Belleza", sans-serif;
   --font-figtree: var(--font-figtree), "Figtree", sans-serif;
   --font-fortune: var(--font-belleza), "Belleza", sans-serif;
@@ -29,28 +29,28 @@
 
 @layer base {
   :root {
-    --color-terracotta: #158b72;
-    --color-siddhant-red: #158b72;
-    --color-siddhant-green: #158b72;
-    --color-siddhant-gold: #158b72;
-    --color-vedic-green: #158b72;
-    --color-coral: #3aab92;
-    --color-marigold: #158b72;
-    --color-sunshine: #3aab92;
-    --color-sunshine-bg: #def4ee;
-    --background: #def4ee4d;
+    --color-terracotta: #1c3b2b;
+    --color-siddhant-red: #1c3b2b;
+    --color-siddhant-green: #1c3b2b;
+    --color-siddhant-gold: #1c3b2b;
+    --color-vedic-green: #1c3b2b;
+    --color-coral: #4c7c65;
+    --color-marigold: #1c3b2b;
+    --color-sunshine: #4c7c65;
+    --color-sunshine-bg: #f4efe6;
+    --background: #f4efe6;
     --foreground: #1e2422;
-    --primary: #158b72;
-    --primary-light: #3aab92;
-    --primary-dark: #0f6b57;
-    --secondary: #158b72;
-    --secondary-hover: #0f6b57;
-    --accent: #158b72;
-    --accent-light: #3aab92;
-    --cream: #def4ee;
-    --surface: #def4ee;
+    --primary: #1c3b2b;
+    --primary-light: #4c7c65;
+    --primary-dark: #142b1e;
+    --secondary: #1c3b2b;
+    --secondary-hover: #142b1e;
+    --accent: #1c3b2b;
+    --accent-light: #4c7c65;
+    --cream: #f4efe6;
+    --surface: #f4efe6;
     --surface-card: #ffffff;
-    --border: #c8ece2;
+    --border: #e3dac9;
     --muted: #66675c;
     --dark: #1e2422;
     --dark-surface: #181716;
@@ -110,7 +110,7 @@
 
 /* Theme Token Utility Classes */
 .bg {
-  background-color: #def4ee4d;
+  background-color: #f4efe6;
 }
 .bg-terracotta {
   background-color: var(--color-terracotta);
@@ -122,19 +122,19 @@
   border-color: var(--color-terracotta);
 }
 .bg-vedic-green {
-  background-color: #158b72;
+  background-color: #1c3b2b;
 }
 .text-vedic-green {
-  color: #158b72;
+  color: #1c3b2b;
 }
 .border-vedic-green {
-  border-color: #158b72;
+  border-color: #1c3b2b;
 }
 .bg-siddhant-red {
-  background-color: #158b72;
+  background-color: #1c3b2b;
 }
 .text-siddhant-red {
-  color: #158b72;
+  color: #1c3b2b;
 }
 .hover\:bg-coral:hover {
   background-color: var(--color-coral);
@@ -323,7 +323,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #def4ee;
+  background: #f4efe6;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -338,7 +338,7 @@
 /* Thin scrollbar for small in-card scroll areas */
 .scrollbar-thin {
   scrollbar-width: thin;
-  scrollbar-color: #158b72 transparent;
+  scrollbar-color: #1c3b2b transparent;
 }
 
 .scrollbar-thin::-webkit-scrollbar {
@@ -351,10 +351,10 @@
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #158b72;
+  background: #1c3b2b;
   border-radius: 3px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: #0f6b57;
+  background: #142b1e;
 }

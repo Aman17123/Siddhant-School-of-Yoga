@@ -29,7 +29,7 @@ export default function WhyRishikesh() {
   return (
     <section
       id="rishikesh"
-      className="pt-14 sm:pt-16 lg:pt-20 pb-20 sm:pb-24 lg:pb-28 bg-[#FFFFFF] border-b border-[#c8ece2]/60 relative overflow-hidden"
+      className="pt-14 sm:pt-16 lg:pt-20 pb-20 sm:pb-24 lg:pb-28 bg-[#FFFFFF] border-b border-[#e3dac9]/60 relative overflow-hidden"
     >
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -59,20 +59,20 @@ export default function WhyRishikesh() {
                     key={idx}
                     className={`p-5 rounded-2xl border shadow-xs hover:shadow-md transition-shadow flex flex-col items-center sm:items-start text-center sm:text-left ${
                       isFeatured
-                        ? "bg-gradient-to-br from-[#158b72] via-[#0f6b57] to-[#0f6b57] border-[#158b72]"
-                        : "bg-white border-[#c8ece2]"
+                        ? "bg-gradient-to-br from-[#1c3b2b] via-[#142b1e] to-[#142b1e] border-[#1c3b2b]"
+                        : "bg-[#fdfbf7] border-[#e3dac9]"
                     }`}
                   >
                     <div
                       className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 mx-auto sm:mx-0 ${
-                        isFeatured ? "bg-white/15" : "bg-[#158b72]/10"
+                        isFeatured ? "bg-white/15" : "bg-[#1c3b2b]/10"
                       }`}
                     >
-                      <Icon className={`w-5 h-5 ${isFeatured ? "text-white" : "text-[#158b72]"}`} />
+                      <Icon className={`w-5 h-5 ${isFeatured ? "text-white" : "text-[#1c3b2b]"}`} />
                     </div>
                     <h4
                       className={`font-belleza text-lg font-normal tracking-wide mb-1.5 ${
-                        isFeatured ? "text-white" : "text-[#158b72]"
+                        isFeatured ? "text-white" : "text-[#1c3b2b]"
                       }`}
                     >
                       {h.title}
@@ -94,7 +94,7 @@ export default function WhyRishikesh() {
           <div className="lg:col-span-5 relative">
             {/* Soft ambient spiritual aura */}
             <div
-              className="absolute -inset-6 bg-gradient-to-tr from-[#158b72]/10 via-[#158b72]/12 to-transparent rounded-[40px] blur-2xl pointer-events-none -z-10"
+              className="absolute -inset-6 bg-gradient-to-tr from-[#1c3b2b]/10 via-[#1c3b2b]/12 to-transparent rounded-[40px] blur-2xl pointer-events-none -z-10"
               aria-hidden="true"
             />
 
@@ -102,7 +102,7 @@ export default function WhyRishikesh() {
             <div className="absolute -inset-4 sm:-inset-6 pointer-events-none -z-10 flex items-center justify-center overflow-visible">
               <svg
                 viewBox="0 0 500 500"
-                className="w-[110%] h-[110%] max-w-none text-[#158b72] opacity-20 sm:opacity-28 transition-opacity"
+                className="w-[110%] h-[110%] max-w-none text-[#1c3b2b] opacity-20 sm:opacity-28 transition-opacity"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -111,7 +111,7 @@ export default function WhyRishikesh() {
                   cx="250"
                   cy="250"
                   r="235"
-                  stroke="#158b72"
+                  stroke="#1c3b2b"
                   strokeWidth="1.2"
                   strokeDasharray="4 4"
                   opacity="0.7"
@@ -120,7 +120,7 @@ export default function WhyRishikesh() {
                   cx="250"
                   cy="250"
                   r="210"
-                  stroke="#158b72"
+                  stroke="#1c3b2b"
                   strokeWidth="1.4"
                   opacity="0.75"
                 />
@@ -128,7 +128,7 @@ export default function WhyRishikesh() {
                   cx="250"
                   cy="250"
                   r="185"
-                  stroke="#0f6b57"
+                  stroke="#142b1e"
                   strokeWidth="1"
                   strokeDasharray="3 3"
                   opacity="0.6"
@@ -137,7 +137,7 @@ export default function WhyRishikesh() {
                   cx="250"
                   cy="250"
                   r="155"
-                  stroke="#158b72"
+                  stroke="#1c3b2b"
                   strokeWidth="1.2"
                   opacity="0.65"
                 />
@@ -145,7 +145,7 @@ export default function WhyRishikesh() {
                   cx="250"
                   cy="250"
                   r="115"
-                  stroke="#158b72"
+                  stroke="#1c3b2b"
                   strokeWidth="1"
                   opacity="0.5"
                 />
@@ -159,7 +159,7 @@ export default function WhyRishikesh() {
                     {/* Sacred Outer Lotus Petal */}
                     <path
                       d="M 250 145 C 236 75, 264 75, 250 20 C 236 75, 264 75, 250 145 Z"
-                      stroke="#158b72"
+                      stroke="#1c3b2b"
                       strokeWidth="1.2"
                       opacity="0.7"
                     />
@@ -169,31 +169,31 @@ export default function WhyRishikesh() {
                       y1="210"
                       x2="250"
                       y2="230"
-                      stroke="#158b72"
+                      stroke="#1c3b2b"
                       strokeWidth="1.6"
                       strokeLinecap="round"
                     />
-                    <circle cx="250" cy="16" r="2.5" fill="#158b72" opacity="0.8" />
+                    <circle cx="250" cy="16" r="2.5" fill="#1c3b2b" opacity="0.8" />
                   </g>
                 ))}
 
                 {/* Flowing Ganges Prana Waves extending outward */}
                 <path
                   d="M 30 380 C 110 350, 190 410, 290 370 C 390 330, 460 390, 510 365"
-                  stroke="#0f6b57"
+                  stroke="#142b1e"
                   strokeWidth="1.8"
                   strokeDasharray="6 4"
                   opacity="0.7"
                 />
                 <path
                   d="M 10 405 C 100 375, 180 435, 280 395 C 380 355, 450 415, 525 390"
-                  stroke="#158b72"
+                  stroke="#1c3b2b"
                   strokeWidth="1.5"
                   opacity="0.75"
                 />
                 <path
                   d="M 50 430 C 130 400, 210 455, 310 420 C 400 385, 470 435, 520 415"
-                  stroke="#158b72"
+                  stroke="#1c3b2b"
                   strokeWidth="1.2"
                   strokeDasharray="4 4"
                   opacity="0.6"
@@ -205,7 +205,7 @@ export default function WhyRishikesh() {
                     cx="35"
                     cy="35"
                     r="33"
-                    stroke="#158b72"
+                    stroke="#1c3b2b"
                     strokeWidth="1"
                     strokeDasharray="3 2"
                   />
@@ -213,29 +213,29 @@ export default function WhyRishikesh() {
                     cx="35"
                     cy="35"
                     r="29"
-                    stroke="#158b72"
+                    stroke="#1c3b2b"
                     strokeWidth="0.8"
                   />
                   {/* Yogi Head */}
-                  <circle cx="35" cy="18" r="4.2" fill="#0f6b57" />
+                  <circle cx="35" cy="18" r="4.2" fill="#142b1e" />
                   {/* Torso */}
                   <path
                     d="M35 22.5 C35 28 32 35 34 42 C35 45 36 50 36 54"
-                    stroke="#0f6b57"
+                    stroke="#142b1e"
                     strokeWidth="2.2"
                     strokeLinecap="round"
                   />
                   {/* Standing Leg */}
                   <path
                     d="M36 54 L36 62"
-                    stroke="#0f6b57"
+                    stroke="#142b1e"
                     strokeWidth="2.2"
                     strokeLinecap="round"
                   />
                   {/* Lifted Leg */}
                   <path
                     d="M34 42 C30 40 22 36 21 28 C20.5 24 23 20 26 19 C28 18 31 20 33 24"
-                    stroke="#0f6b57"
+                    stroke="#142b1e"
                     strokeWidth="1.8"
                     strokeLinecap="round"
                     fill="none"
@@ -243,22 +243,22 @@ export default function WhyRishikesh() {
                   {/* Front Extended Arm in Mudra */}
                   <path
                     d="M34 26 C38 27 46 29 52 30"
-                    stroke="#0f6b57"
+                    stroke="#142b1e"
                     strokeWidth="1.8"
                     strokeLinecap="round"
                   />
-                  <circle cx="53" cy="30" r="1.6" fill="#158b72" />
+                  <circle cx="53" cy="30" r="1.6" fill="#1c3b2b" />
                   {/* Back Arm */}
                   <path
                     d="M34 26 C31 22 28 20 30 22"
-                    stroke="#0f6b57"
+                    stroke="#142b1e"
                     strokeWidth="1.6"
                     strokeLinecap="round"
                   />
                   {/* Lotus Pedestal Base */}
                   <path
                     d="M26 62 C31 60 39 60 44 62"
-                    stroke="#158b72"
+                    stroke="#1c3b2b"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                   />
@@ -316,8 +316,8 @@ export default function WhyRishikesh() {
               </div>
 
               {/* Floating Sleek Center Badge */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#c8ece2] shadow-md flex items-center gap-2 pointer-events-none">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#158b72] animate-pulse" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#e3dac9] shadow-md flex items-center gap-2 pointer-events-none">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#1c3b2b] animate-pulse" />
                 <span className="font-figtree text-[10px] sm:text-[11px] font-semibold tracking-wider text-[#1e2422] uppercase">
                   Rishikesh, India
                 </span>

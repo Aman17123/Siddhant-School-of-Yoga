@@ -8,7 +8,7 @@ export default function Founder() {
   return (
     <section
       id="founder"
-      className="py-14 sm:py-16 lg:py-20 bg-white border-b border-stone-200/70 overflow-hidden"
+      className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-stone-200/70 overflow-hidden"
     >
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -80,7 +80,7 @@ export default function Founder() {
             </div>
 
             {/* Subtle floating badge */}
-            <div className="hidden sm:flex absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-[#3aab92] items-center gap-2 z-20">
+            <div className="hidden sm:flex absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-[#4c7c65] items-center gap-2 z-20">
               <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
               <span className="text-xs font-bold text-[#1F1E1D] tracking-wide">
                 18+ Years Himalayan Sadhana &amp; Lineage
@@ -100,8 +100,8 @@ export default function Founder() {
             <HeadingDivider center={false} className="mb-3" />
 
             {/* Pull-Quote Block */}
-            <div className="relative pl-5 py-4 border-l-4 border-[#158b72] bg-[#def4ee4d] rounded-r-2xl mb-6 pr-4 shadow-2xs text-left">
-              <Quote className="w-5 h-5 text-[#158b72]/80 mb-1" />
+            <div className="relative pl-5 py-4 border-l-4 border-[#1c3b2b] bg-[#f4efe6] rounded-r-2xl mb-6 pr-4 shadow-2xs text-left">
+              <Quote className="w-5 h-5 text-[#1c3b2b]/80 mb-1" />
               <p className="font-figtree italic text-sm sm:text-base text-[#1e2422] leading-relaxed">
                 &ldquo;Yoga is a journey from darkness to light, from suffering
                 to bliss, from attachment to non-attachment, and from thoughts
@@ -109,7 +109,7 @@ export default function Founder() {
                 growth.&rdquo;
               </p>
               <div className="mt-2 text-right">
-                <span className="font-figtree text-xs font-semibold text-[#158b72] tracking-wider uppercase">
+                <span className="font-figtree text-xs font-semibold text-[#1c3b2b] tracking-wider uppercase">
                   &mdash; Acharya Siddhant
                 </span>
               </div>
@@ -137,7 +137,7 @@ export default function Founder() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4">
               <Link
                 href="/book-my-yoga-in-rishikesh-india"
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#b85c00] hover:bg-[#96490a] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
               >
                 Enroll Now
               </Link>
@@ -148,7 +148,7 @@ export default function Founder() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#def4ee4d] border-2 border-[#158b72] text-[#158b72] hover:bg-[#158b72] hover:text-white transition-all duration-300"
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#f4efe6] border-2 border-[#1c3b2b] text-[#1c3b2b] hover:bg-[#1c3b2b] hover:text-white transition-all duration-300"
               >
                 Chat With Master
               </a>

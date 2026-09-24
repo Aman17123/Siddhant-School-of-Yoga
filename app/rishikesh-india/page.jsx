@@ -133,10 +133,10 @@ const howToReach = [
 
 export default function RishikeshPage() {
   return (
-    <div className="flex flex-col min-h-screen relative selection:bg-[#158b72]/30 selection:text-[#0f6b57]">
+    <div className="flex flex-col min-h-screen relative selection:bg-[#1c3b2b]/30 selection:text-[#142b1e]">
       <Navbar />
 
-      <main className="flex-grow bg-white">
+      <main className="flex-grow bg-[#fdfbf7]">
         {/* Hero Banner */}
         <section className="relative min-h-fit sm:min-h-[500px] lg:h-[70vh] lg:max-h-[740px] w-full flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
@@ -155,21 +155,21 @@ export default function RishikeshPage() {
               <div className="w-full lg:w-1/2 max-w-xl text-left">
                 <nav
                   aria-label="Breadcrumb"
-                  className="flex items-center justify-start gap-1.5 mb-3 text-xs sm:text-sm font-figtree font-medium text-[#0f6b57]/80"
+                  className="flex items-center justify-start gap-1.5 mb-3 text-xs sm:text-sm font-figtree font-medium text-[#142b1e]/80"
                 >
                   <Link
                     href="/"
-                    className="flex items-center gap-1 hover:text-[#158b72] transition-colors"
+                    className="flex items-center gap-1 hover:text-[#1c3b2b] transition-colors"
                   >
                     <HomeIcon className="w-3.5 h-3.5" />
                     <span>Home</span>
                   </Link>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#0f6b57]/50 shrink-0" />
-                  <Link href="/about" className="hover:text-[#158b72] transition-colors">
+                  <ChevronRight className="w-3.5 h-3.5 text-[#142b1e]/50 shrink-0" />
+                  <Link href="/about" className="hover:text-[#1c3b2b] transition-colors">
                     About Us
                   </Link>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#0f6b57]/50 shrink-0" />
-                  <span className="text-[#0f6b57] font-semibold">Rishikesh, India</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#142b1e]/50 shrink-0" />
+                  <span className="text-[#142b1e] font-semibold">Rishikesh, India</span>
                 </nav>
 
                 <h1 className="font-belleza tracking-wide text-[#1e2422] leading-[1.2]">
@@ -181,7 +181,7 @@ export default function RishikeshPage() {
                   </span>
                 </h1>
 
-                <p className="mt-3 text-sm sm:text-[15px] font-figtree font-medium text-[#0f6b57]/90 leading-relaxed max-w-md">
+                <p className="mt-3 text-sm sm:text-[15px] font-figtree font-medium text-[#142b1e]/90 leading-relaxed max-w-md">
                   The Yoga Capital of the World — where the Himalayas meet the holy Ganges, and where Siddhant School of Yoga calls home.
                 </p>
               </div>
@@ -203,7 +203,7 @@ export default function RishikeshPage() {
         </section>
 
         {/* Intro — Why Visit */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
               <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden shadow-lg border-2 border-white order-2 lg:order-1">
@@ -235,7 +235,7 @@ export default function RishikeshPage() {
         </section>
 
         {/* Adventure */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-14">
               <Kicker>Beyond the Mat</Kicker>
@@ -254,9 +254,9 @@ export default function RishikeshPage() {
                 return (
                   <div
                     key={a.title}
-                    className="bg-white rounded-2xl border border-[#c8ece2] p-5 text-center hover:shadow-md transition-shadow"
+                    className="bg-[#fdfbf7] rounded-2xl border border-[#e3dac9] p-5 text-center hover:shadow-md transition-shadow"
                   >
-                    <span className="inline-flex w-11 h-11 rounded-xl bg-[#158b72]/10 text-[#158b72] items-center justify-center mb-3">
+                    <span className="inline-flex w-11 h-11 rounded-xl bg-[#1c3b2b]/10 text-[#1c3b2b] items-center justify-center mb-3">
                       <Icon className="w-5 h-5" />
                     </span>
                     <h4 className="font-belleza text-base sm:text-lg font-normal text-[#1e2422] tracking-wide mb-1">
@@ -273,7 +273,7 @@ export default function RishikeshPage() {
         </section>
 
         {/* Geography */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
               <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden shadow-lg border-2 border-white order-2 lg:order-1">
@@ -304,7 +304,7 @@ export default function RishikeshPage() {
                   {["372m Elevation", "3 Bordering Districts", "Road & Rail Connected"].map((s) => (
                     <span
                       key={s}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#def4ee4d] text-[#158b72] border border-[#158b72]/20"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#f4efe6] text-[#1c3b2b] border border-[#1c3b2b]/20"
                     >
                       <MapPin className="w-3.5 h-3.5" />
                       {s}
@@ -317,7 +317,7 @@ export default function RishikeshPage() {
         </section>
 
         {/* History */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
               <div className="text-center lg:text-left">
@@ -349,7 +349,7 @@ export default function RishikeshPage() {
         </section>
 
         {/* Climate */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-14">
               <Kicker>Weather &amp; When to Go</Kicker>
@@ -368,15 +368,15 @@ export default function RishikeshPage() {
                 return (
                   <div
                     key={s.title}
-                    className="bg-[#def4ee4d] rounded-2xl border border-[#c8ece2] p-6"
+                    className="bg-[#f4efe6] rounded-2xl border border-[#e3dac9] p-6"
                   >
-                    <span className="inline-flex w-11 h-11 rounded-xl bg-white text-[#158b72] items-center justify-center mb-3 shadow-2xs">
+                    <span className="inline-flex w-11 h-11 rounded-xl bg-[#fdfbf7] text-[#1c3b2b] items-center justify-center mb-3 shadow-2xs">
                       <Icon className="w-5 h-5" />
                     </span>
                     <h3 className="font-belleza text-lg font-normal text-[#1e2422] tracking-wide mb-1">
                       {s.title}
                     </h3>
-                    <span className="text-[11px] font-bold uppercase tracking-wide text-[#158b72] block mb-2">
+                    <span className="text-[11px] font-bold uppercase tracking-wide text-[#1c3b2b] block mb-2">
                       {s.tag}
                     </span>
                     <p className="text-sm text-stone-600 leading-relaxed font-medium">
@@ -390,7 +390,7 @@ export default function RishikeshPage() {
         </section>
 
         {/* Culture */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
               <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden shadow-lg border-2 border-white order-2 lg:order-1">
@@ -415,19 +415,19 @@ export default function RishikeshPage() {
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mt-5">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white text-[#158b72] border border-[#158b72]/20">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#fdfbf7] text-[#1c3b2b] border border-[#1c3b2b]/20">
                     <UtensilsCrossed className="w-3.5 h-3.5" />
                     100% Vegetarian City
                   </span>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white text-[#158b72] border border-[#158b72]/20">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#fdfbf7] text-[#1c3b2b] border border-[#1c3b2b]/20">
                     <Ban className="w-3.5 h-3.5" />
                     Alcohol-Free Town
                   </span>
                 </div>
 
-                <div className="mt-6 bg-white rounded-2xl border border-[#c8ece2] p-5 text-left">
+                <div className="mt-6 bg-[#fdfbf7] rounded-2xl border border-[#e3dac9] p-5 text-left">
                   <div className="flex items-center gap-2.5 mb-3">
-                    <Landmark className="w-4.5 h-4.5 text-[#158b72]" />
+                    <Landmark className="w-4.5 h-4.5 text-[#1c3b2b]" />
                     <h4 className="font-belleza text-base font-normal text-[#1e2422] tracking-wide">
                       Gateway to the Char Dham Yatra
                     </h4>
@@ -439,7 +439,7 @@ export default function RishikeshPage() {
                     {charDham.map((d) => (
                       <span
                         key={d}
-                        className="text-xs font-semibold px-3 py-1 rounded-full bg-[#def4ee4d] text-[#158b72] border border-[#158b72]/20"
+                        className="text-xs font-semibold px-3 py-1 rounded-full bg-[#f4efe6] text-[#1c3b2b] border border-[#1c3b2b]/20"
                       >
                         {d}
                       </span>
@@ -479,7 +479,7 @@ export default function RishikeshPage() {
         </section>
 
         {/* Why Choose Rishikesh for Yoga & Meditation */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-14">
               <Kicker>Authentic Yoga, Meditation &amp; Spiritual Growth</Kicker>
@@ -541,7 +541,7 @@ export default function RishikeshPage() {
                   Whether you're here for a short retreat or a full, internationally recognized teacher training, Rishikesh has an option for every level. Many schools, including ours, build daily life around sattvic food, pranayama, chanting and mindfulness — and with students arriving from every corner of the globe, you'll always have a warm, supportive community around you on this journey.
                 </p>
 
-                <div className="mt-6 divide-y divide-[#c8ece2]/70">
+                <div className="mt-6 divide-y divide-[#e3dac9]/70">
                   {whyYogaHighlights.map((h) => {
                     const Icon = h.icon;
                     return (
@@ -549,7 +549,7 @@ export default function RishikeshPage() {
                         key={h.title}
                         className="flex items-start gap-4 py-4 text-left"
                       >
-                        <span className="shrink-0 w-11 h-11 rounded-full bg-[#158b72] text-white flex items-center justify-center">
+                        <span className="shrink-0 w-11 h-11 rounded-full bg-[#1c3b2b] text-white flex items-center justify-center">
                           <Icon className="w-5 h-5" />
                         </span>
                         <div>
@@ -570,7 +570,7 @@ export default function RishikeshPage() {
         </section>
 
         {/* How to Reach Rishikesh */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
             <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-14">
               <Kicker>Getting Here</Kicker>
@@ -583,13 +583,13 @@ export default function RishikeshPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#c8ece2] max-w-5xl mx-auto bg-white rounded-3xl border border-[#c8ece2] shadow-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#e3dac9] max-w-5xl mx-auto bg-[#fdfbf7] rounded-3xl border border-[#e3dac9] shadow-xs">
               {howToReach.map((r) => {
                 const Icon = r.icon;
                 const BadgeIcon = r.badgeIcon;
                 return (
                   <div key={r.title} className="p-7 sm:p-8 text-center">
-                    <span className="inline-flex w-12 h-12 rounded-xl bg-[#158b72]/10 text-[#158b72] items-center justify-center mb-3">
+                    <span className="inline-flex w-12 h-12 rounded-xl bg-[#1c3b2b]/10 text-[#1c3b2b] items-center justify-center mb-3">
                       <Icon className="w-5.5 h-5.5" />
                     </span>
                     <h3 className="font-belleza text-xl font-normal text-[#1e2422] tracking-wide mb-3">
@@ -602,7 +602,7 @@ export default function RishikeshPage() {
                         </p>
                       ))}
                     </div>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#def4ee4d] text-[#158b72] border border-[#158b72]/20">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#f4efe6] text-[#1c3b2b] border border-[#1c3b2b]/20">
                       <BadgeIcon className="w-3.5 h-3.5" />
                       {r.badge}
                     </span>

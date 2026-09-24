@@ -121,19 +121,19 @@ export default function CourseComparison() {
       category: "kundalini",
       categoryLabel: "Kundalini Yoga",
       badge: "Chakra Foundation",
-      duration: "14 Days",
+      duration: "13 Days",
       hours: "100 Hours",
-      cert: "Yoga Alliance YACEP / Part 1",
+      cert: "School Certificate — Part 1 of 200h",
       suitability: "Beginner Energy & Chakra Seekers",
-      price: "$499 – $699",
-      pricing: { triple: "$499", shared: "$599", private: "$699" },
+      price: "$300 – $600",
+      pricing: { triple: "$300", shared: "$500", private: "$600" },
       features: [
-        "Awakening of Mooladhara to Sahasrara chakras",
+        "Discovering your Muladhara to Sahasrara chakras",
         "Traditional Kundalini kriyas & pranayama locks",
         "Daily meditation & subtle energy body science",
         "Ashram stay with 3 sattvic Ayurvedic meals daily",
       ],
-      slug: "/100-hour-kundalini-yoga-ttc",
+      slug: "/100-hours-kundalini-yoga-teacher-training-in-rishikesh-india",
       cta: "Enquire Kundalini 100h",
       popular: false,
     },
@@ -284,7 +284,7 @@ export default function CourseComparison() {
   return (
     <section
       id="comparison"
-      className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/60 overflow-hidden relative font-figtree"
+      className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/60 overflow-hidden relative font-figtree"
     >
       <Container>
         {/* Section Header */}
@@ -298,8 +298,8 @@ export default function CourseComparison() {
 
           {/* Carousel Controls (Prev / Next Arrows + Count Badge) */}
           <div className="flex items-center justify-center lg:justify-end gap-3 shrink-0 self-center lg:self-end">
-            <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#def4ee4d] border border-[#c8ece2] text-xs font-semibold text-stone-700">
-              <span className="w-2 h-2 rounded-full bg-[#158b72] animate-pulse" />
+            <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#f4efe6] border border-[#e3dac9] text-xs font-semibold text-stone-700">
+              <span className="w-2 h-2 rounded-full bg-[#1c3b2b] animate-pulse" />
               <span>
                 {filteredCourses.length} Courses in Carousel
               </span>
@@ -313,7 +313,7 @@ export default function CourseComparison() {
                 aria-label="Previous courses"
                 className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-200 ${
                   canScrollLeft
-                    ? "bg-white border-[#c8ece2] text-[#1e2422] hover:bg-[#158b72] hover:text-white hover:border-[#158b72] shadow-xs hover:shadow-md cursor-pointer active:scale-95"
+                    ? "bg-[#fdfbf7] border-[#e3dac9] text-[#1e2422] hover:bg-[#1c3b2b] hover:text-white hover:border-[#1c3b2b] shadow-xs hover:shadow-md cursor-pointer active:scale-95"
                     : "bg-stone-50 border-stone-200 text-stone-300 cursor-not-allowed"
                 }`}
               >
@@ -326,7 +326,7 @@ export default function CourseComparison() {
                 aria-label="Next courses"
                 className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-200 ${
                   canScrollRight
-                    ? "bg-white border-[#c8ece2] text-[#1e2422] hover:bg-[#158b72] hover:text-white hover:border-[#158b72] shadow-xs hover:shadow-md cursor-pointer active:scale-95"
+                    ? "bg-[#fdfbf7] border-[#e3dac9] text-[#1e2422] hover:bg-[#1c3b2b] hover:text-white hover:border-[#1c3b2b] shadow-xs hover:shadow-md cursor-pointer active:scale-95"
                     : "bg-stone-50 border-stone-200 text-stone-300 cursor-not-allowed"
                 }`}
               >
@@ -343,8 +343,8 @@ export default function CourseComparison() {
             onClick={() => handleCategoryChange("all")}
             className={`cursor-pointer px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${
               activeCategory === "all"
-                ? "bg-[#158b72] text-white shadow-xs scale-100"
-                : "bg-[#def4ee4d] text-stone-700 hover:bg-[#def4ee4d] border border-[#c8ece2]"
+                ? "bg-[#1c3b2b] text-white shadow-xs scale-100"
+                : "bg-[#f4efe6] text-stone-700 hover:bg-[#f4efe6] border border-[#e3dac9]"
             }`}
           >
             <span>All Programs</span>
@@ -364,11 +364,11 @@ export default function CourseComparison() {
             onClick={() => handleCategoryChange("multi-style")}
             className={`cursor-pointer px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${
               activeCategory === "multi-style"
-                ? "bg-[#158b72] text-white shadow-xs"
-                : "bg-[#def4ee4d] text-stone-700 hover:bg-[#def4ee4d] border border-[#c8ece2]"
+                ? "bg-[#1c3b2b] text-white shadow-xs"
+                : "bg-[#f4efe6] text-stone-700 hover:bg-[#f4efe6] border border-[#e3dac9]"
             }`}
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#158b72]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#1c3b2b]" />
             <span>Multi-Style YTTC</span>
             <span
               className={`text-[11px] px-1.5 py-0.2 rounded-full ${
@@ -386,11 +386,11 @@ export default function CourseComparison() {
             onClick={() => handleCategoryChange("kundalini")}
             className={`cursor-pointer px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${
               activeCategory === "kundalini"
-                ? "bg-[#158b72] text-white shadow-xs"
-                : "bg-[#def4ee4d] text-stone-700 hover:bg-[#def4ee4d] border border-[#c8ece2]"
+                ? "bg-[#1c3b2b] text-white shadow-xs"
+                : "bg-[#f4efe6] text-stone-700 hover:bg-[#f4efe6] border border-[#e3dac9]"
             }`}
           >
-            <Flame className="w-3.5 h-3.5 text-[#158b72]" />
+            <Flame className="w-3.5 h-3.5 text-[#1c3b2b]" />
             <span>Kundalini Yoga TTC</span>
             <span
               className={`text-[11px] px-1.5 py-0.2 rounded-full ${
@@ -413,20 +413,20 @@ export default function CourseComparison() {
             {filteredCourses.map((c) => (
               <div
                 key={c.id}
-                className={`w-[86vw] sm:w-[calc((100%-20px)/2)] lg:w-[calc((100%-48px)/4)] shrink-0 snap-start rounded-2xl p-4 sm:p-4.5 flex flex-col justify-between border transition-all duration-300 hover:shadow-xl bg-white ${
+                className={`w-[86vw] sm:w-[calc((100%-20px)/2)] lg:w-[calc((100%-48px)/4)] shrink-0 snap-start rounded-2xl p-4 sm:p-4.5 flex flex-col justify-between border transition-all duration-300 hover:shadow-xl bg-[#fdfbf7] ${
                   c.popular
-                    ? "border-[#158b72] ring-2 ring-[#158b72]/20 bg-[#def4ee4d] shadow-md -translate-y-1"
-                    : "border-[#c8ece2] hover:-translate-y-0.5"
+                    ? "border-[#1c3b2b] ring-2 ring-[#1c3b2b]/20 bg-[#f4efe6] shadow-md -translate-y-1"
+                    : "border-[#e3dac9] hover:-translate-y-0.5"
                 }`}
               >
                 <div>
                   {/* Top Badges (Category & Popularity) */}
                   <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="inline-flex items-center gap-1 text-[10px] sm:text-[10.5px] font-semibold px-2 sm:px-2.5 py-0.5 rounded-full bg-[#def4ee4d] text-stone-700 border border-[#158b72]/40">
+                    <span className="inline-flex items-center gap-1 text-[10px] sm:text-[10.5px] font-semibold px-2 sm:px-2.5 py-0.5 rounded-full bg-[#f4efe6] text-stone-700 border border-[#1c3b2b]/40">
                       {c.category === "kundalini" ? (
-                        <Flame className="w-3 h-3 text-[#158b72]" />
+                        <Flame className="w-3 h-3 text-[#1c3b2b]" />
                       ) : (
-                        <Sparkles className="w-3 h-3 text-[#158b72]" />
+                        <Sparkles className="w-3 h-3 text-[#1c3b2b]" />
                       )}
                       <span>{c.categoryLabel}</span>
                     </span>
@@ -434,7 +434,7 @@ export default function CourseComparison() {
                     <span
                       className={`text-[9.5px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${
                         c.popular
-                          ? "bg-[#158b72] text-white shadow-xs"
+                          ? "bg-[#1c3b2b] text-white shadow-xs"
                           : "bg-stone-100 text-stone-600"
                       }`}
                     >
@@ -446,12 +446,12 @@ export default function CourseComparison() {
                   <h3 className="text-lg lg:text-xl font-belleza font-normal text-[#1e2422] mb-0.5 tracking-wide leading-tight">
                     {c.name}
                   </h3>
-                  <span className="text-[11px] text-[#0f6b57] font-medium block mb-3 line-clamp-1">
+                  <span className="text-[11px] text-[#142b1e] font-medium block mb-3 line-clamp-1">
                     {c.suitability}
                   </span>
 
                   {/* Specs Box */}
-                  <div className="space-y-1.5 py-2 border-y border-[#c8ece2] text-[11px] sm:text-xs text-stone-700 mb-3 bg-stone-50/50 rounded-lg px-2 sm:px-2.5">
+                  <div className="space-y-1.5 py-2 border-y border-[#e3dac9] text-[11px] sm:text-xs text-stone-700 mb-3 bg-stone-50/50 rounded-lg px-2 sm:px-2.5">
                     <div className="flex items-center justify-between">
                       <span className="text-stone-500 font-normal">Duration:</span>
                       <span className="font-semibold text-[#1e2422]">
@@ -466,7 +466,7 @@ export default function CourseComparison() {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-stone-500 font-normal">Certification:</span>
-                      <span className="font-semibold text-right text-[10.5px] sm:text-[11px] max-w-[130px] truncate text-[#0f6b57]">
+                      <span className="font-semibold text-right text-[10.5px] sm:text-[11px] max-w-[130px] truncate text-[#142b1e]">
                         {c.cert}
                       </span>
                     </div>
@@ -480,7 +480,7 @@ export default function CourseComparison() {
                     <ul className="space-y-1 text-[11px] sm:text-xs text-stone-600 font-light">
                       {c.features.map((f, fi) => (
                         <li key={fi} className="flex items-start gap-1.5">
-                          <Check className="w-3.5 h-3.5 text-[#158b72] shrink-0 mt-0.5" />
+                          <Check className="w-3.5 h-3.5 text-[#1c3b2b] shrink-0 mt-0.5" />
                           <span className="line-clamp-1 leading-snug">{f}</span>
                         </li>
                       ))}
@@ -489,7 +489,7 @@ export default function CourseComparison() {
                 </div>
 
                 {/* Price & Action Area */}
-                <div className="pt-3.5 border-t border-[#c8ece2]">
+                <div className="pt-3.5 border-t border-[#e3dac9]">
                   <div className="mb-3.5">
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-[10px] uppercase tracking-wider text-stone-500 block font-semibold">
@@ -499,13 +499,13 @@ export default function CourseComparison() {
                         Food &amp; Stay Included
                       </span>
                     </div>
-                    <span className="text-lg font-bold text-[#158b72] font-figtree block mb-2">
+                    <span className="text-lg font-bold text-[#1c3b2b] font-figtree block mb-2">
                       {c.price}
                     </span>
 
                     {/* Room Tier Grid */}
                     {c.pricing && (
-                      <div className="grid grid-cols-3 gap-1 p-1.5 rounded-xl bg-[#def4ee4d] border border-[#c8ece2] text-center text-[9.5px]">
+                      <div className="grid grid-cols-3 gap-1 p-1.5 rounded-xl bg-[#f4efe6] border border-[#e3dac9] text-center text-[9.5px]">
                         <div>
                           <span className="text-stone-500 block leading-tight">
                             Triple
@@ -514,11 +514,11 @@ export default function CourseComparison() {
                             {c.pricing.triple}
                           </span>
                         </div>
-                        <div className="border-x border-[#c8ece2]">
+                        <div className="border-x border-[#e3dac9]">
                           <span className="text-stone-500 block leading-tight">
                             Shared
                           </span>
-                          <span className="font-bold text-[#158b72] block mt-0.5">
+                          <span className="font-bold text-[#1c3b2b] block mt-0.5">
                             {c.pricing.shared}
                           </span>
                         </div>
@@ -544,8 +544,8 @@ export default function CourseComparison() {
                       rel="noopener noreferrer"
                       className={`w-full inline-flex items-center justify-center gap-2 py-2.5 px-3 rounded-full text-xs font-semibold transition-all ${
                         c.popular
-                          ? "bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-xs hover:shadow-md"
-                          : "bg-[#def4ee4d] hover:bg-[#158b72] hover:text-white text-[#158b72] border border-[#158b72]"
+                          ? "bg-[#1c3b2b] hover:bg-[#142b1e] text-white shadow-xs hover:shadow-md"
+                          : "bg-[#f4efe6] hover:bg-[#1c3b2b] hover:text-white text-[#1c3b2b] border border-[#1c3b2b]"
                       }`}
                     >
                       <span>{c.cta}</span>
@@ -554,7 +554,7 @@ export default function CourseComparison() {
 
                     <Link
                       href={c.slug}
-                      className="w-full inline-flex items-center justify-center gap-1.5 py-1.5 text-[11.5px] font-semibold text-stone-600 hover:text-[#158b72] transition-colors"
+                      className="w-full inline-flex items-center justify-center gap-1.5 py-1.5 text-[11.5px] font-semibold text-stone-600 hover:text-[#1c3b2b] transition-colors"
                     >
                       <span>View Course Details &amp; Syllabus</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
@@ -577,7 +577,7 @@ export default function CourseComparison() {
                 aria-label={`Go to slide ${idx + 1}`}
                 className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   idx === activeIndex
-                    ? "w-6 bg-[#158b72]"
+                    ? "w-6 bg-[#1c3b2b]"
                     : "w-2 bg-stone-300 hover:bg-stone-400"
                 }`}
               />

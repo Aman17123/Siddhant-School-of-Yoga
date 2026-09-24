@@ -10,7 +10,7 @@ function MandalaFrame() {
   return (
     <svg
       viewBox="0 0 140 140"
-      className="absolute inset-0 w-full h-full pointer-events-none transition-transform duration-700 ease-out group-hover:rotate-45 text-[#158b72]"
+      className="absolute inset-0 w-full h-full pointer-events-none transition-transform duration-700 ease-out group-hover:rotate-45 text-[#1c3b2b]"
       aria-hidden="true"
     >
       <defs>
@@ -22,7 +22,7 @@ function MandalaFrame() {
             stroke="currentColor"
             strokeWidth="0.9"
           />
-          <circle cx="70" cy="3" r="1" fill="#158b72" />
+          <circle cx="70" cy="3" r="1" fill="#1c3b2b" />
         </g>
       </defs>
 
@@ -44,7 +44,7 @@ function MandalaFrame() {
         cy="70"
         r="66"
         fill="none"
-        stroke="#158b72"
+        stroke="#1c3b2b"
         strokeWidth="0.6"
         strokeDasharray="2 2.5"
         opacity="0.8"
@@ -64,7 +64,7 @@ function MandalaFrame() {
         cy="70"
         r="58"
         fill="none"
-        stroke="#158b72"
+        stroke="#1c3b2b"
         strokeWidth="0.75"
         strokeDasharray="1.5 2"
       />
@@ -141,11 +141,11 @@ export default function Teachers() {
   return (
     <section
       id="teachers"
-      className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/80 relative overflow-hidden"
+      className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/80 relative overflow-hidden"
     >
       {/* Background accents */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#158b72]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#158b72]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#1c3b2b]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#1c3b2b]/5 rounded-full blur-3xl pointer-events-none" />
 
       <Container className="relative">
         <SectionHeading
@@ -162,7 +162,7 @@ export default function Teachers() {
             onClick={() => handleScroll("left")}
             disabled={!canScrollLeft}
             aria-label="Previous teachers"
-            className={`absolute -left-2 sm:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-[#c8ece2] shadow-md flex items-center justify-center text-[#1e2422] hover:bg-[#158b72] hover:text-white hover:border-[#158b72] transition-all duration-300 disabled:opacity-0 disabled:pointer-events-none cursor-pointer`}
+            className={`absolute -left-2 sm:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-[#e3dac9] shadow-md flex items-center justify-center text-[#1e2422] hover:bg-[#1c3b2b] hover:text-white hover:border-[#1c3b2b] transition-all duration-300 disabled:opacity-0 disabled:pointer-events-none cursor-pointer`}
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -172,7 +172,7 @@ export default function Teachers() {
             onClick={() => handleScroll("right")}
             disabled={!canScrollRight}
             aria-label="Next teachers"
-            className={`absolute -right-2 sm:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-[#c8ece2] shadow-md flex items-center justify-center text-[#1e2422] hover:bg-[#158b72] hover:text-white hover:border-[#158b72] transition-all duration-300 disabled:opacity-0 disabled:pointer-events-none cursor-pointer`}
+            className={`absolute -right-2 sm:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-[#e3dac9] shadow-md flex items-center justify-center text-[#1e2422] hover:bg-[#1c3b2b] hover:text-white hover:border-[#1c3b2b] transition-all duration-300 disabled:opacity-0 disabled:pointer-events-none cursor-pointer`}
           >
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -185,7 +185,7 @@ export default function Teachers() {
             {teachers.map((teacher, idx) => (
               <div
                 key={idx}
-                className="flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] snap-start bg-white rounded-3xl p-5 sm:p-6 border border-[#c8ece2] shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 group flex flex-col items-center text-center"
+                className="flex-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] snap-start bg-[#fdfbf7] rounded-3xl p-5 sm:p-6 border border-[#e3dac9] shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 group flex flex-col items-center text-center"
               >
                 {/* Minor Subtle Ornate Framed Circular Avatar */}
                 <div className="relative w-32 h-32 sm:w-34 sm:h-34 mb-3 flex items-center justify-center">
@@ -204,8 +204,8 @@ export default function Teachers() {
                 </div>
 
                 {/* Experience Badge */}
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-figtree font-semibold bg-[#def4ee4d] text-[#158b72] border border-[#158b72]/40 shadow-2xs mb-2.5">
-                  <Award className="w-3 h-3 text-[#158b72]" />
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-figtree font-semibold bg-[#f4efe6] text-[#1c3b2b] border border-[#1c3b2b]/40 shadow-2xs mb-2.5">
+                  <Award className="w-3 h-3 text-[#1c3b2b]" />
                   <span>{teacher.exp}</span>
                 </div>
 
@@ -215,7 +215,7 @@ export default function Teachers() {
                 </h3>
 
                 {/* Role */}
-                <p className="text-xs sm:text-[13px] font-figtree font-semibold text-[#158b72] mb-2">
+                <p className="text-xs sm:text-[13px] font-figtree font-semibold text-[#1c3b2b] mb-2">
                   {teacher.role}
                 </p>
               </div>
@@ -232,7 +232,7 @@ export default function Teachers() {
                   onClick={() => scrollToCard(i)}
                   className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                     activeIndex === i
-                      ? "w-6 bg-[#158b72]"
+                      ? "w-6 bg-[#1c3b2b]"
                       : "w-2 bg-stone-300 hover:bg-stone-400"
                   }`}
                   aria-label={`Go to teacher ${i + 1}`}
@@ -251,7 +251,7 @@ export default function Teachers() {
                     onClick={() => scrollToCard(targetIdx)}
                     className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
                       isPageActive
-                        ? "w-7 bg-[#158b72]"
+                        ? "w-7 bg-[#1c3b2b]"
                         : "w-2.5 bg-stone-300 hover:bg-stone-400"
                     }`}
                     aria-label={`Go to slide ${pageIdx + 1}`}
@@ -272,7 +272,7 @@ export default function Teachers() {
                     onClick={() => scrollToCard(targetIdx)}
                     className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
                       isPageActive
-                        ? "w-8 bg-[#158b72]"
+                        ? "w-8 bg-[#1c3b2b]"
                         : "w-2.5 bg-stone-300 hover:bg-stone-400"
                     }`}
                     aria-label={`Go to batch ${pageIdx + 1}`}
@@ -291,7 +291,7 @@ export default function Teachers() {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#158b72] hover:bg-[#0f6b57] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs sm:text-sm font-figtree font-semibold bg-[#1c3b2b] hover:bg-[#142b1e] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
           >
             <span>View All Teachers</span>
             <ArrowRight className="w-4 h-4 text-white" />

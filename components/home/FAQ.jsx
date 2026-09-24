@@ -20,7 +20,7 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/80 relative overflow-hidden"
+      className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/80 relative overflow-hidden"
     >
       {/* Background Decorative Yoga Art & Sacred Motifs */}
       <div
@@ -40,7 +40,7 @@ export default function FAQ() {
       />
 
       {/* Sacred Central Lotus Mandala Watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] sm:w-[560px] h-[440px] sm:h-[560px] pointer-events-none opacity-[0.045] text-[#0f6b57] flex items-center justify-center">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] sm:w-[560px] h-[440px] sm:h-[560px] pointer-events-none opacity-[0.045] text-[#142b1e] flex items-center justify-center">
         <svg
           viewBox="0 0 200 200"
           className="w-full h-full animate-[spin_240s_linear_infinite]"
@@ -73,8 +73,8 @@ export default function FAQ() {
       </div>
 
       {/* Gentle Spiritual Ambient Glows */}
-      <div className="absolute top-1/4 left-1/3 w-80 h-80 bg-[#158b72]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-[#0f6b57]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/3 w-80 h-80 bg-[#1c3b2b]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-[#142b1e]/5 rounded-full blur-3xl pointer-events-none" />
 
       <Container className="relative z-10">
         {/* Header */}
@@ -93,8 +93,8 @@ export default function FAQ() {
                 key={idx}
                 className={`rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-xs ${
                   isOpen
-                    ? "border-[#158b72] bg-white shadow-md"
-                    : "border-[#c8ece2] bg-white/95 hover:bg-white hover:border-[#158b72] shadow-2xs"
+                    ? "border-[#1c3b2b] bg-[#fdfbf7] shadow-md"
+                    : "border-[#e3dac9] bg-white/95 hover:bg-[#fdfbf7] hover:border-[#1c3b2b] shadow-2xs"
                 }`}
               >
                 <button
@@ -104,7 +104,7 @@ export default function FAQ() {
                 >
                   <span
                     className={`text-base sm:text-lg font-belleza font-bold tracking-wide transition-colors ${
-                      isOpen ? "text-[#158b72]" : "text-[#1F1E1D]"
+                      isOpen ? "text-[#1c3b2b]" : "text-[#1F1E1D]"
                     }`}
                   >
                     {faq.q}
@@ -112,8 +112,8 @@ export default function FAQ() {
                   <div
                     className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 font-bold text-sm sm:text-base ${
                       isOpen
-                        ? "bg-[#158b72] text-white rotate-180"
-                        : "bg-[#def4ee4d] text-[#77786e] hover:bg-[#158b72]/20"
+                        ? "bg-[#1c3b2b] text-white rotate-180"
+                        : "bg-[#f4efe6] text-[#77786e] hover:bg-[#1c3b2b]/20"
                     }`}
                   >
                     {isOpen ? (
@@ -125,7 +125,7 @@ export default function FAQ() {
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 text-sm sm:text-[15px] text-[#55564c] font-figtree leading-relaxed border-t border-[#158b72]/10">
+                  <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 text-sm sm:text-[15px] text-[#55564c] font-figtree leading-relaxed border-t border-[#1c3b2b]/10">
                     <p>{faq.a}</p>
                   </div>
                 )}
@@ -138,7 +138,7 @@ export default function FAQ() {
           <div className="max-w-4xl mx-auto text-center">
             <button
               onClick={() => setShowAll((prev) => !prev)}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#158b72] text-[#158b72] hover:bg-[#158b72] hover:text-white text-sm font-semibold font-figtree transition-all duration-300 cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#1c3b2b] text-[#1c3b2b] hover:bg-[#1c3b2b] hover:text-white text-sm font-semibold font-figtree transition-all duration-300 cursor-pointer"
             >
               <span>{showAll ? "Show Less" : "Show More FAQs"}</span>
               <ChevronDown

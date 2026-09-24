@@ -27,7 +27,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-gradient-to-b from-[#158b72] via-[#0f6b57] to-[#0c5747] text-white font-figtree border-t border-white/10 overflow-hidden">
+    <footer className="relative bg-gradient-to-b from-[#1c3b2b] via-[#142b1e] to-[#0c5747] text-white font-figtree border-t border-white/10 overflow-hidden">
       {/* Subtle yoga icon watermark */}
       <div
         className="absolute inset-0 z-0 pointer-events-none select-none opacity-[0.07]"
@@ -103,14 +103,14 @@ export default function Footer() {
             </div>
 
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/25 text-[11px] font-semibold text-white">
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#fdfbf7] animate-pulse" />
               <span>Yoga Alliance RYS Certified</span>
             </div>
           </div>
 
           {/* Column 2: TEACHER TRAINING */}
           <div>
-            <h4 className="text-sm sm:text-base font-bold uppercase tracking-[0.14em] text-[#def4ee] mb-5 pb-2.5 border-b border-white/20 font-figtree">
+            <h4 className="text-sm sm:text-base font-bold uppercase tracking-[0.14em] text-[#f4efe6] mb-5 pb-2.5 border-b border-white/20 font-figtree">
               Teacher Training
             </h4>
             <ul className="space-y-3 sm:space-y-3.5 text-sm font-medium text-white/80">
@@ -119,7 +119,7 @@ export default function Footer() {
                   href="#courses"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>Yoga TTC Overview</span>
                   </Link>
               </li>
@@ -128,7 +128,7 @@ export default function Footer() {
                   href="#courses"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>100-Hour Yoga TTC</span>
                   </Link>
               </li>
@@ -137,7 +137,7 @@ export default function Footer() {
                   href="#courses"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>200-Hour Yoga TTC (Most Popular)</span>
                   </Link>
               </li>
@@ -146,7 +146,7 @@ export default function Footer() {
                   href="#courses"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>300-Hour Advanced TTC</span>
                   </Link>
               </li>
@@ -155,7 +155,7 @@ export default function Footer() {
                   href="#courses"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>500-Hour Master TTC</span>
                   </Link>
               </li>
@@ -164,7 +164,7 @@ export default function Footer() {
                   href="#kundalini"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>100-Hour Kundalini TTC</span>
                   </Link>
               </li>
@@ -173,7 +173,7 @@ export default function Footer() {
                   href="#kundalini"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>200-Hour Kundalini TTC</span>
                   </Link>
               </li>
@@ -182,7 +182,7 @@ export default function Footer() {
                   href="#kundalini"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>500-Hour Kundalini Master</span>
                   </Link>
               </li>
@@ -191,7 +191,7 @@ export default function Footer() {
 
           {/* Column 3: QUICK LINKS */}
           <div>
-            <h4 className="text-sm sm:text-base font-bold uppercase tracking-[0.14em] text-[#def4ee] mb-5 pb-2.5 border-b border-white/20 font-figtree">
+            <h4 className="text-sm sm:text-base font-bold uppercase tracking-[0.14em] text-[#f4efe6] mb-5 pb-2.5 border-b border-white/20 font-figtree">
               Quick Links
             </h4>
             <ul className="space-y-3 sm:space-y-3.5 text-sm font-medium text-white/80">
@@ -200,7 +200,7 @@ export default function Footer() {
                   href="/"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>Home</span>
                   </Link>
               </li>
@@ -209,7 +209,7 @@ export default function Footer() {
                   href="#courses"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>Yoga TTC (Main Page)</span>
                   </Link>
               </li>
@@ -218,7 +218,7 @@ export default function Footer() {
                   href="#retreats"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>Yoga Retreats Page</span>
                   </Link>
               </li>
@@ -227,7 +227,7 @@ export default function Footer() {
                   href="#about"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>About Our Ashram</span>
                   </Link>
               </li>
@@ -236,7 +236,7 @@ export default function Footer() {
                   href="#founder"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>Acharya Siddhant (Founder)</span>
                   </Link>
               </li>
@@ -245,7 +245,7 @@ export default function Footer() {
                   href="#teachers"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>Himalayan Masters &amp; Faculty</span>
                   </Link>
               </li>
@@ -254,7 +254,7 @@ export default function Footer() {
                   href="#comparison"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>Compare All TTC Courses</span>
                   </Link>
               </li>
@@ -263,7 +263,7 @@ export default function Footer() {
                   href="#residential"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>Ashram Stay &amp; Sattvic Food</span>
                   </Link>
               </li>
@@ -272,7 +272,7 @@ export default function Footer() {
                   href="#testimonials"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>Student Reviews (4.9★)</span>
                   </Link>
               </li>
@@ -281,7 +281,7 @@ export default function Footer() {
                   href="#faq"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#def4ee] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span>Frequently Asked Questions</span>
                   </Link>
               </li>
@@ -290,12 +290,12 @@ export default function Footer() {
 
           {/* Column 4: CONTACT US */}
           <div>
-            <h4 className="text-sm sm:text-base font-bold uppercase tracking-[0.14em] text-[#def4ee] mb-5 pb-2.5 border-b border-white/20 font-figtree">
+            <h4 className="text-sm sm:text-base font-bold uppercase tracking-[0.14em] text-[#f4efe6] mb-5 pb-2.5 border-b border-white/20 font-figtree">
               Contact &amp; Location
             </h4>
             <div className="space-y-3.5 text-sm font-medium text-white/80">
               <div className="flex items-start gap-2.5 leading-relaxed">
-                <MapPin className="w-4 h-4 text-[#def4ee] shrink-0 mt-1" />
+                <MapPin className="w-4 h-4 text-[#f4efe6] shrink-0 mt-1" />
                 <a
                   href={site.mapUrl}
                   target="_blank"
@@ -308,7 +308,7 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#def4ee] shrink-0" />
+                <Phone className="w-4 h-4 text-[#f4efe6] shrink-0" />
                 <a
                   href={`tel:${site.phone}`}
                   className="hover:text-white font-medium transition-colors"
@@ -318,7 +318,7 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#def4ee] shrink-0" />
+                <Mail className="w-4 h-4 text-[#f4efe6] shrink-0" />
                 <a
                   href={`mailto:${site.email}`}
                   className="hover:text-white transition-colors break-all"
@@ -334,7 +334,7 @@ export default function Footer() {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-[#def4ee] text-[#158b72] text-xs font-semibold uppercase tracking-wider transition-all shadow-xs hover:shadow-md"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#fdfbf7] hover:bg-[#f4efe6] text-[#1c3b2b] text-xs font-semibold uppercase tracking-wider transition-all shadow-xs hover:shadow-md"
                 >
                   <span>Chat on WhatsApp</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />

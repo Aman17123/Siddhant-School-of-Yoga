@@ -79,7 +79,7 @@ function ReadMore({ children, label = "Read More", lessLabel = "Show Less" }) {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1.5 text-[#158b72] hover:text-[#0f6b57] font-figtree font-semibold text-sm cursor-pointer transition-colors"
+        className="inline-flex items-center gap-1.5 text-[#1c3b2b] hover:text-[#142b1e] font-figtree font-semibold text-sm cursor-pointer transition-colors"
       >
         <span>{open ? lessLabel : label}</span>
         <ChevronDown
@@ -95,8 +95,8 @@ function AccordionItem({ item, isOpen, onToggle }) {
     <div
       className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
         isOpen
-          ? "border-[#158b72] bg-white shadow-md"
-          : "border-[#c8ece2] bg-white/95 hover:border-[#158b72] shadow-2xs"
+          ? "border-[#1c3b2b] bg-[#fdfbf7] shadow-md"
+          : "border-[#e3dac9] bg-white/95 hover:border-[#1c3b2b] shadow-2xs"
       }`}
     >
       <button
@@ -106,7 +106,7 @@ function AccordionItem({ item, isOpen, onToggle }) {
       >
         <span
           className={`text-base sm:text-lg font-belleza font-bold tracking-wide transition-colors ${
-            isOpen ? "text-[#158b72]" : "text-[#1F1E1D]"
+            isOpen ? "text-[#1c3b2b]" : "text-[#1F1E1D]"
           }`}
         >
           {item.q}
@@ -114,8 +114,8 @@ function AccordionItem({ item, isOpen, onToggle }) {
         <div
           className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
             isOpen
-              ? "bg-[#158b72] text-white"
-              : "bg-[#def4ee4d] text-[#77786e] hover:bg-[#158b72]/20"
+              ? "bg-[#1c3b2b] text-white"
+              : "bg-[#f4efe6] text-[#77786e] hover:bg-[#1c3b2b]/20"
           }`}
         >
           {isOpen ? (
@@ -131,7 +131,7 @@ function AccordionItem({ item, isOpen, onToggle }) {
         }`}
       >
         <div className="overflow-hidden">
-          <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 text-sm sm:text-[15px] text-[#55564c] font-figtree leading-relaxed border-t border-[#158b72]/10">
+          <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 text-sm sm:text-[15px] text-[#55564c] font-figtree leading-relaxed border-t border-[#1c3b2b]/10">
             {typeof item.a === "string" ? <p>{item.a}</p> : item.a}
           </div>
         </div>
@@ -188,7 +188,7 @@ function Accordion({ items, defaultOpen = 0, className = "max-w-4xl mx-auto", in
           <div className="text-center mt-5">
             <button
               onClick={() => setShowAll((v) => !v)}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#158b72] text-[#158b72] hover:bg-[#158b72] hover:text-white text-sm font-semibold font-figtree transition-all duration-300 cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#1c3b2b] text-[#1c3b2b] hover:bg-[#1c3b2b] hover:text-white text-sm font-semibold font-figtree transition-all duration-300 cursor-pointer"
             >
               <span>{showAll ? "Read Less" : `Read More (${restItems.length} more)`}</span>
               <ChevronDown
@@ -209,7 +209,7 @@ function SylList({ items }) {
     <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-1 list-none">
       {items.map((t) => (
         <li key={t} className="flex items-start gap-2 py-0.5">
-          <Check className="w-3.5 h-3.5 text-[#158b72] mt-1 shrink-0" />
+          <Check className="w-3.5 h-3.5 text-[#1c3b2b] mt-1 shrink-0" />
           <span>{t}</span>
         </li>
       ))}
@@ -220,7 +220,7 @@ function SylList({ items }) {
 function SylGroup({ label, text }) {
   return (
     <p className="mb-2 last:mb-0">
-      <span className="font-semibold text-[#158b72]">{label}: </span>
+      <span className="font-semibold text-[#1c3b2b]">{label}: </span>
       {text}
     </p>
   );
@@ -304,28 +304,28 @@ const whoShouldJoin = [
     icon: Sprout,
     title: "Complete Beginners",
     text: "Who want a strong, real foundation before anything else. This course assumes no prior experience — you build everything from the ground up, guided every step of the way by Acharya Siddhant and our senior teachers.",
-    image: "/images/gallery_images/yoga-asana-practice-riverside-rishikesh.webp",
+    image: "/images/balancing-pose-outdoor-garden-yoga-class-rishikesh.jpg",
     alt: "Complete beginner receiving hands-on guidance during yoga practice in Rishikesh",
   },
   {
     icon: Home,
     title: "Home Practitioners",
     text: "Yogis who already practice on their own and want to deepen their technique, alignment and understanding under expert eyes, rather than continuing to figure it out alone.",
-    image: "/images/gallery_images/warrior-pose-yoga-ganges-river-rishikesh.webp",
+    image: "/images/warrior-3-pose-rocks-ganga-river-rishikesh.jpg",
     alt: "Home yoga practitioner deepening technique by the Ganges in Rishikesh",
   },
   {
     icon: Award,
     title: "Future Teachers",
     text: "Anyone hoping to teach one day, wanting an internationally recognized Yoga Alliance RYT 200 certificate along with the real, practiced confidence to lead a class of your own.",
-    image: "/images/gallery_images/yoga-teacher-training-certificate-ceremony-siddhant-school-rishikesh.webp",
+    image: "/images/yoga-students-group-photo-temple-trip-rishikesh.jpg",
     alt: "Future yoga teacher practicing during the 200-hour certification course in Rishikesh",
   },
   {
     icon: Compass,
     title: "People at a Crossroads",
     text: "Those going through a life transition, seeking clarity, stillness and a genuine reset — using 24 days in Rishikesh to reconnect with who you really are.",
-    image: "/images/gallery_images/yoga-retreat-himalayan-mountains-rishikesh.webp",
+    image: "/images/sunrise-prayer-himalayan-view-kunjapuri-rishikesh.jpg",
     alt: "Person finding stillness and clarity in the Himalayan foothills of Rishikesh",
   },
 ];
@@ -612,7 +612,7 @@ const syllabusItems = [
           text="Definition of philosophy, understanding problems and growth, the Panch Kosha (five sheaths) theory, kosha balancing, the nature of mind, and an introduction to Indian philosophy."
         />
         <p className="mt-2 mb-1">
-          <span className="font-semibold text-[#158b72]">Ashtanga Yoga — the Eight Limbs:</span>
+          <span className="font-semibold text-[#1c3b2b]">Ashtanga Yoga — the Eight Limbs:</span>
         </p>
         <SylList
           items={[
@@ -729,29 +729,29 @@ const syllabusCards = [
   {
     title: "Techniques, Training & Practice",
     subtitle: "Asana · Pranayama · Meditation · Mantra",
-    image: "/images/gallery_images/yoga-asana-practice-riverside-rishikesh.webp",
-    alt: "Hatha and Ashtanga asana practice by the Ganges in Rishikesh",
+    image: "/images/200-hour-yoga-teacher-training-seated-stretch.jpg",
+    alt: "200-hour teacher trainees practicing a seated stretch pose in Rishikesh",
     text: "You will practice Hatha and Ashtanga yoga poses, breathing exercises, hand gestures, body locks, cleansing techniques, meditation and chanting every day, with close guidance.",
   },
   {
     title: "Anatomy & Physiology",
     subtitle: "Body · Breath · Subtle Energy",
-    image: "/images/gallery_images/warrior-pose-yoga-ganges-river-rishikesh.webp",
+    image: "/images/cow-face-pose-arm-stretch-yoga-class-rishikesh.jpg",
     alt: "Anatomy and physiology study for yoga teachers in Rishikesh",
     text: "Learn how your bones, muscles, breath and nerves work together, plus the body's energy channels and chakras, so you can teach safely and with confidence.",
   },
   {
     title: "Yoga Humanities",
     subtitle: "History · Philosophy · Ethics",
-    image: "/images/gallery_images/yoga-philosophy-class-siddhant-school-of-yoga-rishikesh.webp",
+    image: "/images/group-meditation-namaste-yoga-class-rishikesh.jpg",
     alt: "Yoga philosophy class at Siddhant School of Yoga",
     text: "Understand the old yoga texts, the Eight Limbs of Yoga, where this tradition comes from, and how a good yoga teacher should behave.",
   },
   {
     title: "Professional Essentials",
     subtitle: "Teaching · Practicum · Certification",
-    image: "/images/gallery_images/yoga-teacher-training-certificate-ceremony-siddhant-school-rishikesh.webp",
-    alt: "Teaching practicum and certification ceremony at Siddhant School of Yoga",
+    image: "/images/graduation-flower-garland-photo.jpg",
+    alt: "Teaching practicum graduates with flower garlands at Siddhant School of Yoga",
     text: "Learn how to plan and run a class, practice teaching with feedback, get basic Ayurveda knowledge, and get step-by-step help with your certification.",
   },
 ];
@@ -771,8 +771,8 @@ const whatsIncludeTabs = [
       "200-hour Yoga Alliance USA RYT 200 completion certificate",
     ],
     images: [
-      { src: "/images/gallery_images/yoga-asana-practice-riverside-rishikesh.webp", alt: "Daily asana classes in Rishikesh", caption: "Daily Classes" },
-      { src: "/images/gallery_images/food-gallery4.webp", alt: "Sattvic meals served at Siddhant School of Yoga", caption: "Sattvic Meals" },
+      { src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg", alt: "Comfortable twin sharing room at Siddhant School of Yoga", caption: "Comfortable Stay" },
+      { src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg", alt: "Sattvic meals served at Siddhant School of Yoga", caption: "Sattvic Meals" },
       { src: "/images/gallery_images/yoga-students-temple-visit-rishikesh-india.webp", alt: "Weekly temple excursion in Rishikesh", caption: "Excursions" },
       { src: "/images/gallery_images/yoga-teacher-training-certificate-ceremony-siddhant-school-rishikesh.webp", alt: "200-hour certification ceremony", caption: "Certification" },
     ],
@@ -789,10 +789,10 @@ const whatsIncludeTabs = [
       "Laundry service (available on campus at extra cost)",
     ],
     images: [
-      { src: "/images/gallery_images/yoga-retreat-himalayan-mountains-rishikesh.webp", alt: "Himalayan foothills near Rishikesh", caption: "Himalayan Views" },
+      { src: "/images/standing-forward-fold-riverside.png", alt: "Standing forward fold practice by the riverside in Rishikesh", caption: "Riverside Practice" },
       { src: "/images/gallery_images/havan-fire-ritual-yoga-ceremony-rishikesh.webp", alt: "Havan fire ceremony at the ashram", caption: "Ashram Life" },
-      { src: "/images/gallery_images/warrior-pose-yoga-ganges-river-rishikesh.webp", alt: "Yoga practice by the Ganges river", caption: "Personal Practice" },
-      { src: "/images/gallery_images/yoga-philosophy-class-siddhant-school-of-yoga-rishikesh.webp", alt: "Yoga philosophy class", caption: "Philosophy" },
+      { src: "/images/warrior-pose-riverside-rocks.jpg", alt: "Warrior pose practice on the riverside rocks in Rishikesh", caption: "Personal Practice" },
+      { src: "/images/seated-spinal-twist-group-class.png", alt: "Group seated spinal twist during the philosophy class break in Rishikesh", caption: "Philosophy" },
     ],
   },
   {
@@ -808,9 +808,9 @@ const whatsIncludeTabs = [
       "Copies of your passport, visa and travel insurance",
     ],
     images: [
-      { src: "/images/gallery_images/yoga-certification-ceremony-shiva-statue-rishikesh.webp", alt: "Students at the Shiva statue in Rishikesh", caption: "Community" },
-      { src: "/images/gallery_images/yoga-guru-student-certificate-rishikesh-india.webp", alt: "Acharya Siddhant mentoring a student", caption: "Mentorship" },
-      { src: "/images/gallery_images/200-500-hour-yoga-teacher-training-certification-rishikesh.webp", alt: "200-hour and 500-hour certification batch", caption: "Graduation" },
+      { src: "/images/200-hour-yoga-teacher-training-seated-stretch.jpg", alt: "200-hour yoga community seated stretch class", caption: "Community" },
+      { src: "/images/yoga-for-beginners-seated-stretch-class.jpg", alt: "Instructor mentoring a beginner during a seated stretch class", caption: "Mentorship" },
+      { src: "/images/seated-stretch-pose-lawn-class.jpg", alt: "200-hour and 500-hour graduates practicing a seated stretch pose", caption: "Graduation" },
       { src: "/images/gallery_images/200-hour-yoga-teacher-training-graduates-rishikesh.webp", alt: "200-hour yoga teacher training graduates", caption: "Your Journey" },
     ],
   },
@@ -952,12 +952,12 @@ const blogPosts = [
   },
   {
     title: "Hatha vs. Ashtanga Yoga: Which Style Is Right for You?",
-    image: "/images/gallery_images/warrior-pose-yoga-ganges-river-rishikesh.webp",
+    image: "/images/dancer-pose-natarajasana-riverside.jpg",
     excerpt: "Understanding the difference between these two foundational yoga styles before you enroll.",
   },
   {
     title: "Why Rishikesh Is Called the Yoga Capital of the World",
-    image: "/images/gallery_images/yoga-retreat-himalayan-mountains-rishikesh.webp",
+    image: "/images/standing-forward-fold-riverside.png",
     excerpt: "The history, culture and Himalayan setting that make Rishikesh the ultimate place to train.",
   },
 ];
@@ -972,7 +972,7 @@ export default function TwoHundredHourContent() {
       <SectionNav items={sectionNavItems} />
 
       {/* Trust Strip */}
-      <section className="py-8 sm:py-10 bg-[#158b72] font-figtree">
+      <section className="py-8 sm:py-10 bg-[#1c3b2b] font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-4 text-center">
             {trustStats.map((s) => (
@@ -993,7 +993,7 @@ export default function TwoHundredHourContent() {
       </section>
 
       {/* Founder's Message */}
-      <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+      <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             <div className="w-full lg:w-2/5 shrink-0">
@@ -1014,7 +1014,7 @@ export default function TwoHundredHourContent() {
               </h2>
               <HeadingDivider center={false} />
               <div className="relative mt-4">
-                <Quote className="w-8 h-8 text-[#158b72]/20 absolute -top-3 -left-1 lg:-left-2" />
+                <Quote className="w-8 h-8 text-[#1c3b2b]/20 absolute -top-3 -left-1 lg:-left-2" />
                 <p className="text-base sm:text-lg text-stone-700 leading-relaxed font-medium italic pl-6">
                   &ldquo;{founder.quote}&rdquo;
                 </p>
@@ -1022,7 +1022,7 @@ export default function TwoHundredHourContent() {
               <p className="mt-4 text-sm sm:text-base text-stone-700 leading-relaxed font-medium">
                 I personally teach every 200-hour batch at Siddhant School of Yoga, because I believe this training is not just about earning a certificate — it is about transforming into a teacher who can guide others from a place of real, lived understanding.
               </p>
-              <p className="mt-3 font-belleza text-lg text-[#158b72]">
+              <p className="mt-3 font-belleza text-lg text-[#1c3b2b]">
                 — {founder.name}, {founder.role}
               </p>
             </div>
@@ -1037,7 +1037,7 @@ export default function TwoHundredHourContent() {
       <WhoShouldJoinSection />
 
       {/* Why Choose Us */}
-      <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+      <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
             <Kicker>Why Choose Us</Kicker>
@@ -1051,9 +1051,9 @@ export default function TwoHundredHourContent() {
             {whyChooseUsPoints.map((point, i) => (
               <div
                 key={point.title}
-                className="flex gap-3.5 bg-white rounded-2xl border border-[#c8ece2] p-4 sm:p-5 shadow-2xs"
+                className="flex gap-3.5 bg-[#fdfbf7] rounded-2xl border border-[#e3dac9] p-4 sm:p-5 shadow-2xs"
               >
-                <span className="shrink-0 w-8 h-8 rounded-lg bg-[#0f6b57] text-white flex items-center justify-center text-xs font-bold font-figtree">
+                <span className="shrink-0 w-8 h-8 rounded-lg bg-[#142b1e] text-white flex items-center justify-center text-xs font-bold font-figtree">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
@@ -1066,7 +1066,7 @@ export default function TwoHundredHourContent() {
             ))}
           </div>
 
-          <div className="max-w-4xl mx-auto mt-6 rounded-2xl border border-[#158b72]/30 bg-white/70 px-5 sm:px-8 py-5 text-center">
+          <div className="max-w-4xl mx-auto mt-6 rounded-2xl border border-[#1c3b2b]/30 bg-white/70 px-5 sm:px-8 py-5 text-center">
             <p className="text-sm sm:text-base text-stone-700 italic leading-relaxed">
               By the end of your training, you don't just receive a certificate — you leave with the confidence to teach, a deeper personal practice, and a clearer understanding of yoga as a way of life.
             </p>
@@ -1106,7 +1106,7 @@ export default function TwoHundredHourContent() {
       </section>
 
       {/* Dates & Fees */}
-      <section id="dates-fees" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+      <section id="dates-fees" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
             <Kicker>Batch Dates &amp; Fees</Kicker>
@@ -1116,7 +1116,7 @@ export default function TwoHundredHourContent() {
             <HeadingDivider />
           </div>
 
-          <div className="max-w-5xl mx-auto rounded-3xl bg-gradient-to-b from-[#158b72] via-[#0f6b57] to-[#0f6b57] shadow-xl">
+          <div className="max-w-5xl mx-auto rounded-3xl bg-gradient-to-b from-[#1c3b2b] via-[#142b1e] to-[#142b1e] shadow-xl">
             {/* Desktop table */}
             <div className="hidden md:block rounded-2xl border border-white/15 overflow-hidden">
               <table className="w-full text-left border-collapse">
@@ -1134,9 +1134,9 @@ export default function TwoHundredHourContent() {
                   {batchDates.map((b, i) => (
                     <tr key={b.month} className={`border-t border-white/10 ${i % 2 === 0 ? "bg-white/5" : ""}`}>
                       <td className="py-4 sm:py-5 px-5 sm:px-6 text-white font-belleza text-base">{b.dates}</td>
-                      <td className="py-4 sm:py-5 px-5 sm:px-6 text-[#def4ee] text-sm font-bold">{pricingPlans[0].price}</td>
-                      <td className="py-4 sm:py-5 px-5 sm:px-6 text-[#def4ee] text-sm font-bold">{pricingPlans[1].price}</td>
-                      <td className="py-4 sm:py-5 px-5 sm:px-6 text-[#def4ee] text-sm font-bold">{pricingPlans[2].price}</td>
+                      <td className="py-4 sm:py-5 px-5 sm:px-6 text-[#f4efe6] text-sm font-bold">{pricingPlans[0].price}</td>
+                      <td className="py-4 sm:py-5 px-5 sm:px-6 text-[#f4efe6] text-sm font-bold">{pricingPlans[1].price}</td>
+                      <td className="py-4 sm:py-5 px-5 sm:px-6 text-[#f4efe6] text-sm font-bold">{pricingPlans[2].price}</td>
                       <td className="py-4 sm:py-5 px-5 sm:px-6">
                         {b.status === "filling" ? (
                           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/15 text-amber-300 text-[11px] font-semibold whitespace-nowrap">
@@ -1144,8 +1144,8 @@ export default function TwoHundredHourContent() {
                             Filling Fast
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#def4ee]/15 text-[#def4ee] text-[11px] font-semibold whitespace-nowrap">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#def4ee]" />
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f4efe6]/15 text-[#f4efe6] text-[11px] font-semibold whitespace-nowrap">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#f4efe6]" />
                             Seats Available
                           </span>
                         )}
@@ -1153,7 +1153,7 @@ export default function TwoHundredHourContent() {
                       <td className="py-4 sm:py-5 px-5 sm:px-6">
                         <Link
                           href="/book-my-yoga-in-rishikesh-india"
-                          className="inline-flex items-center gap-1 text-xs font-semibold text-white hover:text-[#def4ee] transition-colors whitespace-nowrap"
+                          className="inline-flex items-center gap-1 text-xs font-semibold text-white hover:text-[#f4efe6] transition-colors whitespace-nowrap"
                         >
                           Enroll Now
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -1177,8 +1177,8 @@ export default function TwoHundredHourContent() {
                         Filling Fast
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#def4ee]/15 text-[#def4ee] text-[10px] font-semibold whitespace-nowrap">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#def4ee]" />
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#f4efe6]/15 text-[#f4efe6] text-[10px] font-semibold whitespace-nowrap">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#f4efe6]" />
                         Seats Available
                       </span>
                     )}
@@ -1190,13 +1190,13 @@ export default function TwoHundredHourContent() {
                         <p className="text-[9px] uppercase tracking-wide text-white/50 mb-0.5 leading-tight">
                           {plan.room.split(" ")[0]}
                         </p>
-                        <p className="text-[#def4ee] text-sm font-bold">{plan.price}</p>
+                        <p className="text-[#f4efe6] text-sm font-bold">{plan.price}</p>
                       </div>
                     ))}
                   </div>
                   <Link
                     href="/book-my-yoga-in-rishikesh-india"
-                    className="flex items-center justify-center gap-1.5 w-full py-2.5 rounded-full bg-white text-[#158b72] text-xs font-semibold"
+                    className="flex items-center justify-center gap-1.5 w-full py-2.5 rounded-full bg-[#b85c00] text-white text-xs font-semibold"
                   >
                     Enroll Now
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -1214,7 +1214,7 @@ export default function TwoHundredHourContent() {
       </section>
 
       {/* Daily Schedule */}
-      <section id="schedule" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+      <section id="schedule" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <div className="text-center mb-8 lg:mb-10">
             <Kicker>How Your Day Looks Like</Kicker>
@@ -1226,8 +1226,8 @@ export default function TwoHundredHourContent() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
             <div>
-              <div className="relative rounded-2xl border border-[#c8ece2] bg-white overflow-hidden shadow-2xs">
-                <div className="flex items-center gap-4 sm:gap-6 px-4 sm:px-6 py-3 sm:py-3.5 bg-[#158b72]">
+              <div className="relative rounded-2xl border border-[#e3dac9] bg-[#fdfbf7] overflow-hidden shadow-2xs">
+                <div className="flex items-center gap-4 sm:gap-6 px-4 sm:px-6 py-3 sm:py-3.5 bg-[#1c3b2b]">
                   <span className="shrink-0 w-9 h-9 sm:w-10 sm:h-10" />
                   <p className="w-[128px] sm:w-[160px] shrink-0 text-xs sm:text-sm font-bold uppercase tracking-wide text-white">
                     Time
@@ -1243,15 +1243,15 @@ export default function TwoHundredHourContent() {
                       <div
                         key={row.time + row.activity}
                         className={`flex items-center gap-4 sm:gap-6 px-4 sm:px-6 py-3.5 sm:py-4 ${
-                          i !== 0 ? "border-t border-[#c8ece2]/60" : ""
-                        } ${isLast ? "bg-[#fdf6ec]" : i % 2 === 0 ? "bg-[#def4ee4d]/40" : "bg-white"}`}
+                          i !== 0 ? "border-t border-[#e3dac9]/60" : ""
+                        } ${isLast ? "bg-[#fdf6ec]" : i % 2 === 0 ? "bg-[#f4efe6]/40" : "bg-[#fdfbf7]"}`}
                       >
-                        <span className="shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#158b72]/10 flex items-center justify-center text-base sm:text-lg">
+                        <span className="shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1c3b2b]/10 flex items-center justify-center text-base sm:text-lg">
                           {row.icon}
                         </span>
                         <p
                           className={`w-[128px] sm:w-[160px] shrink-0 text-xs sm:text-sm font-bold ${
-                            isLast ? "text-amber-700" : "text-[#158b72]"
+                            isLast ? "text-amber-700" : "text-[#1c3b2b]"
                           }`}
                         >
                           {row.time}
@@ -1270,9 +1270,9 @@ export default function TwoHundredHourContent() {
                 <div className="hidden lg:block pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white to-transparent" />
               </div>
 
-              <div className="mt-6 rounded-2xl border border-[#c8ece2] bg-[#def4ee4d] px-5 sm:px-6 py-4 text-center">
+              <div className="mt-6 rounded-2xl border border-[#e3dac9] bg-[#f4efe6] px-5 sm:px-6 py-4 text-center">
                 <p className="text-sm text-stone-700 italic">
-                  <span className="font-bold not-italic text-[#158b72]">Note: </span>
+                  <span className="font-bold not-italic text-[#1c3b2b]">Note: </span>
                   This is an overview sample of the daily schedule. The daily schedule provided may vary according to the practice of the practitioner.
                 </p>
               </div>
@@ -1281,7 +1281,7 @@ export default function TwoHundredHourContent() {
             <div className="hidden lg:block">
               <div className="relative w-full h-full min-h-[520px] rounded-2xl overflow-hidden shadow-xl border-4 border-white sticky top-24">
                 <Image
-                  src="/images/gallery_images/yoga-retreat-himalayan-mountains-rishikesh.webp"
+                  src="/images/student-namaste-himalayan-mountains-rishikesh.jpg"
                   alt="Daily yoga practice schedule during the 200-hour teacher training in Rishikesh"
                   fill
                   className="object-cover"
@@ -1300,7 +1300,7 @@ export default function TwoHundredHourContent() {
       </section>
 
       {/* Yoga Knowledge Hub */}
-      <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+      <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <SectionHead
             kicker="Yoga Knowledge Hub"
@@ -1310,13 +1310,13 @@ export default function TwoHundredHourContent() {
         </div>
       </section>
 
-      <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+      <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
-          <div className="max-w-5xl mx-auto text-center rounded-3xl bg-gradient-to-br from-[#158b72] via-[#0f6b57] to-[#0f6b57] px-6 sm:px-12 py-10 sm:py-14 shadow-xl">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/15 text-[#def4ee] text-[11px] sm:text-xs font-semibold uppercase tracking-wide mb-4">
+          <div className="max-w-5xl mx-auto text-center rounded-3xl bg-gradient-to-br from-[#1c3b2b] via-[#142b1e] to-[#142b1e] px-6 sm:px-12 py-10 sm:py-14 shadow-xl">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/15 text-[#f4efe6] text-[11px] sm:text-xs font-semibold uppercase tracking-wide mb-4">
               Early Bird Discount Available
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-belleza font-normal text-white leading-[1.2] mb-3">
+            <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal text-white leading-[1.2] mb-3">
               Ready to Begin Your 200-Hour Journey in Rishikesh?
             </h2>
             <p className="text-white/85 text-sm sm:text-base max-w-xl mx-auto mb-6">
@@ -1334,7 +1334,7 @@ export default function TwoHundredHourContent() {
                 <MessageCircle className="w-4 h-4" />
                 Ask Discount on WhatsApp
               </ButtonLink>
-              <ButtonLink href="/book-my-yoga-in-rishikesh-india" variant="outline" className="!border-white !text-white hover:!bg-white hover:!text-[#158b72]">
+              <ButtonLink href="/book-my-yoga-in-rishikesh-india" variant="primary">
                 <ArrowRight className="w-4 h-4" />
                 Enroll Now
               </ButtonLink>
@@ -1350,7 +1350,7 @@ export default function TwoHundredHourContent() {
       <ResidentialExperience showSchedule={false} />
 
       {/* After The Course */}
-      <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+      <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <SectionHead
             kicker="Beyond Graduation"
@@ -1361,9 +1361,9 @@ export default function TwoHundredHourContent() {
             {afterCoursePoints.map(({ icon: Icon, title, text }) => (
               <div
                 key={title}
-                className="flex items-start gap-3 bg-[#def4ee4d] rounded-2xl border border-[#c8ece2] p-5"
+                className="flex items-start gap-3 bg-[#f4efe6] rounded-2xl border border-[#e3dac9] p-5"
               >
-                <span className="shrink-0 w-9 h-9 rounded-full bg-[#158b72]/10 text-[#158b72] flex items-center justify-center">
+                <span className="shrink-0 w-9 h-9 rounded-full bg-[#1c3b2b]/10 text-[#1c3b2b] flex items-center justify-center">
                   <Icon className="w-4.5 h-4.5" />
                 </span>
                 <div>
@@ -1383,7 +1383,7 @@ export default function TwoHundredHourContent() {
       <VideoSection />
 
       {/* What Happens After You Enquire */}
-      <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+      <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <SectionHead
             kicker="Simple & Transparent"
@@ -1392,7 +1392,7 @@ export default function TwoHundredHourContent() {
           <div className="grid grid-cols-1 sm:grid-cols-5 gap-4 max-w-5xl mx-auto">
             {enquirySteps.map((s) => (
               <div key={s.step} className="text-center flex flex-col items-center">
-                <span className="w-11 h-11 rounded-full bg-[#158b72] text-white flex items-center justify-center font-belleza text-lg mb-2.5 shrink-0">
+                <span className="w-11 h-11 rounded-full bg-[#1c3b2b] text-white flex items-center justify-center font-belleza text-lg mb-2.5 shrink-0">
                   {s.step}
                 </span>
                 <h3 className="font-belleza text-base text-[#1e2422] mb-1">{s.title}</h3>
@@ -1404,7 +1404,7 @@ export default function TwoHundredHourContent() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+      <section id="faq" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <SectionHead
             kicker="FAQs"
@@ -1415,7 +1415,7 @@ export default function TwoHundredHourContent() {
       </section>
 
       {/* Enquiry / Contact */}
-      <section id="contact" className="py-14 sm:py-16 lg:py-20 bg-white font-figtree">
+      <section id="contact" className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <SectionHead
             kicker="Get In Touch"
@@ -1429,9 +1429,9 @@ export default function TwoHundredHourContent() {
               )}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 bg-white rounded-2xl border border-[#c8ece2] p-5 shadow-2xs hover:shadow-md hover:border-[#158b72] transition-all"
+              className="flex items-center gap-4 bg-[#fdfbf7] rounded-2xl border border-[#e3dac9] p-5 shadow-2xs hover:shadow-md hover:border-[#1c3b2b] transition-all"
             >
-              <span className="w-12 h-12 rounded-full bg-[#158b72]/10 text-[#158b72] flex items-center justify-center shrink-0">
+              <span className="w-12 h-12 rounded-full bg-[#1c3b2b]/10 text-[#1c3b2b] flex items-center justify-center shrink-0">
                 <MessageCircle className="w-5 h-5" />
               </span>
               <div>
@@ -1441,9 +1441,9 @@ export default function TwoHundredHourContent() {
             </a>
             <a
               href={`mailto:${site.email}`}
-              className="flex items-center gap-4 bg-white rounded-2xl border border-[#c8ece2] p-5 shadow-2xs hover:shadow-md hover:border-[#158b72] transition-all"
+              className="flex items-center gap-4 bg-[#fdfbf7] rounded-2xl border border-[#e3dac9] p-5 shadow-2xs hover:shadow-md hover:border-[#1c3b2b] transition-all"
             >
-              <span className="w-12 h-12 rounded-full bg-[#158b72]/10 text-[#158b72] flex items-center justify-center shrink-0">
+              <span className="w-12 h-12 rounded-full bg-[#1c3b2b]/10 text-[#1c3b2b] flex items-center justify-center shrink-0">
                 <Mail className="w-5 h-5" />
               </span>
               <div>
@@ -1485,9 +1485,9 @@ function ExcursionCard({ num, tag, title, text, image, alt, heightClass }) {
 
 function ExcursionsSection() {
   return (
-    <section className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+    <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
-        <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
           <Kicker>Beyond the Yoga Hall</Kicker>
           <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] drop-shadow-2xs">
             Excursions &amp; Cultural Life
@@ -1505,7 +1505,7 @@ function ExcursionsSection() {
               tag="At Dusk"
               title="The Evening Ganga Aarti"
               text="As dusk falls, walk down to the Ganges for the aarti — priests circle great brass lamps and the whole bank glows amber against the dark. Many students describe it as the first time in years they felt completely still."
-              image="/images/gallery_images/havan-fire-ritual-yoga-ceremony-rishikesh.webp"
+              image="/images/excusrion-activity/evening-ganga-aarti.jpg"
               alt="Evening Ganga Aarti fire ceremony in Rishikesh"
               heightClass="h-[280px] sm:h-[420px]"
             />
@@ -1514,7 +1514,7 @@ function ExcursionsSection() {
               tag="On Rest Days"
               title="Waterfall Treks"
               text="On rest days, a short trek climbs to the waterfalls hidden in the hills above Rishikesh — cold water, green shade and the best kind of tired."
-              image="/images/gallery_images/yoga-retreat-himalayan-mountains-rishikesh.webp"
+              image="/images/excusrion-activity/waterfall-trek.jpg"
               alt="Waterfall trek in the hills above Rishikesh"
               heightClass="h-[220px] sm:h-[240px]"
             />
@@ -1526,7 +1526,7 @@ function ExcursionsSection() {
               tag="Some Mornings"
               title="Yoga on the Ganges Ghat"
               text="Some sessions leave the yoga hall entirely — asana and meditation right on the riverbank, with the Ganges moving past as your soundtrack."
-              image="/images/gallery_images/yoga-asana-practice-riverside-rishikesh.webp"
+              image="/images/excusrion-activity/yoga-on-ganga-ghat.jpg"
               alt="Yoga practice on the Ganges riverbank in Rishikesh"
               heightClass="h-[220px] sm:h-[240px]"
             />
@@ -1535,7 +1535,7 @@ function ExcursionsSection() {
               tag="In Silence"
               title="Himalayan Cave Meditation"
               text="A short trip takes you to sacred caves in the foothills, where sages once sat in silence for centuries. Meditating inside, in the cool and the dark, is a quiet that stays with you long after you've left."
-              image="/images/founder/acharya-siddhant-founder-meditation-rishikesh.webp"
+              image="/images/excusrion-activity/cave-meditation.jpg"
               alt="Meditation in a Himalayan cave near Rishikesh"
               heightClass="h-[280px] sm:h-[420px]"
             />
@@ -1547,7 +1547,7 @@ function ExcursionsSection() {
               tag="Living History"
               title="Historic Temples"
               text="Guided visits to the old temples of Rishikesh — riverside shrines and sacred sites where the tradition you study in class has been practiced without pause for centuries."
-              image="/images/gallery_images/yoga-students-temple-visit-rishikesh-india.webp"
+              image="/images/excusrion-activity/historic-temples.jpg"
               alt="Guided temple visit in Rishikesh"
               heightClass="h-[280px] sm:h-[420px]"
             />
@@ -1556,7 +1556,7 @@ function ExcursionsSection() {
               tag="Between Practice Days"
               title="Nature Walks & Sacred Sites"
               text="Gentle walks into the hills and slow time by the sacred river — none of it compulsory, none of it rushed."
-              image="/images/gallery_images/warrior-pose-yoga-ganges-river-rishikesh.webp"
+              image="/images/excusrion-activity/nature-walk.jpg"
               alt="Nature walk by the Ganges river in Rishikesh"
               heightClass="h-[220px] sm:h-[240px]"
             />
@@ -1572,9 +1572,9 @@ function WhatsIncludedTabsSection() {
   const tab = whatsIncludeTabs[activeTab];
 
   return (
-    <section id="whats-include" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+    <section id="whats-include" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
-        <div className="text-center max-w-3xl mx-auto mb-6">
+        <div className="text-center max-w-2xl mx-auto mb-6">
           <Kicker>What's Include</Kicker>
           <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] drop-shadow-2xs">
             What's Included, What's Not, and What To Bring
@@ -1592,8 +1592,8 @@ function WhatsIncludedTabsSection() {
                 onClick={() => setActiveTab(i)}
                 className={`px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-figtree font-semibold transition-all duration-300 cursor-pointer ${
                   isActive
-                    ? "bg-[#158b72] text-white shadow-sm"
-                    : "bg-white border border-[#158b72]/30 text-[#158b72] hover:border-[#158b72]"
+                    ? "bg-[#1c3b2b] text-white shadow-sm"
+                    : "bg-[#fdfbf7] border border-[#1c3b2b]/30 text-[#1c3b2b] hover:border-[#1c3b2b]"
                 }`}
               >
                 {t.label}
@@ -1602,17 +1602,17 @@ function WhatsIncludedTabsSection() {
           })}
         </div>
 
-        <div className="rounded-3xl border border-[#c8ece2] bg-white/70 p-5 sm:p-8">
+        <div className="rounded-3xl border border-[#e3dac9] bg-white/70 p-5 sm:p-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
             <ul className="space-y-0">
               {tab.items.map((item, i) => (
                 <li
                   key={item}
                   className={`flex items-start gap-3 py-3 ${
-                    i !== 0 ? "border-t border-dashed border-[#c8ece2]" : ""
+                    i !== 0 ? "border-t border-dashed border-[#e3dac9]" : ""
                   }`}
                 >
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#158b72] shrink-0" />
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#1c3b2b] shrink-0" />
                   <span className="text-sm sm:text-base text-stone-700 leading-relaxed">{item}</span>
                 </li>
               ))}
@@ -1646,7 +1646,7 @@ function WhoShouldJoinSection() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="py-14 sm:py-16 lg:py-20 bg-white border-b border-[#c8ece2]/70 font-figtree">
+    <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
         <div className="text-center mb-8 lg:mb-10">
           <Kicker>Is This for You?</Kicker>
@@ -1705,7 +1705,7 @@ function WhoShouldJoinSection() {
                     isActive ? "opacity-100 delay-150" : "opacity-0 pointer-events-none"
                   }`}
                 >
-                  <span className="inline-flex w-11 h-11 rounded-full bg-[#158b72] items-center justify-center mb-4">
+                  <span className="inline-flex w-11 h-11 rounded-full bg-[#1c3b2b] items-center justify-center mb-4">
                     <Icon className="w-5 h-5 text-white" />
                   </span>
                   <h3 className="text-white text-xl sm:text-2xl font-belleza font-normal mb-2 drop-shadow-md">
@@ -1742,7 +1742,7 @@ function WhoShouldJoinSection() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <span className="inline-flex w-10 h-10 rounded-full bg-[#158b72] items-center justify-center mb-3">
+                  <span className="inline-flex w-10 h-10 rounded-full bg-[#1c3b2b] items-center justify-center mb-3">
                     <Icon className="w-4.5 h-4.5 text-white" />
                   </span>
                   <h3 className="text-white text-lg font-belleza font-normal mb-1.5 drop-shadow-md">
@@ -1760,10 +1760,8 @@ function WhoShouldJoinSection() {
 }
 
 function SyllabusSection() {
-  const [showFull, setShowFull] = useState(false);
-
   return (
-    <section id="curriculum" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/70 font-figtree">
+    <section id="curriculum" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
         <SectionHead
           kicker="Course Syllabus"
@@ -1774,7 +1772,7 @@ function SyllabusSection() {
           {syllabusCards.map((card) => (
             <div
               key={card.title}
-              className="group bg-white rounded-2xl overflow-hidden border border-[#c8ece2] shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              className="group bg-[#fdfbf7] rounded-2xl overflow-hidden border border-[#e3dac9] shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
               <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <Image
@@ -1790,7 +1788,7 @@ function SyllabusSection() {
                 <h3 className="font-belleza text-lg sm:text-xl text-[#1e2422] leading-snug mb-1.5">
                   {card.title}
                 </h3>
-                <p className="text-xs sm:text-sm font-semibold text-[#158b72] mb-2.5">
+                <p className="text-xs sm:text-sm font-semibold text-[#1c3b2b] mb-2.5">
                   {card.subtitle}
                 </p>
                 <p className="text-sm sm:text-[15px] text-stone-600 leading-relaxed">
@@ -1801,32 +1799,13 @@ function SyllabusSection() {
           ))}
         </div>
 
-        <div className="text-center mt-8">
-          <button
-            type="button"
-            onClick={() => setShowFull((v) => !v)}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#158b72] hover:bg-[#0f6b57] text-white text-sm font-figtree font-semibold shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
-          >
-            <span>{showFull ? "Hide Full Detailed Syllabus" : "View Full Detailed Syllabus (21 Modules)"}</span>
-            <ChevronDown
-              className={`w-4 h-4 transition-transform duration-300 ${showFull ? "rotate-180" : ""}`}
-            />
-          </button>
-        </div>
-
-        <div
-          className={`grid transition-all duration-500 ease-in-out ${
-            showFull ? "grid-rows-[1fr] opacity-100 mt-8" : "grid-rows-[0fr] opacity-0"
-          }`}
-        >
-          <div className="overflow-hidden">
-            <Accordion
-              items={syllabusItems}
-              defaultOpen={null}
-              className="w-full"
-              columns={2}
-            />
-          </div>
+        <div className="mt-8">
+          <Accordion
+            items={syllabusItems}
+            defaultOpen={null}
+            className="w-full"
+            columns={2}
+          />
         </div>
       </div>
     </section>
@@ -1853,7 +1832,7 @@ function VideoCard({ videoId, title }) {
         />
         <div className="absolute inset-0 bg-black/25" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/95 text-[#158b72] flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#158b72] group-hover:text-white transition-all duration-300 pl-0.5">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/95 text-[#1c3b2b] flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#1c3b2b] group-hover:text-white transition-all duration-300 pl-0.5">
             <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />
           </div>
         </div>

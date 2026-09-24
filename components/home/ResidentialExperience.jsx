@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Container, Kicker, HeadingDivider } from "../ui";
 import { Utensils, Home, Wifi, Sun, Sparkles, Check } from "lucide-react";
 
-export default function ResidentialExperience({ showSchedule = true }) {
+export default function ResidentialExperience({ showSchedule = true, bgClassName = "bg-[#f4efe6]" }) {
   const schedule = [
     {
       time: "05:30 AM",
@@ -77,11 +77,11 @@ export default function ResidentialExperience({ showSchedule = true }) {
   return (
     <section
       id="residential"
-      className="py-14 sm:py-16 lg:py-20 bg-[#def4ee4d] border-b border-[#c8ece2]/60"
+      className={`py-14 sm:py-16 lg:py-20 ${bgClassName} border-b border-[#e3dac9]/60`}
     >
       <Container>
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-8 lg:mb-10">
+        <div className="max-w-2xl mx-auto text-center mb-8 lg:mb-10">
           <Kicker>Our Ashram</Kicker>
           <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2]">
             A Peaceful Sanctuary to Rest, Nourish &amp; Grow
@@ -104,10 +104,10 @@ export default function ResidentialExperience({ showSchedule = true }) {
               return (
                 <div
                   key={i}
-                  className="p-5 rounded-2xl bg-white border border-[#c8ece2] shadow-xs flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 hover:shadow-md transition-shadow"
+                  className="p-5 rounded-2xl bg-[#fdfbf7] border border-[#e3dac9] shadow-xs flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 hover:shadow-md transition-shadow"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-[#158b72]/10 text-[#158b72] flex items-center justify-center shrink-0 mt-0.5 mx-auto sm:mx-0">
-                    <Icon className="w-5 h-5 text-[#158b72]" />
+                  <div className="w-11 h-11 rounded-xl bg-[#1c3b2b]/10 text-[#1c3b2b] flex items-center justify-center shrink-0 mt-0.5 mx-auto sm:mx-0">
+                    <Icon className="w-5 h-5 text-[#1c3b2b]" />
                   </div>
                   <div>
                     <h4 className="font-belleza text-base font-normal text-[#1e2422] tracking-wide mb-1">
@@ -122,42 +122,64 @@ export default function ResidentialExperience({ showSchedule = true }) {
             })}
           </div>
 
-          {/* Right: Ashram Photos (6 cols) */}
+          {/* Right: Ashram Photos — 4-image food & stay collage (6 cols) */}
           <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border-2 border-white">
-              <Image
-                src="/images/gallery_images/food-gallery3.webp"
-                alt="Ashram exterior and serene Himalayan surroundings in Rishikesh"
-                fill
-                className="object-cover transition-transform duration-700 hover:scale-105"
-                sizes="(max-width: 1024px) 50vw, 25vw"
-              />
+            <div className="flex flex-col gap-4">
+              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-lg border-2 border-white">
+                <Image
+                  src="/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg"
+                  alt="Twin sharing room accommodation at Siddhant School of Yoga"
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                />
+              </div>
+              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-lg border-2 border-white">
+                <Image
+                  src="/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg"
+                  alt="Freshly prepared sattvic meal at Siddhant School of Yoga"
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                />
+              </div>
             </div>
-            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border-2 border-white mt-6 sm:mt-10">
-              <Image
-                src="/images/gallery_images/food-gallery4.webp"
-                alt="Peaceful ashram sadhana environment in Rishikesh"
-                fill
-                className="object-cover transition-transform duration-700 hover:scale-105"
-                sizes="(max-width: 1024px) 50vw, 25vw"
-              />
+            <div className="flex flex-col gap-4 mt-6 sm:mt-10">
+              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-lg border-2 border-white">
+                <Image
+                  src="/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg"
+                  alt="Ashram dining hall and kitchen at Siddhant School of Yoga"
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                />
+              </div>
+              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-lg border-2 border-white">
+                <Image
+                  src="/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg"
+                  alt="Ashram building exterior at Siddhant School of Yoga in Rishikesh"
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                />
+              </div>
             </div>
           </div>
         </div>
 
         {/* Daily Schedule Timeline Strip */}
         {showSchedule && (
-          <div className="p-7 sm:p-10 rounded-3xl bg-white border border-[#c8ece2] shadow-sm font-figtree">
-            <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-[#c8ece2] text-center sm:text-left">
+          <div className="p-7 sm:p-10 rounded-3xl bg-[#fdfbf7] border border-[#e3dac9] shadow-sm font-figtree">
+            <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-[#e3dac9] text-center sm:text-left">
               <div>
-                <span className="text-[11px] uppercase tracking-widest text-[#158b72] font-semibold block mb-1">
+                <span className="text-[11px] uppercase tracking-widest text-[#1c3b2b] font-semibold block mb-1">
                   A Day in the Ashram
                 </span>
                 <h3 className="font-belleza text-2xl sm:text-3xl font-normal text-[#1e2422] tracking-wide">
                   Typical Daily Sadhana Schedule
                 </h3>
               </div>
-              <span className="text-xs bg-[#def4ee4d] text-[#158b72] font-semibold px-4 py-2 rounded-full border border-[#158b72]/40">
+              <span className="text-xs bg-[#f4efe6] text-[#1c3b2b] font-semibold px-4 py-2 rounded-full border border-[#1c3b2b]/40">
                 Monday – Saturday
               </span>
             </div>
@@ -166,10 +188,10 @@ export default function ResidentialExperience({ showSchedule = true }) {
               {schedule.map((s, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-2xl bg-[#def4ee4d] border border-[#c8ece2] flex flex-col justify-between text-center sm:text-left"
+                  className="p-4 rounded-2xl bg-[#f4efe6] border border-[#e3dac9] flex flex-col justify-between text-center sm:text-left"
                 >
                   <div>
-                    <span className="text-xs font-bold text-[#158b72] tracking-wider block mb-1">
+                    <span className="text-xs font-bold text-[#1c3b2b] tracking-wider block mb-1">
                       {s.time}
                     </span>
                     <h4 className="font-belleza text-base font-normal text-[#1e2422] tracking-wide mb-1">

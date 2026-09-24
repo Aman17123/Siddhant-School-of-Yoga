@@ -18,17 +18,17 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col min-h-screen relative selection:bg-[#158b72]/30 selection:text-[#0f6b57]">
+    <div className="flex flex-col min-h-screen relative selection:bg-[#1c3b2b]/30 selection:text-[#142b1e]">
       <Navbar />
 
-      <main className="flex-grow flex items-center justify-center bg-[#def4ee4d] py-20 sm:py-28">
+      <main className="flex-grow flex items-center justify-center bg-[#f4efe6] py-20 sm:py-28">
         <Container>
           <div className="max-w-xl mx-auto text-center">
-            <span className="block text-[1rem] font-figtree font-semibold tracking-[0.08em] text-[#158b72] mb-2">
+            <span className="block text-[1rem] font-figtree font-semibold tracking-[0.08em] text-[#b85c00] mb-2">
               Error 404
             </span>
 
-            <h1 className="font-belleza text-6xl sm:text-8xl font-normal text-[#158b72] tracking-wide leading-none mb-3">
+            <h1 className="font-belleza text-6xl sm:text-8xl font-normal text-[#1c3b2b] tracking-wide leading-none mb-3">
               404
             </h1>
 
@@ -44,7 +44,7 @@ export default function NotFound() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
               <a
                 href="/"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#158b72] hover:bg-[#0f6b57] text-white text-sm sm:text-base font-bold font-figtree px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#1c3b2b] hover:bg-[#142b1e] text-white text-sm sm:text-base font-bold font-figtree px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
               >
                 <Home className="w-5 h-5" />
                 <span>Back to Home</span>
@@ -55,7 +55,7 @@ export default function NotFound() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white border-2 border-[#158b72] text-[#158b72] hover:bg-[#158b72] hover:text-white text-sm sm:text-base font-bold font-figtree px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#fdfbf7] border-2 border-[#1c3b2b] text-[#1c3b2b] hover:bg-[#1c3b2b] hover:text-white text-sm sm:text-base font-bold font-figtree px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
               >
                 <FaWhatsapp className="w-5 h-5" />
                 <span>Talk on WhatsApp</span>
@@ -64,7 +64,7 @@ export default function NotFound() {
 
             <a
               href="/#courses"
-              className="inline-flex items-center gap-1.5 mt-8 text-xs sm:text-sm font-figtree font-semibold text-[#158b72] hover:text-[#0f6b57] transition-colors"
+              className="inline-flex items-center gap-1.5 mt-8 text-xs sm:text-sm font-figtree font-semibold text-[#1c3b2b] hover:text-[#142b1e] transition-colors"
             >
               <Compass className="w-4 h-4" />
               <span>Or explore our Yoga Teacher Training courses</span>

@@ -1,10 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { Sparkles, Send } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { whatsappLink } from "@/data/siteData";
+import QuickEnquiryModal from "@/components/QuickEnquiryModal";
 
 export default function FloatingActions() {
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
+
   return (
     <>
       {/* 1. Floating WhatsApp Button on Left Side */}
@@ -18,7 +22,7 @@ export default function FloatingActions() {
           )}
           target="_blank"
           rel="noopener noreferrer"
-          className="relative group w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-[#0f6b57] hover:bg-[#158b72] text-white border border-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95"
+          className="relative group w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-[#142b1e] hover:bg-[#1c3b2b] text-white border border-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95"
           aria-label="Chat with us on WhatsApp"
         >
           <FaWhatsapp className="w-5 h-5 sm:w-7 sm:h-7" />
@@ -35,19 +39,18 @@ export default function FloatingActions() {
         className="fixed bottom-3 sm:bottom-5 right-3 sm:right-5 z-40 font-figtree"
         aria-label="Quick Enquiry"
       >
-        <a
-          href={whatsappLink(
-            "Namaste! I would like to enquire about course dates, fees, and accommodation at Siddhant School of Yoga in Rishikesh.",
-          )}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-[#0f6b57] hover:bg-[#158b72] text-white border border-white text-xs sm:text-sm font-semibold shadow-2xl hover:shadow-[#158b72]/40 hover:scale-105 active:scale-95 transition-all duration-300 group"
-          aria-label="Quick Enquiry"
+        <button
+          type="button"
+          onClick={() => setEnquiryOpen(true)}
+          className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-[#142b1e] hover:bg-[#1c3b2b] text-white border border-white text-xs sm:text-sm font-semibold shadow-2xl hover:shadow-[#1c3b2b]/40 hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer"
+          aria-label="Open Quick Enquiry form"
         >
           <Sparkles className="w-4 h-4 text-white group-hover:rotate-12 transition-transform" />
           <span>Quick Enquiry</span>
-        </a>
+        </button>
       </div>
+
+      <QuickEnquiryModal open={enquiryOpen} onClose={() => setEnquiryOpen(false)} />
     </>
   );
 }

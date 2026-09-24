@@ -110,7 +110,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${belleza.variable} ${figtree.variable} ${philosopher.variable} ${playfair.variable} ${manrope.variable} ${nunitoSans.variable} ${marcellus.variable} ${plusJakartaSans.variable} scroll-smooth`}
     >
-      <body className="bg-[#def4ee4d] text-[#202019] font-sans antialiased min-h-screen selection:bg-[#158b72]/30 selection:text-[#0f6b57]">
+      <body className="bg-[#f4efe6] text-[#202019] font-sans antialiased min-h-screen selection:bg-[#1c3b2b]/30 selection:text-[#142b1e]">
         {children}
       </body>
     </html>
