@@ -71,6 +71,34 @@ const yogaGurus = [
     desc: "The \"First Lady of Yoga,\" popularizing it in Hollywood.",
     image: "/images/Yoga_Gurus/8_Indra_Devi.jpg",
   },
+  {
+    name: "Sri Ramana Maharshi",
+    initials: "RM",
+    tag: "Advaita Vedanta",
+    desc: "Self-realized master who taught self-inquiry through silence.",
+    image: "/images/ideals/ramana-maharshi.webp",
+  },
+  {
+    name: "Swami Shashawat Ji",
+    initials: "SJ",
+    tag: "Meditation & Surrender",
+    desc: "A living master devoted to stillness, service and truth.",
+    image: "/images/ideals/swamishashawat.webp",
+  },
+  {
+    name: "Swami Ram Kripalu Ji",
+    initials: "RK",
+    tag: "Himalayan Tapasya",
+    desc: "A Himalayan renunciate now residing in Rishikesh.",
+    image: "/images/ideals/kripalumaharaj.webp",
+  },
+  {
+    name: "Swami Nityananda Giri",
+    initials: "NG",
+    tag: "Kriya Yoga",
+    desc: "Kriya Yoga acharya and author, based in Rishikesh.",
+    image: "/images/ideals/swaminityananda.webp",
+  },
 ];
 
 export default function TeacherPage() {

@@ -2,6 +2,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import CourseHero from "@/components/course-pages/CourseHero";
+import SectionNav from "@/components/course-pages/SectionNav";
+import MeditationPranayamaRetreatContent, {
+  sectionNavItems,
+} from "@/components/course-pages/MeditationPranayamaRetreatContent";
 
 export const metadata = {
   title: "5-Day Meditation & Pranayama Retreat in Rishikesh | Siddhant School of Yoga",
@@ -19,6 +23,7 @@ export default function FiveDayMeditationPranayamaRetreatPage() {
   return (
     <div className="flex flex-col min-h-screen relative selection:bg-[#1c3b2b]/30 selection:text-[#142b1e]">
       <Navbar />
+      <SectionNav items={sectionNavItems} />
 
       <main className="flex-grow bg-[#fdfbf7]">
         <CourseHero
@@ -31,6 +36,7 @@ export default function FiveDayMeditationPranayamaRetreatPage() {
           bgImageAlt="5-Day Meditation & Pranayama Retreat in Rishikesh"
           whatsappIntro="Namaste! I'd like to know more about the 5-Day Meditation & Pranayama Retreat in Rishikesh."
         />
+        <MeditationPranayamaRetreatContent />
       </main>
 
       <Footer />

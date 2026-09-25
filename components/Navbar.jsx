@@ -35,6 +35,7 @@ const navMenu = [
       { title: "About Siddhant School", href: "/about" },
       { title: "Our Yoga Teachers", href: "/teacher" },
       { title: "About Acharya Siddhant Ji", href: "/yogi-siddhant-rishikesh-india" },
+      { title: "Our Ideals & Masters", href: "/ideals-of-siddhant-school-of-yoga" },
       { title: "Food & Accommodation", href: "/food-accommodation" },
       { title: "About Rishikesh", href: "/rishikesh-india" },
       { title: "FAQs", href: "/faq" },
@@ -443,6 +444,10 @@ export default function Navbar() {
                         {
                           title: "About Acharya Siddhant Ji",
                           href: "/yogi-siddhant-rishikesh-india",
+                        },
+                        {
+                          title: "Our Ideals & Masters",
+                          href: "/ideals-of-siddhant-school-of-yoga",
                         },
                         {
                           title: "Food & Accommodation",

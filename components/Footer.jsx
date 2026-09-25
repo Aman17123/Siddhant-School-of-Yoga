@@ -116,16 +116,16 @@ export default function Footer() {
             <ul className="space-y-3 sm:space-y-3.5 text-sm font-medium text-white/80">
               <li>
                 <Link
-                  href="#courses"
+                  href="/online-200-hour-yoga-teacher-training-in-rishikesh-india"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span>Yoga TTC Overview</span>
+                    <span>Online 200-Hour Yoga TTC</span>
                   </Link>
               </li>
               <li>
                 <Link
-                  href="#courses"
+                  href="/100-hour-yoga-teacher-training-in-rishikesh-india"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
@@ -134,7 +134,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#courses"
+                  href="/200-hour-yoga-teacher-training-in-rishikesh-india"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
@@ -143,7 +143,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#courses"
+                  href="/300-hour-yoga-teacher-training-in-rishikesh-india"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
@@ -152,16 +152,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#courses"
-                  className="group inline-flex items-center gap-2 hover:text-white transition-all"
-                  >
-                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span>500-Hour Master TTC</span>
-                  </Link>
-              </li>
-              <li>
-                <Link
-                  href="#kundalini"
+                  href="/100-hours-kundalini-yoga-teacher-training-in-rishikesh-india"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
@@ -170,7 +161,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#kundalini"
+                  href="/200-hours-kundalini-yoga-teacher-training-in-rishikesh-india"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
@@ -179,11 +170,38 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#kundalini"
+                  href="/300-hours-kundalini-yoga-teacher-training-in-rishikesh-india"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span>500-Hour Kundalini Master</span>
+                    <span>300-Hour Kundalini TTC</span>
+                  </Link>
+              </li>
+              <li>
+                <Link
+                  href="/yoga-meditation-retreat-in-rishikesh-india"
+                  className="group inline-flex items-center gap-2 hover:text-white transition-all"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <span>Yoga &amp; Meditation Retreat</span>
+                  </Link>
+              </li>
+              <li>
+                <Link
+                  href="/kundalini-retreat-in-rishikesh-india"
+                  className="group inline-flex items-center gap-2 hover:text-white transition-all"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <span>Kundalini Retreat</span>
+                  </Link>
+              </li>
+              <li>
+                <Link
+                  href="/detox-retreat-rishikesh-india"
+                  className="group inline-flex items-center gap-2 hover:text-white transition-all"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <span>Detox Retreat</span>
                   </Link>
               </li>
             </ul>
@@ -206,79 +224,88 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#courses"
+                  href="/about"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span>Yoga TTC (Main Page)</span>
+                    <span>About Siddhant School</span>
                   </Link>
               </li>
               <li>
                 <Link
-                  href="#retreats"
+                  href="/yogi-siddhant-rishikesh-india"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span>Yoga Retreats Page</span>
+                    <span>About Acharya Siddhant Ji</span>
                   </Link>
               </li>
               <li>
                 <Link
-                  href="#about"
+                  href="/ideals-of-siddhant-school-of-yoga"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span>About Our Ashram</span>
+                    <span>Our Ideals &amp; Masters</span>
                   </Link>
               </li>
               <li>
                 <Link
-                  href="#founder"
+                  href="/teacher"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span>Acharya Siddhant (Founder)</span>
+                    <span>Our Yoga Teachers</span>
                   </Link>
               </li>
               <li>
                 <Link
-                  href="#teachers"
+                  href="/food-accommodation"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span>Himalayan Masters &amp; Faculty</span>
+                    <span>Food &amp; Accommodation</span>
                   </Link>
               </li>
               <li>
                 <Link
-                  href="#comparison"
+                  href="/rishikesh-india"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span>Compare All TTC Courses</span>
+                    <span>About Rishikesh</span>
                   </Link>
               </li>
               <li>
                 <Link
-                  href="#residential"
+                  href="/gallery"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span>Ashram Stay &amp; Sattvic Food</span>
+                    <span>Gallery</span>
                   </Link>
               </li>
               <li>
                 <Link
-                  href="#testimonials"
+                  href="/testimonials"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span>Student Reviews (4.9★)</span>
+                    <span>Student Testimonials</span>
                   </Link>
               </li>
               <li>
                 <Link
-                  href="#faq"
+                  href="/contact"
+                  className="group inline-flex items-center gap-2 hover:text-white transition-all"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <span>Contact Us</span>
+                  </Link>
+              </li>
+              <li>
+                <Link
+                  href="/faq"
                   className="group inline-flex items-center gap-2 hover:text-white transition-all"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#f4efe6] shrink-0 group-hover:translate-x-1 transition-transform" />

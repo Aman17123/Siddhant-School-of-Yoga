@@ -4,11 +4,12 @@ import { ChevronRight, Home } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+import IdealsMastersContent from "@/components/course-pages/IdealsMastersContent";
 
 export const metadata = {
-  title: "Our Ideals | Siddhant School of Yoga, Rishikesh",
+  title: "Our Ideals & Masters | Siddhant School of Yoga, Rishikesh",
   description:
-    "The core ideals and guiding principles behind Siddhant School of Yoga in Rishikesh, India — authentic Vedic teaching rooted in tradition, discipline and inner growth.",
+    "Meet the living legends and spiritual masters who inspire Siddhant School of Yoga in Rishikesh, India — Sri Ramana Maharshi, Swami Sivananda, Swami Vivekananda and more.",
 };
 
 export default function IdealsPage() {
@@ -65,8 +66,8 @@ export default function IdealsPage() {
               <div className="w-full lg:w-1/2 py-0 sm:py-6 lg:py-16">
                 <div className="relative w-full aspect-[16/9] rounded-3xl overflow-hidden shadow-xl border-4 border-white">
                   <Image
-                    src="/images/founder/acharya-siddhant-founder-meditation-rishikesh.webp"
-                    alt="Acharya Siddhant in meditation at Siddhant School of Yoga"
+                    src="/images/ideals/ideals-hero-image.tiff"
+                    alt="Ideals of Siddhant School of Yoga"
                     fill
                     priority
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -77,6 +78,8 @@ export default function IdealsPage() {
             </div>
           </div>
         </section>
+
+        <IdealsMastersContent />
       </main>
 
       <Footer />
