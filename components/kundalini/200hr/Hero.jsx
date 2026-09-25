@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Flame, Clock, Award, Users, ArrowRight, Send } from "lucide-react";
-import { whatsappLink } from "@/data/siteData";
+import { Flame, Clock, Award, Users, ArrowRight, Send, Loader2 } from "lucide-react";
+import { submitEnquiry } from "@/lib/submitEnquiry";
+import SuccessModal from "@/components/SuccessModal";
 
 const badges = [
   { icon: Clock, label: "24 Days Residential" },
@@ -14,15 +15,33 @@ const badges = [
 
 export default function Kundalini200HourHero() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle"); // idle | sending | error
+  const [error, setError] = useState("");
+  const [successOpen, setSuccessOpen] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const text = `Namaste! I'd like to know more about the 200-Hour Kundalini Yoga TTC in Rishikesh.\n\nName: ${form.name}\nEmail: ${form.email}\nMessage: ${form.message}`;
-    window.open(whatsappLink(text), "_blank", "noopener,noreferrer");
+    setStatus("sending");
+    setError("");
+    try {
+      await submitEnquiry({
+        formSource: `Send Us a Message — Namaste! I'd like to know more about the 200-Hour Kundalini Yoga TTC in Rishikesh.`,
+        subject: `New message from ${form.name}`,
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      });
+      setStatus("idle");
+      setForm({ name: "", email: "", message: "" });
+      setSuccessOpen(true);
+    } catch (err) {
+      setStatus("error");
+      setError(err.message);
+    }
   };
 
   return (
@@ -151,12 +170,21 @@ export default function Kundalini200HourHero() {
                   />
                 </div>
 
+                {status === "error" && (
+                  <p className="text-xs text-red-600 font-medium text-center">{error}</p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#b85c00] hover:bg-[#96490a] text-white text-xs sm:text-sm font-figtree font-bold uppercase tracking-wide shadow-md transition-all duration-300 hover:-translate-y-0.5"
+                  disabled={status === "sending"}
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#b85c00] hover:bg-[#96490a] disabled:opacity-60 disabled:cursor-not-allowed text-white text-xs sm:text-sm font-figtree font-bold uppercase tracking-wide shadow-md transition-all duration-300 hover:-translate-y-0.5"
                 >
-                  Send Message
-                  <Send className="w-3.5 h-3.5" />
+                  {status === "sending" ? "Sending..." : "Send Message"}
+                  {status === "sending" ? (
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  ) : (
+                    <Send className="w-3.5 h-3.5" />
+                  )}
                 </button>
 
                 <p className="text-center text-[11px] text-stone-400 font-figtree italic">
@@ -167,6 +195,13 @@ export default function Kundalini200HourHero() {
           </div>
         </div>
       </div>
+
+      <SuccessModal
+        open={successOpen}
+        onClose={() => setSuccessOpen(false)}
+        title="Message Sent!"
+        message="Namaste! Thank you for reaching out. Our team usually replies within a day."
+      />
     </section>
   );
 }

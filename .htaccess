@@ -1,0 +1,45 @@
+# Siddhant School of Yoga — redirects for the old siddhantschoolofyoga.com (.php) site
+#
+# NOTE: this site runs on Next.js (Node). If it's deployed as a Node app behind
+# Apache (e.g. cPanel "Setup Node.js App" / Passenger), Apache evaluates these
+# rules BEFORE proxying to Node, so the redirects below work as expected and
+# any request that doesn't match falls through to Next.js, which renders its
+# own 404 page (app/not-found.jsx) for anything that still doesn't resolve.
+# If instead this is deployed as a fully static export, the ErrorDocument line
+# at the bottom also covers genuinely missing files.
+
+RewriteEngine On
+
+# --- Old slugs that were renamed outright (not just ".php" stripped) ---
+RewriteRule ^yoga-for-beginners-rishikesh(\.php)?$ /yoga-course-for-beginners-in-rishikesh-india [R=301,L]
+RewriteRule ^yoga-meditation-retreat(\.php)?$ /yoga-meditation-retreat-in-rishikesh-india [R=301,L]
+RewriteRule ^7-day-yoga-meditation-retreat(\.php)?$ /07-days-yoga-meditation-retreat-in-rishikesh-india [R=301,L]
+RewriteRule ^kundalini-retreat-rishikesh(\.php)?$ /kundalini-retreat-in-rishikesh-india [R=301,L]
+RewriteRule ^pranayama-retreat-rishikesh\.php$ /pranayama-retreat-rishikesh-india [R=301,L]
+RewriteRule ^vipassana-retreat-rishikesh\.php$ /vipassana-retreat-rishikesh-india [R=301,L]
+RewriteRule ^detox-retreat-rishikesh\.php$ /detox-retreat-rishikesh-india [R=301,L]
+RewriteRule ^3-day-detox-retreat(\.php)?$ /3-days-detox-retreat-rishikesh-india [R=301,L]
+RewriteRule ^mantra-yoga-meditation-retreat\.php$ /mantra-yoga-meditation-retreat-rishikesh [R=301,L]
+RewriteRule ^yoga-ayurveda-retreat(\.php)?$ /yoga-and-ayurveda-retreat-in-rishikesh [R=301,L]
+RewriteRule ^5-day-meditation-pranayama-retreat(\.php)?$ /05-days-meditation-pranayama-retreat-in-rishikesh [R=301,L]
+RewriteRule ^300-hour-yoga-ttc-rishikesh\.php$ /300-hour-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^500-hour-yoga-ttc-rishikesh\.php$ /500-hour-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^online-200-hour-yoga-ttc(\.php)?$ /online-200-hour-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^500-hour-yoga-ayurveda-ttc(\.php)?$ /500-hour-yoga-ayurveda-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^100-hour-kundalini-yoga-ttc(\.php)?$ /100-hours-kundalini-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^200-hour-kundalini-yoga-ttc(\.php)?$ /200-hours-kundalini-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^300-hour-kundalini-yoga-ttc(\.php)?$ /300-hours-kundalini-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^500-hour-kundalini-yoga-ttc(\.php)?$ /500-hours-kundalini-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^contact-us(\.php)?$ /contact [R=301,L]
+
+# --- Generic rule: any other old "name.php" page with the exact same slug
+# today (e.g. 100-hour-yoga-teacher-training-in-rishikesh-india.php,
+# yoga-course-payment.php) just gets the ".php" stripped. Keep this LAST so
+# the more specific renamed-slug rules above always win first. ---
+RewriteCond %{REQUEST_FILENAME} \.php$
+RewriteRule ^(.+)\.php$ /$1 [R=301,L]
+
+# Fallback 404 if this is ever served as a static export and a file/route is
+# genuinely missing (Next.js's own not-found page handles this when running
+# as a Node app, so this line is a defensive no-op in that case).
+ErrorDocument 404 /404

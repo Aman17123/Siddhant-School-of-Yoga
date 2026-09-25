@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Send } from "lucide-react";
-import { whatsappLink } from "@/data/siteData";
+import { Send, Loader2 } from "lucide-react";
 import { courseOptions, hearAboutOptions, experienceOptions, accommodationOptions, getMonthOptions } from "@/data/enquiryOptions";
+import { submitEnquiry } from "@/lib/submitEnquiry";
+import SuccessModal from "@/components/SuccessModal";
 
 const inputClassName =
   "w-full rounded-xl border border-[#e3dac9] bg-[#fdfbf7] px-4 py-3 text-sm text-[#1e2422] placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/30 focus:border-[#1c3b2b] transition-colors";
@@ -31,17 +32,55 @@ export default function RegistrationForm() {
     setMonthOptions(getMonthOptions());
   }, []);
 
+  const [status, setStatus] = useState("idle"); // idle | sending | error
+  const [error, setError] = useState("");
+  const [successOpen, setSuccessOpen] = useState(false);
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const text = `Namaste! I'd like to register for a course at Siddhant School of Yoga.\n\nName: ${form.name}\nEmail: ${form.email}\nPhone/WhatsApp: ${form.phone}\nCountry: ${form.country}\nCourse: ${form.course}\nCourse Month: ${form.month}\nAccommodation Type: ${form.accommodation}\nHow they found us: ${form.hearAbout}\nYoga Experience: ${form.experience}\nMessage: ${form.message || "-"}`;
-    window.open(whatsappLink(text), "_blank", "noopener,noreferrer");
+    setStatus("sending");
+    setError("");
+    try {
+      await submitEnquiry({
+        formSource: "Registration Form (Book My Yoga)",
+        subject: `New course registration from ${form.name}`,
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        country: form.country,
+        course: form.course,
+        courseMonth: form.month,
+        accommodationType: form.accommodation,
+        howTheyFoundUs: form.hearAbout,
+        yogaExperience: form.experience,
+        message: form.message,
+      });
+      setStatus("idle");
+      setSuccessOpen(true);
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        country: "",
+        hearAbout: "",
+        experience: "",
+        course: "",
+        month: "",
+        accommodation: "",
+        message: "",
+      });
+    } catch (err) {
+      setStatus("error");
+      setError(err.message);
+    }
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
         <div>
@@ -241,13 +280,31 @@ export default function RegistrationForm() {
         />
       </div>
 
+      {status === "error" && (
+        <p className="text-sm text-red-600 font-medium text-center -mb-1">{error}</p>
+      )}
+
       <button
         type="submit"
-        className="mt-2 inline-flex items-center justify-center gap-2.5 w-full sm:w-auto sm:self-center sm:px-16 px-8 py-4 rounded-full text-sm sm:text-base font-figtree font-bold bg-[#b85c00] hover:bg-[#96490a] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+        disabled={status === "sending"}
+        className="mt-2 inline-flex items-center justify-center gap-2.5 w-full sm:w-auto sm:self-center sm:px-16 px-8 py-4 rounded-full text-sm sm:text-base font-figtree font-bold bg-[#b85c00] hover:bg-[#96490a] disabled:opacity-60 disabled:cursor-not-allowed text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
       >
-        <Send className="w-4.5 h-4.5" />
-        Submit Registration
+        {status === "sending" ? (
+          <Loader2 className="w-4.5 h-4.5 animate-spin" />
+        ) : (
+          <Send className="w-4.5 h-4.5" />
+        )}
+        {status === "sending" ? "Submitting..." : "Submit Registration"}
       </button>
     </form>
+
+    <SuccessModal
+      open={successOpen}
+      onClose={() => setSuccessOpen(false)}
+      title="Application Received!"
+      message="Namaste! Thank you for applying to Siddhant School of Yoga. Our admissions director will personally review your application and get back to you within 24 hours. Pay your advance now to instantly secure your seat."
+      showPaymentCta
+    />
+    </>
   );
 }

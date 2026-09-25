@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { X, Send } from "lucide-react";
-import { whatsappLink } from "@/data/siteData";
+import { X, Send, Loader2 } from "lucide-react";
 import { courseOptions, hearAboutOptions } from "@/data/enquiryOptions";
+import { submitEnquiry } from "@/lib/submitEnquiry";
+import SuccessModal from "@/components/SuccessModal";
 
 const inputClassName =
   "w-full rounded-xl border border-[#e3dac9] bg-[#fdfbf7] px-4 py-3 text-sm text-[#1e2422] placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/30 focus:border-[#1c3b2b] transition-colors";
@@ -18,6 +19,10 @@ export default function QuickEnquiryModal({ open, onClose }) {
     hearAbout: "",
     message: "",
   });
+
+  const [status, setStatus] = useState("idle"); // idle | sending | error
+  const [error, setError] = useState("");
+  const [successOpen, setSuccessOpen] = useState(false);
 
   useEffect(() => {
     if (open) {
@@ -38,20 +43,48 @@ export default function QuickEnquiryModal({ open, onClose }) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open, onClose]);
 
-  if (!open) return null;
-
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const text = `Namaste! I'd like to submit a quick enquiry.\n\nName: ${form.name}\nEmail: ${form.email}\nPhone/WhatsApp: ${form.phone}\nCourse: ${form.course}\nHow they heard about us: ${form.hearAbout}\nMessage: ${form.message || "-"}`;
-    window.open(whatsappLink(text), "_blank", "noopener,noreferrer");
-    onClose();
+    setStatus("sending");
+    setError("");
+    try {
+      await submitEnquiry({
+        formSource: "Quick Enquiry Popup",
+        subject: `New quick enquiry from ${form.name}`,
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        course: form.course,
+        howTheyHeardAboutUs: form.hearAbout,
+        message: form.message,
+      });
+      setStatus("idle");
+      setForm({ name: "", email: "", phone: "", course: "", hearAbout: "", message: "" });
+      onClose();
+      setSuccessOpen(true);
+    } catch (err) {
+      setStatus("error");
+      setError(err.message);
+    }
   };
 
+  if (!open) {
+    return (
+      <SuccessModal
+        open={successOpen}
+        onClose={() => setSuccessOpen(false)}
+        title="Enquiry Sent!"
+        message="Namaste! Thank you for your enquiry. Our admissions team will connect with you shortly with complete details."
+      />
+    );
+  }
+
   return (
+    <>
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 font-figtree">
       {/* Backdrop */}
       <div
@@ -211,16 +244,26 @@ export default function QuickEnquiryModal({ open, onClose }) {
               </div>
             </div>
 
+            {status === "error" && (
+              <p className="text-sm text-red-600 font-medium text-center -mb-1">{error}</p>
+            )}
+
             <button
               type="submit"
-              className="mt-2 inline-flex items-center justify-center gap-2.5 w-full px-8 py-4 rounded-full text-sm sm:text-base font-figtree font-bold bg-[#b85c00] hover:bg-[#96490a] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+              disabled={status === "sending"}
+              className="mt-2 inline-flex items-center justify-center gap-2.5 w-full px-8 py-4 rounded-full text-sm sm:text-base font-figtree font-bold bg-[#b85c00] hover:bg-[#96490a] disabled:opacity-60 disabled:cursor-not-allowed text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
             >
-              <Send className="w-4.5 h-4.5" />
-              Send Enquiry
+              {status === "sending" ? (
+                <Loader2 className="w-4.5 h-4.5 animate-spin" />
+              ) : (
+                <Send className="w-4.5 h-4.5" />
+              )}
+              {status === "sending" ? "Sending..." : "Send Enquiry"}
             </button>
           </form>
         </div>
       </div>
     </div>
+    </>
   );
 }
