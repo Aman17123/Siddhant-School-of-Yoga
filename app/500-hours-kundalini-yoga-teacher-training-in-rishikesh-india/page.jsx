@@ -216,6 +216,90 @@ export default function KundaliniFiveHundredHourPage() {
                   src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
                   alt: "Sattvic vegetarian meals at Siddhant School of Yoga",
                 },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                  alt: "Twin sharing room for 500-hour master Kundalini trainees",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                  alt: "Private room accommodation option for long-term residents",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                  alt: "Triple sharing dormitory room at the ashram",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                  alt: "Student room with bed and wardrobe storage",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
+                  alt: "Sattvic thali with rice, dal and raita served daily",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
+                  alt: "Vegetarian pulao and sabzi lunch for eight-week residents",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
+                  alt: "Lunch tray served with fresh seasonal juice",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                  alt: "Communal dining hall and kitchen at the school",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                  alt: "Exterior building of Siddhant School of Yoga in Rishikesh",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                  alt: "Hot water shower washroom facility for students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                  alt: "Private attached bathroom in student accommodation",
+                },
+                {
+                  src: "/images/bg-kundalini.png",
+                  alt: "Kundalini energy artwork representing the awakening journey",
+                },
+                {
+                  src: "/images/group-tree-pose-kunjapuri-sunrise-rishikesh.jpg",
+                  alt: "Group tree pose practice at Kunjapuri during sunrise",
+                },
+                {
+                  src: "/images/group-tree-pose-sunrise-hilltop-rishikesh.jpg",
+                  alt: "Students holding tree pose on a hilltop at sunrise",
+                },
+                {
+                  src: "/images/havan-fire-ceremony-group.jpg",
+                  alt: "Group participating in a havan fire ceremony",
+                },
+                {
+                  src: "/images/lord-shiva-statue-rishikesh.jpg",
+                  alt: "Statue of Lord Shiva overlooking Rishikesh",
+                },
+                {
+                  src: "/images/trayambakeshwar-temple-rishikesh-view.jpg",
+                  alt: "View of Trayambakeshwar temple in Rishikesh",
+                },
+                {
+                  src: "/images/teacher-adjusting-warrior-pose-outdoor-class-rishikesh.jpg",
+                  alt: "Teacher guiding alignment in an outdoor warrior pose class",
+                },
+                {
+                  src: "/images/yoga-alignment-adjustment-with-straps-ttc-rishikesh.jpg",
+                  alt: "Strap-assisted alignment adjustment during advanced practice",
+                },
+                {
+                  src: "/images/yoga-ttc-graduation-group-shiva-altar-rishikesh.jpg",
+                  alt: "Graduation group photo beside the Shiva altar",
+                },
+                {
+                  src: "/images/christmas-celebration-siddhant-school-of-yoga.jpg",
+                  alt: "Christmas celebration with students during the long course",
+                },
               ]}
             />
           </div>

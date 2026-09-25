@@ -153,6 +153,90 @@ export default function FiveHundredHourAyurvedaTTCPage() {
                   src: "/images/gallery_images/yoga-philosophy-class-siddhant-school-of-yoga-rishikesh.webp",
                   alt: "Yoga philosophy and Ayurveda class at Siddhant School of Yoga",
                 },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                  alt: "Twin sharing room for 500-hour Yoga & Ayurveda TTC students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                  alt: "Private room accommodation for residential students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                  alt: "Triple sharing room at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                  alt: "Comfortable student room with bed and wardrobe",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
+                  alt: "Ayurvedic sattvic thali with rice, dal and raita",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
+                  alt: "Traditional Ayurvedic thali served on a banana leaf",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                  alt: "Dining hall and kitchen preparing Ayurvedic meals",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                  alt: "Exterior of the Siddhant School of Yoga campus",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                  alt: "Washroom with hot water shower for students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                  alt: "Attached bathroom in a residential student room",
+                },
+                {
+                  src: "/images/vegetarian-meal-spread.jpg",
+                  alt: "Vegetarian meal spread reflecting Ayurvedic principles",
+                },
+                {
+                  src: "/images/yoga-philosophy-satsang-class.png",
+                  alt: "Satsang class covering yoga and Ayurveda philosophy",
+                },
+                {
+                  src: "/images/gomukhasana-cow-face-pose-students-rishikesh.jpg",
+                  alt: "Students practicing Gomukhasana (cow face pose)",
+                },
+                {
+                  src: "/images/low-lunge-pose-group-lawn-class.jpg",
+                  alt: "Low lunge pose during outdoor lawn yoga class",
+                },
+                {
+                  src: "/images/seated-spinal-twist-group-class.png",
+                  alt: "Seated spinal twist group class for holistic wellness",
+                },
+                {
+                  src: "/images/standing-forward-fold-group-class.png",
+                  alt: "Standing forward fold group practice",
+                },
+                {
+                  src: "/images/outdoor-garden-yoga-class-stretching-rishikesh.jpg",
+                  alt: "Outdoor garden yoga stretching class",
+                },
+                {
+                  src: "/images/yoga-alignment-adjustment-with-straps-ttc-rishikesh.jpg",
+                  alt: "Teacher assisting alignment with straps during TTC",
+                },
+                {
+                  src: "/images/havan-fire-ceremony-yoga-ttc-rishikesh.jpg",
+                  alt: "Havan fire ceremony marking course completion",
+                },
+                {
+                  src: "/images/graduation-flower-garland-photo.jpg",
+                  alt: "Graduate wearing a flower garland at the ceremony",
+                },
+                {
+                  src: "/images/yoga-ttc-graduates-fire-ceremony-siddhant-school-of-yoga.jpg",
+                  alt: "500-hour Yoga & Ayurveda graduates at the fire ceremony",
+                },
               ]}
             />
           </div>

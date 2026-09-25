@@ -19,12 +19,21 @@ import {
   Soup,
   Leaf,
   Salad,
+  Coffee,
+  HeartHandshake,
+  Sparkles,
+  Sun,
+  RefreshCw,
 } from "lucide-react";
 import { Kicker, HeadingDivider, ButtonLink } from "@/components/ui";
 import { site, whatsappLink, founder } from "@/data/siteData";
 import { generateRetreatDates } from "@/lib/generateRetreatDates";
 import Teachers from "@/components/home/Teachers";
 import ResidentialExperience from "@/components/home/ResidentialExperience";
+import CourseGallerySection from "@/components/CourseGallerySection";
+import RetreatDeepDive from "@/components/course-pages/RetreatDeepDive";
+import RetreatLivingAtSchool from "@/components/course-pages/RetreatLivingAtSchool";
+import RetreatPillarCards from "@/components/course-pages/RetreatPillarCards";
 
 /* ---------------------------------------------------------------- */
 /* Shared small building blocks                                     */
@@ -540,11 +549,14 @@ export default function DetoxRetreatContent() {
               </div>
             </div>
             <div className="w-full lg:w-3/5 text-center lg:text-left">
-              <Kicker>About the Retreat</Kicker>
+              <Kicker>Cleanse, Reset, Renew</Kicker>
               <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] mb-2">
-                Yoga &amp; Detox Retreat in Rishikesh
+                A Yoga &amp; Detox Retreat in Rishikesh
               </h2>
               <HeadingDivider center={false} />
+              <p className="text-sm sm:text-base text-stone-700 leading-relaxed font-medium">
+                Seven days to clear the body, calm the mind and leave feeling genuinely lighter.
+              </p>
               <div className="relative mt-4">
                 <Quote className="w-8 h-8 text-[#1c3b2b]/20 absolute -top-3 -left-1 lg:-left-2" />
                 <p className="text-base sm:text-lg text-stone-700 leading-relaxed font-medium italic pl-6">
@@ -560,8 +572,217 @@ export default function DetoxRetreatContent() {
               </p>
             </div>
           </div>
+
+          {/* Quick Facts Table Box */}
+          <div className="w-full mt-8 lg:mt-10 rounded-2xl border border-[#e3dac9] p-4 sm:p-5 bg-[#fdfbf7] shadow-2xs">
+            <h3 className="text-center font-belleza font-bold text-base sm:text-lg text-[#1e2422] mb-3">
+              Yoga &amp; Detox Retreat in Rishikesh — Quick Facts
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-0.5 text-xs sm:text-[13px]">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">Duration</span>
+                <span className="text-stone-800 font-normal sm:text-right">7 Days &middot; Residential</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">Level</span>
+                <span className="text-stone-800 font-normal sm:text-right">All Levels Welcome</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">Certification</span>
+                <span className="text-stone-800 font-normal sm:text-right">Siddhant School of Yoga Certificate of Completion</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">Lead teacher</span>
+                <span className="text-stone-800 font-normal sm:text-right">Acharya Siddhant</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b md:border-b-0 border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">What&apos;s included</span>
+                <span className="text-stone-800 font-normal sm:text-right">Accommodation, sattvic meals, study material</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">Ideal for</span>
+                <span className="text-stone-800 font-normal sm:text-right">Anyone seeking a physical &amp; mental reset</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Gallery + Video Showcase */}
+          <CourseGallerySection
+            className="mt-10 lg:mt-12"
+            mainImage="/images/jala-neti-detox-retreat.jpg"
+            mainImageAlt="Jala neti yogic cleansing practice during the detox retreat in Rishikesh"
+            caption="Purifying body and mind, one cleanse at a time"
+            videoId="6tPxEV9skT8"
+            images={[
+              {
+                src: "/images/yoga-retreat-students-sharing-indian-food-rishikesh.jpg",
+                alt: "Students sharing a sattvic detox meal at Siddhant School of Yoga",
+              },
+              {
+                src: "/images/gallery_images/food-gallery3.webp",
+                alt: "Fresh sattvic detox food served during the retreat",
+              },
+              {
+                src: "/images/gallery_images/food-gallery4.webp",
+                alt: "Wholesome vegetarian meal prepared for the detox retreat",
+              },
+              {
+                src: "/images/warrior-3-pose-rocks-ganga-river-rishikesh.jpg",
+                alt: "Warrior 3 pose on the rocks beside the Ganga river in Rishikesh",
+              },
+              {
+                src: "/images/crow-pose-bakasana-riverside-rock.jpg",
+                alt: "Crow pose practice on a riverside rock during the detox retreat",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                alt: "Twin sharing accommodation room for detox retreat guests",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                alt: "Private room accommodation available during the detox retreat",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                alt: "Triple sharing room for detox retreat participants",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                alt: "Comfortable guest room with bed and wardrobe at the retreat",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
+                alt: "Sattvic detox thali with rice, dal and raita",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
+                alt: "Traditional detox thali served on a banana leaf",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
+                alt: "Light vegetarian lunch of pulao and sabzi for detox guests",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
+                alt: "Detox lunch tray served with fresh juice",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                alt: "Dining hall and kitchen where detox meals are prepared",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                alt: "Exterior view of Siddhant School of Yoga building",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                alt: "Washroom with hot water shower for retreat guests",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                alt: "Attached bathroom in the retreat accommodation",
+              },
+              {
+                src: "/images/vegetarian-meal-spread.jpg",
+                alt: "Wholesome vegetarian meal spread for detox retreat guests",
+              },
+              {
+                src: "/images/child-pose-balasana-group-class-rishikesh.jpg",
+                alt: "Group practicing child's pose during a detox yoga class",
+              },
+              {
+                src: "/images/downward-dog-group-class.png",
+                alt: "Group downward dog pose during morning detox practice",
+              },
+              {
+                src: "/images/eagle-pose-garudasana-group-class-rishikesh.jpg",
+                alt: "Group eagle pose class as part of the detox retreat",
+              },
+              {
+                src: "/images/low-lunge-pose-group-lawn-class.jpg",
+                alt: "Low lunge pose practiced on the lawn during detox retreat",
+              },
+              {
+                src: "/images/outdoor-garden-yoga-class-stretching-rishikesh.jpg",
+                alt: "Outdoor garden stretching class during the detox retreat",
+              },
+              {
+                src: "/images/plank-pose-group-yoga-session-rishikesh.jpg",
+                alt: "Group plank pose session during detox yoga practice",
+              },
+              {
+                src: "/images/seated-side-stretch-indoor-class.jpg",
+                alt: "Seated side stretch during an indoor detox yoga class",
+              },
+              {
+                src: "/images/side-angle-pose-garden-yoga-class-rishikesh.jpg",
+                alt: "Side angle pose practiced in the garden during detox retreat",
+              },
+              {
+                src: "/images/standing-forward-fold-group-class.png",
+                alt: "Standing forward fold group class during the detox retreat",
+              },
+              {
+                src: "/images/triangle-pose-garden-yoga-class-rishikesh.jpg",
+                alt: "Triangle pose practiced in the garden during detox retreat",
+              },
+              {
+                src: "/images/yoga-students-indian-cooking-class-rishikesh.jpg",
+                alt: "Detox retreat students learning Indian cooking",
+              },
+            ]}
+          />
         </div>
       </section>
+
+      {/* Deep Dive: The Science of Detox */}
+      <RetreatDeepDive
+        kicker="The Science of Detox"
+        title="Your Body Already Knows How to Heal"
+        paragraphs={[
+          "Detox isn't about starvation or extremes — it's about removing what's blocking your body's own natural ability to heal, through yogic purification, an Ayurvedic diet and the right breathwork.",
+          "Over seven days you'll feel the shift: lighter digestion, clearer skin, steadier energy without the usual afternoon crash.",
+        ]}
+        image="/images/jala-neti-detox-retreat.jpg"
+        imageAlt="Jala Neti yogic purification practice during the Detox Retreat"
+        listIntro="The five pillars of a real yogic detox:"
+        listItems={[
+          { title: "Shatkarma", desc: "Yogic purification techniques that clear the body from the inside." },
+          { title: "An Ayurvedic Diet", desc: "Fresh juices, raw vegetables and light soups, suited to digestion." },
+          { title: "Pranayama", desc: "Oxygenating and cleansing breathwork." },
+          { title: "Bandha & Mudra", desc: "Techniques that stimulate and support internal organs." },
+          { title: "Meditation", desc: "Clearing mental toxins, not just physical ones." },
+        ]}
+        summary="No single practice does the work alone — it's the combination of purification, diet, breath and stillness, held consistently for a week, that creates a real detox."
+        quote="You don't need a stronger willpower. You need a system that actually works — and a week to let it."
+        bgClassName="bg-[#f4efe6]"
+      />
+
+      {/* Living at Siddhant School of Yoga */}
+      <RetreatLivingAtSchool
+        asksLabel="What This Retreat Asks of You"
+        asks={[
+          { icon: Salad, title: "A Simpler Diet for a Week", desc: "Fresh, light meals — a real change, but a manageable one." },
+          { icon: Coffee, title: "Cutting Out Stimulants", desc: "No caffeine or alcohol, so your system can genuinely reset." },
+          { icon: HeartHandshake, title: "Trusting the Process", desc: "Some days feel harder than others — that's part of a real detox." },
+        ]}
+        givesLabel="What It Quietly Gives Back"
+        gives={[
+          { icon: Sparkles, title: "Genuinely Lighter Digestion", desc: "A noticeable shift most students feel by day three or four." },
+          { icon: Sun, title: "Clearer Skin & Steadier Energy", desc: "No more afternoon crashes." },
+          { icon: RefreshCw, title: "A Reset You Can Repeat", desc: "Simple enough to return to whenever you need it." },
+        ]}
+        centerImage="/images/yoga-retreat-students-sharing-indian-food-rishikesh.jpg"
+        centerImageAlt="Students sharing a light Ayurvedic meal during the detox retreat"
+        centerBadge="A Cleanse With a Method"
+        closingQuote="Real detox isn't a diet. It's a full week of doing less of what harms you and more of what heals."
+      />
 
       {/* Why Choose Us */}
       <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
@@ -601,6 +822,14 @@ export default function DetoxRetreatContent() {
       <section id="curriculum" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <SectionHead kicker="Retreat Curriculum" title="What the 7-Day Detox Retreat Covers" />
+          <RetreatPillarCards
+            cards={[
+              { title: "Shatkarma (Purification)", subtitle: "Jala Neti · Kapalbhati · Trataka", image: "/images/jala-neti-detox-retreat.jpg", alt: "Jala Neti yogic purification practice", text: "Traditional yogic cleansing techniques that clear the body from the inside." },
+              { title: "Ayurvedic Diet", subtitle: "Juices · Raw Vegetables · Soups", image: "/images/gallery_images/food-gallery3.webp", alt: "Fresh Ayurvedic meal during the detox retreat", text: "Light, fresh meals designed to support digestion during the cleanse." },
+              { title: "Pranayama & Bandha", subtitle: "Breathwork · Energy Locks", image: "/images/pranayama-practice-by-ganga-river.jpg", alt: "Pranayama practice by the Ganga river", text: "Oxygenating breathwork and internal locks that stimulate organ function." },
+              { title: "Meditation", subtitle: "Guided Stillness · Reflection", image: "/images/meditation-by-ganga-river.png", alt: "Meditation practice by the Ganga river", text: "Clearing mental toxins alongside the physical cleanse." },
+            ]}
+          />
           <Accordion items={syllabusItems} columns={2} className="w-full" />
         </div>
       </section>

@@ -382,10 +382,10 @@ export default function Footer() {
 
           {/* Center: Legal Links */}
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] font-medium tracking-wider uppercase text-white/60">
-            <Link href="#faq" className="hover:text-white transition-colors">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">
               Privacy
             </Link>
-            <Link href="#faq" className="hover:text-white transition-colors">
+            <Link href="/terms-and-conditions" className="hover:text-white transition-colors">
               Terms
             </Link>
             <Link href="/payment" className="hover:text-white transition-colors">

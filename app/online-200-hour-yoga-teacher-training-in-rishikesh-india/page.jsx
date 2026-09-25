@@ -157,6 +157,90 @@ export default function Online200HourYogaTTCPage() {
                   src: "/images/gallery_images/yoga-teacher-training-certificate-ceremony-siddhant-school-rishikesh.webp",
                   alt: "200-hour certification ceremony at Siddhant School of Yoga",
                 },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                  alt: "Twin sharing room available for on-campus stays",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                  alt: "Private room accommodation at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                  alt: "Triple sharing room at the residential campus",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                  alt: "Student room with bed and wardrobe on campus",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
+                  alt: "Sattvic thali with rice, dal and raita served on campus",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
+                  alt: "Traditional thali served on a banana leaf",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
+                  alt: "Vegetarian lunch with pulao and sabzi at the school",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
+                  alt: "Lunch tray with fresh juice served at the ashram",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                  alt: "Dining hall and kitchen at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                  alt: "Exterior of the Siddhant School of Yoga campus",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                  alt: "Washroom with hot water shower on campus",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                  alt: "Attached bathroom in a student room",
+                },
+                {
+                  src: "/images/downward-dog-group-class.png",
+                  alt: "Downward dog pose demonstrated for online students",
+                },
+                {
+                  src: "/images/balancing-pose-outdoor-garden-yoga-class-rishikesh.jpg",
+                  alt: "Balancing pose taught during a live outdoor class",
+                },
+                {
+                  src: "/images/child-pose-balasana-group-class-rishikesh.jpg",
+                  alt: "Child's pose (Balasana) demonstrated for online students",
+                },
+                {
+                  src: "/images/seated-side-stretch-indoor-class.jpg",
+                  alt: "Seated side stretch shown in an indoor class",
+                },
+                {
+                  src: "/images/standing-balance-pose-group-terrace.jpg",
+                  alt: "Standing balance pose practiced on the terrace",
+                },
+                {
+                  src: "/images/yoga-philosophy-satsang-class.png",
+                  alt: "Satsang and philosophy session for online students",
+                },
+                {
+                  src: "/images/ttc-graduation-ceremony-group-photo.png",
+                  alt: "200-hour TTC graduation ceremony group photo",
+                },
+                {
+                  src: "/images/yoga-ttc-graduate-namaste-garland-rishikesh.jpg",
+                  alt: "Online 200-hour graduate with namaste and garland",
+                },
+                {
+                  src: "/images/student-receiving-yoga-certificate-siddhant-school-rishikesh.jpg",
+                  alt: "Student receiving their 200-hour yoga certificate",
+                },
               ]}
             />
           </div>

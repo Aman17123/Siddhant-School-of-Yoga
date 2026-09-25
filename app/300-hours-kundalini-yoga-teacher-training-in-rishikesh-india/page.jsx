@@ -216,6 +216,102 @@ export default function KundaliniThreeHundredHourPage() {
                   src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
                   alt: "Sattvic vegetarian meals at Siddhant School of Yoga",
                 },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                  alt: "Twin sharing room accommodation for 300-hour Kundalini trainees",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                  alt: "Private room accommodation at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                  alt: "Triple sharing room for advanced Kundalini teacher trainees",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                  alt: "Comfortable bed and wardrobe in student residence room",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
+                  alt: "Traditional thali served on banana leaf with puri",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
+                  alt: "Vegetarian lunch with pulao and sabzi at the ashram kitchen",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
+                  alt: "Lunch tray with fresh juice served to students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                  alt: "Dining hall and open kitchen at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                  alt: "Exterior view of the Siddhant School of Yoga building",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                  alt: "Washroom with hot water shower for resident students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                  alt: "Attached bathroom in a student accommodation room",
+                },
+                {
+                  src: "/images/havan-fire-ceremony-group.jpg",
+                  alt: "Group havan fire ceremony during the 300-hour Kundalini course",
+                },
+                {
+                  src: "/images/havan-fire-ceremony-yoga-ttc-rishikesh.jpg",
+                  alt: "Sacred fire ceremony ritual at the Kundalini TTC",
+                },
+                {
+                  src: "/images/gyan-mudra-meditation-hilltop-yoga-retreat-rishikesh.jpg",
+                  alt: "Gyan mudra meditation on a hilltop during Kundalini practice",
+                },
+                {
+                  src: "/images/gyan-mudra-meditation-kunjapuri-hilltop-rishikesh.jpg",
+                  alt: "Meditation in gyan mudra at Kunjapuri hilltop",
+                },
+                {
+                  src: "/images/sunrise-prayer-himalayan-view-kunjapuri-rishikesh.jpg",
+                  alt: "Sunrise prayer with Himalayan views at Kunjapuri",
+                },
+                {
+                  src: "/images/namaste-pose-kunjapuri-temple-sunrise-rishikesh.jpg",
+                  alt: "Namaste pose at Kunjapuri temple during sunrise trek",
+                },
+                {
+                  src: "/images/yoga-group-hilltop-temple-viewpoint-rishikesh.jpg",
+                  alt: "Kundalini students gathered at a hilltop temple viewpoint",
+                },
+                {
+                  src: "/images/teacher-adjusting-warrior-pose-outdoor-class-rishikesh.jpg",
+                  alt: "Teacher adjusting a student's warrior pose during outdoor class",
+                },
+                {
+                  src: "/images/yoga-alignment-adjustment-with-straps-ttc-rishikesh.jpg",
+                  alt: "Alignment adjustment with straps during advanced asana class",
+                },
+                {
+                  src: "/images/shiva-puja-ceremony.png",
+                  alt: "Shiva puja ceremony performed during the Kundalini training",
+                },
+                {
+                  src: "/images/yoga-philosophy-satsang-class.png",
+                  alt: "Yoga philosophy satsang class for 300-hour trainees",
+                },
+                {
+                  src: "/images/tilak-blessing-ceremony-yoga-ttc-graduation-rishikesh.jpg",
+                  alt: "Tilak blessing ceremony at the teacher training graduation",
+                },
+                {
+                  src: "/images/yoga-ttc-graduates-fire-ceremony-siddhant-school-of-yoga.jpg",
+                  alt: "Graduates gathered around the fire ceremony after certification",
+                },
               ]}
             />
           </div>

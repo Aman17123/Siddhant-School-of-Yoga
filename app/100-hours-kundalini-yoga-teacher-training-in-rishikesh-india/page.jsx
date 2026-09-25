@@ -216,6 +216,94 @@ export default function KundaliniHundredHourPage() {
                   src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
                   alt: "Sattvic vegetarian meals at Siddhant School of Yoga",
                 },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                  alt: "Twin sharing room accommodation for Kundalini TTC students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                  alt: "Private room accommodation at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                  alt: "Triple sharing room for yoga teacher training students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                  alt: "Comfortable student room with bed and wardrobe",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
+                  alt: "Traditional thali served on banana leaf with puri",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
+                  alt: "Vegetarian lunch with pulao and sabzi",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
+                  alt: "Lunch tray with fresh juice served to students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                  alt: "Dining hall and kitchen at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                  alt: "Exterior view of the Siddhant School of Yoga building",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                  alt: "Washroom with hot water shower for students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                  alt: "Attached bathroom in student accommodation",
+                },
+                {
+                  src: "/images/havan-fire-ceremony-group.jpg",
+                  alt: "Group participating in a sacred havan fire ceremony",
+                },
+                {
+                  src: "/images/havan-fire-ceremony-yoga-ttc-rishikesh.jpg",
+                  alt: "Havan fire ceremony during the Kundalini yoga TTC in Rishikesh",
+                },
+                {
+                  src: "/images/shiva-puja-ceremony.png",
+                  alt: "Shiva puja ceremony performed by students",
+                },
+                {
+                  src: "/images/gyan-mudra-meditation-hilltop-yoga-retreat-rishikesh.jpg",
+                  alt: "Students meditating in gyan mudra on a hilltop retreat",
+                },
+                {
+                  src: "/images/sunrise-prayer-himalayan-view-kunjapuri-rishikesh.jpg",
+                  alt: "Sunrise prayer with Himalayan views near Kunjapuri",
+                },
+                {
+                  src: "/images/namaste-pose-kunjapuri-temple-sunrise-rishikesh.jpg",
+                  alt: "Namaste pose at Kunjapuri temple during sunrise",
+                },
+                {
+                  src: "/images/group-tree-pose-kunjapuri-sunrise-rishikesh.jpg",
+                  alt: "Group practicing tree pose at Kunjapuri during sunrise",
+                },
+                {
+                  src: "/images/tilak-blessing-ceremony-yoga-ttc-graduation-rishikesh.jpg",
+                  alt: "Tilak blessing ceremony at yoga TTC graduation",
+                },
+                {
+                  src: "/images/yoga-ttc-graduates-fire-ceremony-siddhant-school-of-yoga.jpg",
+                  alt: "Yoga TTC graduates gathered around the fire ceremony",
+                },
+                {
+                  src: "/images/yoga-philosophy-satsang-class.png",
+                  alt: "Yoga philosophy satsang class in session",
+                },
+                {
+                  src: "/images/eagle-pose-garudasana-group-class-rishikesh.jpg",
+                  alt: "Group practicing eagle pose garudasana in Rishikesh",
+                },
               ]}
             />
           </div>
@@ -239,7 +327,7 @@ export default function KundaliniHundredHourPage() {
                   Kundalini simply means energy — the most potent, practical system in the yogic path. Taught traditionally in four steps (discover, awaken, balance, then awaken Kundalini itself), this 100-hour course focuses on step one: discovering and locating your chakras.
                 </p>
                 <p className="text-sm sm:text-base text-stone-700 leading-relaxed font-medium mt-4">
-                  It's Part 1 of our 200-Hour Kundalini TTC at Siddhant School of Yoga, a Yoga Alliance USA approved school in Rishikesh, building real understanding of chakra and kundalini practice to help you handle life's challenges more wisely.
+                  It&apos;s Part 1 of our 200-Hour Kundalini TTC at Siddhant School of Yoga, a Yoga Alliance USA approved school in Rishikesh, building real understanding of chakra and kundalini practice to help you handle life&apos;s challenges more wisely.
                 </p>
 
                 <div className="relative mt-6 rounded-2xl overflow-hidden border-2 border-white shadow-lg aspect-[16/10] max-w-lg mx-auto lg:mx-0">

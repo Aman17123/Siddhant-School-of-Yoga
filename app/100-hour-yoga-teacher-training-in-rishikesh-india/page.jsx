@@ -153,6 +153,94 @@ export default function HundredHourYogaTTCPage() {
                   src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
                   alt: "Sattvic vegetarian meals at Siddhant School of Yoga",
                 },
+                {
+                  src: "/images/100-hour-yoga-teacher-training-group-pose.jpg",
+                  alt: "100-hour trainees practicing a group asana pose",
+                },
+                {
+                  src: "/images/downward-dog-group-class.png",
+                  alt: "Beginner students holding downward dog in a group class",
+                },
+                {
+                  src: "/images/child-pose-balasana-group-class-rishikesh.jpg",
+                  alt: "Students resting in child's pose during morning practice",
+                },
+                {
+                  src: "/images/outdoor-garden-yoga-class-stretching-rishikesh.jpg",
+                  alt: "Outdoor garden yoga class stretching session",
+                },
+                {
+                  src: "/images/seated-asana-group-practice-garden-rishikesh.jpg",
+                  alt: "Seated asana group practice in the garden",
+                },
+                {
+                  src: "/images/yoga-for-beginners-seated-stretch-class.jpg",
+                  alt: "Beginner-friendly seated stretch class",
+                },
+                {
+                  src: "/images/plank-pose-with-yoga-blocks.jpg",
+                  alt: "Students practicing plank pose using yoga blocks",
+                },
+                {
+                  src: "/images/head-to-knee-forward-bend-group-class-rishikesh.jpg",
+                  alt: "Group class practicing head-to-knee forward bend",
+                },
+                {
+                  src: "/images/havan-fire-ceremony-yoga-ttc-rishikesh.jpg",
+                  alt: "Havan fire ceremony during the 100-hour TTC",
+                },
+                {
+                  src: "/images/yoga-ttc-students-with-certificates-siddhant-school-rishikesh.jpg",
+                  alt: "100-hour TTC students holding their completion certificates",
+                },
+                {
+                  src: "/images/student-receiving-yoga-certificate-siddhant-school-rishikesh.jpg",
+                  alt: "A student receiving their yoga certificate at graduation",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                  alt: "Twin sharing room accommodation at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                  alt: "Private room accommodation for TTC students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                  alt: "Triple sharing room for students at the school",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                  alt: "Student room with bed and wardrobe at the ashram",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
+                  alt: "Traditional thali served on a banana leaf with puri",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
+                  alt: "Vegetarian lunch of pulao and sabzi served to students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
+                  alt: "Lunch tray with fresh juice at the school dining hall",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                  alt: "Dining hall and kitchen at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                  alt: "Exterior view of the Siddhant School of Yoga building",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                  alt: "Washroom with hot water shower facility",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                  alt: "Attached bathroom in a student room",
+                },
               ]}
             />
           </div>

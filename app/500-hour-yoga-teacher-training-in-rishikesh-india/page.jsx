@@ -161,6 +161,102 @@ export default function FiveHundredHourYogaTTCPage() {
                   src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
                   alt: "Sattvic vegetarian meals at Siddhant School of Yoga",
                 },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                  alt: "Twin sharing room accommodation for 500-hour TTC students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                  alt: "Private room accommodation at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                  alt: "Triple sharing room for residential 500-hour students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                  alt: "Student room with bed and wardrobe at the ashram",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
+                  alt: "Sattvic thali with rice, dal and raita served daily",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
+                  alt: "Traditional thali served on a banana leaf",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
+                  alt: "Lunch tray with fresh juice for students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                  alt: "Dining hall and kitchen at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                  alt: "Exterior view of the Siddhant School of Yoga building",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                  alt: "Washroom with hot water shower for residential students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                  alt: "Attached bathroom in a student room",
+                },
+                {
+                  src: "/images/500-hour-yoga-ttc-rishikesh.png",
+                  alt: "500-hour Yoga TTC students in class at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/plank-pose-group-yoga-session-rishikesh.jpg",
+                  alt: "Group plank pose session during advanced asana practice",
+                },
+                {
+                  src: "/images/triangle-pose-garden-yoga-class-rishikesh.jpg",
+                  alt: "Triangle pose practiced in the garden yoga class",
+                },
+                {
+                  src: "/images/eagle-pose-garudasana-group-class-rishikesh.jpg",
+                  alt: "Eagle pose (Garudasana) group class in Rishikesh",
+                },
+                {
+                  src: "/images/head-to-knee-forward-bend-group-class-rishikesh.jpg",
+                  alt: "Head-to-knee forward bend group class",
+                },
+                {
+                  src: "/images/side-angle-pose-garden-yoga-class-rishikesh.jpg",
+                  alt: "Side angle pose during outdoor garden yoga class",
+                },
+                {
+                  src: "/images/sphinx-pose-outdoor-yoga-class-rishikesh.jpg",
+                  alt: "Sphinx pose practiced during outdoor yoga class",
+                },
+                {
+                  src: "/images/teacher-adjusting-warrior-pose-outdoor-class-rishikesh.jpg",
+                  alt: "Teacher adjusting a student's warrior pose outdoors",
+                },
+                {
+                  src: "/images/havan-fire-ceremony-yoga-ttc-rishikesh.jpg",
+                  alt: "Havan fire ceremony during 500-hour TTC graduation",
+                },
+                {
+                  src: "/images/tilak-blessing-ceremony-yoga-ttc-graduation-rishikesh.jpg",
+                  alt: "Tilak blessing ceremony at graduation",
+                },
+                {
+                  src: "/images/ttc-graduation-ceremony-group-photo.png",
+                  alt: "500-hour TTC graduation ceremony group photo",
+                },
+                {
+                  src: "/images/yoga-ttc-graduates-marigold-garlands-rishikesh.jpg",
+                  alt: "500-hour graduates wearing marigold garlands",
+                },
+                {
+                  src: "/images/student-receiving-yoga-certificate-siddhant-school-rishikesh.jpg",
+                  alt: "Student receiving their 500-hour yoga certificate",
+                },
               ]}
             />
           </div>

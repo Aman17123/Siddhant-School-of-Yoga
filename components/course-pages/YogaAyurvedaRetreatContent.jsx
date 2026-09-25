@@ -8,8 +8,15 @@ import {
   MessageCircle,
   ArrowRight,
   Mail,
+  ClipboardCheck,
+  Salad,
+  Hand,
+  Sparkles,
+  ClipboardList,
+  Scale,
 } from "lucide-react";
 import { ButtonLink } from "@/components/ui";
+import CourseGallerySection from "@/components/CourseGallerySection";
 import { site, whatsappLink } from "@/data/siteData";
 import { SectionHead, SylList, Accordion } from "./RetreatUI";
 import RetreatWhyChooseUs from "./RetreatWhyChooseUs";
@@ -18,6 +25,9 @@ import RetreatDailySchedule from "./RetreatDailySchedule";
 import RetreatWhatsInclude from "./RetreatWhatsInclude";
 import ResidentialExperience from "@/components/home/ResidentialExperience";
 import Teachers from "@/components/home/Teachers";
+import RetreatDeepDive from "@/components/course-pages/RetreatDeepDive";
+import RetreatLivingAtSchool from "@/components/course-pages/RetreatLivingAtSchool";
+import RetreatPillarCards from "@/components/course-pages/RetreatPillarCards";
 
 export const sectionNavItems = [
   { id: "overview", label: "Overview" },
@@ -165,23 +175,253 @@ const pageFaqs = [
 export default function YogaAyurvedaRetreatContent() {
   return (
     <>
-      {/* About */}
+      {/* Overview */}
       <section id="overview" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <SectionHead
-            kicker="Two Sister Sciences, One Journey"
-            title="About the Yoga & Ayurveda Retreat"
+            kicker="Balance Body, Mind & Dosha"
+            title="A Yoga & Ayurveda Retreat in Rishikesh"
+            description="Discover your constitution and bring it back into balance in just seven days."
           />
-          <div className="max-w-3xl mx-auto space-y-4 text-center">
-            <p className="text-sm sm:text-base text-stone-700 leading-relaxed">
-              Ayurveda and yoga are sister sciences. On this retreat you learn your body type (Vata, Pitta, Kapha), follow an Ayurvedic daily routine and diet, and practice yoga, pranayama and meditation suited to your constitution. The result is a healthier body, a calmer mind and a practical plan to keep the balance at home.
+          <div className="text-center w-full space-y-4 text-sm sm:text-base text-stone-700 leading-relaxed mb-6">
+            <p>
+              Ayurveda and yoga are sister sciences. On this 7-day retreat in Rishikesh you learn your body type (Vata, Pitta, Kapha), follow an Ayurvedic daily routine and diet, and practice yoga, pranayama and meditation suited to your constitution.
             </p>
-            <p className="text-sm sm:text-base text-stone-700 leading-relaxed">
+            <p>
               Small batches of just 10 students mean genuinely personal attention from Acharya Siddhant and the Ayurveda teaching team, in a peaceful riverside setting on the banks of the Ganga.
             </p>
+            <p>
+              The result is a healthier body, a calmer mind and a practical plan to keep the balance at home. Graduates receive a Siddhant School of Yoga Certificate of Completion.
+            </p>
           </div>
+
+          {/* Quick Facts Table Box */}
+          <div className="w-full rounded-2xl border border-[#e3dac9] p-4 sm:p-5 bg-[#fdfbf7] shadow-2xs">
+            <h3 className="text-center font-belleza font-bold text-base sm:text-lg text-[#1e2422] mb-3">
+              Yoga & Ayurveda Retreat — Quick Facts
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-0.5 text-xs sm:text-[13px]">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">
+                  Duration
+                </span>
+                <span className="text-stone-800 font-normal sm:text-right">
+                  7 days
+                </span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">
+                  Level
+                </span>
+                <span className="text-stone-800 font-normal sm:text-right">
+                  All Levels
+                </span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">
+                  Certification
+                </span>
+                <span className="text-stone-800 font-normal sm:text-right">
+                  Siddhant School of Yoga Certificate of Completion
+                </span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">
+                  Lead teacher
+                </span>
+                <span className="text-stone-800 font-normal sm:text-right">
+                  Acharya Siddhant
+                </span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b md:border-b-0 border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">
+                  What&apos;s included
+                </span>
+                <span className="text-stone-800 font-normal sm:text-right">
+                  Accommodation, sattvic meals, study material
+                </span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">
+                  Ideal for
+                </span>
+                <span className="text-stone-800 font-normal sm:text-right">
+                  All levels seeking an Ayurvedic reset
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Gallery + Video Showcase */}
+          <CourseGallerySection
+            className="mt-10 lg:mt-12"
+            mainImage="/images/seated-pranayama-yoga-class-garden-rishikesh.jpg"
+            mainImageAlt="Seated pranayama practice in a garden setting to balance the doshas"
+            caption="Finding your dosha's natural balance in Rishikesh"
+            videoId="6tPxEV9skT8"
+            images={[
+              {
+                src: "/images/tree-pose-vrikshasana-ganga-riverbank-rishikesh.jpg",
+                alt: "Tree pose practice on the Ganga riverbank as part of dosha-suited asana",
+              },
+              {
+                src: "/images/group-yoga-class-sandy-riverbank.jpg",
+                alt: "Group yoga class on a sandy riverbank during the Ayurveda retreat",
+              },
+              {
+                src: "/images/lord-shiva-statue-rishikesh.jpg",
+                alt: "Lord Shiva statue overlooking Rishikesh, a sacred backdrop to the retreat",
+              },
+              {
+                src: "/images/rishikesh/yoga_asana.png",
+                alt: "Yoga asana practice tailored to individual dosha constitution",
+              },
+              {
+                src: "/images/namaste-prayer-by-ganga-river.jpg",
+                alt: "Namaste prayer pose by the Ganga river during the Ayurveda retreat",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                alt: "Twin sharing room accommodation for Ayurveda retreat guests",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                alt: "Private room accommodation available during the dosha-balancing retreat",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                alt: "Triple sharing room for retreat guests at Siddhant School of Yoga",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                alt: "Comfortable guest room with bed and wardrobe at the ashram",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
+                alt: "Sattvic thali with rice, dal and raita served to support dosha balance",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
+                alt: "Traditional thali with puri served on a banana leaf",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
+                alt: "Vegetarian lunch of pulao and sabzi prepared for retreat guests",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
+                alt: "Lunch tray with fresh juice served during the Ayurveda retreat",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                alt: "Dining hall and kitchen where sattvic meals are prepared",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                alt: "Exterior view of the Siddhant School of Yoga building",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                alt: "Washroom with hot water shower available to retreat guests",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                alt: "Attached bathroom in the guest accommodation",
+              },
+              {
+                src: "/images/gomukhasana-cow-face-pose-students-rishikesh.jpg",
+                alt: "Students practicing Gomukhasana cow face pose in Rishikesh",
+              },
+              {
+                src: "/images/balancing-pose-outdoor-garden-yoga-class-rishikesh.jpg",
+                alt: "Balancing pose practiced during an outdoor garden yoga class",
+              },
+              {
+                src: "/images/gyan-mudra-meditation-hilltop-yoga-retreat-rishikesh.jpg",
+                alt: "Gyan mudra meditation session on a hilltop during the retreat",
+              },
+              {
+                src: "/images/head-to-knee-forward-bend-group-class-rishikesh.jpg",
+                alt: "Group class practicing head-to-knee forward bend",
+              },
+              {
+                src: "/images/low-lunge-pose-group-lawn-class.jpg",
+                alt: "Low lunge pose practiced during a group lawn class",
+              },
+              {
+                src: "/images/morning-meditation-namaste-outdoor-class-rishikesh.jpg",
+                alt: "Morning meditation and namaste during an outdoor class",
+              },
+              {
+                src: "/images/plank-pose-with-yoga-blocks.jpg",
+                alt: "Plank pose practiced with the support of yoga blocks",
+              },
+              {
+                src: "/images/side-angle-pose-garden-yoga-class-rishikesh.jpg",
+                alt: "Side angle pose practiced during a garden yoga class",
+              },
+              {
+                src: "/images/sphinx-pose-outdoor-yoga-class-rishikesh.jpg",
+                alt: "Sphinx pose practiced during an outdoor yoga class",
+              },
+              {
+                src: "/images/teacher-adjusting-warrior-pose-outdoor-class-rishikesh.jpg",
+                alt: "Teacher adjusting a student's warrior pose during outdoor class",
+              },
+              {
+                src: "/images/yoga-philosophy-satsang-class.png",
+                alt: "Yoga philosophy satsang class exploring Ayurvedic wisdom",
+              },
+            ]}
+          />
         </div>
       </section>
+
+      <RetreatDeepDive
+        kicker="The Science of Your Constitution"
+        title="Ayurveda Is Yoga's Sister Science"
+        paragraphs={[
+          "Every person is a unique blend of Vata, Pitta and Kapha — and once you understand your own constitution (Prakriti), diet, daily routine and even your yoga practice stop being generic and start actually working for your body.",
+          "Over seven days you'll learn your dosha and leave with a practical, personal plan you can keep using at home.",
+        ]}
+        image="/images/tree-pose-vrikshasana-ganga-riverbank-rishikesh.jpg"
+        imageAlt="Tree pose (Vrikshasana) practice on the Ganga riverbank during the Ayurveda retreat"
+        listIntro="The core Ayurvedic principles you'll actually apply:"
+        listItems={[
+          { title: "Prakriti", desc: "Your unique constitution — the starting point for everything else." },
+          { title: "Dinacharya", desc: "A daily routine matched to your dosha, not a generic schedule." },
+          { title: "The Six Tastes", desc: "Balancing your plate, not restricting it." },
+          { title: "Abhyanga", desc: "Warm-oil self-massage, one of Ayurveda's most accessible home practices." },
+          { title: "Dosha-Matched Practice", desc: "Yoga and pranayama suited specifically to you." },
+        ]}
+        summary="Understanding your dosha changes everything downstream — the diet, the daily routine and even the pace of your yoga practice all become genuinely personal, not generic."
+        quote="The same diet doesn't heal everyone. Ayurveda starts by asking who you actually are."
+      />
+
+      <RetreatLivingAtSchool
+        asksLabel="What This Retreat Asks of You"
+        asks={[
+          { icon: ClipboardCheck, title: "An Honest Dosha Assessment", desc: "Answering openly, so the plan you're given is genuinely accurate." },
+          { icon: Salad, title: "A Diet Matched to You", desc: "Not a trend — meals chosen for your specific constitution." },
+          { icon: Hand, title: "Daily Self-Massage Practice", desc: "A hands-on habit you'll actually learn to do yourself." },
+        ]}
+        givesLabel="What It Quietly Gives Back"
+        gives={[
+          { icon: Sparkles, title: "A Body That Finally Makes Sense", desc: "Understanding why certain foods or routines never worked for you." },
+          { icon: ClipboardList, title: "A Personal Plan You'll Keep Using", desc: "Specific to your dosha, not a generic wellness checklist." },
+          { icon: Scale, title: "Real Balance, Not a Quick Fix", desc: "A sustainable approach instead of another short-lived diet." },
+        ]}
+        centerImage="/images/seated-pranayama-yoga-class-garden-rishikesh.jpg"
+        centerImageAlt="Seated pranayama practice matched to dosha in the garden at Siddhant School of Yoga"
+        centerBadge="Yoga Matched to Your Body"
+        closingQuote="Balance isn't the same for everyone. Ayurveda helps you find yours."
+      />
 
       {/* Understanding Your Dosha */}
       <section className="py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
@@ -241,6 +481,14 @@ export default function YogaAyurvedaRetreatContent() {
           <SectionHead
             kicker="Retreat Curriculum"
             title="What the 7-Day Curriculum Covers"
+          />
+          <RetreatPillarCards
+            cards={[
+              { title: "Understanding Your Constitution", subtitle: "Prakriti · Vata · Pitta · Kapha", image: "/images/tree-pose-vrikshasana-ganga-riverbank-rishikesh.jpg", alt: "Tree pose (Vrikshasana) practice on the Ganga riverbank", text: "Learning your unique dosha blend — the starting point for everything else." },
+              { title: "Ayurvedic Daily Routine", subtitle: "Dinacharya · Self-Massage", image: "/images/seated-pranayama-yoga-class-garden-rishikesh.jpg", alt: "Seated pranayama practice in the garden", text: "A daily rhythm and Abhyanga self-massage practice matched to your dosha." },
+              { title: "Ayurvedic Nutrition", subtitle: "Six Tastes · Balanced Eating", image: "/images/gallery_images/yoga-asana-practice-riverside-rishikesh.webp", alt: "Yoga asana practice riverside in Rishikesh", text: "Balancing your plate, not restricting it, through the six traditional tastes." },
+              { title: "Dosha-Matched Yoga", subtitle: "Asana · Pranayama · Meditation", image: "/images/rishikesh/yoga_asana.png", alt: "Yoga asana practice matched to dosha constitution", text: "Practice paced and sequenced specifically for your constitution." },
+            ]}
           />
           <Accordion items={syllabusItems} defaultOpen={null} columns={2} className="w-full" />
         </div>

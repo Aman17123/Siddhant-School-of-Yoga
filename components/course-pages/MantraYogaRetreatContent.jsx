@@ -14,12 +14,22 @@ import {
   BarChart2,
   Flame,
   Calendar,
+  Smile,
+  Repeat,
+  HeartHandshake,
+  Waves,
+  Music,
+  Sparkles,
 } from "lucide-react";
 import { Kicker, HeadingDivider, ButtonLink } from "@/components/ui";
 import { whatsappLink, founder } from "@/data/siteData";
 import { generateRetreatDates } from "@/lib/generateRetreatDates";
 import Teachers from "@/components/home/Teachers";
 import ResidentialExperience from "@/components/home/ResidentialExperience";
+import CourseGallerySection from "@/components/CourseGallerySection";
+import RetreatDeepDive from "@/components/course-pages/RetreatDeepDive";
+import RetreatLivingAtSchool from "@/components/course-pages/RetreatLivingAtSchool";
+import RetreatPillarCards from "@/components/course-pages/RetreatPillarCards";
 
 /* ---------------------------------------------------------------- */
 /* Shared small building blocks                                     */
@@ -527,11 +537,14 @@ export default function MantraYogaRetreatContent() {
               </div>
             </div>
             <div className="w-full lg:w-3/5 text-center lg:text-left">
-              <Kicker>About the Retreat</Kicker>
+              <Kicker>The Power of Sacred Sound</Kicker>
               <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-belleza font-normal tracking-wide text-[#1e2422] leading-[1.2] mb-2">
-                Mantra Yoga &amp; Meditation Retreat in Rishikesh
+                A Mantra Yoga &amp; Meditation Retreat in Rishikesh
               </h2>
               <HeadingDivider center={false} />
+              <p className="text-sm sm:text-base text-stone-700 leading-relaxed font-medium">
+                Let sacred sound and steady chanting carry you into deep meditation.
+              </p>
               <div className="relative mt-4">
                 <Quote className="w-8 h-8 text-[#1c3b2b]/20 absolute -top-3 -left-1 lg:-left-2" />
                 <p className="text-base sm:text-lg text-stone-700 leading-relaxed font-medium italic pl-6">
@@ -546,8 +559,210 @@ export default function MantraYogaRetreatContent() {
               </p>
             </div>
           </div>
+
+          {/* Quick Facts Table Box */}
+          <div className="w-full mt-8 lg:mt-10 rounded-2xl border border-[#e3dac9] p-4 sm:p-5 bg-[#fdfbf7] shadow-2xs">
+            <h3 className="text-center font-belleza font-bold text-base sm:text-lg text-[#1e2422] mb-3">
+              Mantra Yoga &amp; Meditation Retreat in Rishikesh — Quick Facts
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-0.5 text-xs sm:text-[13px]">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">Duration</span>
+                <span className="text-stone-800 font-normal sm:text-right">7 Days &middot; Residential</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">Level</span>
+                <span className="text-stone-800 font-normal sm:text-right">All Levels Welcome</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">Certification</span>
+                <span className="text-stone-800 font-normal sm:text-right">Siddhant School of Yoga Certificate of Completion</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">Lead teacher</span>
+                <span className="text-stone-800 font-normal sm:text-right">Acharya Siddhant</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 border-b md:border-b-0 border-[#e3dac9]/70 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">What&apos;s included</span>
+                <span className="text-stone-800 font-normal sm:text-right">Accommodation, sattvic meals, study material</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-1.5 text-center sm:text-left">
+                <span className="text-[#1c3b2b] font-medium shrink-0">Ideal for</span>
+                <span className="text-stone-800 font-normal sm:text-right">Beginners &amp; advanced practitioners seeking mantra &amp; meditation</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Gallery + Video Showcase */}
+          <CourseGallerySection
+            className="mt-10 lg:mt-12"
+            mainImage="/images/group-meditation-hilltop-temple-rishikesh.jpg"
+            mainImageAlt="Group meditation at a hilltop temple during the mantra yoga retreat in Rishikesh"
+            caption="Chanting toward stillness above the Ganga"
+            videoId="6tPxEV9skT8"
+            images={[
+              {
+                src: "/images/gyan-mudra-meditation-hilltop-yoga-retreat-rishikesh.jpg",
+                alt: "Gyan mudra meditation practice on a Rishikesh hilltop",
+              },
+              {
+                src: "/images/morning-meditation-namaste-outdoor-class-rishikesh.jpg",
+                alt: "Morning meditation and namaste during an outdoor mantra class",
+              },
+              {
+                src: "/images/yogi-prayer-pose-himalaya-sunrise-rishikesh.jpg",
+                alt: "Prayer pose at sunrise with the Himalayas in the background",
+              },
+              {
+                src: "/images/namaste-meditation-ganga-riverbank-yoga-retreat-rishikesh.jpg",
+                alt: "Namaste meditation on the Ganga riverbank during the mantra retreat",
+              },
+              {
+                src: "/images/yoga-students-namaste-ganga-river-rishikesh.jpg",
+                alt: "Students chanting mantras in namaste beside the Ganga river",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                alt: "Twin sharing room for mantra yoga retreat participants",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                alt: "Private accommodation option for the mantra retreat",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                alt: "Triple sharing room at the ashram during the mantra retreat",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                alt: "Guest room with bed and wardrobe for retreat stay",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
+                alt: "Sattvic thali served to mantra retreat students",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
+                alt: "Traditional thali on banana leaf for retreat guests",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
+                alt: "Vegetarian lunch of pulao and sabzi served at the ashram",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
+                alt: "Lunch tray with fresh juice for retreat participants",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                alt: "Dining hall and kitchen at Siddhant School of Yoga",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                alt: "Exterior of the ashram building hosting the mantra retreat",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                alt: "Washroom with hot water shower for guests",
+              },
+              {
+                src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                alt: "Attached bathroom in the mantra retreat accommodation",
+              },
+              {
+                src: "/images/vegetarian-meal-spread.jpg",
+                alt: "Sattvic vegetarian meal spread for mantra retreat students",
+              },
+              {
+                src: "/images/child-pose-balasana-group-class-rishikesh.jpg",
+                alt: "Group child's pose during morning mantra retreat practice",
+              },
+              {
+                src: "/images/downward-dog-group-class.png",
+                alt: "Downward dog group pose during the mantra retreat",
+              },
+              {
+                src: "/images/eagle-pose-garudasana-group-class-rishikesh.jpg",
+                alt: "Group eagle pose practice during the mantra retreat",
+              },
+              {
+                src: "/images/garudasana-eagle-pose-student-rishikesh.jpg",
+                alt: "Student practicing eagle pose during the mantra retreat",
+              },
+              {
+                src: "/images/gomukhasana-cow-face-pose-students-rishikesh.jpg",
+                alt: "Students practicing gomukhasana during the mantra retreat",
+              },
+              {
+                src: "/images/head-to-knee-forward-bend-group-class-rishikesh.jpg",
+                alt: "Group head-to-knee forward bend practice",
+              },
+              {
+                src: "/images/low-lunge-pose-group-lawn-class.jpg",
+                alt: "Low lunge pose practiced on the lawn during mantra retreat",
+              },
+              {
+                src: "/images/outdoor-garden-yoga-class-stretching-rishikesh.jpg",
+                alt: "Outdoor garden stretching class before mantra chanting",
+              },
+              {
+                src: "/images/plank-pose-group-yoga-session-rishikesh.jpg",
+                alt: "Group plank pose session during the mantra retreat",
+              },
+            ]}
+          />
         </div>
       </section>
+
+      {/* Deep Dive: The Science of Sacred Sound */}
+      <RetreatDeepDive
+        kicker="The Science of Sacred Sound"
+        title="Sound Is One of Yoga's Oldest Technologies"
+        paragraphs={[
+          "Long before yoga became postures, it was sound — mantra chanted with the right pronunciation, rhythm and intention to steady the mind and open the heart.",
+          "This retreat teaches you mantra as a living practice, not a memorized recitation, so it becomes something you can actually use.",
+        ]}
+        image="/images/group-meditation-hilltop-temple-rishikesh.jpg"
+        imageAlt="Group meditation and chanting at a hilltop temple in Rishikesh"
+        listIntro="The traditional mantras you'll learn to chant correctly:"
+        listItems={[
+          { title: "Om", desc: "The primordial sound, the foundation of every mantra." },
+          { title: "Gayatri Mantra", desc: "Chanted for clarity and wisdom." },
+          { title: "Maha Mrityunjaya Mantra", desc: "Chanted for healing and protection." },
+          { title: "Ganesh Mantra", desc: "Chanted for removing obstacles." },
+          { title: "Guru Mantra", desc: "Chanted for gratitude and guidance." },
+          { title: "Shanti Mantra", desc: "Chanted for peace, to close a practice." },
+        ]}
+        summary="Each mantra carries its own purpose — clarity, healing, gratitude, peace — so learning several gives you a genuine toolkit for different moments in life."
+        quote="A mantra chanted correctly, with intention, can quiet a mind that meditation alone cannot reach."
+        bgClassName="bg-[#f4efe6]"
+      />
+
+      {/* Living at Siddhant School of Yoga */}
+      <RetreatLivingAtSchool
+        asksLabel="What Chanting Practice Asks of You"
+        asks={[
+          { icon: Smile, title: "Letting Go of Self-Consciousness", desc: "Chanting out loud, in a group, takes a little courage at first." },
+          { icon: Repeat, title: "Daily Repetition", desc: "Mantra works through consistency, not a single perfect recitation." },
+          { icon: HeartHandshake, title: "An Open Heart", desc: "The intention behind the sound matters as much as the sound itself." },
+        ]}
+        givesLabel="What It Quietly Gives Back"
+        gives={[
+          { icon: Waves, title: "A Genuinely Quieter Mind", desc: "Sound as a direct route past mental chatter." },
+          { icon: Music, title: "A Practice You Can Chant Anywhere", desc: "No mat or silence required — just your voice." },
+          { icon: Sparkles, title: "A Real Connection to an Ancient Tradition", desc: "Mantras practiced by yogis for thousands of years." },
+        ]}
+        centerImage="/images/yogi-prayer-pose-himalaya-sunrise-rishikesh.jpg"
+        centerImageAlt="Yogi in a prayer pose at sunrise in the Himalayas during the mantra retreat"
+        centerBadge="Sound as Practice, Not Performance"
+        closingQuote="You don't need a beautiful voice to chant. You need an open heart and the willingness to try."
+      />
 
       {/* Why Choose Us */}
       <section className="py-14 sm:py-16 lg:py-20 bg-[#f4efe6] border-b border-[#e3dac9]/70 font-figtree">
@@ -587,6 +802,14 @@ export default function MantraYogaRetreatContent() {
       <section id="curriculum" className="scroll-mt-28 py-14 sm:py-16 lg:py-20 bg-[#fdfbf7] border-b border-[#e3dac9]/70 font-figtree">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-5 lg:px-2">
           <SectionHead kicker="Retreat Curriculum" title="What the Mantra Yoga & Meditation Retreat Covers" />
+          <RetreatPillarCards
+            cards={[
+              { title: "Foundational Mantras", subtitle: "Om · Guru Mantra", image: "/images/group-meditation-hilltop-temple-rishikesh.jpg", alt: "Group meditation at a hilltop temple", text: "The primordial sound and the mantra of gratitude and guidance." },
+              { title: "Mantras for Clarity & Healing", subtitle: "Gayatri · Maha Mrityunjaya", image: "/images/yogi-prayer-pose-himalaya-sunrise-rishikesh.jpg", alt: "Yogi in a prayer pose at sunrise in the Himalayas", text: "Chants traditionally used for wisdom, clarity, healing and protection." },
+              { title: "Mantras for Obstacles & Peace", subtitle: "Ganesh Mantra · Shanti Mantra", image: "/images/gallery_images/yoga-philosophy-class-siddhant-school-of-yoga-rishikesh.webp", alt: "Yoga philosophy class at Siddhant School of Yoga", text: "Chants for removing obstacles and closing a practice in peace." },
+              { title: "Meditation & Integration", subtitle: "Mantra Meditation · Daily Practice", image: "/images/morning-meditation-namaste-outdoor-class-rishikesh.jpg", alt: "Morning meditation namaste outdoor class", text: "Using mantra as a living daily practice, not just a memorized recitation." },
+            ]}
+          />
           <Accordion items={syllabusItems} columns={2} className="w-full" />
         </div>
       </section>

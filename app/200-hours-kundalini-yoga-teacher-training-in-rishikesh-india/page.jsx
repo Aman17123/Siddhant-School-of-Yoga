@@ -216,6 +216,90 @@ export default function KundaliniTwoHundredHourPage() {
                   src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
                   alt: "Sattvic vegetarian meals at Siddhant School of Yoga",
                 },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                  alt: "Twin sharing room for 200-hour Kundalini TTC students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                  alt: "Private room accommodation option at the yoga school",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                  alt: "Triple sharing dormitory room for students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                  alt: "Student room featuring bed and wardrobe storage",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
+                  alt: "Sattvic thali with rice, dal and raita",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
+                  alt: "Traditional Indian thali served on a banana leaf",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
+                  alt: "Lunch tray paired with a glass of fresh juice",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                  alt: "Communal dining hall and kitchen area",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                  alt: "Front exterior of the Siddhant School of Yoga campus",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                  alt: "Clean washroom with hot water shower facility",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                  alt: "Private attached bathroom for student rooms",
+                },
+                {
+                  src: "/images/gyan-mudra-meditation-kunjapuri-hilltop-rishikesh.jpg",
+                  alt: "Gyan mudra meditation session on Kunjapuri hilltop",
+                },
+                {
+                  src: "/images/group-tree-pose-sunrise-hilltop-rishikesh.jpg",
+                  alt: "Group tree pose practice at sunrise on the hilltop",
+                },
+                {
+                  src: "/images/yoga-group-hilltop-temple-viewpoint-rishikesh.jpg",
+                  alt: "Yoga group at a hilltop temple viewpoint in Rishikesh",
+                },
+                {
+                  src: "/images/havan-fire-ceremony-yoga-ttc-rishikesh.jpg",
+                  alt: "Sacred havan fire ceremony held during the 200-hour TTC",
+                },
+                {
+                  src: "/images/yoga-ttc-graduation-group-shiva-altar-rishikesh.jpg",
+                  alt: "Graduation group photo beside the Shiva altar",
+                },
+                {
+                  src: "/images/tilak-blessing-ceremony-yoga-ttc-graduation-rishikesh.jpg",
+                  alt: "Tilak blessing given during the yoga TTC graduation ceremony",
+                },
+                {
+                  src: "/images/downward-dog-group-class.png",
+                  alt: "Group practicing downward dog pose in class",
+                },
+                {
+                  src: "/images/triangle-pose-group-lawn-class.jpg",
+                  alt: "Students practicing triangle pose on the lawn",
+                },
+                {
+                  src: "/images/seated-asana-group-practice-garden-rishikesh.jpg",
+                  alt: "Seated asana practice in the garden at Rishikesh",
+                },
+                {
+                  src: "/images/trayambakeshwar-temple-rishikesh-view.jpg",
+                  alt: "View of Trayambakeshwar temple near Rishikesh",
+                },
               ]}
             />
           </div>

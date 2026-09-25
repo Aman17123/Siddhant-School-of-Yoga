@@ -50,7 +50,7 @@ export default function TwoHundredHourYogaTTCPage() {
             {/* Explanatory Paragraphs */}
             <div className="text-center w-full space-y-3 text-sm sm:text-base text-stone-700 leading-relaxed font-medium mb-6">
               <p>
-                The 200-Hour Yoga Teacher Training Course (YTTC) is a 24-day residential program that trains and certifies you to teach yoga professionally. Held in Rishikesh, India — the world's yoga capital — this Yoga Alliance USA RYS 200 registered course is the internationally recognized entry point into professional yoga teaching, combining Hatha and Ashtanga asana, Pranayama, meditation, anatomy, yoga philosophy and hands-on teaching methodology into one complete curriculum.
+                The 200-Hour Yoga Teacher Training Course (YTTC) is a 24-day residential program that trains and certifies you to teach yoga professionally. Held in Rishikesh, India — the world&apos;s yoga capital — this Yoga Alliance USA RYS 200 registered course is the internationally recognized entry point into professional yoga teaching, combining Hatha and Ashtanga asana, Pranayama, meditation, anatomy, yoga philosophy and hands-on teaching methodology into one complete curriculum.
               </p>
 
               <p>
@@ -152,6 +152,94 @@ export default function TwoHundredHourYogaTTCPage() {
                 {
                   src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
                   alt: "Sattvic vegetarian meals at Siddhant School of Yoga",
+                },
+                {
+                  src: "/images/200-hour-yoga-teacher-training-seated-stretch.jpg",
+                  alt: "200-hour trainees practicing a seated stretch",
+                },
+                {
+                  src: "/images/eagle-pose-garudasana-group-class-rishikesh.jpg",
+                  alt: "Group class practicing eagle pose (Garudasana)",
+                },
+                {
+                  src: "/images/triangle-pose-garden-yoga-class-rishikesh.jpg",
+                  alt: "Triangle pose practiced during an outdoor garden class",
+                },
+                {
+                  src: "/images/side-angle-pose-garden-yoga-class-rishikesh.jpg",
+                  alt: "Side angle pose in the garden yoga class",
+                },
+                {
+                  src: "/images/standing-balance-pose-group-terrace.jpg",
+                  alt: "Group standing balance pose practiced on the terrace",
+                },
+                {
+                  src: "/images/teacher-adjusting-warrior-pose-outdoor-class-rishikesh.jpg",
+                  alt: "Teacher adjusting a student's warrior pose alignment",
+                },
+                {
+                  src: "/images/yoga-alignment-adjustment-with-straps-ttc-rishikesh.jpg",
+                  alt: "Alignment adjustment using straps during the 200-hour TTC",
+                },
+                {
+                  src: "/images/gomukhasana-cow-face-pose-students-rishikesh.jpg",
+                  alt: "Students practicing Gomukhasana, the cow face pose",
+                },
+                {
+                  src: "/images/graduation-flower-garland-photo.jpg",
+                  alt: "Graduate wearing a flower garland at the ceremony",
+                },
+                {
+                  src: "/images/tilak-blessing-ceremony-yoga-ttc-graduation-rishikesh.jpg",
+                  alt: "Tilak blessing ceremony at the 200-hour graduation",
+                },
+                {
+                  src: "/images/yoga-ttc-graduates-marigold-garlands-rishikesh.jpg",
+                  alt: "200-hour TTC graduates wearing marigold garlands",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                  alt: "Twin sharing room accommodation for 200-hour students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                  alt: "Private room accommodation available at the school",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                  alt: "Triple sharing room accommodation for students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                  alt: "Comfortable student room with bed and wardrobe",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
+                  alt: "Sattvic thali with rice, dal and raita",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
+                  alt: "Traditional thali served on a banana leaf",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
+                  alt: "Vegetarian lunch with pulao and sabzi",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                  alt: "Dining hall and kitchen serving students daily meals",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                  alt: "Exterior of the Siddhant School of Yoga campus building",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                  alt: "Washroom with hot water shower for residential students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                  alt: "Attached bathroom facility in a student room",
                 },
               ]}
             />

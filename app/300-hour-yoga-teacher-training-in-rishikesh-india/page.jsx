@@ -153,6 +153,102 @@ export default function ThreeHundredHourYogaTTCPage() {
                   src: "/images/yoga-school-food-and-stay/yoga-school-lunch-tray-with-fresh-juice.jpg",
                   alt: "Sattvic vegetarian meals at Siddhant School of Yoga",
                 },
+                {
+                  src: "/images/300-hour-yoga-teacher-training-partner-dancer-pose.jpg",
+                  alt: "300-hour trainees practicing a partner-assisted dancer pose",
+                },
+                {
+                  src: "/images/balancing-pose-outdoor-garden-yoga-class-rishikesh.jpg",
+                  alt: "Advanced balancing pose practiced in the outdoor garden",
+                },
+                {
+                  src: "/images/cow-face-pose-arm-stretch-yoga-class-rishikesh.jpg",
+                  alt: "Cow face pose arm stretch during advanced class",
+                },
+                {
+                  src: "/images/garudasana-eagle-pose-student-rishikesh.jpg",
+                  alt: "Advanced student holding eagle pose (Garudasana)",
+                },
+                {
+                  src: "/images/low-lunge-pose-group-lawn-class.jpg",
+                  alt: "Group low lunge pose practiced on the lawn",
+                },
+                {
+                  src: "/images/plank-pose-group-yoga-session-rishikesh.jpg",
+                  alt: "Advanced group plank pose session",
+                },
+                {
+                  src: "/images/seated-side-stretch-indoor-class.jpg",
+                  alt: "Seated side stretch during an indoor advanced class",
+                },
+                {
+                  src: "/images/seated-spinal-twist-group-class.png",
+                  alt: "Group practicing a seated spinal twist",
+                },
+                {
+                  src: "/images/sphinx-pose-outdoor-yoga-class-rishikesh.jpg",
+                  alt: "Sphinx pose practiced in the outdoor yoga class",
+                },
+                {
+                  src: "/images/triangle-pose-group-lawn-class.jpg",
+                  alt: "Triangle pose practiced by the group on the lawn",
+                },
+                {
+                  src: "/images/ttc-graduation-ceremony-group-photo.png",
+                  alt: "300-hour TTC graduation ceremony group photo",
+                },
+                {
+                  src: "/images/yoga-ttc-graduates-fire-ceremony-siddhant-school-of-yoga.jpg",
+                  alt: "Graduates at the closing fire ceremony",
+                },
+                {
+                  src: "/images/yoga-ttc-graduation-group-shiva-altar-rishikesh.jpg",
+                  alt: "Graduation group photo at the Shiva altar",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-twin-sharing-room.jpg",
+                  alt: "Twin sharing room accommodation for advanced trainees",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-private-room-accommodation.jpg",
+                  alt: "Private room accommodation for 300-hour students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-triple-sharing-room.jpg",
+                  alt: "Triple sharing room accommodation at the ashram",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-room-bed-with-wardrobe.png",
+                  alt: "Student room featuring a bed and wardrobe",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-sattvic-thali-rice-dal-raita.jpg",
+                  alt: "Sattvic thali meal with rice, dal and raita",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-traditional-thali-puri-banana-leaf.jpg",
+                  alt: "Traditional puri thali served on a banana leaf",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-vegetarian-lunch-pulao-sabzi.jpg",
+                  alt: "Vegetarian lunch of pulao and sabzi",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-dining-hall-and-kitchen.jpg",
+                  alt: "Dining hall and kitchen at the school campus",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/siddhant-school-of-yoga-building-exterior.jpg",
+                  alt: "Exterior view of the Siddhant School of Yoga building",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-washroom-with-hot-water-shower.jpg",
+                  alt: "Washroom with hot water shower for residential students",
+                },
+                {
+                  src: "/images/yoga-school-food-and-stay/yoga-school-attached-bathroom.jpg",
+                  alt: "Attached bathroom in a student's private room",
+                },
               ]}
             />
           </div>
