@@ -10,6 +10,9 @@
 
 RewriteEngine On
 
+# --- Homepage ---
+RewriteRule ^index\.php$ / [R=301,L]
+
 # --- Old slugs that were renamed outright (not just ".php" stripped) ---
 RewriteRule ^yoga-for-beginners-rishikesh(\.php)?$ /yoga-course-for-beginners-in-rishikesh-india [R=301,L]
 RewriteRule ^yoga-meditation-retreat(\.php)?$ /yoga-meditation-retreat-in-rishikesh-india [R=301,L]
@@ -32,10 +35,51 @@ RewriteRule ^300-hour-kundalini-yoga-ttc(\.php)?$ /300-hours-kundalini-yoga-teac
 RewriteRule ^500-hour-kundalini-yoga-ttc(\.php)?$ /500-hours-kundalini-yoga-teacher-training-in-rishikesh-india [R=301,L]
 RewriteRule ^contact-us(\.php)?$ /contact [R=301,L]
 
-# --- Generic rule: any other old "name.php" page with the exact same slug
-# today (e.g. 100-hour-yoga-teacher-training-in-rishikesh-india.php,
-# yoga-course-payment.php) just gets the ".php" stripped. Keep this LAST so
-# the more specific renamed-slug rules above always win first. ---
+# --- Every other current page — explicit ".php" → clean-URL redirect, listed
+# individually so nothing depends on the generic regex catch-all below. Add
+# a new line here whenever a new top-level page is created. ---
+RewriteRule ^about\.php$ /about [R=301,L]
+RewriteRule ^teacher\.php$ /teacher [R=301,L]
+RewriteRule ^yogi-siddhant-rishikesh-india\.php$ /yogi-siddhant-rishikesh-india [R=301,L]
+RewriteRule ^ideals-of-siddhant-school-of-yoga\.php$ /ideals-of-siddhant-school-of-yoga [R=301,L]
+RewriteRule ^food-accommodation\.php$ /food-accommodation [R=301,L]
+RewriteRule ^rishikesh-india\.php$ /rishikesh-india [R=301,L]
+RewriteRule ^gallery\.php$ /gallery [R=301,L]
+RewriteRule ^faq\.php$ /faq [R=301,L]
+RewriteRule ^testimonials\.php$ /testimonials [R=301,L]
+RewriteRule ^contact\.php$ /contact [R=301,L]
+RewriteRule ^book-my-yoga-in-rishikesh-india\.php$ /book-my-yoga-in-rishikesh-india [R=301,L]
+RewriteRule ^payment\.php$ /payment [R=301,L]
+RewriteRule ^yoga-course-payment\.php$ /yoga-course-payment [R=301,L]
+RewriteRule ^privacy-policy\.php$ /privacy-policy [R=301,L]
+RewriteRule ^terms-and-conditions\.php$ /terms-and-conditions [R=301,L]
+RewriteRule ^100-hour-yoga-teacher-training-in-rishikesh-india\.php$ /100-hour-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^200-hour-yoga-teacher-training-in-rishikesh-india\.php$ /200-hour-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^300-hour-yoga-teacher-training-in-rishikesh-india\.php$ /300-hour-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^500-hour-yoga-teacher-training-in-rishikesh-india\.php$ /500-hour-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^500-hour-yoga-ayurveda-teacher-training-in-rishikesh-india\.php$ /500-hour-yoga-ayurveda-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^online-200-hour-yoga-teacher-training-in-rishikesh-india\.php$ /online-200-hour-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^100-hours-kundalini-yoga-teacher-training-in-rishikesh-india\.php$ /100-hours-kundalini-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^200-hours-kundalini-yoga-teacher-training-in-rishikesh-india\.php$ /200-hours-kundalini-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^300-hours-kundalini-yoga-teacher-training-in-rishikesh-india\.php$ /300-hours-kundalini-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^500-hours-kundalini-yoga-teacher-training-in-rishikesh-india\.php$ /500-hours-kundalini-yoga-teacher-training-in-rishikesh-india [R=301,L]
+RewriteRule ^yoga-course-for-beginners-in-rishikesh-india\.php$ /yoga-course-for-beginners-in-rishikesh-india [R=301,L]
+RewriteRule ^yoga-meditation-retreat-in-rishikesh-india\.php$ /yoga-meditation-retreat-in-rishikesh-india [R=301,L]
+RewriteRule ^07-days-yoga-meditation-retreat-in-rishikesh-india\.php$ /07-days-yoga-meditation-retreat-in-rishikesh-india [R=301,L]
+RewriteRule ^kundalini-retreat-in-rishikesh-india\.php$ /kundalini-retreat-in-rishikesh-india [R=301,L]
+RewriteRule ^pranayama-retreat-rishikesh-india\.php$ /pranayama-retreat-rishikesh-india [R=301,L]
+RewriteRule ^vipassana-retreat-rishikesh-india\.php$ /vipassana-retreat-rishikesh-india [R=301,L]
+RewriteRule ^detox-retreat-rishikesh-india\.php$ /detox-retreat-rishikesh-india [R=301,L]
+RewriteRule ^3-days-detox-retreat-rishikesh-india\.php$ /3-days-detox-retreat-rishikesh-india [R=301,L]
+RewriteRule ^mantra-yoga-meditation-retreat-rishikesh\.php$ /mantra-yoga-meditation-retreat-rishikesh [R=301,L]
+RewriteRule ^yoga-and-ayurveda-retreat-in-rishikesh\.php$ /yoga-and-ayurveda-retreat-in-rishikesh [R=301,L]
+RewriteRule ^05-days-meditation-pranayama-retreat-in-rishikesh\.php$ /05-days-meditation-pranayama-retreat-in-rishikesh [R=301,L]
+
+# --- Generic fallback rule: any other old "name.php" page with the exact
+# same slug today just gets the ".php" stripped. Kept LAST as a safety net
+# for any page not explicitly listed above (e.g. a page added later and not
+# yet added here). Keep this LAST so the more specific rules above always
+# win first. ---
 RewriteCond %{REQUEST_FILENAME} \.php$
 RewriteRule ^(.+)\.php$ /$1 [R=301,L]
 
