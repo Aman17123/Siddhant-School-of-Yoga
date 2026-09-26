@@ -102,6 +102,25 @@ export const metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon/android-icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/favicon/apple-icon.png" },
+      { url: "/favicon/apple-icon-180x180.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/favicon/manifest.json",
+  other: {
+    "msapplication-TileColor": "#1c3b2b",
+    "msapplication-config": "/favicon/browserconfig.xml",
+  },
 };
 
 export default function RootLayout({ children }) {

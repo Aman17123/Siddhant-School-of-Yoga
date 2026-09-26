@@ -179,9 +179,7 @@ export function ButtonLink({
 export function ProgramCard({ program }) {
   // Determine circular badge asset based on program id or hours
   let rysBadge = null;
-  if (program.id.includes("100")) {
-    rysBadge = "/logo/yoga-alliance.webp";
-  } else if (program.id.includes("200")) {
+  if (program.id.includes("200")) {
     rysBadge = "/logo/rys-200.webp";
   } else if (program.id.includes("300")) {
     rysBadge = "/logo/rys-300.webp";

@@ -44,7 +44,7 @@ export default function Hero() {
         <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-[#1c3b2b]/40 mb-4 sm:mb-5 shadow-lg max-w-[95%]">
           <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#1c3b2b] animate-pulse shrink-0" />
           <span className="font-figtree text-[9px] sm:text-xs font-semibold uppercase tracking-[0.12em] sm:tracking-[0.24em] text-[#f4efe6] truncate">
-            Traditional Himalayan Ashram • Rishikesh, India
+            Traditional Yoga Teacher Training • Rishikesh, India
           </span>
         </div>
 
@@ -67,15 +67,38 @@ export default function Hero() {
         </div>
 
         {/* Hero Description */}
-        <p className="font-figtree text-[13px] sm:text-[15px] md:text-base text-white/90 max-w-2xl mx-auto mb-6 sm:mb-8 font-normal leading-[1.8] tracking-normal drop-shadow-sm">
-          Top <strong>Yoga Teacher Training Course (YTTC) in Rishikesh</strong>{" "}
-          — learn Hatha, Ashtanga, Vedic philosophy, and Pranayama from expert
-          teachers. Yoga Alliance{" "}
-          <strong className="text-[#FFFFFF] font-semibold">
-            RYS 200, 300, 500
-          </strong>{" "}
-          certified.
+        <p className="font-figtree text-[13px] sm:text-[15px] md:text-base text-white/90 max-w-2xl mx-auto mb-3 sm:mb-4 font-normal leading-[1.8] tracking-normal drop-shadow-sm">
+          Learn directly from Acharya Siddhant in an authentic Himalayan ashram.
         </p>
+
+        {/* Trust Badge Line */}
+        <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1.5 mb-6 sm:mb-8 font-figtree text-[11px] sm:text-[13px] font-semibold text-white/85 uppercase tracking-[0.06em]">
+          <span>Yoga Alliance RYS 200, 300 &amp; 500</span>
+          <span className="text-[#b85c00]">|</span>
+          <span>Residential</span>
+          <span className="text-[#b85c00]">|</span>
+          <span>International Students</span>
+        </div>
+
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto">
+          <Link
+            href="#courses"
+            className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#b85c00] hover:bg-[#96490a] text-white font-figtree font-semibold text-sm shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+          >
+            View Upcoming Courses
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <a
+            href={whatsappLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/40 text-white font-figtree font-semibold text-sm shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+          >
+            <FaWhatsapp className="w-4 h-4 text-[#25D366]" />
+            Chat on WhatsApp
+          </a>
+        </div>
 
         {/* 3. Hero Trust Bar (Clean 2x2 on mobile, 4-col on desktop) */}
         <div className="w-full max-w-3xl mx-auto bg-black/60 backdrop-blur-xl rounded-2xl sm:rounded-[22px] border border-white/20 p-3 sm:p-5 shadow-[0_16px_40px_rgba(0,0,0,0.5)]">

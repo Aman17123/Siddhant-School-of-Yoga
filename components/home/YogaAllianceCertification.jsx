@@ -35,10 +35,13 @@ export default function YogaAllianceCertification() {
 
             <p className="font-figtree text-sm sm:text-base text-stone-600 leading-relaxed mb-6 font-medium max-w-2xl mx-auto lg:mx-0">
               Siddhant School of Yoga is an officially registered Yoga
-              Teacher Training school with Yoga Alliance USA. Our 100-hour,
-              200-hour, 300-hour, and 500-hour courses in Rishikesh follow
-              international teaching standards, so you graduate with a
-              certificate trusted and accepted by yoga studios worldwide.
+              Teacher Training school with Yoga Alliance USA. Our 200-hour,
+              300-hour, and 500-hour courses in Rishikesh are Yoga Alliance
+              RYS-registered programs that follow international teaching
+              standards, so you graduate with a certificate trusted and
+              accepted by yoga studios worldwide. Our 100-hour course is a
+              foundational school program — a great first step before you
+              begin RYS-200 training.
             </p>
 
             <ul className="space-y-3 mb-8 max-w-2xl mx-auto lg:mx-0 text-left">
