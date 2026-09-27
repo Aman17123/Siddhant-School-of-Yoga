@@ -19,6 +19,7 @@ export default function CourseHero({
   bgImageAlt = "",
   applyHref = "/book-my-yoga-in-rishikesh-india",
   datesAnchor = "#dates-fees",
+  datesLabel = "Check Upcoming Dates",
   whatsappIntro,
 }) {
   const KickerIcon = ICONS[kickerIcon];
@@ -114,7 +115,7 @@ export default function CourseHero({
                 href={datesAnchor}
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border-2 border-white/70 text-white hover:bg-white hover:text-[#1c3b2b] text-xs sm:text-sm font-figtree font-bold uppercase tracking-wide transition-all duration-300"
               >
-                Check Upcoming Dates
+                {datesLabel}
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

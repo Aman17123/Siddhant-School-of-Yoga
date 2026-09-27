@@ -24,6 +24,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import { site, whatsappLink } from "@/data/siteData";
+import { onlineCourses } from "@/data/onlineCourses";
 
 const navMenu = [
   { type: "link", key: "home", label: "Home", href: "/" },
@@ -33,6 +34,7 @@ const navMenu = [
     label: "About Us",
     items: [
       { title: "About Siddhant School", href: "/about" },
+      { title: "Why Choose Siddhant School of Yoga?", href: "/why-choose-siddhant-school-of-yoga" },
       { title: "Our Yoga Teachers", href: "/teacher" },
       { title: "About Acharya Siddhant Ji", href: "/yogi-siddhant-rishikesh-india" },
       { title: "Our Ideals & Masters", href: "/ideals-of-siddhant-school-of-yoga" },
@@ -46,7 +48,6 @@ const navMenu = [
     key: "yttc",
     label: "Yoga TTC",
     items: [
-      { title: "Online 200 Hour Yoga TTC from Rishikesh", href: "/online-200-hour-yoga-teacher-training-in-rishikesh-india" },
       { title: "100 Hour Yoga TTC in Rishikesh", href: "/100-hour-yoga-teacher-training-in-rishikesh-india" },
       { title: "200 Hour Yoga TTC in Rishikesh", href: "/200-hour-yoga-teacher-training-in-rishikesh-india" },
       { title: "300 Hour Yoga TTC in Rishikesh", href: "/300-hour-yoga-teacher-training-in-rishikesh-india" },
@@ -64,6 +65,12 @@ const navMenu = [
       { title: "300 Hour Kundalini Yoga TTC in Rishikesh", href: "/300-hours-kundalini-yoga-teacher-training-in-rishikesh-india" },
       { title: "500 Hour Kundalini Yoga TTC in Rishikesh", href: "/500-hours-kundalini-yoga-teacher-training-in-rishikesh-india" },
     ],
+  },
+  {
+    type: "dropdown",
+    key: "online",
+    label: "Online Courses",
+    items: onlineCourses.map((c) => ({ title: c.menuTitle, href: c.href })),
   },
   {
     type: "dropdown",
@@ -378,7 +385,7 @@ export default function Navbar() {
               <li className="border-l border-r border-[#e3dac9] relative group">
                 <Link
                   href="/"
-                  className="inline-block py-2.5 px-5 lg:px-6 text-[#1c3b2b] font-bold hover:text-[#4c7c65] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-3 lg:px-4 xl:px-6 text-[#1c3b2b] font-bold hover:text-[#4c7c65] transition-colors font-jakarta tracking-wide"
                 >
                   Home
                 </Link>
@@ -398,7 +405,7 @@ export default function Navbar() {
                       activeDropdown === "about" ? null : "about",
                     )
                   }
-                  className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
+                  className={`cursor-pointer py-2.5 px-3 lg:px-4 xl:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "about"
                       ? "text-[#1c3b2b] font-bold"
                       : "text-[#1F1E1D] hover:text-[#1c3b2b]"
@@ -432,36 +439,7 @@ export default function Navbar() {
                 >
                   <div className="w-[350px] bg-[#fdfbf7] rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
                     <div className="flex flex-col space-y-1.5">
-                      {[
-                        {
-                          title: "About Siddhant School",
-                          href: "/about",
-                        },
-                        {
-                          title: "Our Yoga Teachers",
-                          href: "/teacher",
-                        },
-                        {
-                          title: "About Acharya Siddhant Ji",
-                          href: "/yogi-siddhant-rishikesh-india",
-                        },
-                        {
-                          title: "Our Ideals & Masters",
-                          href: "/ideals-of-siddhant-school-of-yoga",
-                        },
-                        {
-                          title: "Food & Accommodation",
-                          href: "/food-accommodation",
-                        },
-                        {
-                          title: "About Rishikesh",
-                          href: "/rishikesh-india",
-                        },
-                        {
-                          title: "FAQs",
-                          href: "/faq",
-                        },
-                      ].map((item) => (
+                      {navMenu.find((m) => m.key === "about").items.map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
@@ -493,7 +471,7 @@ export default function Navbar() {
                   onClick={() =>
                     setActiveDropdown(activeDropdown === "yttc" ? null : "yttc")
                   }
-                  className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
+                  className={`cursor-pointer py-2.5 px-3 lg:px-4 xl:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "yttc"
                       ? "text-[#1c3b2b] font-bold"
                       : "text-[#1F1E1D] hover:text-[#1c3b2b]"
@@ -526,32 +504,7 @@ export default function Navbar() {
                 >
                   <div className="w-[380px] bg-[#fdfbf7] rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
                     <div className="flex flex-col space-y-1.5">
-                      {[
-                        {
-                          title: "Online 200 Hour Yoga TTC from Rishikesh",
-                          href: "/online-200-hour-yoga-teacher-training-in-rishikesh-india",
-                        },
-                        {
-                          title: "100 Hour Yoga TTC in Rishikesh",
-                          href: "/100-hour-yoga-teacher-training-in-rishikesh-india",
-                        },
-                        {
-                          title: "200 Hour Yoga TTC in Rishikesh",
-                          href: "/200-hour-yoga-teacher-training-in-rishikesh-india",
-                        },
-                        {
-                          title: "300 Hour Yoga TTC in Rishikesh",
-                          href: "/300-hour-yoga-teacher-training-in-rishikesh-india",
-                        },
-                        {
-                          title: "500 Hour Yoga TTC in Rishikesh",
-                          href: "/500-hour-yoga-teacher-training-in-rishikesh-india",
-                        },
-                        {
-                          title: "500hrs Yoga & Ayurveda TTC in Rishikesh",
-                          href: "/500-hour-yoga-ayurveda-teacher-training-in-rishikesh-india",
-                        },
-                      ].map((item) => (
+                      {navMenu.find((m) => m.key === "yttc").items.map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
@@ -585,7 +538,7 @@ export default function Navbar() {
                       activeDropdown === "kundalini" ? null : "kundalini",
                     )
                   }
-                  className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
+                  className={`cursor-pointer py-2.5 px-3 lg:px-4 xl:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "kundalini"
                       ? "text-[#1c3b2b] font-bold"
                       : "text-[#1F1E1D] hover:text-[#1c3b2b]"
@@ -618,24 +571,74 @@ export default function Navbar() {
                 >
                   <div className="w-[390px] bg-[#fdfbf7] rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
                     <div className="flex flex-col space-y-1.5">
-                      {[
-                        {
-                          title: "100 Hour Kundalini Yoga TTC in Rishikesh",
-                          href: "/100-hours-kundalini-yoga-teacher-training-in-rishikesh-india",
-                        },
-                        {
-                          title: "200 Hour Kundalini Yoga TTC in Rishikesh",
-                          href: "/200-hours-kundalini-yoga-teacher-training-in-rishikesh-india",
-                        },
-                        {
-                          title: "300 Hour Kundalini Yoga TTC in Rishikesh",
-                          href: "/300-hours-kundalini-yoga-teacher-training-in-rishikesh-india",
-                        },
-                        {
-                          title: "500 Hour Kundalini Yoga TTC in Rishikesh",
-                          href: "/500-hours-kundalini-yoga-teacher-training-in-rishikesh-india",
-                        },
-                      ].map((item) => (
+                      {navMenu.find((m) => m.key === "kundalini").items.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setActiveDropdown(null)}
+                          className="group/item flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-[#1c3b2b]/[0.06] transition-all duration-150"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#1c3b2b] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
+                            <span className="text-[14.5px] font-semibold text-stone-800 group-hover/item:text-[#1c3b2b] transition-colors">
+                              {item.title}
+                            </span>
+                          </div>
+                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover/item:text-[#1c3b2b] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-150 shrink-0" />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              {/* Online Courses (Smooth Dropdown) */}
+              <li
+                className="border-r border-[#e3dac9] relative group"
+                onMouseEnter={() => handleMouseEnter("online")}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActiveDropdown(
+                      activeDropdown === "online" ? null : "online",
+                    )
+                  }
+                  className={`cursor-pointer py-2.5 px-3 lg:px-4 xl:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
+                    activeDropdown === "online"
+                      ? "text-[#1c3b2b] font-bold"
+                      : "text-[#1F1E1D] hover:text-[#1c3b2b]"
+                  }`}
+                >
+                  <span>Online Courses</span>
+                  <ChevronDown
+                    strokeWidth={1.75}
+                    className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
+                      activeDropdown === "online"
+                        ? "rotate-180 text-[#1c3b2b]"
+                        : "text-stone-400 group-hover:rotate-180 group-hover:text-[#1c3b2b]"
+                    }`}
+                  />
+                </button>
+                <span
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-200 origin-center ${
+                    activeDropdown === "online"
+                      ? "scale-x-100"
+                      : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
+
+                <div
+                  className={`absolute top-full left-0 pt-2 z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    activeDropdown === "online"
+                      ? "opacity-100 visible translate-y-0 scale-100 pointer-events-auto"
+                      : "opacity-0 invisible -translate-y-2 scale-[0.98] pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto"
+                  }`}
+                >
+                  <div className="w-[420px] bg-[#fdfbf7] rounded-xl shadow-[0_12px_32px_-4px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.03)] border border-stone-200/90 overflow-hidden p-2.5">
+                    <div className="flex flex-col space-y-1.5">
+                      {navMenu.find((m) => m.key === "online").items.map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
@@ -669,7 +672,7 @@ export default function Navbar() {
                       activeDropdown === "retreats" ? null : "retreats",
                     )
                   }
-                  className={`cursor-pointer py-2.5 px-5 lg:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
+                  className={`cursor-pointer py-2.5 px-3 lg:px-4 xl:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
                     activeDropdown === "retreats"
                       ? "text-[#1c3b2b] font-bold"
                       : "text-[#1F1E1D] hover:text-[#1c3b2b]"
@@ -773,7 +776,7 @@ export default function Navbar() {
               <li className="border-r border-[#e3dac9] relative group">
                 <Link
                   href="/gallery"
-                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-3 lg:px-4 xl:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
                 >
                   Gallery
                 </Link>
@@ -784,7 +787,7 @@ export default function Navbar() {
               <li className="border-r border-[#e3dac9] relative group">
                 <Link
                   href="/yoga-course-payment"
-                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-3 lg:px-4 xl:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
                 >
                   Payment
                 </Link>
@@ -797,7 +800,7 @@ export default function Navbar() {
                   href="https://www.siddhantschoolofyoga.com/blog/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-3 lg:px-4 xl:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
                 >
                   Blogs
                 </a>
@@ -808,7 +811,7 @@ export default function Navbar() {
               <li className="border-r border-[#e3dac9] relative group">
                 <Link
                   href="/contact"
-                  className="inline-block py-2.5 px-5 lg:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
+                  className="inline-block py-2.5 px-3 lg:px-4 xl:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
                 >
                   Contact Us
                 </Link>
