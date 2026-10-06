@@ -60,7 +60,7 @@ const page = {
       title: "Shared Meals, Shared Practice",
       cards: [
         {
-          title: "Shared Meals, Shared Practice",
+          title: "Shared Moments Together",
           desc: "Students eat together in the dining hall, practice together in the shala and study together in class. These ordinary daily moments are often where friendships begin.",
         },
         {

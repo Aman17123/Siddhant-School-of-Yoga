@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import {
   useEditor,
   EditorContent,
@@ -104,8 +104,8 @@ const TextColorMark = Mark.create({
 
 const TEXT_COLORS = [
   { label: "Default Dark", color: "#2A1621" },
-  { label: "Sanskriti Pink", color: "#BF296A" },
-  { label: "Deep Wine", color: "#951248" },
+  { label: "Forest Green", color: "#1c3b2b" },
+  { label: "Deep Green", color: "#14291e" },
   { label: "Marigold Gold", color: "#C9862A" },
   { label: "Teal Green", color: "#00897b" },
   { label: "Sage Green", color: "#5C6E4E" },
@@ -171,8 +171,8 @@ const CELL_FILL_COLORS = [
   { label: "Rose light", value: "#fff3f8" },
   { label: "Sage light", value: "#eef2e8" },
   { label: "Marigold light", value: "#fdf3e3" },
-  { label: "Sanskriti Pink", value: "#BF296A" },
-  { label: "Deep Wine", value: "#951248" },
+  { label: "Forest Green", value: "#1c3b2b" },
+  { label: "Deep Green", value: "#14291e" },
   { label: "Charcoal", value: "#2A1621" },
 ];
 
@@ -190,7 +190,7 @@ interface PostEditorProps {
         state: "Saved" | "Unsaved changes" | "Saving..." | "All changes saved",
       ) => void);
   setView: (
-    view: "dashboard" | "editor" | "categories" | "authors" | "logs",
+    view: "dashboard" | "editor" | "categories",
   ) => void;
   currentUser?: CurrentUser;
   activeEditorTab: "seo" | "social" | "faqs" | "ai" | "schema" | "adv";
@@ -200,7 +200,7 @@ interface PostEditorProps {
   wordCount: { words: number; mins: number };
   rteRef: React.RefObject<HTMLDivElement | null>;
   fileInputRef: React.RefObject<HTMLInputElement | null>;
-  authors: Author[];
+  authors?: (Author | string)[];
   categories: Category[];
   handleRteCommand: (command: string, value?: string) => void;
   handleSavePost: (
@@ -255,14 +255,53 @@ export default function PostEditor({
   currentUser,
   handleQuickAddCat,
 }: PostEditorProps) {
-  const isAdmin = currentUser?.role === "admin";
-  const isAuthor = currentUser?.role === "author";
+  const isAdmin = true;
 
   // Selected Author Object for Post Editor
   const currentAuthor =
-    authors.find(
-      (a) => a.name === postForm.author || a.username === postForm.author,
-    ) || authors[0];
+    authors?.find(
+      (a) => typeof a !== "string" && (a.name === postForm.author || a.username === postForm.author),
+    ) || (authors && typeof authors[0] !== "string" ? authors[0] : undefined);
+
+  // Author combobox state & remembered suggestions
+  const [authorDropdownOpen, setAuthorDropdownOpen] = useState(false);
+  const authorDropdownRef = useRef<HTMLDivElement>(null);
+
+  const authorOptions: string[] = useMemo(() => {
+    const set = new Set<string>();
+    set.add("Siddhant School of Yoga");
+    if (Array.isArray(authors)) {
+      for (const a of authors) {
+        const name = typeof a === "string" ? a : (a?.name || a?.username);
+        if (name && typeof name === "string" && name.trim()) {
+          set.add(name.trim());
+        }
+      }
+    }
+    return Array.from(set);
+  }, [authors]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        authorDropdownRef.current &&
+        !authorDropdownRef.current.contains(event.target as Node)
+      ) {
+        setAuthorDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const currentAuthorInput = postForm.author || "";
+  const filteredAuthors = useMemo(() => {
+    const q = currentAuthorInput.trim().toLowerCase();
+    if (!q) return authorOptions;
+    return authorOptions.filter((a) => a.toLowerCase().includes(q));
+  }, [authorOptions, currentAuthorInput]);
 
   // Safe normalized values to prevent null/undefined runtime crashes
   const title = postForm.title || "";
@@ -496,7 +535,7 @@ export default function PostEditor({
       LinkExtension.configure({
         openOnClick: false,
         HTMLAttributes: {
-          class: "text-[#BF296A] underline font-medium",
+          class: "text-[#1c3b2b] underline font-medium",
         },
       }),
       ImageExtension.configure({
@@ -521,7 +560,7 @@ export default function PostEditor({
     editorProps: {
       attributes: {
         class:
-          "min-h-[380px] p-5 font-serif text-lg leading-relaxed focus:outline-none text-[#2A1621] prose max-w-none [&_strong]:text-inherit [&_strong]:font-bold [&_b]:text-inherit [&_b]:font-bold [&_h1]:text-3xl sm:[&_h1]:text-4xl [&_h1]:font-bold [&_h1]:my-5 [&_h2]:text-2xl sm:[&_h2]:text-3xl [&_h2]:font-bold [&_h2]:my-4 [&_h3]:text-xl sm:[&_h3]:text-2xl [&_h3]:font-bold [&_h3]:my-3 [&_h4]:text-lg [&_h4]:font-bold [&_h4]:my-2 [&_h5]:text-base [&_h5]:font-bold [&_h5]:my-2 [&_h6]:text-sm [&_h6]:font-bold [&_h6]:my-2 [&_p]:mb-4 [&_blockquote]:border-l-4 [&_blockquote]:border-[#BF296A] [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:bg-[#FAF6F0] [&_blockquote]:py-2 [&_blockquote]:rounded-r [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:mb-4 [&_img]:rounded-lg [&_img]:max-w-full [&_img]:my-3 [&_table]:w-full [&_table]:border-collapse [&_table]:table-fixed [&_table]:my-5 [&_table]:text-sm [&_table]:overflow-x-auto [&_td]:border [&_td]:border-[#e6ded2] [&_td]:px-2 [&_td]:py-1.5 [&_td]:align-top [&_td]:min-w-[80px] [&_th]:border [&_th]:border-[#e6ded2] [&_th]:bg-[#FAF6F0] [&_th]:px-2 [&_th]:py-2 [&_th]:text-left [&_th]:font-bold [&_th]:align-top [&_.selectedCell]:outline [&_.selectedCell]:outline-2 [&_.selectedCell]:outline-[#BF296A] [&_.column-resize-handle]:bg-[#BF296A] [&_.column-resize-handle]:relative [&_.column-resize-handle]:after:absolute [&_.column-resize-handle]:after:right-[-2px] [&_.column-resize-handle]:after:top-0 [&_.column-resize-handle]:after:bottom-0 [&_.column-resize-handle]:after:w-[4px] [&_.column-resize-handle]:after:bg-black/20 [&_.column-resize-handle]:after:content-[''] [&_p.is-editor-empty:first-child]:before:content-[attr(data-placeholder)] [&_p.is-editor-empty:first-child]:before:float-left [&_p.is-editor-empty:first-child]:before:text-[#6B5862]/40 [&_p.is-editor-empty:first-child]:before:pointer-events-none [&_p.is-editor-empty:first-child]:before:h-0",
+          "min-h-[380px] p-5 font-serif text-lg leading-relaxed focus:outline-none text-[#2A1621] prose max-w-none [&_strong]:text-inherit [&_strong]:font-bold [&_b]:text-inherit [&_b]:font-bold [&_h1]:text-3xl sm:[&_h1]:text-4xl [&_h1]:font-bold [&_h1]:my-5 [&_h2]:text-2xl sm:[&_h2]:text-3xl [&_h2]:font-bold [&_h2]:my-4 [&_h3]:text-xl sm:[&_h3]:text-2xl [&_h3]:font-bold [&_h3]:my-3 [&_h4]:text-lg [&_h4]:font-bold [&_h4]:my-2 [&_h5]:text-base [&_h5]:font-bold [&_h5]:my-2 [&_h6]:text-sm [&_h6]:font-bold [&_h6]:my-2 [&_p]:mb-4 [&_blockquote]:border-l-4 [&_blockquote]:border-[#1c3b2b] [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:bg-[#FAF6F0] [&_blockquote]:py-2 [&_blockquote]:rounded-r [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:mb-4 [&_img]:rounded-lg [&_img]:max-w-full [&_img]:my-3 [&_table]:w-full [&_table]:border-collapse [&_table]:table-fixed [&_table]:my-5 [&_table]:text-sm [&_table]:overflow-x-auto [&_td]:border [&_td]:border-[#e6ded2] [&_td]:px-2 [&_td]:py-1.5 [&_td]:align-top [&_td]:min-w-[80px] [&_th]:border [&_th]:border-[#e6ded2] [&_th]:bg-[#FAF6F0] [&_th]:px-2 [&_th]:py-2 [&_th]:text-left [&_th]:font-bold [&_th]:align-top [&_.selectedCell]:outline [&_.selectedCell]:outline-2 [&_.selectedCell]:outline-[#1c3b2b] [&_.column-resize-handle]:bg-[#1c3b2b] [&_.column-resize-handle]:relative [&_.column-resize-handle]:after:absolute [&_.column-resize-handle]:after:right-[-2px] [&_.column-resize-handle]:after:top-0 [&_.column-resize-handle]:after:bottom-0 [&_.column-resize-handle]:after:w-[4px] [&_.column-resize-handle]:after:bg-black/20 [&_.column-resize-handle]:after:content-[''] [&_p.is-editor-empty:first-child]:before:content-[attr(data-placeholder)] [&_p.is-editor-empty:first-child]:before:float-left [&_p.is-editor-empty:first-child]:before:text-[#6B5862]/40 [&_p.is-editor-empty:first-child]:before:pointer-events-none [&_p.is-editor-empty:first-child]:before:h-0",
       },
       handlePaste: (view, event) => {
         const clipboard = event.clipboardData;
@@ -824,11 +863,11 @@ export default function PostEditor({
           />
 
           <div className="text-body-sm text-[#6B5862] flex items-center gap-1 mb-4 flex-wrap font-mono">
-            <span>https://sanskritiyogpeeth.org/blog/</span>
+            <span>https://www.siddhantschoolofyoga.com/blogs/</span>
             <input
               id="slug"
               aria-label="URL slug"
-              className="border border-[#e6ded2] bg-white px-2 py-0.5 rounded text-body-sm text-[#2A1621] focus:outline-none focus:ring-1 focus:ring-[#BF296A]"
+              className="border border-[#e6ded2] bg-white px-2 py-0.5 rounded text-body-sm text-[#2A1621] focus:outline-none focus:ring-1 focus:ring-[#1c3b2b]"
               value={slug}
               onChange={(e) => {
                 setPostForm((prev) => ({
@@ -869,7 +908,7 @@ export default function PostEditor({
               >
                 <select
                   aria-label="Text style"
-                  className="h-8 px-2 text-label font-semibold bg-white border border-[#e6ded2] rounded focus:outline-none focus:ring-1 focus:ring-[#BF296A] text-[#2A1621]"
+                  className="h-8 px-2 text-label font-semibold bg-white border border-[#e6ded2] rounded focus:outline-none focus:ring-1 focus:ring-[#1c3b2b] text-[#2A1621]"
                   value={
                     editor?.isActive("heading", { level: 1 })
                       ? "h1"
@@ -900,7 +939,7 @@ export default function PostEditor({
                   type="button"
                   className={`h-8 min-w-[32px] px-2 rounded font-bold text-label cursor-pointer inline-flex items-center justify-center transition-colors ${
                     editor?.isActive("bold")
-                      ? "bg-[#BF296A] text-white"
+                      ? "bg-[#1c3b2b] text-white"
                       : "hover:bg-[#FAF6F0] text-[#2A1621]"
                   }`}
                   onClick={() => editor?.chain().focus().toggleBold().run()}
@@ -912,7 +951,7 @@ export default function PostEditor({
                   type="button"
                   className={`h-8 min-w-[32px] px-2 rounded font-bold text-label cursor-pointer inline-flex items-center justify-center transition-colors ${
                     editor?.isActive("italic")
-                      ? "bg-[#BF296A] text-white"
+                      ? "bg-[#1c3b2b] text-white"
                       : "hover:bg-[#FAF6F0] text-[#2A1621]"
                   }`}
                   onClick={() => editor?.chain().focus().toggleItalic().run()}
@@ -924,7 +963,7 @@ export default function PostEditor({
                   type="button"
                   className={`h-8 min-w-[32px] px-2 rounded font-bold text-label cursor-pointer inline-flex items-center justify-center transition-colors ${
                     editor?.isActive("underline")
-                      ? "bg-[#BF296A] text-white"
+                      ? "bg-[#1c3b2b] text-white"
                       : "hover:bg-[#FAF6F0] text-[#2A1621]"
                   }`}
                   onClick={() =>
@@ -982,7 +1021,7 @@ export default function PostEditor({
                               className={`h-6 w-6 rounded-md border transition-transform hover:scale-110 cursor-pointer ${
                                 activeTextColor?.toLowerCase() ===
                                 swatch.color.toLowerCase()
-                                  ? "border-[#BF296A] ring-1 ring-[#BF296A]"
+                                  ? "border-[#1c3b2b] ring-1 ring-[#1c3b2b]"
                                   : "border-[#e6ded2]"
                               }`}
                               style={{ backgroundColor: swatch.color }}
@@ -995,7 +1034,7 @@ export default function PostEditor({
                             resetTextColor();
                             setColorMenuOpen(false);
                           }}
-                          className="w-full mt-2 text-left px-2 py-1.5 rounded-md text-label font-bold text-[#6B5862] hover:bg-[#FAF6F0] hover:text-[#BF296A] transition-colors cursor-pointer"
+                          className="w-full mt-2 text-left px-2 py-1.5 rounded-md text-label font-bold text-[#6B5862] hover:bg-[#FAF6F0] hover:text-[#1c3b2b] transition-colors cursor-pointer"
                         >
                           Reset to default
                         </button>
@@ -1008,7 +1047,7 @@ export default function PostEditor({
                   type="button"
                   className={`h-8 px-2 rounded font-bold text-label cursor-pointer inline-flex items-center justify-center transition-colors ${
                     editor?.isActive("bulletList")
-                      ? "bg-[#BF296A] text-white"
+                      ? "bg-[#1c3b2b] text-white"
                       : "hover:bg-[#FAF6F0] text-[#2A1621]"
                   }`}
                   onClick={() => applyBlockFormatToSelection("bulletList")}
@@ -1020,7 +1059,7 @@ export default function PostEditor({
                   type="button"
                   className={`h-8 px-2 rounded font-bold text-label cursor-pointer inline-flex items-center justify-center transition-colors ${
                     editor?.isActive("orderedList")
-                      ? "bg-[#BF296A] text-white"
+                      ? "bg-[#1c3b2b] text-white"
                       : "hover:bg-[#FAF6F0] text-[#2A1621]"
                   }`}
                   onClick={() => applyBlockFormatToSelection("orderedList")}
@@ -1032,7 +1071,7 @@ export default function PostEditor({
                   type="button"
                   className={`h-8 px-2 rounded font-bold text-label cursor-pointer inline-flex items-center justify-center transition-colors ${
                     editor?.isActive("blockquote")
-                      ? "bg-[#BF296A] text-white"
+                      ? "bg-[#1c3b2b] text-white"
                       : "hover:bg-[#FAF6F0] text-[#2A1621]"
                   }`}
                   onClick={() => applyBlockFormatToSelection("quote")}
@@ -1045,7 +1084,7 @@ export default function PostEditor({
                   type="button"
                   className={`h-8 px-2 rounded font-bold text-label cursor-pointer inline-flex items-center justify-center transition-colors ${
                     editor?.isActive("link")
-                      ? "bg-[#BF296A] text-white"
+                      ? "bg-[#1c3b2b] text-white"
                       : "hover:bg-[#FAF6F0] text-[#2A1621]"
                   }`}
                   onClick={handleLink}
@@ -1066,14 +1105,14 @@ export default function PostEditor({
                   <button
                     type="button"
                     disabled={uploadingContentImage}
-                    className="h-8 px-2.5 rounded-l font-bold text-label cursor-pointer inline-flex items-center gap-1.5 bg-[#FAF6F0] hover:bg-[#fff3f8] text-[#2A1621] hover:text-[#BF296A] border border-[#e6ded2] transition-colors disabled:opacity-50"
+                    className="h-8 px-2.5 rounded-l font-bold text-label cursor-pointer inline-flex items-center gap-1.5 bg-[#FAF6F0] hover:bg-[#fff3f8] text-[#2A1621] hover:text-[#1c3b2b] border border-[#e6ded2] transition-colors disabled:opacity-50"
                     onClick={() => contentImageInputRef.current?.click()}
                     title="Upload image from computer (WordPress-style)"
                   >
                     {uploadingContentImage ? (
                       <>
                         <svg
-                          className="animate-spin h-3.5 w-3.5 text-[#BF296A]"
+                          className="animate-spin h-3.5 w-3.5 text-[#1c3b2b]"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -1097,7 +1136,7 @@ export default function PostEditor({
                     ) : (
                       <>
                         <svg
-                          className="w-3.5 h-3.5 text-[#BF296A]"
+                          className="w-3.5 h-3.5 text-[#1c3b2b]"
                           fill="none"
                           stroke="currentColor"
                           strokeWidth="2"
@@ -1115,7 +1154,7 @@ export default function PostEditor({
                   </button>
                   <button
                     type="button"
-                    className="h-8 px-1.5 rounded-r font-bold text-label cursor-pointer inline-flex items-center justify-center bg-[#FAF6F0] hover:bg-[#fff3f8] text-[#6B5862] hover:text-[#BF296A] border-y border-r border-[#e6ded2] transition-colors"
+                    className="h-8 px-1.5 rounded-r font-bold text-label cursor-pointer inline-flex items-center justify-center bg-[#FAF6F0] hover:bg-[#fff3f8] text-[#6B5862] hover:text-[#1c3b2b] border-y border-r border-[#e6ded2] transition-colors"
                     onClick={() => setImageMenuOpen(!imageMenuOpen)}
                     title="More image options"
                   >
@@ -1167,8 +1206,8 @@ export default function PostEditor({
                     disabled={importingTable}
                     className={`h-8 px-2 rounded-l font-bold text-label cursor-pointer inline-flex items-center gap-1.5 border border-[#e6ded2] transition-colors disabled:opacity-50 ${
                       editor?.isActive("table")
-                        ? "bg-[#BF296A] text-white border-[#BF296A]"
-                        : "bg-[#FAF6F0] hover:bg-[#fff3f8] text-[#2A1621] hover:text-[#BF296A]"
+                        ? "bg-[#1c3b2b] text-white border-[#1c3b2b]"
+                        : "bg-[#FAF6F0] hover:bg-[#fff3f8] text-[#2A1621] hover:text-[#1c3b2b]"
                     }`}
                     onClick={() => {
                       setTablePicker(null);
@@ -1199,7 +1238,7 @@ export default function PostEditor({
                   </button>
                   <button
                     type="button"
-                    className="h-8 px-1.5 rounded-r font-bold text-label cursor-pointer inline-flex items-center justify-center bg-[#FAF6F0] hover:bg-[#fff3f8] text-[#6B5862] hover:text-[#BF296A] border-y border-r border-[#e6ded2] transition-colors"
+                    className="h-8 px-1.5 rounded-r font-bold text-label cursor-pointer inline-flex items-center justify-center bg-[#FAF6F0] hover:bg-[#fff3f8] text-[#6B5862] hover:text-[#1c3b2b] border-y border-r border-[#e6ded2] transition-colors"
                     onClick={() => {
                       setTablePicker(null);
                       setTableMenuOpen(!tableMenuOpen);
@@ -1244,8 +1283,8 @@ export default function PostEditor({
                                   onClick={() => insertEmptyTable(rows, cols)}
                                   className={`w-[20px] h-[20px] rounded-[3px] border transition-colors ${
                                     on
-                                      ? "bg-[#BF296A] border-[#BF296A]"
-                                      : "bg-[#FAF6F0] border-[#e6ded2] hover:border-[#BF296A]"
+                                      ? "bg-[#1c3b2b] border-[#1c3b2b]"
+                                      : "bg-[#FAF6F0] border-[#e6ded2] hover:border-[#1c3b2b]"
                                   }`}
                                 />
                               );
@@ -1260,7 +1299,7 @@ export default function PostEditor({
                             onChange={(e) =>
                               setTableHeaderOption(e.target.checked)
                             }
-                            className="accent-[#BF296A] w-3.5 h-3.5"
+                            className="accent-[#1c3b2b] w-3.5 h-3.5"
                           />
                           <span className="text-[#2A1621] font-medium">
                             First row is a header
@@ -1320,7 +1359,7 @@ export default function PostEditor({
                   <button
                     type="button"
                     onClick={() => editor.chain().focus().addRowAfter().run()}
-                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#BF296A] transition-colors cursor-pointer"
+                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#1c3b2b] transition-colors cursor-pointer"
                     title="Add a row below"
                   >
                     Row +
@@ -1328,7 +1367,7 @@ export default function PostEditor({
                   <button
                     type="button"
                     onClick={() => editor.chain().focus().addRowBefore().run()}
-                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#BF296A] transition-colors cursor-pointer"
+                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#1c3b2b] transition-colors cursor-pointer"
                     title="Add a row above"
                   >
                     Row ↑
@@ -1338,7 +1377,7 @@ export default function PostEditor({
                     onClick={() =>
                       editor.chain().focus().addColumnAfter().run()
                     }
-                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#BF296A] transition-colors cursor-pointer"
+                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#1c3b2b] transition-colors cursor-pointer"
                     title="Add a column to the right"
                   >
                     Col +
@@ -1348,7 +1387,7 @@ export default function PostEditor({
                     onClick={() =>
                       editor.chain().focus().addColumnBefore().run()
                     }
-                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#BF296A] transition-colors cursor-pointer"
+                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#1c3b2b] transition-colors cursor-pointer"
                     title="Add a column to the left"
                   >
                     Col ←
@@ -1359,7 +1398,7 @@ export default function PostEditor({
                   <button
                     type="button"
                     onClick={() => editor.chain().focus().deleteRow().run()}
-                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#BF296A] transition-colors cursor-pointer"
+                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#1c3b2b] transition-colors cursor-pointer"
                     title="Delete the current row"
                   >
                     Row ×
@@ -1367,7 +1406,7 @@ export default function PostEditor({
                   <button
                     type="button"
                     onClick={() => editor.chain().focus().deleteColumn().run()}
-                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#BF296A] transition-colors cursor-pointer"
+                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#1c3b2b] transition-colors cursor-pointer"
                     title="Delete the current column"
                   >
                     Col ×
@@ -1376,7 +1415,7 @@ export default function PostEditor({
                     type="button"
                     onClick={() => editor.chain().focus().mergeCells().run()}
                     disabled={!editor.can().mergeCells()}
-                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#BF296A] transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#1c3b2b] transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
                     title="Merge selected cells"
                   >
                     Merge
@@ -1385,7 +1424,7 @@ export default function PostEditor({
                     type="button"
                     onClick={() => editor.chain().focus().splitCell().run()}
                     disabled={!editor.can().splitCell()}
-                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#BF296A] transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#1c3b2b] transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
                     title="Split the current cell"
                   >
                     Split
@@ -1400,8 +1439,8 @@ export default function PostEditor({
                     }
                     className={`px-2 py-1 rounded font-medium transition-colors cursor-pointer ${
                       editor.isActive("tableHeader")
-                        ? "bg-[#BF296A] text-white"
-                        : "text-[#2A1621] hover:bg-white hover:text-[#BF296A]"
+                        ? "bg-[#1c3b2b] text-white"
+                        : "text-[#2A1621] hover:bg-white hover:text-[#1c3b2b]"
                     }`}
                     title="Toggle the first row as a header"
                   >
@@ -1417,8 +1456,8 @@ export default function PostEditor({
                       onClick={() => setCellAlign(align)}
                       className={`px-2 py-1 rounded font-medium transition-colors cursor-pointer ${
                         activeCellAttributes().textAlign === align
-                          ? "bg-[#BF296A] text-white"
-                          : "text-[#2A1621] hover:bg-white hover:text-[#BF296A]"
+                          ? "bg-[#1c3b2b] text-white"
+                          : "text-[#2A1621] hover:bg-white hover:text-[#1c3b2b]"
                       }`}
                       title={`Align ${align}`}
                     >
@@ -1431,7 +1470,7 @@ export default function PostEditor({
                     <button
                       type="button"
                       onClick={() => setCellFillMenuOpen(!cellFillMenuOpen)}
-                      className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#BF296A] transition-colors cursor-pointer inline-flex items-center gap-1"
+                      className="px-2 py-1 rounded font-medium text-[#2A1621] hover:bg-white hover:text-[#1c3b2b] transition-colors cursor-pointer inline-flex items-center gap-1"
                       title="Cell background colour"
                     >
                       <span
@@ -1469,7 +1508,7 @@ export default function PostEditor({
                                   onClick={() => setCellFill(swatch.value)}
                                   className={`h-6 w-6 rounded-md border transition-transform hover:scale-110 cursor-pointer ${
                                     active
-                                      ? "border-[#BF296A] ring-1 ring-[#BF296A]"
+                                      ? "border-[#1c3b2b] ring-1 ring-[#1c3b2b]"
                                       : "border-[#e6ded2]"
                                   }`}
                                   style={{
@@ -1482,7 +1521,7 @@ export default function PostEditor({
                           <button
                             type="button"
                             onClick={() => setCellFill(null)}
-                            className="w-full mt-2 text-left px-2 py-1.5 rounded-md text-label font-bold text-[#6B5862] hover:bg-[#FAF6F0] hover:text-[#BF296A] transition-colors cursor-pointer"
+                            className="w-full mt-2 text-left px-2 py-1.5 rounded-md text-label font-bold text-[#6B5862] hover:bg-[#FAF6F0] hover:text-[#1c3b2b] transition-colors cursor-pointer"
                           >
                             Clear fill
                           </button>
@@ -1496,7 +1535,7 @@ export default function PostEditor({
                   <button
                     type="button"
                     onClick={() => editor.chain().focus().deleteTable().run()}
-                    className="px-2 py-1 rounded font-bold text-[#951248] hover:bg-white transition-colors cursor-pointer"
+                    className="px-2 py-1 rounded font-bold text-red-600 hover:bg-white transition-colors cursor-pointer"
                     title="Delete the whole table"
                   >
                     Delete table
@@ -1523,7 +1562,7 @@ export default function PostEditor({
             </label>
             <textarea
               id="excerpt"
-              className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A] transition-all"
+              className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b] transition-all"
               rows={2}
               value={shortDesc}
               onChange={(e) => {
@@ -1553,8 +1592,8 @@ export default function PostEditor({
               <button
                 className={`px-4 py-3 font-bold text-label uppercase tracking-wider cursor-pointer relative whitespace-nowrap transition-colors ${
                   activeEditorTab === "seo"
-                    ? "text-[#BF296A] after:absolute after:left-3 after:right-3 after:bottom-0 after:h-0.5 after:bg-[#BF296A]"
-                    : "text-[#6B5862] hover:text-[#BF296A]"
+                    ? "text-[#1c3b2b] after:absolute after:left-3 after:right-3 after:bottom-0 after:h-0.5 after:bg-[#1c3b2b]"
+                    : "text-[#6B5862] hover:text-[#1c3b2b]"
                 }`}
                 onClick={() => setActiveEditorTab("seo")}
               >
@@ -1563,8 +1602,8 @@ export default function PostEditor({
               <button
                 className={`px-4 py-3 font-bold text-label uppercase tracking-wider cursor-pointer relative whitespace-nowrap transition-colors ${
                   activeEditorTab === "social"
-                    ? "text-[#BF296A] after:absolute after:left-3 after:right-3 after:bottom-0 after:h-0.5 after:bg-[#BF296A]"
-                    : "text-[#6B5862] hover:text-[#BF296A]"
+                    ? "text-[#1c3b2b] after:absolute after:left-3 after:right-3 after:bottom-0 after:h-0.5 after:bg-[#1c3b2b]"
+                    : "text-[#6B5862] hover:text-[#1c3b2b]"
                 }`}
                 onClick={() => setActiveEditorTab("social")}
               >
@@ -1573,8 +1612,8 @@ export default function PostEditor({
               <button
                 className={`px-4 py-3 font-bold text-label uppercase tracking-wider cursor-pointer relative whitespace-nowrap transition-colors ${
                   activeEditorTab === "faqs"
-                    ? "text-[#BF296A] after:absolute after:left-3 after:right-3 after:bottom-0 after:h-0.5 after:bg-[#BF296A]"
-                    : "text-[#6B5862] hover:text-[#BF296A]"
+                    ? "text-[#1c3b2b] after:absolute after:left-3 after:right-3 after:bottom-0 after:h-0.5 after:bg-[#1c3b2b]"
+                    : "text-[#6B5862] hover:text-[#1c3b2b]"
                 }`}
                 onClick={() => setActiveEditorTab("faqs")}
               >
@@ -1584,8 +1623,8 @@ export default function PostEditor({
               <button
                 className={`px-4 py-3 font-bold text-label uppercase tracking-wider cursor-pointer relative whitespace-nowrap transition-colors ${
                   activeEditorTab === "ai"
-                    ? "text-[#BF296A] after:absolute after:left-3 after:right-3 after:bottom-0 after:h-0.5 after:bg-[#BF296A]"
-                    : "text-[#6B5862] hover:text-[#BF296A]"
+                    ? "text-[#1c3b2b] after:absolute after:left-3 after:right-3 after:bottom-0 after:h-0.5 after:bg-[#1c3b2b]"
+                    : "text-[#6B5862] hover:text-[#1c3b2b]"
                 }`}
                 onClick={() => setActiveEditorTab("ai")}
               >
@@ -1594,8 +1633,8 @@ export default function PostEditor({
               <button
                 className={`px-4 py-3 font-bold text-label uppercase tracking-wider cursor-pointer relative whitespace-nowrap transition-colors ${
                   activeEditorTab === "schema"
-                    ? "text-[#BF296A] after:absolute after:left-3 after:right-3 after:bottom-0 after:h-0.5 after:bg-[#BF296A]"
-                    : "text-[#6B5862] hover:text-[#BF296A]"
+                    ? "text-[#1c3b2b] after:absolute after:left-3 after:right-3 after:bottom-0 after:h-0.5 after:bg-[#1c3b2b]"
+                    : "text-[#6B5862] hover:text-[#1c3b2b]"
                 }`}
                 onClick={() => setActiveEditorTab("schema")}
               >
@@ -1604,8 +1643,8 @@ export default function PostEditor({
               <button
                 className={`px-4 py-3 font-bold text-label uppercase tracking-wider cursor-pointer relative whitespace-nowrap transition-colors ${
                   activeEditorTab === "adv"
-                    ? "text-[#BF296A] after:absolute after:left-3 after:right-3 after:bottom-0 after:h-0.5 after:bg-[#BF296A]"
-                    : "text-[#6B5862] hover:text-[#BF296A]"
+                    ? "text-[#1c3b2b] after:absolute after:left-3 after:right-3 after:bottom-0 after:h-0.5 after:bg-[#1c3b2b]"
+                    : "text-[#6B5862] hover:text-[#1c3b2b]"
                 }`}
                 onClick={() => setActiveEditorTab("adv")}
               >
@@ -1625,7 +1664,7 @@ export default function PostEditor({
                       Focus keyword
                     </label>
                     <input
-                      className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A] transition-all"
+                      className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b] transition-all"
                       id="kw"
                       value={focusKw}
                       onChange={(e) => {
@@ -1651,7 +1690,7 @@ export default function PostEditor({
                     Meta title
                   </label>
                   <input
-                    className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A] transition-all"
+                    className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b] transition-all"
                     id="metaTitle"
                     maxLength={70}
                     value={metaTitle}
@@ -1692,7 +1731,7 @@ export default function PostEditor({
                               : metaTitle.length < 30
                                 ? "#C9862A"
                                 : metaTitle.length <= 60
-                                  ? "#BF296A"
+                                  ? "#1c3b2b"
                                   : "#b8455a",
                         }}
                       />
@@ -1711,7 +1750,7 @@ export default function PostEditor({
                     Meta description
                   </label>
                   <textarea
-                    className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A] transition-all"
+                    className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b] transition-all"
                     id="metaDesc"
                     rows={3}
                     value={metaDesc}
@@ -1739,7 +1778,7 @@ export default function PostEditor({
                               : metaDesc.length < 120
                                 ? "#C9862A"
                                 : metaDesc.length <= 160
-                                  ? "#BF296A"
+                                  ? "#1c3b2b"
                                   : "#b8455a",
                         }}
                       />
@@ -1762,7 +1801,7 @@ export default function PostEditor({
                     </p>
                     <div className="mb-3">
                       <input
-                        className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A]"
+                        className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b]"
                         placeholder="Open Graph title (defaults to SEO title)"
                         value={ogTitle}
                         onChange={(e) =>
@@ -1775,7 +1814,7 @@ export default function PostEditor({
                     </div>
                     <div className="mb-3">
                       <textarea
-                        className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A]"
+                        className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b]"
                         rows={2}
                         placeholder="Open Graph description"
                         value={ogDesc}
@@ -1791,7 +1830,7 @@ export default function PostEditor({
                       <span>🖼️</span>
                       <span>
                         Share image (
-                        <code className="text-[#BF296A] font-mono font-semibold">
+                        <code className="text-[#1c3b2b] font-mono font-semibold">
                           og:image
                         </code>
                         ) automatically uses your <b>Featured Image</b>.
@@ -1804,13 +1843,13 @@ export default function PostEditor({
                     </p>
                     <div className="mb-3">
                       <input
-                        className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A]"
+                        className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b]"
                         placeholder="Twitter title"
                       />
                     </div>
                     <div className="mb-3">
                       <textarea
-                        className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A]"
+                        className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b]"
                         rows={2}
                         placeholder="Twitter description"
                       />
@@ -1843,7 +1882,7 @@ export default function PostEditor({
                       </span>
                       <div className="flex-1 grid gap-2">
                         <input
-                          className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] font-bold focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A]"
+                          className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] font-bold focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b]"
                           placeholder="Question"
                           value={f?.q || ""}
                           onChange={(e) =>
@@ -1852,7 +1891,7 @@ export default function PostEditor({
                           aria-label={`Question ${i + 1}`}
                         />
                         <textarea
-                          className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A]"
+                          className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b]"
                           rows={2}
                           placeholder="Answer"
                           value={f?.a || ""}
@@ -1915,7 +1954,7 @@ export default function PostEditor({
                     Quick answer (TL;DR)
                   </label>
                   <textarea
-                    className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A] transition-all"
+                    className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b] transition-all"
                     id="tldr"
                     rows={3}
                     value={tldr}
@@ -1947,8 +1986,8 @@ export default function PostEditor({
                   <label
                     className={`border rounded-lg p-3 cursor-pointer relative transition-colors ${
                       postForm.schema_type === "post"
-                        ? "border-[#BF296A] bg-[#BF296A]/5"
-                        : "border-[#e6ded2] bg-white hover:border-[#BF296A]/50"
+                        ? "border-[#1c3b2b] bg-[#1c3b2b]/5"
+                        : "border-[#e6ded2] bg-white hover:border-[#1c3b2b]/50"
                     }`}
                   >
                     <input
@@ -1971,8 +2010,8 @@ export default function PostEditor({
                   <label
                     className={`border rounded-lg p-3 cursor-pointer relative transition-colors ${
                       postForm.schema_type === "article"
-                        ? "border-[#BF296A] bg-[#BF296A]/5"
-                        : "border-[#e6ded2] bg-white hover:border-[#BF296A]/50"
+                        ? "border-[#1c3b2b] bg-[#1c3b2b]/5"
+                        : "border-[#e6ded2] bg-white hover:border-[#1c3b2b]/50"
                     }`}
                   >
                     <input
@@ -1995,8 +2034,8 @@ export default function PostEditor({
                   <label
                     className={`border rounded-lg p-3 cursor-pointer relative transition-colors ${
                       postForm.schema_type === "guide"
-                        ? "border-[#BF296A] bg-[#BF296A]/5"
-                        : "border-[#e6ded2] bg-white hover:border-[#BF296A]/50"
+                        ? "border-[#1c3b2b] bg-[#1c3b2b]/5"
+                        : "border-[#e6ded2] bg-white hover:border-[#1c3b2b]/50"
                     }`}
                   >
                     <input
@@ -2034,7 +2073,7 @@ export default function PostEditor({
                     Canonical URL
                   </label>
                   <input
-                    className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A] transition-all font-mono"
+                    className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b] transition-all font-mono"
                     value={canonicalUrl}
                     onChange={(e) =>
                       setPostForm((prev) => ({
@@ -2042,7 +2081,7 @@ export default function PostEditor({
                         canonical_url: e.target.value,
                       }))
                     }
-                    placeholder={`https://sanskritiyogpeeth.org/blog/${slug || "post"}`}
+                    placeholder={`https://www.siddhantschoolofyoga.com/blogs/${slug || "post"}`}
                   />
                   <p className="text-label text-[#6B5862]/80 mt-1.5">
                     Only change this if the same article lives at another URL.
@@ -2058,7 +2097,7 @@ export default function PostEditor({
                   <textarea
                     id="conclusion"
                     rows={4}
-                    className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A] transition-all"
+                    className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b] transition-all"
                     value={postForm.conclusion || ""}
                     onChange={(e) => {
                       setPostForm((prev) => ({
@@ -2079,7 +2118,7 @@ export default function PostEditor({
                     <input
                       type="checkbox"
                       defaultChecked
-                      className="rounded border-[#e6ded2] text-[#BF296A] focus:ring-[#BF296A]"
+                      className="rounded border-[#e6ded2] text-[#1c3b2b] focus:ring-[#1c3b2b]"
                     />{" "}
                     Show this post in search results (index)
                   </label>
@@ -2089,7 +2128,7 @@ export default function PostEditor({
                     <input
                       type="checkbox"
                       defaultChecked
-                      className="rounded border-[#e6ded2] text-[#BF296A] focus:ring-[#BF296A]"
+                      className="rounded border-[#e6ded2] text-[#1c3b2b] focus:ring-[#1c3b2b]"
                     />{" "}
                     Let search engines follow links (follow)
                   </label>
@@ -2124,7 +2163,7 @@ export default function PostEditor({
                 </label>
                 <input
                   type="datetime-local"
-                  className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b]"
                   id="pubDate"
                   value={postForm.published_at || ""}
                   onChange={(e) => {
@@ -2166,7 +2205,7 @@ export default function PostEditor({
               </button>
               <button
                 type="button"
-                className="px-4 py-2 rounded-lg text-body-sm font-semibold bg-gradient-to-r from-[#BF296A] to-[#951248] text-white hover:from-[#a71d58] hover:to-[#800e3d] shadow-sm hover:shadow-md transition-all cursor-pointer"
+                className="px-4 py-2 rounded-lg text-body-sm font-semibold bg-gradient-to-r from-[#1c3b2b] to-[#14291e] text-white hover:from-[#234b37] hover:to-[#1c3b2b] shadow-sm hover:shadow-md transition-all cursor-pointer"
                 onClick={() => handleSavePost("published")}
               >
                 {pendingSchedule.isFuture && postForm.status !== "draft"
@@ -2178,72 +2217,85 @@ export default function PostEditor({
             </div>
           </section>
 
-          <section className="bg-white border border-[#e6ded2] rounded-xl shadow-xs overflow-hidden">
+          <section className="bg-white border border-[#e6ded2] rounded-xl shadow-xs overflow-visible">
             <h2 className="px-4 py-3 border-b border-[#e6ded2] font-bold text-body-sm text-[#2A1621] flex justify-between items-center bg-[#FAF6F0]/60">
               <span>Author</span>
-              {isAdmin && (
-                <button
-                  type="button"
-                  onClick={() => setView("authors")}
-                  className="text-label font-semibold text-[#BF296A] hover:underline cursor-pointer"
-                >
-                  Manage
-                </button>
-              )}
             </h2>
-            <div className="p-4">
-              {isAuthor ? (
-                <div className="w-full px-3.5 py-2.5 bg-[#FAF6F0] border border-[#e6ded2] rounded-lg text-body-sm font-semibold text-[#2A1621] flex items-center justify-between">
-                  <span>{currentUser?.name || postForm.author}</span>
-                  <span className="text-label uppercase tracking-wider font-extrabold px-2 py-0.5 rounded bg-teal-50 text-teal-700 border border-teal-200">
-                    My Profile
-                  </span>
-                </div>
-              ) : (
-                <select
-                  className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A]"
+            <div className="p-4" ref={authorDropdownRef}>
+              <div className="relative">
+                <input
+                  type="text"
+                  className="w-full px-3.5 py-2.5 pr-9 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/60 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b]"
                   value={postForm.author || ""}
+                  placeholder="Author name (default: Siddhant School of Yoga)"
+                  onFocus={() => setAuthorDropdownOpen(true)}
                   onChange={(e) => {
                     setPostForm((prev) => ({
                       ...prev,
                       author: e.target.value,
                     }));
                     setSaveState("Unsaved changes");
+                    setAuthorDropdownOpen(true);
                   }}
-                  aria-label="Author"
+                  aria-label="Author byline"
+                />
+                <button
+                  type="button"
+                  onClick={() => setAuthorDropdownOpen((prev) => !prev)}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#6B5862]/60 hover:text-[#2A1621] p-1 transition-colors"
+                  title="Toggle author suggestions"
+                  tabIndex={-1}
                 >
-                  {authors.map((a) => (
-                    <option key={a.id} value={a.name}>
-                      {a.name}
-                    </option>
-                  ))}
-                </select>
-              )}
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${authorDropdownOpen ? "rotate-180" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
 
-              {currentAuthor && (
-                <div className="flex items-center gap-3 mt-3">
-                  <span className="w-10 h-10 rounded-full object-cover bg-gradient-to-br from-[#BF296A] to-[#951248] text-white flex items-center justify-center font-bold text-body-sm overflow-hidden shrink-0 shadow-xs">
-                    {currentAuthor.photo ? (
-                      <img
-                        src={currentAuthor.photo}
-                        alt={currentAuthor.name}
-                        className="w-full h-full object-cover"
-                      />
+                {authorDropdownOpen && (
+                  <div className="absolute left-0 right-0 top-full mt-1.5 z-40 bg-white border border-[#e6ded2] rounded-lg shadow-lg max-h-56 overflow-y-auto divide-y divide-[#FAF6F0] py-1">
+                    {filteredAuthors.length > 0 ? (
+                      filteredAuthors.map((name) => {
+                        const isSelected = postForm.author === name;
+                        return (
+                          <button
+                            key={name}
+                            type="button"
+                            onClick={() => {
+                              setPostForm((prev) => ({ ...prev, author: name }));
+                              setSaveState("Unsaved changes");
+                              setAuthorDropdownOpen(false);
+                            }}
+                            className={`w-full text-left px-3.5 py-2 text-body-sm flex items-center justify-between transition-colors ${
+                              isSelected
+                                ? "bg-[#1c3b2b]/10 text-[#1c3b2b] font-medium"
+                                : "text-[#2A1621] hover:bg-[#FAF6F0]"
+                            }`}
+                          >
+                            <span>{name}</span>
+                            {isSelected && (
+                              <svg className="w-4 h-4 text-[#1c3b2b]" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                              </svg>
+                            )}
+                          </button>
+                        );
+                      })
                     ) : (
-                      getInitials(currentAuthor.name)
+                      <div className="px-3.5 py-2.5 text-xs text-[#6B5862]/80">
+                        New author: &ldquo;<span className="font-semibold text-[#2A1621]">{postForm.author}</span>&rdquo; will be remembered automatically on save.
+                      </div>
                     )}
-                  </span>
-                  <span className="text-label leading-snug">
-                    <b className="font-bold text-[#2A1621] text-body-sm">
-                      {currentAuthor.name}
-                    </b>
-                    <br />
-                    <span className="text-[#6B5862]/80">
-                      {currentAuthor.title || "No credentials added"}
-                    </span>
-                  </span>
-                </div>
-              )}
+                  </div>
+                )}
+              </div>
+              <p className="text-xs text-[#6B5862]/70 mt-2">
+                Select a previously used byline or type a new one (automatically remembered after saving). Default: Siddhant School of Yoga.
+              </p>
             </div>
           </section>
 
@@ -2254,7 +2306,7 @@ export default function PostEditor({
                 <button
                   type="button"
                   onClick={() => setView("categories")}
-                  className="text-label font-semibold text-[#BF296A] hover:underline cursor-pointer"
+                  className="text-label font-semibold text-[#1c3b2b] hover:underline cursor-pointer"
                 >
                   Manage
                 </button>
@@ -2262,7 +2314,7 @@ export default function PostEditor({
             </h2>
             <div className="p-4">
               <select
-                className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A]"
+                className="w-full px-3.5 py-2.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b]"
                 value={postForm.category_id || ""}
                 onChange={(e) => {
                   const catObj = categories.find(
@@ -2288,7 +2340,7 @@ export default function PostEditor({
               {isAdmin && (
                 <button
                   type="button"
-                  className="text-label font-bold text-[#BF296A] hover:underline cursor-pointer mt-2 block"
+                  className="text-label font-bold text-[#1c3b2b] hover:underline cursor-pointer mt-2 block"
                   onClick={() => setQuickCatOpen(!quickCatOpen)}
                 >
                   + Add new category
@@ -2298,7 +2350,7 @@ export default function PostEditor({
               {quickCatOpen && (
                 <div className="mt-2 flex gap-2">
                   <input
-                    className="flex-1 px-3 py-1.5 bg-white border border-[#e6ded2] rounded-lg text-label text-[#2A1621] focus:outline-none focus:ring-1 focus:ring-[#BF296A]"
+                    className="flex-1 px-3 py-1.5 bg-white border border-[#e6ded2] rounded-lg text-label text-[#2A1621] focus:outline-none focus:ring-1 focus:ring-[#1c3b2b]"
                     placeholder="Category name"
                     value={quickCatName}
                     onChange={(e) => setQuickCatName(e.target.value)}
@@ -2341,9 +2393,9 @@ export default function PostEditor({
               />
 
               {uploadingImage ? (
-                <div className="flex flex-col items-center justify-center aspect-[1.91/1] border-2 border-dashed border-[#BF296A]/40 rounded-lg bg-[#fff3f8] text-[#BF296A] text-label mb-2.5 p-4 text-center">
+                <div className="flex flex-col items-center justify-center aspect-[1.91/1] border-2 border-dashed border-[#1c3b2b]/40 rounded-lg bg-[#fff3f8] text-[#1c3b2b] text-label mb-2.5 p-4 text-center">
                   <svg
-                    className="animate-spin h-6 w-6 mb-2 text-[#BF296A]"
+                    className="animate-spin h-6 w-6 mb-2 text-[#1c3b2b]"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -2386,10 +2438,10 @@ export default function PostEditor({
                     <button
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
-                      className="px-3 py-1.5 bg-white text-[#2A1621] hover:text-[#BF296A] text-label font-bold rounded-md shadow-md flex items-center gap-1.5 transition-all hover:scale-105 cursor-pointer"
+                      className="px-3 py-1.5 bg-white text-[#2A1621] hover:text-[#1c3b2b] text-label font-bold rounded-md shadow-md flex items-center gap-1.5 transition-all hover:scale-105 cursor-pointer"
                     >
                       <svg
-                        className="w-3.5 h-3.5 text-[#BF296A]"
+                        className="w-3.5 h-3.5 text-[#1c3b2b]"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2"
@@ -2424,7 +2476,7 @@ export default function PostEditor({
                     <button
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
-                      className="font-bold text-[#BF296A] hover:text-[#951248] flex items-center gap-1.5 cursor-pointer transition-colors"
+                      className="font-bold text-[#1c3b2b] hover:text-[#b85c00] flex items-center gap-1.5 cursor-pointer transition-colors"
                     >
                       <span>🔄</span>
                       <span>Replace Image</span>
@@ -2448,7 +2500,7 @@ export default function PostEditor({
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full flex flex-col items-center justify-center aspect-[1.91/1] border-2 border-dashed border-[#e6ded2] rounded-lg bg-[#FAF6F0]/50 text-[#6B5862] text-label cursor-pointer mb-2.5 relative overflow-hidden transition-all hover:border-[#BF296A] hover:text-[#BF296A] hover:bg-[#fff3f8]/50"
+                  className="w-full flex flex-col items-center justify-center aspect-[1.91/1] border-2 border-dashed border-[#e6ded2] rounded-lg bg-[#FAF6F0]/50 text-[#6B5862] text-label cursor-pointer mb-2.5 relative overflow-hidden transition-all hover:border-[#1c3b2b] hover:text-[#1c3b2b] hover:bg-[#fff3f8]/50"
                 >
                   <svg
                     className="w-8 h-8 text-[#6B5862]/50 mb-1.5"
@@ -2481,7 +2533,7 @@ export default function PostEditor({
                 </label>
                 <input
                   id="featuredAlt"
-                  className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A]"
+                  className="w-full px-3.5 py-2 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b]"
                   placeholder="Alt text, e.g. Student in Lotus Pose"
                   value={postForm.featured_image_alt || ""}
                   onChange={(e) => {

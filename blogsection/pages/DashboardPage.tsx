@@ -8,14 +8,11 @@ import Sidebar from "../components/dashboard/Sidebar";
 import DashboardOverview from "../components/dashboard/DashboardOverview";
 import PostEditor from "../components/dashboard/PostEditor";
 import CategoriesView from "../components/dashboard/CategoriesView";
-import AuthorsView from "../components/dashboard/AuthorsView";
-import LoginLogsView from "../components/dashboard/LoginLogsView";
 import DeleteModals from "../components/dashboard/DeleteModals";
 import Toast from "../components/dashboard/Toast";
 import {
   Blog,
   Category,
-  Author,
   FaqItem,
   FaqRow,
   CurrentUser,
@@ -32,9 +29,9 @@ type PostFormStatus = PostStatus;
 export default function BlogDashboardPage() {
   const router = useRouter();
 
-  // Navigation: "dashboard" | "editor" | "categories" | "authors" | "logs"
+  // Navigation: "dashboard" | "editor" | "categories"
   const [view, setView] = useState<
-    "dashboard" | "editor" | "categories" | "authors" | "logs"
+    "dashboard" | "editor" | "categories"
   >("dashboard");
   const [authLoading, setAuthLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
@@ -42,7 +39,7 @@ export default function BlogDashboardPage() {
   // Data states
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [authors, setAuthors] = useState<Author[]>([]);
+  const [authors, setAuthors] = useState<string[]>([]);
   const [loadingData, setLoadingData] = useState(false);
 
   // Filters & selection for posts table
@@ -61,9 +58,6 @@ export default function BlogDashboardPage() {
   const [catToDelete, setCatToDelete] = useState<Category | null>(null);
   const [catMoveTarget, setCatMoveTarget] = useState<string>("");
 
-  const [authorToDelete, setAuthorToDelete] = useState<Author | null>(null);
-  const [authorMoveTarget, setAuthorMoveTarget] = useState<string>("");
-
   // Editor states
   const [saveState, setSaveState] = useState<
     "Saved" | "Unsaved changes" | "Saving..." | "All changes saved"
@@ -76,29 +70,6 @@ export default function BlogDashboardPage() {
   const [uploadingImage, setUploadingImage] = useState(false);
   const rteRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // Author Drawer State
-  const [authorDrawerOpen, setAuthorDrawerOpen] = useState(false);
-  const [authorRoleFilter, setAuthorRoleFilter] = useState("");
-  const [authorForm, setAuthorForm] = useState({
-    id: 0,
-    username: "",
-    name: "",
-    slug: "",
-    slugTouched: false,
-    email: "",
-    role: "author" as "admin" | "editor" | "author",
-    title: "",
-    bio: "",
-    experience_years: 0,
-    instagram: "",
-    youtube: "",
-    yoga_alliance: "",
-    photo: "",
-    password: "",
-  });
-  const [uploadingAuthorPhoto, setUploadingAuthorPhoto] = useState(false);
-  const authorPhotoInputRef = useRef<HTMLInputElement>(null);
 
   // Editor form state
   const [postForm, setPostForm] = useState({
@@ -123,7 +94,7 @@ export default function BlogDashboardPage() {
     schema_type: "post",
     canonical_url: "",
     conclusion: "",
-    author: "Sanskriti Yogpeeth Admin",
+    author: "Siddhant School of Yoga",
     published_at: "",
     status: "draft" as PostFormStatus,
     popular: false,
@@ -141,7 +112,6 @@ export default function BlogDashboardPage() {
     name: "",
     slug: "",
     slugTouched: false,
-    parent_id: "",
     description: "",
     color: SWATCH_COLORS[0],
     meta_title: "",
@@ -200,9 +170,7 @@ export default function BlogDashboardPage() {
   }, [router]);
 
   // Protect Admin-only views against URL / client manipulation.
-  // Adjusted during render so React re-renders immediately without a
-  // cascading setState-in-effect pass.
-  const ADMIN_ONLY_VIEWS = ["categories", "authors", "logs"];
+  const ADMIN_ONLY_VIEWS = ["categories"];
   const lastRoleRef = useRef(currentUser?.role);
   if (currentUser?.role !== lastRoleRef.current) {
     lastRoleRef.current = currentUser?.role;
@@ -220,24 +188,8 @@ export default function BlogDashboardPage() {
     }
   };
 
-  // Role-based visible blogs:
-  // Authors ONLY see their own posts; Editors and Admins see all posts
-  const roleBlogs = useMemo(() => {
-    if (currentUser?.role === "author") {
-      return blogs.filter((b) => {
-        const authorLower = (b.author || "").toLowerCase();
-        const userNameLower = (currentUser?.name || "").toLowerCase();
-        const userUsernameLower = (currentUser?.username || "").toLowerCase();
-        return (
-          authorLower === userNameLower ||
-          authorLower === userUsernameLower ||
-          b.author === currentUser.name ||
-          b.author === currentUser.username
-        );
-      });
-    }
-    return blogs;
-  }, [blogs, currentUser]);
+  // Only Admin can access dashboard; all posts are visible
+  const roleBlogs = blogs;
 
   // Metrics calculation
   const stats = useMemo(() => {
@@ -276,10 +228,7 @@ export default function BlogDashboardPage() {
   // Handle open editor for write
   const openWritePost = () => {
     const defaultCat = categories[0];
-    const defaultAuthor =
-      currentUser?.role === "author"
-        ? currentUser?.name || currentUser?.username || "Author"
-        : currentUser?.name || authors[0]?.name || "Sanskriti Yogpeeth Admin";
+    const defaultAuthor = currentUser?.name || "Siddhant School of Yoga";
 
     setPostForm({
       id: 0,
@@ -391,7 +340,7 @@ export default function BlogDashboardPage() {
       schema_type: b.schema_type || "post",
       canonical_url: b.canonical_url || "",
       conclusion: b.conclusion || "",
-      author: b.author || currentUser?.name || "Sanskriti Yogpeeth Admin",
+      author: b.author || currentUser?.name || "Siddhant School of Yoga",
       // Local wall clock, not UTC — the input is a timezone-less datetime-local.
       published_at: toDateTimeLocal(b.published_at),
       status: b.status || "draft",
@@ -795,7 +744,7 @@ export default function BlogDashboardPage() {
       slug: cleanSlug,
       description: categoryForm.description,
       color: categoryForm.color,
-      parent_id: categoryForm.parent_id ? Number(categoryForm.parent_id) : null,
+      parent_id: null,
       meta_title: categoryForm.meta_title,
       meta_description: categoryForm.meta_description,
     };
@@ -833,7 +782,6 @@ export default function BlogDashboardPage() {
       name: "",
       slug: "",
       slugTouched: false,
-      parent_id: "",
       description: "",
       color: SWATCH_COLORS[0],
       meta_title: "",
@@ -848,7 +796,6 @@ export default function BlogDashboardPage() {
       name: c.name,
       slug: c.slug,
       slugTouched: true,
-      parent_id: c.parent_id ? String(c.parent_id) : "",
       description: c.description || "",
       color: c.color || SWATCH_COLORS[0],
       meta_title: c.meta_title || "",
@@ -875,168 +822,18 @@ export default function BlogDashboardPage() {
     }
   };
 
-  // ================= AUTHORS MANAGEMENT =================
-  const openAuthorDrawer = (a?: Author) => {
-    if (a) {
-      setAuthorForm({
-        id: a.id,
-        username: a.username || a.slug || slugify(a.name),
-        name: a.name,
-        slug: a.slug || slugify(a.name),
-        slugTouched: true,
-        email: a.email,
-        role: a.role || "author",
-        title: a.title || "",
-        bio: a.bio || "",
-        experience_years: a.experience_years || 0,
-        instagram: a.instagram || "",
-        youtube: a.youtube || "",
-        yoga_alliance: a.yoga_alliance || "",
-        photo: a.photo || "",
-        password: "",
-      });
-    } else {
-      setAuthorForm({
-        id: 0,
-        username: "",
-        name: "",
-        slug: "",
-        slugTouched: false,
-        email: "",
-        role: "author",
-        title: "",
-        bio: "",
-        experience_years: 0,
-        instagram: "",
-        youtube: "",
-        yoga_alliance: "",
-        photo: "",
-        password: "author@123",
-      });
-    }
-    setAuthorDrawerOpen(true);
-  };
-
-  const closeAuthorDrawer = () => {
-    setAuthorDrawerOpen(false);
-  };
-
-  const handleAuthorPhotoUpload = async (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setUploadingAuthorPhoto(true);
-    try {
-      const fd = new FormData();
-      fd.append("file", file);
-      const res = await fetch("/api/blog/upload", { method: "POST", body: fd });
-      const data = await res.json();
-      if (res.ok && data.success) {
-        setAuthorForm((prev) => ({ ...prev, photo: data.url }));
-        showToast("Photo uploaded!");
-      } else {
-        showToast(data.message || "Failed to upload photo");
-      }
-    } catch {
-      showToast("Photo upload error");
-    } finally {
-      setUploadingAuthorPhoto(false);
-    }
-  };
-
-  const handleAuthorSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!authorForm.name.trim()) {
-      showToast("Please enter author's full name");
-      return;
-    }
-    if (!authorForm.email.trim()) {
-      showToast("Please enter author's email address");
-      return;
-    }
-
-    const cleanSlug = authorForm.slug
-      ? slugify(authorForm.slug)
-      : slugify(authorForm.name);
-    const cleanUsername = (authorForm.username || cleanSlug)
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9_-]/g, "");
-
-    const payload = {
-      ...authorForm,
-      username: cleanUsername,
-      slug: cleanSlug,
-    };
-
-    try {
-      const url =
-        authorForm.id === 0
-          ? "/api/blog/authors"
-          : `/api/blog/authors/${authorForm.id}`;
-      const method = authorForm.id === 0 ? "POST" : "PUT";
-
-      const res = await fetch(url, {
-        method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      const data = await res.json();
-      if (res.ok && data.success) {
-        showToast(
-          authorForm.id === 0
-            ? "Author added successfully!"
-            : "Author updated successfully!",
-        );
-        closeAuthorDrawer();
-        loadData();
-      } else {
-        showToast(data.message || "Failed to save author");
-      }
-    } catch {
-      showToast("Server error while saving author");
-    }
-  };
-
-  const confirmDeleteAuthor = async () => {
-    if (!authorToDelete) return;
-    try {
-      const url = `/api/blog/authors/${authorToDelete.id}?moveToAuthor=${encodeURIComponent(authorMoveTarget)}`;
-      const res = await fetch(url, { method: "DELETE" });
-      if (res.ok) {
-        showToast("Author deleted successfully");
-        setAuthorToDelete(null);
-        loadData();
-      } else {
-        showToast("Failed to delete author");
-      }
-    } catch {
-      showToast("Error deleting author");
-    }
-  };
-
-  // Filtered authors list
-  const filteredAuthors = useMemo(() => {
-    return authors.filter(
-      (a) => !authorRoleFilter || a.role === authorRoleFilter,
-    );
-  }, [authors, authorRoleFilter]);
-
   if (authLoading || !currentUser) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#241711] text-white font-sans">
+      <div className="flex min-h-screen items-center justify-center bg-[#16271e] text-white font-sans">
         <div className="text-center flex flex-col items-center gap-4">
           <div className="bg-white px-6 py-3 rounded-xl shadow-2xl border border-white/20">
             <img
-              src="/images/branding/logo1.webp"
-              alt="Sanskriti Yogpeeth"
+              src="/logo/siddhant-logo.svg"
+              alt="Siddhant School of Yoga"
               className="h-10 w-auto object-contain"
             />
           </div>
-          <p className="text-body-sm text-[#e2c1cf] font-medium">
+          <p className="text-body-sm text-[#FAF6F0]/80 font-medium font-figtree">
             Loading Blog Admin...
           </p>
         </div>
@@ -1054,7 +851,6 @@ export default function BlogDashboardPage() {
           openWritePost={openWritePost}
           blogsCount={roleBlogs.length}
           categoriesCount={categories.length}
-          authorsCount={authors.length}
           currentUser={currentUser}
           onLogout={handleLogout}
         />
@@ -1093,6 +889,7 @@ export default function BlogDashboardPage() {
           {view === "editor" && (
             <PostEditor
               currentUser={currentUser}
+              authors={authors}
               postForm={postForm}
               setPostForm={setPostForm}
               saveState={saveState}
@@ -1103,7 +900,6 @@ export default function BlogDashboardPage() {
               wordCount={wordCount}
               rteRef={rteRef}
               fileInputRef={fileInputRef}
-              authors={authors}
               categories={categories}
               handleRteCommand={handleRteCommand}
               handleSavePost={handleSavePost}
@@ -1141,31 +937,6 @@ export default function BlogDashboardPage() {
             />
           )}
 
-          {/* VIEW 4: AUTHORS (ADMIN ONLY) */}
-          {view === "authors" && currentUser?.role === "admin" && (
-            <AuthorsView
-              authors={authors}
-              filteredAuthors={filteredAuthors}
-              authorRoleFilter={authorRoleFilter}
-              setAuthorRoleFilter={setAuthorRoleFilter}
-              openAuthorDrawer={openAuthorDrawer}
-              closeAuthorDrawer={closeAuthorDrawer}
-              authorDrawerOpen={authorDrawerOpen}
-              authorForm={authorForm}
-              setAuthorForm={setAuthorForm}
-              handleAuthorSubmit={handleAuthorSubmit}
-              handleAuthorPhotoUpload={handleAuthorPhotoUpload}
-              uploadingAuthorPhoto={uploadingAuthorPhoto}
-              authorPhotoInputRef={authorPhotoInputRef}
-              setAuthorToDelete={setAuthorToDelete}
-              blogs={blogs}
-            />
-          )}
-
-          {/* VIEW 5: LOGIN ACTIVITY LOGS (ADMIN ONLY) */}
-          {view === "logs" && currentUser?.role === "admin" && (
-            <LoginLogsView showToast={showToast} />
-          )}
         </main>
 
         {/* ===================== DELETE MODALS ===================== */}
@@ -1179,12 +950,6 @@ export default function BlogDashboardPage() {
           setCatMoveTarget={setCatMoveTarget}
           categories={categories}
           confirmDeleteCategory={confirmDeleteCategory}
-          authorToDelete={authorToDelete}
-          setAuthorToDelete={setAuthorToDelete}
-          authorMoveTarget={authorMoveTarget}
-          setAuthorMoveTarget={setAuthorMoveTarget}
-          authors={authors}
-          confirmDeleteAuthor={confirmDeleteAuthor}
         />
 
         {/* ===================== TOAST NOTIFICATION ===================== */}

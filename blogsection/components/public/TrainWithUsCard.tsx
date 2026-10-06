@@ -12,74 +12,41 @@ import {
   Waves,
   type LucideIcon,
 } from "lucide-react";
-import { COURSES } from "@/content/courses";
-import { RETREATS } from "@/content/retreats";
+import { teacherTrainings, retreats } from "@/data/coursesData";
 
 type CardItem = {
   title: string;
   subtitle: string;
   href: string;
-  /** Hours for TTC, days for retreats. Omitted for themed entries. */
   count?: number;
   unit?: "hrs" | "days";
   icon?: LucideIcon;
   popular?: boolean;
 };
 
-/**
- * Themed entries (Kundalini, meditation, Ayurveda, wellness) get an icon
- * instead of a number badge. Everything else shows its real hour/day count.
- * Remove a slug here to give it a numeric badge instead.
- */
-const TTC_THEMED = new Set([
-  "100-hour-kundalini-yoga-teacher-training-in-rishikesh",
-  "200-hour-kundalini-yoga-teacher-training-in-rishikesh",
-]);
-
-const RETREAT_THEMED: Record<string, LucideIcon | undefined> = {
-  "yoga-and-meditation-wellness-retreat-rishikesh": Waves,
-  "ayurveda-panchakarma-detox-retreat-rishikesh": Leaf,
-  "himalayan-meditation-retreat-rishikesh": Flower2,
-  "stress-anxiety-relief-yoga-retreat-rishikesh": Wind,
-  "yoga-and-wellness-retreat-rishikesh": Heart,
-};
-
-const POPULAR_TTC = new Set(["200-hour-yoga-teacher-training-in-rishikesh"]);
-
-const strip = (s: string) =>
-  s
-    .replace(/^\d+\s*Days?\s*[—–-]\s*/i, "")
-    .replace(/\s*(in|,)\s*Rishikesh(,\s*India)?$/i, "")
-    .trim();
-
-const leadingDays = (duration: string) => {
-  const m = duration?.match(/^(\d+)/);
-  return m ? Number(m[1]) : undefined;
-};
-
-const TTC_ITEMS: CardItem[] = COURSES.map((c) => {
-  const themed = TTC_THEMED.has(c.slug);
+const TTC_ITEMS: CardItem[] = teacherTrainings.map((c: any) => {
+  const matchHours = c.title.match(/(\d+)[-\s]*Hour/i);
+  const hours = matchHours ? Number(matchHours[1]) : undefined;
   return {
-    title: c.shortName,
-    subtitle: `${c.certification} · ${c.durationLabel}`,
+    title: c.title,
+    subtitle: `${c.certification} · ${c.duration}`,
     href: `/${c.slug}`,
-    count: themed ? undefined : c.hours,
-    unit: themed ? undefined : "hrs",
-    icon: themed ? Sparkles : undefined,
-    popular: POPULAR_TTC.has(c.slug),
+    count: hours,
+    unit: hours ? "hrs" : undefined,
+    icon: hours ? undefined : Sparkles,
+    popular: c.featured || c.badge === "Most Popular",
   };
 });
 
-const RETREAT_ITEMS: CardItem[] = RETREATS.map((r) => {
-  const themed = RETREAT_THEMED[r.slug];
-  const days = leadingDays(r.duration);
+const RETREAT_ITEMS: CardItem[] = retreats.map((r: any) => {
   return {
-    title: `${strip(r.shortName === "Retreat" ? r.title : r.shortName)} in Rishikesh`,
-    subtitle: r.duration,
+    title: r.title,
+    subtitle: r.duration || "Immersion Retreat",
     href: `/${r.slug}`,
-    count: themed ? undefined : days,
-    unit: themed ? undefined : "days",
-    icon: themed,
+    count: r.days || undefined,
+    unit: r.days ? "days" : undefined,
+    icon: r.days ? undefined : Waves,
+    popular: r.badge === "Most Popular",
   };
 });
 
@@ -92,20 +59,18 @@ function Badge({ item }: { item: CardItem }) {
   const { count, unit, icon: Icon } = item;
 
   return (
-    <div className="flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-2xl border border-[#BF296A]/15 bg-[#BF296A]/10">
+    <div className="flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-2xl border border-[#e3dac9] bg-[#f4efe6]">
       {count ? (
         <div className="text-center leading-none">
-          <div
-            className="font-display font-bold text-card text-[#BF296A]"
-          >
+          <div className="font-belleza font-normal text-xl text-[#1c3b2b]">
             {count}
           </div>
-          <div className="mt-1 text-body-sm font-semibold text-[#6B5862]/80">
+          <div className="mt-1 text-[11px] font-figtree font-semibold text-stone-600">
             {unit}
           </div>
         </div>
       ) : (
-        Icon && <Icon className="h-8 w-8 text-[#BF296A]" strokeWidth={1.5} />
+        Icon && <Icon className="h-6 w-6 text-[#1c3b2b]" strokeWidth={1.5} />
       )}
     </div>
   );
@@ -116,72 +81,60 @@ export default function TrainWithUsCard() {
   const current = TABS.find((t) => t.key === active)!;
 
   return (
-    <div className="relative overflow-hidden rounded-[32px] border border-[#BF296A]/20 bg-[#FFFBFD] p-4 font-sans shadow-sm sm:p-5">
+    <div className="relative overflow-hidden rounded-3xl border border-[#e3dac9] bg-[#fdfbf7] p-5 font-figtree shadow-xs">
       {/* Heading */}
-      <div className="relative">
-        <h2 className="font-display text-card font-semibold leading-[1.15] tracking-[-0.01em] text-[#2A1621]">
-          Pick your course or retreat
-        </h2>
-        <p className="mt-2 text-body-sm leading-relaxed text-[#6B5862]">
-          Yoga, Ayurveda and authentic yogic lifestyle experiences. Meals and
-          stay included.
-        </p>
+      <div className="mb-4 flex items-center justify-between">
+        <h3 className="font-belleza text-xl font-normal text-[#1e2422]">
+          Train With Us
+        </h3>
+        <span className="font-figtree text-xs font-semibold uppercase tracking-wider text-[#b85c00]">
+          Rishikesh
+        </span>
       </div>
 
-      {/* Tab switcher */}
-      <div
-        role="tablist"
-        aria-label="Courses and retreats"
-        className="relative mt-3 grid grid-cols-2 rounded-full border border-gray-100 bg-[#FDF9FB] p-1.5"
-      >
-        {TABS.map((tab) => {
-          const isActive = tab.key === active;
-          return (
-            <button
-              key={tab.key}
-              type="button"
-              role="tab"
-              aria-selected={isActive}
-              onClick={() => setActive(tab.key)}
-              className={`rounded-full py-3 text-body-sm font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#BF296A] ${
-                isActive
-                  ? "bg-gradient-to-r from-[#BF296A] to-[#951248] text-white shadow-sm"
-                  : "text-[#6B5862] hover:text-[#BF296A]"
-              }`}
-            >
-              {tab.label}
-            </button>
-          );
-        })}
+      {/* Tabs */}
+      <div className="mb-4 flex rounded-xl bg-[#f4efe6] p-1 font-figtree">
+        {TABS.map((tab) => (
+          <button
+            key={tab.key}
+            type="button"
+            onClick={() => setActive(tab.key)}
+            className={`flex-1 rounded-lg py-1.5 text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+              active === tab.key
+                ? "bg-white text-[#1c3b2b] shadow-xs"
+                : "text-stone-600 hover:text-[#1e2422]"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
 
-      {/* List — scrolls if there are many items */}
-      <div
-        role="tabpanel"
-        className="relative mt-4 max-h-[420px] space-y-3 overflow-y-auto"
-      >
-        {current.items.map((item) => (
+      {/* Course List */}
+      <div className="space-y-2.5 font-figtree">
+        {current.items.slice(0, 5).map((item, idx) => (
           <Link
-            key={item.href}
+            key={idx}
             href={item.href}
-            className="group flex items-center gap-4 rounded-2xl border border-gray-100 bg-white p-2 transition-colors duration-200 hover:border-[#BF296A]/50 hover:bg-[#FDF9FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#BF296A]"
+            className="group flex items-center gap-3.5 rounded-2xl border border-[#e3dac9]/60 bg-white p-2.5 transition-all hover:border-[#1c3b2b]/50 hover:shadow-xs"
           >
             <Badge item={item} />
-
             <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center">
-                {/* title */}
-                <h3 className="font-display text-body font-bold leading-snug tracking-tight text-[#2A1621]">
+              <div className="flex items-center gap-2">
+                <h4 className="truncate font-belleza text-base font-normal text-[#1e2422] group-hover:text-[#1c3b2b] transition-colors">
                   {item.title}
-                </h3>
-                
+                </h4>
+                {item.popular && (
+                  <span className="rounded-full bg-[#f4efe6] px-2 py-0.5 text-[10px] font-semibold text-[#b85c00] border border-[#b85c00]/30 shrink-0">
+                    Popular
+                  </span>
+                )}
               </div>
-              <p className="mt-1 text-body-sm leading-snug text-[#6B5862]">
+              <p className="truncate text-xs text-stone-500 mt-0.5 font-figtree">
                 {item.subtitle}
               </p>
             </div>
-
-          
+            <ChevronRight className="h-4 w-4 text-stone-400 group-hover:text-[#1c3b2b] group-hover:translate-x-0.5 transition-all shrink-0" />
           </Link>
         ))}
       </div>

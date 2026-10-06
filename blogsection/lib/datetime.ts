@@ -1,9 +1,7 @@
 /**
  * Publish-date helpers shared by the server routes and the dashboard editor.
  *
- * Deliberately dependency-free: `schedule.ts` imports the Supabase client, which
- * throws at module load when env vars are missing, so the client bundle must not
- * reach this code through it.
+ * Deliberately dependency-free.
  *
  * A scheduled post is a post with `status = 'scheduled'` and a future
  * `published_at`. `<input type="datetime-local">` has no timezone — its value is

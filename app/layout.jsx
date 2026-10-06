@@ -81,7 +81,6 @@ export const metadata = {
   publisher: site.name,
   metadataBase: new URL(site.url),
   alternates: {
-    canonical: site.url,
   },
   openGraph: {
     title: "Siddhant School of Yoga | Yoga Teacher Training in Rishikesh, India",

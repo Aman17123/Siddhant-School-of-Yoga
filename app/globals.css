@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@config "../tailwind.config.js";
 
 @font-face {
   font-family: "Fortune Parade";
@@ -22,9 +23,9 @@
   --color-marigold: #1c3b2b;
   --color-sunshine: #4c7c65;
   --color-sunshine-bg: #f4efe6;
-  --font-belleza: var(--font-belleza), "Belleza", sans-serif;
+  --font-belleza: "Belleza", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-figtree: var(--font-figtree), "Figtree", sans-serif;
-  --font-fortune: var(--font-belleza), "Belleza", sans-serif;
+  --font-fortune: "Fortune Parade", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 @layer base {
@@ -58,6 +59,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 84px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

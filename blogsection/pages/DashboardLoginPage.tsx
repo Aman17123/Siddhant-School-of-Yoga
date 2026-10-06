@@ -48,11 +48,11 @@ export default function BlogLoginPage() {
         <div className="text-center mb-8">
           <div className="inline-flex mb-4">
             <Image
-              src="/images/branding/logo1.webp"
-              alt="Sanskriti Yogpeeth Logo"
-              width={180}
-              height={55}
-              className="h-12 w-auto object-contain mx-auto"
+              src="/logo/siddhant-logo.svg"
+              alt="Siddhant School of Yoga Logo"
+              width={200}
+              height={60}
+              className="h-14 w-auto object-contain mx-auto"
               priority
             />
           </div>
@@ -88,7 +88,7 @@ export default function BlogLoginPage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Enter username"
-                className="w-full pl-10 pr-3.5 py-3 bg-white border border-slate-300 rounded-lg text-body-sm text-slate-900 placeholder:text-slate-400 font-medium focus:outline-none focus:ring-2 focus:ring-[#00897b] focus:border-[#00897b] shadow-2xs"
+                className="w-full pl-10 pr-3.5 py-3 bg-white border border-slate-300 rounded-lg text-body-sm text-slate-900 placeholder:text-slate-400 font-medium focus:outline-none focus:ring-2 focus:ring-[#1c3b2b] focus:border-[#1c3b2b] shadow-2xs"
               />
             </div>
           </div>
@@ -107,7 +107,7 @@ export default function BlogLoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter password"
-                className="w-full pl-10 pr-11 py-3 bg-white border border-slate-300 rounded-lg text-body-sm text-slate-900 placeholder:text-slate-400 font-medium focus:outline-none focus:ring-2 focus:ring-[#00897b] focus:border-[#00897b] shadow-2xs"
+                className="w-full pl-10 pr-11 py-3 bg-white border border-slate-300 rounded-lg text-body-sm text-slate-900 placeholder:text-slate-400 font-medium focus:outline-none focus:ring-2 focus:ring-[#1c3b2b] focus:border-[#1c3b2b] shadow-2xs"
               />
               <button
                 type="button"
@@ -123,7 +123,7 @@ export default function BlogLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-3 py-3 px-4 bg-[#00897b] hover:bg-[#00796b] text-white font-bold text-body-sm rounded-lg shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full mt-3 py-3 px-4 bg-[#1c3b2b] hover:bg-[#14291e] text-white font-bold text-body-sm rounded-lg shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? (
               <span className="flex items-center gap-2">
@@ -144,7 +144,7 @@ export default function BlogLoginPage() {
       </div>
 
       <div className="mt-6 text-center text-label font-medium text-slate-500">
-        &copy; {new Date().getFullYear()} Sanskriti Yogpeeth, Rishikesh
+        &copy; {new Date().getFullYear()} Siddhant School of Yoga, Rishikesh
       </div>
     </div>
   );

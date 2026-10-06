@@ -13,7 +13,7 @@ export default function ShareButtons({ title, slug }: Props) {
   const url =
     typeof window !== "undefined"
       ? window.location.href
-      : `https://sanskritiyogpeeth.org/blog/${slug}`;
+      : `https://www.siddhantschoolofyoga.com/blogs/${slug}`;
 
   const handleCopy = async () => {
     try {
@@ -100,14 +100,14 @@ export default function ShareButtons({ title, slug }: Props) {
         </svg>
       </a>
 
-      {/* Copy Link - Sanskriti Brand Magenta */}
+      {/* Copy Link - Siddhant Brand Green */}
       <button
         type="button"
         onClick={handleCopy}
         className={`w-10 h-10 inline-flex items-center justify-center rounded-xl text-white shadow-xs hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 cursor-pointer ${
           copied
             ? "bg-emerald-600 hover:bg-emerald-700 scale-105"
-            : "bg-[#BF296A] hover:bg-[#951248]"
+            : "bg-[#1c3b2b] hover:bg-[#142b1e]"
         }`}
         title={copied ? "Link Copied!" : "Copy Link"}
         aria-label="Copy link to article"

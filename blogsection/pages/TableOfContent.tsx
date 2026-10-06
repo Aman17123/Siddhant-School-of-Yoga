@@ -164,12 +164,12 @@ export default function TableOfContent({
   const activeIndex = headings.findIndex((item) => item.id === activeId);
 
   return (
-    <section className="px-5 py-7 bg-[#FDF9FB] rounded-[32px] border border-gray-100">
-      <h2 className="font-display text-card font-bold text-[#2A1621] mb-6">
+    <section className="px-5 py-6 bg-[#fdfbf7] rounded-3xl border border-[#e3dac9]">
+      <h2 className="font-belleza text-xl font-normal text-[#1e2422] mb-5 tracking-wide">
         In this article
       </h2>
 
-      <div className="relative ml-1">
+      <div className="relative ml-1 font-figtree">
         <ul className="flex flex-col">
           {headings.map((item, index) => {
             const isActive = index === activeIndex;
@@ -179,12 +179,12 @@ export default function TableOfContent({
             // Heading level drives the base colour/weight so an h2 always reads
             // darker than an h3; scroll state only adds emphasis on top of that.
             const tone = isActive
-              ? "font-bold text-[#2A1621]"
+              ? "font-semibold text-[#1c3b2b]"
               : isSub
                 ? isPast
-                  ? "font-medium text-[#6B5862] hover:text-[#2A1621]"
-                  : "font-normal text-[#6B5862] hover:text-[#6B5862]"
-                : "font-semibold text-[#2A1621] hover:text-[#2A1621]";
+                  ? "font-medium text-stone-600 hover:text-[#1e2422]"
+                  : "font-normal text-stone-500 hover:text-stone-700"
+                : "font-medium text-[#1e2422] hover:text-[#1c3b2b]";
 
             return (
               <li
@@ -195,7 +195,7 @@ export default function TableOfContent({
                 {index !== headings.length - 1 && (
                   <div
                     className={`absolute left-[5px] top-[11px] w-[2px] h-full transition-colors duration-300 ${
-                      isPast ? "bg-[#BF296A]" : "bg-[#F3F4F6]"
+                      isPast ? "bg-[#1c3b2b]" : "bg-[#e3dac9]/60"
                     }`}
                   />
                 )}
@@ -203,7 +203,7 @@ export default function TableOfContent({
                 <button
                   type="button"
                   onClick={() => handleClick(item.id)}
-                  className="flex items-start text-left w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#BF296A]/40 rounded-lg"
+                  className="flex items-start text-left w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1c3b2b]/40 rounded-lg cursor-pointer"
                   aria-current={isActive ? "location" : undefined}
                 >
                   {/* Dot */}
@@ -214,18 +214,18 @@ export default function TableOfContent({
                     <span
                       className={`block rounded-full transition-all duration-300 ${isSub ? "w-2 h-2" : "w-2.5 h-2.5"} ${
                         isActive
-                          ? "bg-[#C9862A] ring-[4px] ring-[#C9862A]/25 scale-110"
+                          ? "bg-[#b85c00] ring-[4px] ring-[#b85c00]/25 scale-110"
                           : isPast
-                            ? "bg-[#BF296A]"
-                            : "bg-[#E6C2D1] group-hover:bg-[#BF296A]/50"
+                            ? "bg-[#1c3b2b]"
+                            : "bg-[#e3dac9] group-hover:bg-[#1c3b2b]/50"
                       }`}
                     />
                   </span>
 
                   {/* Text — h3 sits smaller and indented under its h2 */}
                   <span
-                    className={`leading-[22px] ml-5 transition-colors duration-200 ${
-                      isSub ? "pl-4 text-body-sm" : "text-body-sm"
+                    className={`leading-[22px] ml-4 transition-colors duration-200 text-sm ${
+                      isSub ? "pl-3 text-xs sm:text-sm" : ""
                     } ${tone}`}
                   >
                     {item.title}

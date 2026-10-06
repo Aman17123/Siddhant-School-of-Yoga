@@ -10,7 +10,7 @@ interface LatestBlog {
   created_at?: string | null;
 }
 
-const FALLBACK_IMAGE = "/images/banners/retreat-banner.webp";
+const FALLBACK_IMAGE = "/images/yoga-and-meditation-retreat-riverside.jpg";
 const MAX_POSTS = 5;
 
 function formatDate(dateStr?: string | null) {
@@ -40,22 +40,22 @@ export default function LatestBlogs({ posts }: { posts: LatestBlog[] }) {
   const latest = pickLatest(posts || []);
 
   return (
-    <section className="px-5 py-4 bg-[#FDF9FB] rounded-[32px] border border-gray-100">
-      <h2 className="font-display text-subsection font-bold text-[#2A1621] mb-3">
+    <section className="px-5 py-5 bg-[#fdfbf7] rounded-3xl border border-[#e3dac9]">
+      <h2 className="font-belleza text-xl font-normal text-[#1e2422] mb-3 tracking-wide">
         Latest Posts
       </h2>
 
       {latest.length === 0 ? (
-        <p className="text-body-sm text-[#6B5862] py-6 text-center">No posts published yet.</p>
+        <p className="font-figtree text-xs sm:text-sm text-stone-500 py-6 text-center">No posts published yet.</p>
       ) : (
         <div className="flex flex-col">
           {latest.map((post, index) => (
             <article
               key={post.id ?? post.slug}
-              className="relative flex group bg-white border border-gray-100 rounded-xl mb-3 last:mb-0 shadow-xs hover:shadow-md transition-shadow overflow-hidden"
+              className="relative flex group bg-white border border-[#e3dac9] rounded-xl mb-3 last:mb-0 shadow-xs hover:shadow-md transition-shadow overflow-hidden"
             >
               <Link
-                href={`/blog/${post.slug}`}
+                href={`/blogs/${post.slug}`}
                 className="relative w-[90px] sm:w-[110px] shrink-0 self-stretch"
               >
                 <img
@@ -73,10 +73,10 @@ export default function LatestBlogs({ posts }: { posts: LatestBlog[] }) {
                 <div className="absolute inset-y-0 right-0 w-10 bg-gradient-to-r from-transparent to-white pointer-events-none" />
               </Link>
               <div className="flex flex-col flex-1 py-3 px-2 sm:px-3 z-10 justify-center">
-                <h3 className="font-display font-semibold text-body-sm leading-[1.4] text-[#2A1621] group-hover:text-[#BF296A] transition-colors line-clamp-3 mb-1.5">
-                  <Link href={`/blog/${post.slug}`}>{post.title || "Untitled post"}</Link>
+                <h3 className="font-belleza font-normal text-base leading-[1.3] text-[#1e2422] group-hover:text-[#1c3b2b] transition-colors line-clamp-3 mb-1.5">
+                  <Link href={`/blogs/${post.slug}`}>{post.title || "Untitled post"}</Link>
                 </h3>
-                <p className="text-label text-[#6B5862] font-medium opacity-80 mt-auto">
+                <p className="font-figtree text-xs font-semibold text-stone-500 mt-auto">
                   {formatDate(post.published_at || post.created_at)}
                 </p>
               </div>

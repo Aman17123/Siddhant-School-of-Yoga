@@ -39,17 +39,17 @@ function BlogCard({ s }: { s: HeroSlide }) {
 
   return (
     <Link
-      href={`/blog/${s.slug}`}
-      className="group relative block w-full h-[350px] sm:h-[350px] lg:h-[380px] rounded-xl mt-[16px] overflow-hidden border border-black/5 bg-[#2A1621] shadow-md hover:shadow-2xl transition-all duration-500 transform-gpu"
+      href={`/blogs/${s.slug}`}
+      className="group relative block w-full h-[350px] sm:h-[350px] lg:h-[380px] rounded-2xl mt-[16px] overflow-hidden border border-[#e3dac9] bg-[#1e2422] shadow-md hover:shadow-2xl transition-all duration-500 transform-gpu font-figtree"
     >
       {/* Background Image with Zoom */}
       <div className="absolute inset-0 overflow-hidden">
         <img
           src={imgSrc}
           alt={s.title}
-          onError={() => setImgSrc("/images/banners/retreat-banner.webp")}
+          onError={() => setImgSrc("/images/yoga-and-meditation-retreat-riverside.jpg")}
           loading="lazy"
-          className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
+          className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
         />
 
         {/* Subtle dark gradient toward bottom */}
@@ -57,7 +57,7 @@ function BlogCard({ s }: { s: HeroSlide }) {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to bottom, transparent 25%, rgba(20, 12, 15, 0.85) 100%)",
+              "linear-gradient(to bottom, transparent 20%, rgba(15, 25, 20, 0.88) 100%)",
           }}
         />
       </div>
@@ -65,7 +65,7 @@ function BlogCard({ s }: { s: HeroSlide }) {
       {/* Inner Editorial Content */}
       <div className="relative z-10 h-full flex flex-col justify-end p-5 sm:p-6 text-left">
         {/* Title */}
-        <h3 className="font-display font-bold text-white text-card leading-[1.3] line-clamp-2 drop-shadow-sm group-hover:text-[#FFD9EA] transition-colors">
+        <h3 className="font-belleza font-normal tracking-wide text-white text-xl sm:text-2xl leading-[1.25] line-clamp-2 drop-shadow-sm group-hover:text-[#f4efe6] transition-colors">
           {s.title}
         </h3>
 
@@ -73,7 +73,7 @@ function BlogCard({ s }: { s: HeroSlide }) {
         {s.short_description && (
           <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-out opacity-0 group-hover:opacity-100">
             <div className="overflow-hidden">
-              <p className="pt-2 text-body-sm text-white/85 leading-relaxed line-clamp-3">
+              <p className="pt-2 font-figtree text-sm text-white/90 leading-relaxed line-clamp-3">
                 {s.short_description}
               </p>
             </div>
@@ -82,10 +82,10 @@ function BlogCard({ s }: { s: HeroSlide }) {
 
         {/* Hover Interaction: READ ARTICLE ↗ */}
         <div className="mt-3.5 pt-3 border-t border-white/15 flex items-center justify-between text-white/90 group-hover:text-white transition-colors">
-          <span className="inline-flex items-center gap-1.5 text-label font-bold tracking-wider uppercase text-white group-hover:text-[#FFD9EA] transition-colors">
+          <span className="inline-flex items-center gap-1.5 font-figtree text-xs font-semibold tracking-wider uppercase text-white group-hover:text-[#f4efe6] transition-colors">
             Read Article
             <svg
-              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5 group-hover:-translate-y-1 text-[#FFD9EA]"
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5 group-hover:-translate-y-1 text-[#f4efe6]"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -100,9 +100,13 @@ function BlogCard({ s }: { s: HeroSlide }) {
           </span>
 
           {s.views ? (
-            <span className="text-label text-white/70 font-medium flex items-center gap-1">
+            <span className="font-figtree text-xs text-white/80 font-medium flex items-center gap-1">
               <span>👁️</span>
               <span>{s.views} reads</span>
+            </span>
+          ) : s.published_at ? (
+            <span className="font-figtree text-xs text-white/80 font-medium">
+              {formatDate(s.published_at)}
             </span>
           ) : null}
         </div>
@@ -157,7 +161,7 @@ export default function BlogHeroSlider({ slides }: { slides: HeroSlide[] }) {
         type="button"
         onClick={() => swiperRef.current?.slidePrev()}
         aria-label="Previous slide"
-        className="hidden sm:flex absolute -left-3 lg:-left-6 top-[48%] -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-[#EFE3E9] bg-white text-[#2A1621] shadow-md hover:border-[#BF296A] hover:bg-[#BF296A] hover:text-white transition-all duration-300 items-center justify-center cursor-pointer group active:scale-95"
+        className="hidden sm:flex absolute -left-3 lg:-left-6 top-[48%] -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-[#e3dac9] bg-white text-[#1e2422] shadow-md hover:border-[#1c3b2b] hover:bg-[#1c3b2b] hover:text-white transition-all duration-300 items-center justify-center cursor-pointer group active:scale-95"
       >
         <svg
           className="w-5 h-5 transition-transform duration-200 group-hover:-translate-x-0.5"
@@ -174,7 +178,7 @@ export default function BlogHeroSlider({ slides }: { slides: HeroSlide[] }) {
         type="button"
         onClick={() => swiperRef.current?.slideNext()}
         aria-label="Next slide"
-        className="hidden sm:flex absolute -right-3 lg:-right-6 top-[48%] -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-[#EFE3E9] bg-white text-[#2A1621] shadow-md hover:border-[#BF296A] hover:bg-[#BF296A] hover:text-white transition-all duration-300 items-center justify-center cursor-pointer group active:scale-95"
+        className="hidden sm:flex absolute -right-3 lg:-right-6 top-[48%] -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-[#e3dac9] bg-white text-[#1e2422] shadow-md hover:border-[#1c3b2b] hover:bg-[#1c3b2b] hover:text-white transition-all duration-300 items-center justify-center cursor-pointer group active:scale-95"
       >
         <svg
           className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-0.5"
@@ -241,7 +245,7 @@ export default function BlogHeroSlider({ slides }: { slides: HeroSlide[] }) {
           type="button"
           onClick={() => swiperRef.current?.slidePrev()}
           aria-label="Previous slide"
-          className="sm:hidden w-9 h-9 rounded-full border border-[#EFE3E9] bg-white text-[#2A1621] shadow-xs hover:border-[#BF296A] hover:bg-[#BF296A] hover:text-white transition-colors flex items-center justify-center cursor-pointer"
+          className="sm:hidden w-9 h-9 rounded-full border border-[#e3dac9] bg-white text-[#1e2422] shadow-xs hover:border-[#1c3b2b] hover:bg-[#1c3b2b] hover:text-white transition-colors flex items-center justify-center cursor-pointer"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -258,8 +262,8 @@ export default function BlogHeroSlider({ slides }: { slides: HeroSlide[] }) {
               aria-label={`Go to slide ${i + 1}`}
               className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                 activeRealIndex === i
-                  ? "w-7 bg-[#BF296A]"
-                  : "w-2 bg-[#BF296A]/25 hover:bg-[#BF296A]/50"
+                  ? "w-7 bg-[#1c3b2b]"
+                  : "w-2 bg-[#1c3b2b]/30 hover:bg-[#1c3b2b]/60"
               }`}
             />
           ))}
@@ -269,7 +273,7 @@ export default function BlogHeroSlider({ slides }: { slides: HeroSlide[] }) {
           type="button"
           onClick={() => swiperRef.current?.slideNext()}
           aria-label="Next slide"
-          className="sm:hidden w-9 h-9 rounded-full border border-[#EFE3E9] bg-white text-[#2A1621] shadow-xs hover:border-[#BF296A] hover:bg-[#BF296A] hover:text-white transition-colors flex items-center justify-center cursor-pointer"
+          className="sm:hidden w-9 h-9 rounded-full border border-[#e3dac9] bg-white text-[#1e2422] shadow-xs hover:border-[#1c3b2b] hover:bg-[#1c3b2b] hover:text-white transition-colors flex items-center justify-center cursor-pointer"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

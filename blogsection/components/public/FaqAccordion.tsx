@@ -33,12 +33,12 @@ export default function FaqAccordion({ faqs }: { faqs: FaqItem[] }) {
     setOpenIdxs((prev) => ({ ...prev, [i]: !prev[i] }));
 
   return (
-    <div className="mt-12 pt-8 border-t border-gray-100">
-      <h2 className="font-display font-semibold text-section leading-[1.2] tracking-[-0.01em] text-[#2A1621] mb-6">
+    <div className="mt-12 pt-8 border-t border-[#e3dac9]/60">
+      <h2 className="font-belleza font-normal tracking-wide text-2xl sm:text-3xl text-[#1e2422] mb-6">
         Frequently Asked Questions
       </h2>
 
-      <div className="space-y-3">
+      <div className="space-y-3 font-figtree">
         {items.map((item, i) => {
           const isOpen = Boolean(openIdxs[i]);
           const headingId = `faq-q-${i}`;
@@ -47,10 +47,10 @@ export default function FaqAccordion({ faqs }: { faqs: FaqItem[] }) {
           return (
             <div
               key={i}
-              className={`bg-[#FDF9FB] rounded-2xl border transition-colors duration-300 ${
+              className={`bg-[#fdfbf7] rounded-2xl border transition-colors duration-300 ${
                 isOpen
-                  ? "border-[#BF296A]/40"
-                  : "border-gray-100 hover:border-[#BF296A]/40"
+                  ? "border-[#1c3b2b]/50 shadow-xs"
+                  : "border-[#e3dac9] hover:border-[#1c3b2b]/40"
               }`}
             >
               <h3 className="m-0">
@@ -60,18 +60,18 @@ export default function FaqAccordion({ faqs }: { faqs: FaqItem[] }) {
                   aria-expanded={isOpen}
                   aria-controls={panelId}
                   id={headingId}
-                  className="w-full flex items-start gap-3 text-left cursor-pointer px-5 sm:px-6 py-4 sm:py-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#BF296A]/40 rounded-2xl"
+                  className="w-full flex items-start gap-3 text-left cursor-pointer px-5 sm:px-6 py-4 sm:py-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1c3b2b]/40 rounded-2xl"
                 >
-                  <span className="font-mono font-bold text-[#BF296A] text-body leading-[1.35] shrink-0 mt-[1px]">
+                  <span className="font-figtree font-bold text-[#1c3b2b] text-base leading-[1.35] shrink-0 mt-[1px]">
                     Q{i + 1}.
                   </span>
-                  <span className="flex-1 font-display font-semibold text-card leading-[1.35] text-[#2A1621]">
+                  <span className="flex-1 font-figtree font-semibold text-base sm:text-[17px] leading-[1.35] text-[#1e2422]">
                     {item.question}
                   </span>
                   {/* Chevron */}
                   <span
                     aria-hidden="true"
-                    className={`shrink-0 mt-[3px] text-[#BF296A] transition-transform duration-300 ${
+                    className={`shrink-0 mt-[3px] text-[#1c3b2b] transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   >
@@ -104,9 +104,9 @@ export default function FaqAccordion({ faqs }: { faqs: FaqItem[] }) {
                     role="region"
                     aria-labelledby={headingId}
                     aria-hidden={!isOpen}
-                    className="px-5 sm:px-6 pb-5 sm:pb-6 pl-[4.1rem] sm:pl-[4.6rem]"
+                    className="px-5 sm:px-6 pb-5 sm:pb-6 pl-[3.8rem] sm:pl-[4.2rem]"
                   >
-                    <p className="text-body text-[#6B5862] whitespace-pre-line m-0">
+                    <p className="font-figtree text-sm sm:text-base text-stone-700 leading-relaxed font-medium whitespace-pre-line m-0">
                       {item.answer}
                     </p>
                   </div>

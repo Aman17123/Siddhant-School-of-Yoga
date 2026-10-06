@@ -101,7 +101,7 @@ export default function DashboardOverview({
         </div>
         <button
           onClick={openWritePost}
-          className="px-4 py-2 rounded-lg text-body-sm font-semibold bg-gradient-to-r from-[#BF296A] to-[#951248] text-white hover:from-[#a71d58] hover:to-[#800e3d] shadow-sm hover:shadow-md transition-all cursor-pointer"
+          className="px-4 py-2 rounded-lg text-body-sm font-semibold bg-gradient-to-r from-[#1c3b2b] to-[#14291e] text-white hover:from-[#234b37] hover:to-[#1c3b2b] shadow-sm hover:shadow-md transition-all cursor-pointer"
         >
           Write a post
         </button>
@@ -112,7 +112,7 @@ export default function DashboardOverview({
         <button
           type="button"
           className={`p-4 sm:p-5 text-left transition-colors cursor-pointer ${
-            statusFilter === "published" ? "bg-[#BF296A]/10" : "bg-white hover:bg-[#FAF6F0]/60"
+            statusFilter === "published" ? "bg-[#1c3b2b]/10" : "bg-white hover:bg-[#FAF6F0]/60"
           }`}
           onClick={() => {
             setStatusFilter("published");
@@ -128,7 +128,7 @@ export default function DashboardOverview({
         <button
           type="button"
           className={`p-4 sm:p-5 text-left transition-colors cursor-pointer ${
-            statusFilter === "draft" ? "bg-[#BF296A]/10" : "bg-white hover:bg-[#FAF6F0]/60"
+            statusFilter === "draft" ? "bg-[#1c3b2b]/10" : "bg-white hover:bg-[#FAF6F0]/60"
           }`}
           onClick={() => {
             setStatusFilter("draft");
@@ -144,7 +144,7 @@ export default function DashboardOverview({
         <button
           type="button"
           className={`p-4 sm:p-5 text-left transition-colors cursor-pointer ${
-            statusFilter === "scheduled" ? "bg-[#BF296A]/10" : "bg-white hover:bg-[#FAF6F0]/60"
+            statusFilter === "scheduled" ? "bg-[#1c3b2b]/10" : "bg-white hover:bg-[#FAF6F0]/60"
           }`}
           onClick={() => {
             setStatusFilter("scheduled");
@@ -175,7 +175,7 @@ export default function DashboardOverview({
               e.preventDefault();
               document.getElementById("posts")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="text-label font-semibold text-[#BF296A] hover:underline"
+            className="text-label font-semibold text-[#1c3b2b] hover:underline"
           >
             See all
           </a>
@@ -203,7 +203,7 @@ export default function DashboardOverview({
             return (
               <div key={p.id} className="flex items-center gap-3.5 px-4 py-3 border-b border-[#e6ded2] last:border-b-0 text-body-sm hover:bg-[#FAF6F0]/30 transition-colors">
                 <a
-                  className="flex-1 min-w-0 overflow-hidden text-ellipsis whitespace-nowrap text-[#2A1621] hover:text-[#BF296A] transition-colors"
+                  className="flex-1 min-w-0 overflow-hidden text-ellipsis whitespace-nowrap text-[#2A1621] hover:text-[#1c3b2b] transition-colors"
                   href="#edit"
                   onClick={(e) => {
                     e.preventDefault();
@@ -214,7 +214,7 @@ export default function DashboardOverview({
                 </a>
                 <div className="flex items-center gap-3 shrink-0">
                   <span className="text-label text-[#6B5862] flex items-center gap-1 font-mono">
-                    <svg className="w-3.5 h-3.5 text-[#BF296A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <svg className="w-3.5 h-3.5 text-[#1c3b2b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
@@ -240,8 +240,8 @@ export default function DashboardOverview({
           <button
             className={`px-3.5 py-2 font-bold text-label uppercase tracking-wider transition-colors cursor-pointer relative ${
               statusFilter === "all"
-                ? "text-[#BF296A] after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-0.5 after:bg-[#BF296A]"
-                : "text-[#6B5862] hover:text-[#BF296A]"
+                ? "text-[#1c3b2b] after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-0.5 after:bg-[#1c3b2b]"
+                : "text-[#6B5862] hover:text-[#1c3b2b]"
             }`}
             onClick={() => setStatusFilter("all")}
           >
@@ -250,8 +250,8 @@ export default function DashboardOverview({
           <button
             className={`px-3.5 py-2 font-bold text-label uppercase tracking-wider transition-colors cursor-pointer relative ${
               statusFilter === "published"
-                ? "text-[#BF296A] after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-0.5 after:bg-[#BF296A]"
-                : "text-[#6B5862] hover:text-[#BF296A]"
+                ? "text-[#1c3b2b] after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-0.5 after:bg-[#1c3b2b]"
+                : "text-[#6B5862] hover:text-[#1c3b2b]"
             }`}
             onClick={() => setStatusFilter("published")}
           >
@@ -260,8 +260,8 @@ export default function DashboardOverview({
           <button
             className={`px-3.5 py-2 font-bold text-label uppercase tracking-wider transition-colors cursor-pointer relative ${
               statusFilter === "scheduled"
-                ? "text-[#BF296A] after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-0.5 after:bg-[#BF296A]"
-                : "text-[#6B5862] hover:text-[#BF296A]"
+                ? "text-[#1c3b2b] after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-0.5 after:bg-[#1c3b2b]"
+                : "text-[#6B5862] hover:text-[#1c3b2b]"
             }`}
             onClick={() => setStatusFilter("scheduled")}
           >
@@ -270,8 +270,8 @@ export default function DashboardOverview({
           <button
             className={`px-3.5 py-2 font-bold text-label uppercase tracking-wider transition-colors cursor-pointer relative ${
               statusFilter === "draft"
-                ? "text-[#BF296A] after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-0.5 after:bg-[#BF296A]"
-                : "text-[#6B5862] hover:text-[#BF296A]"
+                ? "text-[#1c3b2b] after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-0.5 after:bg-[#1c3b2b]"
+                : "text-[#6B5862] hover:text-[#1c3b2b]"
             }`}
             onClick={() => setStatusFilter("draft")}
           >
@@ -281,7 +281,7 @@ export default function DashboardOverview({
 
         <div className="flex gap-2.5 items-center flex-wrap">
           <select
-            className="w-44 px-3 py-1.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A]"
+            className="w-44 px-3 py-1.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b]"
             value={catFilter}
             onChange={(e) => setCatFilter(e.target.value)}
             aria-label="Category"
@@ -295,7 +295,7 @@ export default function DashboardOverview({
           </select>
 
           <input
-            className="w-56 px-3 py-1.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#BF296A]/20 focus:border-[#BF296A]"
+            className="w-56 px-3 py-1.5 bg-white border border-[#e6ded2] rounded-lg text-body-sm text-[#2A1621] placeholder:text-[#6B5862]/50 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/20 focus:border-[#1c3b2b]"
             type="search"
             placeholder="Search title or keyword"
             aria-label="Search posts"
@@ -313,7 +313,7 @@ export default function DashboardOverview({
                 <th className="w-9 px-4 py-3 bg-[#FAF6F0]/60 border-b border-[#e6ded2]">
                   <input
                     type="checkbox"
-                    className="rounded border-[#e6ded2] text-[#BF296A] focus:ring-[#BF296A]"
+                    className="rounded border-[#e6ded2] text-[#1c3b2b] focus:ring-[#1c3b2b]"
                     checked={
                       filteredBlogs.length > 0 &&
                       selectedIds.length === filteredBlogs.length
@@ -323,9 +323,7 @@ export default function DashboardOverview({
                   />
                 </th>
                 <th className="px-4 py-3 text-label uppercase tracking-wider font-bold text-[#6B5862] bg-[#FAF6F0]/60 border-b border-[#e6ded2]">Title</th>
-                {currentUser?.role !== "author" && (
-                  <th className="px-4 py-3 text-label uppercase tracking-wider font-bold text-[#6B5862] bg-[#FAF6F0]/60 border-b border-[#e6ded2]">Author</th>
-                )}
+                <th className="px-4 py-3 text-label uppercase tracking-wider font-bold text-[#6B5862] bg-[#FAF6F0]/60 border-b border-[#e6ded2]">Author</th>
                 <th className="px-4 py-3 text-label uppercase tracking-wider font-bold text-[#6B5862] bg-[#FAF6F0]/60 border-b border-[#e6ded2]">Category</th>
                 <th className="px-4 py-3 text-label uppercase tracking-wider font-bold text-[#6B5862] bg-[#FAF6F0]/60 border-b border-[#e6ded2]">Views</th>
                 <th className="px-4 py-3 text-label uppercase tracking-wider font-bold text-[#6B5862] bg-[#FAF6F0]/60 border-b border-[#e6ded2]">Status</th>
@@ -335,11 +333,11 @@ export default function DashboardOverview({
             <tbody>
               {filteredBlogs.length === 0 ? (
                 <tr>
-                  <td colSpan={currentUser?.role !== "author" ? 7 : 6} className="text-center py-12 text-body-sm text-[#6B5862]/70 font-medium">
+                  <td colSpan={7} className="text-center py-12 text-body-sm text-[#6B5862]/70 font-medium">
                     No posts match these filters.{" "}
                     <button
                       onClick={openWritePost}
-                      className="text-[#BF296A] font-bold hover:underline cursor-pointer"
+                      className="text-[#1c3b2b] font-bold hover:underline cursor-pointer"
                     >
                       Write a post
                     </button>
@@ -364,14 +362,14 @@ export default function DashboardOverview({
                   // glance; the rest keep the plain date.
                   const dateStr = formatListDate(p.published_at);
 
-                  const canDeletePost = currentUser?.role === "admin" || currentUser?.role === "author";
+                  const canDeletePost = true;
 
                   return (
                     <tr key={p.id} className="hover:bg-[#FAF6F0]/30 transition-colors">
                       <td className="px-4 py-3.5 border-b border-[#e6ded2] align-middle">
                         <input
                           type="checkbox"
-                          className="rounded border-[#e6ded2] text-[#BF296A] focus:ring-[#BF296A]"
+                          className="rounded border-[#e6ded2] text-[#1c3b2b] focus:ring-[#1c3b2b]"
                           checked={selectedIds.includes(p.id)}
                           onChange={(e) => handleSelectRow(p.id, e.target.checked)}
                           aria-label={`Select ${p.title}`}
@@ -384,7 +382,7 @@ export default function DashboardOverview({
                             e.preventDefault();
                             openEditPost(p);
                           }}
-                          className="font-bold block text-[#2A1621] hover:text-[#BF296A] transition-colors"
+                          className="font-bold block text-[#2A1621] hover:text-[#1c3b2b] transition-colors"
                         >
                           {p.title}
                         </a>
@@ -392,7 +390,7 @@ export default function DashboardOverview({
                         <div className="flex gap-2.5 text-label mt-1">
                           <button
                             onClick={() => openEditPost(p)}
-                            className="font-semibold text-[#BF296A] hover:underline cursor-pointer"
+                            className="font-semibold text-[#1c3b2b] hover:underline cursor-pointer"
                           >
                             Edit
                           </button>
@@ -413,19 +411,17 @@ export default function DashboardOverview({
                           </Link>
                         </div>
                       </td>
-                      {currentUser?.role !== "author" && (
-                        <td className="px-4 py-3.5 border-b border-[#e6ded2] align-middle text-label font-semibold text-[#2A1621]">
-                          <span className="bg-[#FAF6F0] px-2 py-0.5 rounded border border-[#e6ded2] inline-block">
-                            {p.author || "Admin"}
-                          </span>
-                        </td>
-                      )}
+                      <td className="px-4 py-3.5 border-b border-[#e6ded2] align-middle text-label font-semibold text-[#2A1621]">
+                        <span className="bg-[#FAF6F0] px-2 py-0.5 rounded border border-[#e6ded2] inline-block">
+                          {p.author || "Admin"}
+                        </span>
+                      </td>
                       <td className="px-4 py-3.5 border-b border-[#e6ded2] align-middle text-body-sm text-[#6B5862]">
                         {p.category_name || "General"}
                       </td>
                       <td className="px-4 py-3.5 border-b border-[#e6ded2] align-middle text-label font-semibold">
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF6F0] border border-[#e6ded2] text-[#2A1621] font-mono">
-                          <svg className="w-3.5 h-3.5 text-[#BF296A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <svg className="w-3.5 h-3.5 text-[#1c3b2b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                           </svg>
@@ -460,15 +456,13 @@ export default function DashboardOverview({
             >
               Move to draft
             </button>
-            {(currentUser?.role === "admin" || currentUser?.role === "author") && (
-              <button
-                className="px-3.5 py-1.5 rounded-lg text-label font-semibold bg-white border border-red-200 text-red-600 hover:bg-red-50 transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
-                onClick={handleBulkDelete}
-                disabled={!selectedIds.length}
-              >
-                Delete selected
-              </button>
-            )}
+            <button
+              className="px-3.5 py-1.5 rounded-lg text-label font-semibold bg-white border border-red-200 text-red-600 hover:bg-red-50 transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+              onClick={handleBulkDelete}
+              disabled={!selectedIds.length}
+            >
+              Delete selected
+            </button>
           </div>
         </div>
       </div>

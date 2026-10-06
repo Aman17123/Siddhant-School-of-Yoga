@@ -17,13 +17,24 @@ export function getErrorMessage(error: unknown, fallback = "Something went wrong
 }
 
 /**
- * MySQL driver error code, e.g. "23505" for a unique-key violation.
- * API routes branch on this to return friendly conflict messages.
+ * MySQL driver error code, e.g. "ER_DUP_ENTRY", 1062, or "23505" for unique-key violation.
  */
 export function getErrorCode(error: unknown): string | undefined {
-  if (error && typeof error === "object" && "code" in error) {
-    const code = (error as { code?: unknown }).code;
-    if (typeof code === "string") return code;
+  if (error && typeof error === "object") {
+    const err = error as Record<string, unknown>;
+    if (typeof err.code === "string") return err.code;
+    if (typeof err.errno === "number") return String(err.errno);
+    if (typeof err.sqlState === "string") return err.sqlState;
   }
   return undefined;
+}
+
+export function isDuplicateKeyError(error: unknown): boolean {
+  if (error && typeof error === "object") {
+    const err = error as Record<string, unknown>;
+    if (err.code === "ER_DUP_ENTRY" || err.errno === 1062 || err.code === "23505") {
+      return true;
+    }
+  }
+  return false;
 }

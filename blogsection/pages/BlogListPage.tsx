@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import { supabase } from "../lib/supabase";
-import { publishDueBlogs } from "../lib/schedule";
+import { getBlogs, getCategories, getAuthors, query } from "../lib/db";
 import BlogListClient from "../components/public/BlogListClient";
 import type { Author } from "../lib/types";
 
@@ -8,62 +7,56 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: "Yoga Journal: Poses, Pranayama & Teacher Training | Sanskriti Yogpeeth Rishikesh",
+  title: "Yoga Journal: Poses, Pranayama & Teacher Training | Siddhant School of Yoga",
   description:
-    "Pose guides, pranayama breathwork, sound healing and Yoga Teacher Training advice from certified teachers at Sanskriti Yogpeeth in Rishikesh, India.",
+    "Pose guides, pranayama breathwork, philosophy and Yoga Teacher Training advice from certified teachers at Siddhant School of Yoga in Rishikesh, India.",
   keywords: [
     "Best Yoga School in Rishikesh",
     "Yoga Teacher Training Rishikesh",
     "200 Hour Yoga TTC",
-    "Ayurveda Course India",
-    "Sound Healing Rishikesh",
-    "Sanskriti Yogpeeth Blog",
+    "Kundalini Yoga TTC",
+    "Yoga Retreats Rishikesh",
+    "Siddhant School of Yoga Blog",
   ],
   alternates: {
-    canonical: "https://sanskritiyogpeeth.org/blog",
+    canonical: "https://www.siddhantschoolofyoga.com/blog",
   },
   openGraph: {
-    title: "Yoga Journal | Sanskriti Yogpeeth Rishikesh",
+    title: "Yoga Journal | Siddhant School of Yoga Rishikesh",
     description:
-      "Pose guides, pranayama breathwork, sound healing and Yoga Teacher Training advice from certified teachers in Rishikesh.",
-    url: "https://sanskritiyogpeeth.org/blog",
-    siteName: "Sanskriti Yogpeeth Rishikesh",
-    images: [
-      {
-        url: "https://sanskritiyogpeeth.org/blogs/wp-content/uploads/2024/12/1-1-scaled-e1778044999715.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Sanskriti Yogpeeth Yoga Journal",
-      },
-    ],
+      "Pose guides, pranayama breathwork, and Yoga Teacher Training advice from certified teachers in Rishikesh.",
+    url: "https://www.siddhantschoolofyoga.com/blog",
+    siteName: "Siddhant School of Yoga Rishikesh",
   },
 };
 
 export default async function BlogPage() {
-  // Publish any post whose scheduled time has passed, so the queries below —
-  // which filter on status = 'published' — include it.
-  await publishDueBlogs();
+  // 1. Fetch all published blogs from MySQL
+  let rawBlogs: Record<string, unknown>[] = [];
+  let usersData: Record<string, unknown>[] = [];
+  let categories: Record<string, unknown>[] = [];
+  let popularBlogs: Record<string, unknown>[] = [];
 
-  // 1. Fetch all published blogs from Supabase
-  const { data: rawBlogs } = await supabase
-    .from("blogs")
-    .select("*")
-    .eq("status", "published")
-    .order("published_at", { ascending: false });
+  try {
+    rawBlogs = await getBlogs({ status: "published" });
+    usersData = await getAuthors();
+    categories = await getCategories();
+    popularBlogs = await query<Record<string, unknown>[]>(
+      "SELECT id, title, slug, featured_image, short_description, category_name, author, published_at, views, popular FROM `blogs` WHERE `status` = 'published' ORDER BY `views` DESC, `published_at` DESC LIMIT 5"
+    );
+  } catch (err) {
+    console.error("[MySQL] Blog list fetch warning (ensure MySQL is running):", err);
+  }
 
-  // 2. Fetch authors to join photo/credentials
-  const { data: usersData } = await supabase
-    .from("users")
-    .select("id, name, username, photo, title, yoga_alliance");
-
+  // 2. Map authors
   const userMap: Record<string, Pick<Author, "photo" | "title" | "yoga_alliance">> = {};
-  usersData?.forEach((u) => {
-    if (u.name) userMap[u.name] = u;
-    if (u.username) userMap[u.username] = u;
+  usersData.forEach((u) => {
+    if (u.name) userMap[String(u.name)] = u as unknown as Pick<Author, "photo" | "title" | "yoga_alliance">;
+    if (u.username) userMap[String(u.username)] = u as unknown as Pick<Author, "photo" | "title" | "yoga_alliance">;
   });
 
-  const blogs = (rawBlogs || []).map((b) => {
-    const authorObj = userMap[b.author] || {};
+  const blogs = rawBlogs.map((b: any) => {
+    const authorObj = userMap[String(b.author)] || {};
     return {
       ...b,
       author_photo: authorObj.photo || null,
@@ -72,38 +65,8 @@ export default async function BlogPage() {
     };
   });
 
-  // 3. Fetch categories with post count
-  const { data: categoriesData } = await supabase
-    .from("categories")
-    .select("*")
-    .order("name", { ascending: true });
-
-  const categoryCountMap: Record<string, number> = {};
-  rawBlogs?.forEach((b) => {
-    if (b.category_id) categoryCountMap[String(b.category_id)] = (categoryCountMap[String(b.category_id)] || 0) + 1;
-    if (b.category_name) categoryCountMap[b.category_name] = (categoryCountMap[b.category_name] || 0) + 1;
-  });
-
-  const categories = (categoriesData || [])
-    .map((c) => ({
-      ...c,
-      post_count: categoryCountMap[String(c.id)] || categoryCountMap[c.name] || 0,
-    }))
-    .sort((a, b) => b.post_count - a.post_count);
-
-  // 4. Fetch the 5 most viewed published blogs automatically for the popular blog section
-  const { data: popularBlogs } = await supabase
-    .from("blogs")
-    .select(
-      "id, title, slug, featured_image, short_description, category_name, author, published_at, views, popular"
-    )
-    .eq("status", "published")
-    .order("views", { ascending: false, nullsFirst: false })
-    .order("published_at", { ascending: false })
-    .limit(5);
-
-  // 5. Extract distinct tags
-  const rawTags = (blogs || []).flatMap((b) => {
+  // 3. Extract distinct tags
+  const rawTags = (blogs || []).flatMap((b: any) => {
     if (Array.isArray(b.tags)) return b.tags;
     if (typeof b.tags === "string") {
       try {
@@ -117,11 +80,11 @@ export default async function BlogPage() {
   const popularTags = Array.from(new Set(rawTags)).filter((t) => t.length > 2 && t.length < 35).slice(0, 10);
 
   return (
-    <div className="min-h-screen bg-white text-[#2A1621]">
+    <div className="min-h-screen bg-white text-[#1e2422] font-figtree">
       <BlogListClient
-        initialBlogs={blogs || []}
-        categories={categories || []}
-        popularBlogs={popularBlogs || []}
+        initialBlogs={blogs as any || []}
+        categories={categories as any || []}
+        popularBlogs={popularBlogs as any || []}
         popularTags={popularTags}
       />
     </div>

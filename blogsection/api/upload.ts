@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getErrorMessage } from "../lib/errors";
 import { getAdminSession } from "../lib/auth";
-import { supabase } from "../lib/supabase";
 import fs from "fs/promises";
 import path from "path";
 
@@ -38,7 +37,7 @@ export async function POST(req: NextRequest) {
       .replace(/[^a-z0-9_-]+/g, "-")
       .replace(/^-+|-+$/g, "");
 
-    const uniqueName = `sanskriti-blog-${Date.now()}-${baseName.slice(0, 40)}${ext}`;
+    const uniqueName = `siddhant-blog-${Date.now()}-${baseName.slice(0, 40)}${ext}`;
 
     // 1. Save to local storage inside blogsection/images folder
     const uploadDir = path.join(process.cwd(), "blogsection", "images");
@@ -46,15 +45,12 @@ export async function POST(req: NextRequest) {
     const filePath = path.join(uploadDir, uniqueName);
     await fs.writeFile(filePath, buffer);
 
-    // 2. Also sync to Supabase Storage if configured
+    // 2. Also save to public/images for fast direct static serving
     try {
-      await supabase.storage.from("blog-images").upload(uniqueName, buffer, {
-        contentType: file.type,
-        upsert: true,
-      });
-    } catch (sErr) {
-      console.warn("Supabase storage upload skipped or failed:", sErr);
-    }
+      const publicImagesDir = path.join(process.cwd(), "public", "images");
+      await fs.mkdir(publicImagesDir, { recursive: true });
+      await fs.writeFile(path.join(publicImagesDir, uniqueName), buffer);
+    } catch {}
 
     const cleanUrl = `/images/${uniqueName}`;
 

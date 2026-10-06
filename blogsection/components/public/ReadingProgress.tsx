@@ -30,8 +30,8 @@ export default function ReadingProgress() {
         left: 0,
         height: "3px",
         width: `${width}%`,
-        backgroundColor: "#BF296A",
-        zIndex: 9999,
+        backgroundColor: "#1c3b2b",
+        zIndex: 40,
         transition: "width 0.1s ease",
       }}
     />

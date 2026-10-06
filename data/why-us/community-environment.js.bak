@@ -1,0 +1,148 @@
+import { L } from "./links";
+
+const page = {
+  slug: "family-environment-ashram-rishikesh",
+  breadcrumb: "Community & Environment",
+  seo: {
+    title: "Yoga Ashram Community in Rishikesh | Siddhant School of Yoga",
+    description:
+      "Experience a welcoming residential yoga community in Rishikesh, where international students practice, study, share daily life and learn together.",
+    keywords: [
+      "yoga ashram community in Rishikesh",
+      "gurukula environment Rishikesh",
+      "yoga ashram community India",
+      "supportive yoga teacher training Rishikesh",
+      "international yoga students Rishikesh",
+      "residential yoga teacher training community",
+    ],
+  },
+  hero: {
+    title: "Gurukula-Inspired Community & Family Environment",
+    intro: [
+      "Share meals, practice and daily life with an international cohort, a welcoming environment that helps a lot if you are travelling alone.",
+    ],
+    buttons: [
+      { label: "Explore Ashram Life", href: L.ashram },
+      { label: "Explore the 200-Hour Yoga TTC", href: L.ttc200 },
+    ],
+    image: "/images/yoga-retreat-students-sharing-indian-food-rishikesh.jpg",
+    imageAlt: "Students sharing a meal together at the ashram in Rishikesh",
+  },
+  sections: [
+    {
+      kicker: "Who You Live With",
+      title: "What Is the Community Like at Siddhant School of Yoga?",
+      body: [
+        "The community includes students from different countries, teachers and residential staff. Yoga classes, meals, study periods and shared ashram practices create regular opportunities for students to interact and build friendships. The environment is inspired by traditional gurukula education while adapted to the needs of a modern residential teacher training.",
+      ],
+    },
+    {
+      kicker: "Tradition",
+      title: "From Gurukula to Modern Residential Yoga Education",
+      body: [
+        "Traditional gurukula education emphasized close interaction between teacher and student and learning through participation in daily life. A modern school cannot reproduce that system, but its principle — learning through practice, study, community and daily discipline — remains relevant.",
+        "At Siddhant School this is reflected through residential learning, regular teacher interaction, shared meals, group practice, philosophical study, daily routines, community participation, teaching practice and reflection.",
+      ],
+      image: "/images/yoga-philosophy-satsang-class.png",
+      imageAlt: "Teacher and students in a satsang-style philosophy class",
+    },
+    {
+      kicker: "Arriving Alone",
+      title: "Traveling to Rishikesh Alone?",
+      body: [
+        "Many international students travel to India without knowing anyone at the school. The first few days may involve adjusting to a new country, climate, food and routine. Arriving into a small cohort that begins the course together helps: within the first days, students share classes, meals and the same daily rhythm.",
+        "The school team is available to answer practical questions before arrival and during the stay.",
+      ],
+      button: { label: "Contact Our Team", href: L.contact, variant: "secondary" },
+    },
+    {
+      kicker: "Daily Life Together",
+      title: "Shared Meals, Shared Practice",
+      cards: [
+        {
+          title: "Shared Meals, Shared Practice Together",
+          desc: "Students eat together in the dining hall, practice together in the shala and study together in class. These ordinary daily moments are often where friendships begin.",
+        },
+        {
+          title: "Teachers Who Are Part of Daily Life",
+          desc: "Teachers are present across the day, not only during classes. This makes it easier to ask questions, discuss practice and learn through observation — much as in the gurukula tradition.",
+        },
+        {
+          title: "Care From the Ashram Team",
+          desc: "Residential staff prepare fresh sattvic meals, keep rooms and practice spaces clean, and help with day-to-day needs so students can focus on practice and study.",
+        },
+      ],
+    },
+    {
+      kicker: "Many Countries, One Batch",
+      title: "An International Community",
+      body: [
+        "Each batch brings together students from different countries, ages and backgrounds. Learning alongside people with different perspectives becomes part of the education.",
+      ],
+      image: "/images/holi-festival-celebration-yoga-retreat-rishikesh.jpg",
+      imageAlt: "Students celebrating Holi together during a course at Siddhant School of Yoga",
+      imageRight: true,
+    },
+    {
+      kicker: "Guidelines",
+      title: "A Respectful Community",
+      body: [
+        "Community living works when everyone respects shared guidelines: punctuality, night-time silence (10 PM–5 AM), a vegetarian and substance-free environment, and respect for teachers, staff and fellow students.",
+      ],
+    },
+    {
+      kicker: "Different Intentions",
+      title: "Ashram Community vs. Commercial Retreat",
+      compare: {
+        left: {
+          title: "Ashram community",
+          items: [
+            "Shared daily rhythm and responsibilities",
+            "Learning through participation",
+            "Close contact with teachers",
+            "Simple, practice-focused living",
+          ],
+        },
+        right: {
+          title: "Commercial retreat",
+          items: [
+            "Individual schedule",
+            "Service-based guest experience",
+            "Limited teacher interaction",
+            "Leisure and comfort focus",
+          ],
+        },
+      },
+      after: "Neither is universally better. They serve different intentions.",
+    },
+  ],
+  faqs: [
+    {
+      q: "I'm traveling alone. Will I feel isolated?",
+      a: "Many students arrive alone. The small cohort, shared meals and shared classes create natural opportunities to connect, though every student's experience is personal.",
+    },
+    {
+      q: "Do students and teachers interact outside class?",
+      a: "Yes. Teachers are part of the residential environment and students can approach them during designated times.",
+    },
+    { q: "Is the community diverse?", a: "Students come from many countries and backgrounds." },
+    {
+      q: "Can I have private time?",
+      a: "Yes. Free periods, the afternoon rest and private rooms (subject to availability) allow for personal time.",
+    },
+  ],
+  cta: {
+    text: "Come as a student. Learn as part of a community.",
+    buttons: [
+      { label: "Explore Ashram Life", href: L.ashram },
+      { label: "Explore the 200-Hour Yoga TTC", href: L.ttc200 },
+    ],
+  },
+  related: [
+    { label: "Traditional Ashram Living in Rishikesh", href: L.ashram },
+    { label: "Small Group Yoga Teacher Training", href: L.groupSize },
+    { label: "24-Day Gratitude Practice", href: L.gratitude },
+  ],
+};
+
+export default page;

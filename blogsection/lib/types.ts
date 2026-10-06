@@ -133,7 +133,7 @@ export interface CategoryFormState {
   slugTouched: boolean;
   color: string;
   description: string;
-  parent_id: string;
+  parent_id?: string;
   meta_title: string;
   meta_description: string;
   isEditing: boolean;

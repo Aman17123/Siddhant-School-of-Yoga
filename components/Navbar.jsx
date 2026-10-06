@@ -41,6 +41,7 @@ const navMenu = [
       { title: "Food & Accommodation", href: "/food-accommodation" },
       { title: "About Rishikesh", href: "/rishikesh-india" },
       { title: "FAQs", href: "/faq" },
+      { title: "Blogs", href: "/blog" },
     ],
   },
   {

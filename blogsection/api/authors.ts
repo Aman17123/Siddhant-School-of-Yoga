@@ -1,149 +1,58 @@
-import { NextRequest, NextResponse } from "next/server";
-import { getErrorCode, getErrorMessage } from "../lib/errors";
-import { supabase } from "../lib/supabase";
+import { NextResponse } from "next/server";
 import { getAdminSession } from "../lib/auth";
+import { query } from "../lib/db";
+import { getErrorMessage } from "../lib/errors";
 
-export async function GET(req: NextRequest) {
-  try {
-    const { searchParams } = new URL(req.url);
-    const role = searchParams.get("role");
-
-    let query = supabase
-      .from("users")
-      .select("id, username, name, email, role, slug, photo, title, bio, experience_years, instagram, youtube, yoga_alliance, created_at");
-
-    if (role && role !== "all") {
-      query = query.eq("role", role);
-    }
-
-    query = query.order("id", { ascending: true });
-
-    const { data: authors, error } = await query;
-    if (error) throw error;
-
-    // Get blog count per author
-    const { data: blogs } = await supabase.from("blogs").select("author");
-    const counts: Record<string, number> = {};
-    blogs?.forEach((b) => {
-      if (b.author) {
-        counts[b.author] = (counts[b.author] || 0) + 1;
-      }
-    });
-
-    const authorList = (authors || []).map((a) => ({
-      ...a,
-      blog_count: counts[a.name] || counts[a.username] || 0,
-    }));
-
-    return NextResponse.json({ success: true, authors: authorList });
-  } catch (error) {
-    console.error("Error fetching authors:", error);
-    return NextResponse.json({ success: false, message: getErrorMessage(error, "Failed to fetch authors") }, { status: 500 });
-  }
-}
-
-export async function POST(req: NextRequest) {
+export async function GET() {
   try {
     const session = await getAdminSession();
-    if (!session) {
-      return NextResponse.json({ success: false, message: "Unauthorized. Please log in." }, { status: 401 });
-    }
-
-    if (session.role !== "admin") {
+    if (!session || session.role !== "admin") {
       return NextResponse.json(
-        { success: false, message: "Forbidden: Only Admin can add new authors or editors." },
-        { status: 403 }
+        { success: false, message: "Unauthorized. Admin session required." },
+        { status: 401 }
       );
     }
 
-    const body = await req.json();
-    const {
-      name,
-      username,
-      email,
-      role = "author",
-      slug,
-      photo,
-      title,
-      bio,
-      experience_years = 0,
-      instagram,
-      youtube,
-      yoga_alliance,
-      password,
-    } = body;
+    // Deduped byline suggestions = SELECT DISTINCT author FROM blogs ∪ users.name
+    // Self-cleaning: if a wrong name is corrected, it disappears automatically once no post uses it.
+    let authors: string[] = [];
+    try {
+      const rows = await query<Array<{ author_name: string }>>(
+        `SELECT DISTINCT TRIM(\`author\`) AS author_name 
+         FROM \`blogs\` 
+         WHERE \`author\` IS NOT NULL AND TRIM(\`author\`) != ''
+         UNION
+         SELECT DISTINCT TRIM(\`name\`) AS author_name 
+         FROM \`users\` 
+         WHERE \`name\` IS NOT NULL AND TRIM(\`name\`) != ''`
+      );
 
-    if (!name || !name.trim()) {
-      return NextResponse.json({ success: false, message: "Author full name is required." }, { status: 400 });
-    }
-
-    if (!email || !email.trim()) {
-      return NextResponse.json({ success: false, message: "Email is required." }, { status: 400 });
-    }
-
-    const cleanSlug = (slug || name)
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
-
-    const cleanUsername = (username || cleanSlug)
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9_-]+/g, "-")
-      .replace(/^-+|-+$/g, "") || `user-${Date.now()}`;
-
-    const userPass = password && password.trim() ? password.trim() : "author@123";
-
-    // Check if email or username already used
-    const { data: existing } = await supabase
-      .from("users")
-      .select("id, email, username")
-      .or(`email.eq.${email.trim().toLowerCase()},username.eq.${cleanUsername}`)
-      .limit(1);
-
-    if (existing && existing.length > 0) {
-      if (existing[0].email === email.trim().toLowerCase()) {
-        return NextResponse.json({ success: false, message: "Another user is already using this email." }, { status: 400 });
+      const set = new Set<string>();
+      set.add("Siddhant School of Yoga");
+      if (rows && Array.isArray(rows)) {
+        for (const row of rows) {
+          if (row.author_name && row.author_name.trim()) {
+            set.add(row.author_name.trim());
+          }
+        }
       }
-      return NextResponse.json({ success: false, message: `Username "${cleanUsername}" is already taken.` }, { status: 400 });
+
+      authors = Array.from(set).sort((a, b) => {
+        if (a === "Siddhant School of Yoga") return -1;
+        if (b === "Siddhant School of Yoga") return 1;
+        return a.localeCompare(b);
+      });
+    } catch (dbErr) {
+      console.error("Error querying author bylines:", dbErr);
+      authors = ["Siddhant School of Yoga"];
     }
 
-    const { data, error } = await supabase
-      .from("users")
-      .insert({
-        username: cleanUsername,
-        password: userPass,
-        name: name.trim(),
-        email: email.trim().toLowerCase(),
-        role: role || "author",
-        slug: cleanSlug,
-        photo: photo || null,
-        title: title?.trim() || null,
-        bio: bio?.trim() || null,
-        experience_years: Number(experience_years) || 0,
-        instagram: instagram?.trim() || null,
-        youtube: youtube?.trim() || null,
-        yoga_alliance: yoga_alliance?.trim() || null,
-      })
-      .select()
-      .single();
-
-    if (error) {
-      if (getErrorCode(error) === "23505") {
-        return NextResponse.json({ success: false, message: "A user with this username or email already exists." }, { status: 400 });
-      }
-      throw error;
-    }
-
-    return NextResponse.json({
-      success: true,
-      message: `${role.charAt(0).toUpperCase() + role.slice(1)} account created successfully!`,
-      id: data.id,
-      username: cleanUsername,
-    });
+    return NextResponse.json({ success: true, authors });
   } catch (error) {
-    console.error("Error creating author:", error);
-    return NextResponse.json({ success: false, message: getErrorMessage(error, "Failed to create author") }, { status: 500 });
+    console.error("Error in authors API:", error);
+    return NextResponse.json(
+      { success: false, message: getErrorMessage(error, "Failed to fetch authors") },
+      { status: 500 }
+    );
   }
 }

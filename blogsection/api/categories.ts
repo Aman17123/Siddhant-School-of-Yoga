@@ -1,36 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getErrorCode, getErrorMessage } from "../lib/errors";
-import { supabase } from "../lib/supabase";
+import { getErrorMessage, isDuplicateKeyError } from "../lib/errors";
 import { getAdminSession } from "../lib/auth";
+import { getCategories, createCategory } from "../lib/db";
 
 export async function GET() {
   try {
-    const { data: categories, error } = await supabase
-      .from("categories")
-      .select("*")
-      .order("id", { ascending: true });
-
-    if (error) {
-      throw error;
-    }
-
-    // Calculate blog count per category
-    const { data: blogs } = await supabase.from("blogs").select("category_id, category_name");
-    const counts: Record<string, number> = {};
-    blogs?.forEach((b) => {
-      if (b.category_id) counts[String(b.category_id)] = (counts[String(b.category_id)] || 0) + 1;
-      if (b.category_name) counts[b.category_name] = (counts[b.category_name] || 0) + 1;
-    });
-
-    const categoryList = (categories || []).map((c) => ({
-      ...c,
-      blog_count: counts[String(c.id)] || counts[c.name] || 0,
-    }));
-
+    const categoryList = await getCategories();
     return NextResponse.json({ success: true, categories: categoryList });
   } catch (error) {
     console.error("Error fetching categories:", error);
-    return NextResponse.json({ success: false, message: getErrorMessage(error, "Failed to fetch categories") }, { status: 500 });
+    return NextResponse.json(
+      { success: false, message: getErrorMessage(error, "Failed to fetch categories") },
+      { status: 500 }
+    );
   }
 }
 
@@ -61,35 +43,33 @@ export async function POST(req: NextRequest) {
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-+|-+$/g, "");
 
-    const { data, error } = await supabase
-      .from("categories")
-      .insert({
-        name: name.trim(),
-        slug: cleanSlug,
-        description: description?.trim() || null,
-        color: color || "#BF296A",
-        parent_id: parent_id ? Number(parent_id) : null,
-        meta_title: meta_title || null,
-        meta_description: meta_description || null,
-      })
-      .select()
-      .single();
-
-    if (error) {
-      if (getErrorCode(error) === "23505") {
-        return NextResponse.json({ success: false, message: "A category with this slug already exists." }, { status: 400 });
-      }
-      throw error;
-    }
+    const newCat = await createCategory({
+      name: name.trim(),
+      slug: cleanSlug,
+      description: description?.trim() || null,
+      color: color || "#bf296a",
+      parent_id: parent_id ? Number(parent_id) : null,
+      meta_title: meta_title || null,
+      meta_description: meta_description || null,
+    });
 
     return NextResponse.json({
       success: true,
       message: "Category added successfully!",
-      id: data.id,
-      category: data,
+      id: newCat.id,
+      category: newCat,
     });
   } catch (error) {
     console.error("Error creating category:", error);
-    return NextResponse.json({ success: false, message: getErrorMessage(error, "Failed to create category") }, { status: 500 });
+    if (isDuplicateKeyError(error)) {
+      return NextResponse.json(
+        { success: false, message: "A category with this slug already exists." },
+        { status: 400 }
+      );
+    }
+    return NextResponse.json(
+      { success: false, message: getErrorMessage(error, "Failed to create category") },
+      { status: 500 }
+    );
   }
 }

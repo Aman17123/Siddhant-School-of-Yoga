@@ -1,77 +1,21 @@
-import crypto from "crypto";
 import { cookies } from "next/headers";
-import { supabase } from "./supabase";
-import { getAdminCredentials, getAdminJwtSecret } from "./env";
+import { query } from "./db";
+import { getAdminCredentials } from "./env";
+import {
+  COOKIE_NAME,
+  createToken,
+  verifyToken,
+  type AdminSession,
+} from "./token";
 
-const COOKIE_NAME = "blog_admin_token";
-
-export interface AdminSession {
-  username: string;
-  role: "admin" | "editor" | "author";
-  name?: string;
-  id?: number;
-  exp: number;
-}
+export { COOKIE_NAME, createToken, verifyToken, type AdminSession };
 
 export interface ValidatedUser {
   id: number;
   username: string;
   name: string;
-  role: "admin" | "editor" | "author";
+  role: "admin";
   email?: string;
-}
-
-export function createToken(
-  user: { username: string; role?: "admin" | "editor" | "author"; name?: string; id?: number } | string
-): string {
-  const exp = Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60; // 7 days
-
-  let payloadObj: {
-    username: string;
-    role: "admin" | "editor" | "author";
-    name?: string;
-    id?: number;
-    exp: number;
-  };
-
-  if (typeof user === "string") {
-    payloadObj = {
-      username: user.trim(),
-      role: "admin",
-      exp,
-    };
-  } else {
-    payloadObj = {
-      username: user.username.trim(),
-      role: user.role || "author",
-      name: user.name,
-      id: user.id,
-      exp,
-    };
-  }
-
-  const header = Buffer.from(JSON.stringify({ alg: "HS256", typ: "JWT" })).toString("base64url");
-  const payload = Buffer.from(JSON.stringify(payloadObj)).toString("base64url");
-  const signature = crypto.createHmac("sha256", getAdminJwtSecret()).update(`${header}.${payload}`).digest("base64url");
-  return `${header}.${payload}.${signature}`;
-}
-
-export function verifyToken(token: string): AdminSession | null {
-  try {
-    const parts = token.split(".");
-    if (parts.length !== 3) return null;
-    const [header, payload, signature] = parts;
-    const expectedSig = crypto.createHmac("sha256", getAdminJwtSecret()).update(`${header}.${payload}`).digest("base64url");
-    if (signature !== expectedSig) return null;
-
-    const data = JSON.parse(Buffer.from(payload, "base64url").toString("utf-8"));
-    if (data.exp && data.exp < Math.floor(Date.now() / 1000)) {
-      return null;
-    }
-    return data as AdminSession;
-  } catch {
-    return null;
-  }
 }
 
 export async function getAdminSession(): Promise<AdminSession | null> {
@@ -82,7 +26,7 @@ export async function getAdminSession(): Promise<AdminSession | null> {
 }
 
 export async function setAdminSession(
-  user: { username: string; role?: "admin" | "editor" | "author"; name?: string; id?: number } | string
+  user: { username: string; role?: string; name?: string; id?: number } | string
 ) {
   const token = createToken(user);
   const cookieStore = await cookies();
@@ -108,29 +52,22 @@ export async function validateUserCredentials(
   const trimmedUser = username.trim();
   const trimmedPass = password.trim();
 
-  // 1. Try querying Supabase users table
+  // 1. Check MySQL users table - only Admin role is permitted
   try {
-    let { data: user, error } = await supabase
-      .from("users")
-      .select("id, username, password, name, email, role")
-      .eq("username", trimmedUser)
-      .single();
+    const rows = await query<Array<{
+      id: number;
+      username: string;
+      password: string;
+      name: string;
+      email: string;
+      role: string;
+    }>>(
+      "SELECT id, username, password, name, email, role FROM `users` WHERE (`username` = ? OR LOWER(`username`) = LOWER(?)) AND `role` = 'admin' LIMIT 1",
+      [trimmedUser, trimmedUser]
+    );
 
-    if (error || !user) {
-      // Try case-insensitive matching
-      const { data: ilikeUser } = await supabase
-        .from("users")
-        .select("id, username, password, name, email, role")
-        .ilike("username", trimmedUser)
-        .limit(1);
-
-      if (ilikeUser && ilikeUser[0]) {
-        user = ilikeUser[0];
-        error = null;
-      }
-    }
-
-    if (!error && user) {
+    if (rows && rows.length > 0) {
+      const user = rows[0];
       if (user.password === trimmedPass) {
         return {
           valid: true,
@@ -138,14 +75,14 @@ export async function validateUserCredentials(
             id: user.id,
             username: user.username,
             name: user.name || user.username,
-            role: (user.role as "admin" | "editor" | "author") || "author",
+            role: "admin",
             email: user.email || "",
           },
         };
       }
     }
   } catch (err) {
-    console.error("Supabase user check error:", err);
+    console.error("[MySQL] User check error:", err);
   }
 
   // 2. Fallback to master admin env credentials
@@ -157,9 +94,9 @@ export async function validateUserCredentials(
       user: {
         id: 1,
         username: expectedUser,
-        name: "Admin",
+        name: "Administrator",
         role: "admin",
-        email: "admin@sanskritiyogpeeth.org",
+        email: "info@siddhantschoolofyoga.com",
       },
     };
   }

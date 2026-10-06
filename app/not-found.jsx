@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Home, Compass } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Navbar from "@/components/Navbar";
@@ -42,13 +43,13 @@ export default function NotFound() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
-              <a
+              <Link
                 href="/"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#1c3b2b] hover:bg-[#142b1e] text-white text-sm sm:text-base font-bold font-figtree px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
               >
                 <Home className="w-5 h-5" />
                 <span>Back to Home</span>
-              </a>
+              </Link>
               <a
                 href={whatsappLink(
                   "Namaste! I was looking for a page on your website and couldn't find it. Could you please help me?",
@@ -62,13 +63,13 @@ export default function NotFound() {
               </a>
             </div>
 
-            <a
+            <Link
               href="/#courses"
               className="inline-flex items-center gap-1.5 mt-8 text-xs sm:text-sm font-figtree font-semibold text-[#1c3b2b] hover:text-[#142b1e] transition-colors"
             >
               <Compass className="w-4 h-4" />
               <span>Or explore our Yoga Teacher Training courses</span>
-            </a>
+            </Link>
           </div>
         </Container>
       </main>
