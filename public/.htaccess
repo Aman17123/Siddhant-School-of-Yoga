@@ -1,0 +1,130 @@
+# Apache config for the static export on Hostinger (copied from public/ into out/).
+
+Options -MultiViews
+DirectoryIndex index.html index.php
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# ---------------------------------------------------------------------------
+# One canonical host: https://siddhantschoolofyoga.com (no www). Without this, the www version
+# serves a full duplicate copy of the site. (HTTP -> HTTPS is already handled by Hostinger.)
+RewriteCond %{HTTP_HOST} ^www\.siddhantschoolofyoga\.com$ [NC]
+RewriteRule ^(.*)$ https://siddhantschoolofyoga.com/$1 [R=301,L]
+
+# ---------------------------------------------------------------------------
+# Redirect legacy /blog/:slug to /blogs/:slug/ (excluding blogdashboard and images)
+RewriteCond %{REQUEST_URI} !^/blog/blogdashboard [NC]
+RewriteCond %{REQUEST_URI} !^/blog/images [NC]
+RewriteRule ^blog/([a-zA-Z0-9_-]+)/?$ /blogs/$1/ [R=301,L]
+
+# Redirect /blogs/blogdashboard to /blog/blogdashboard/
+RewriteRule ^blogs/blogdashboard/?(.*)$ /blog/blogdashboard/$1 [R=301,L]
+
+# ---------------------------------------------------------------------------
+# 301 redirects from the old PHP site (these used to live in next.config.mjs,
+# but a static export cannot run Next.js redirects).
+# Old slugs that were renamed when the pages were rebuilt:
+RewriteRule ^yoga-for-beginners-rishikesh/?$ /yoga-course-for-beginners-in-rishikesh-india/ [R=301,L]
+RewriteRule ^yoga-for-beginners-rishikesh\.php/?$ /yoga-course-for-beginners-in-rishikesh-india/ [R=301,L]
+RewriteRule ^yoga-meditation-retreat/?$ /yoga-meditation-retreat-in-rishikesh-india/ [R=301,L]
+RewriteRule ^yoga-meditation-retreat\.php/?$ /yoga-meditation-retreat-in-rishikesh-india/ [R=301,L]
+RewriteRule ^7-day-yoga-meditation-retreat/?$ /07-days-yoga-meditation-retreat-in-rishikesh-india/ [R=301,L]
+RewriteRule ^7-day-yoga-meditation-retreat\.php/?$ /07-days-yoga-meditation-retreat-in-rishikesh-india/ [R=301,L]
+RewriteRule ^kundalini-retreat-rishikesh/?$ /kundalini-retreat-in-rishikesh-india/ [R=301,L]
+RewriteRule ^kundalini-retreat-rishikesh\.php/?$ /kundalini-retreat-in-rishikesh-india/ [R=301,L]
+RewriteRule ^pranayama-retreat-rishikesh\.php/?$ /pranayama-retreat-rishikesh-india/ [R=301,L]
+RewriteRule ^vipassana-retreat-rishikesh\.php/?$ /vipassana-retreat-rishikesh-india/ [R=301,L]
+RewriteRule ^detox-retreat-rishikesh\.php/?$ /detox-retreat-rishikesh-india/ [R=301,L]
+RewriteRule ^3-day-detox-retreat/?$ /3-days-detox-retreat-rishikesh-india/ [R=301,L]
+RewriteRule ^3-day-detox-retreat\.php/?$ /3-days-detox-retreat-rishikesh-india/ [R=301,L]
+RewriteRule ^mantra-yoga-meditation-retreat\.php/?$ /mantra-yoga-meditation-retreat-rishikesh/ [R=301,L]
+RewriteRule ^yoga-ayurveda-retreat/?$ /yoga-and-ayurveda-retreat-in-rishikesh/ [R=301,L]
+RewriteRule ^yoga-ayurveda-retreat\.php/?$ /yoga-and-ayurveda-retreat-in-rishikesh/ [R=301,L]
+RewriteRule ^5-day-meditation-pranayama-retreat/?$ /05-days-meditation-pranayama-retreat-in-rishikesh/ [R=301,L]
+RewriteRule ^5-day-meditation-pranayama-retreat\.php/?$ /05-days-meditation-pranayama-retreat-in-rishikesh/ [R=301,L]
+RewriteRule ^300-hour-yoga-ttc-rishikesh\.php/?$ /300-hour-yoga-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^500-hour-yoga-ttc-rishikesh\.php/?$ /500-hour-yoga-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^online-200-hour-yoga-ttc/?$ /online-200-hour-yoga-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^online-200-hour-yoga-ttc\.php/?$ /online-200-hour-yoga-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^500-hour-yoga-ayurveda-ttc/?$ /500-hour-yoga-ayurveda-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^500-hour-yoga-ayurveda-ttc\.php/?$ /500-hour-yoga-ayurveda-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^100-hour-kundalini-yoga-ttc/?$ /100-hours-kundalini-yoga-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^100-hour-kundalini-yoga-ttc\.php/?$ /100-hours-kundalini-yoga-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^200-hour-kundalini-yoga-ttc/?$ /200-hours-kundalini-yoga-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^200-hour-kundalini-yoga-ttc\.php/?$ /200-hours-kundalini-yoga-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^300-hour-kundalini-yoga-ttc/?$ /300-hours-kundalini-yoga-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^300-hour-kundalini-yoga-ttc\.php/?$ /300-hours-kundalini-yoga-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^500-hour-kundalini-yoga-ttc/?$ /500-hours-kundalini-yoga-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^500-hour-kundalini-yoga-ttc\.php/?$ /500-hours-kundalini-yoga-teacher-training-in-rishikesh-india/ [R=301,L]
+RewriteRule ^contact-us/?$ /contact/ [R=301,L]
+RewriteRule ^contact-us\.php/?$ /contact/ [R=301,L]
+
+# Generic fallback: any other old "*.php" URL -> same slug without ".php".
+# Skips real PHP files on disk (e.g. /api/contact.php) so the contact form keeps working.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)\.php$ /$1/ [R=301,L]
+
+# ---------------------------------------------------------------------------
+# Route API endpoints to PHP handlers on Hostinger
+# ---------------------------------------------------------------------------
+RewriteRule ^api/auth/login/?$ /api/auth/login.php [L,QSA]
+RewriteRule ^api/auth/me/?$ /api/auth/me.php [L,QSA]
+RewriteRule ^api/auth/logout/?$ /api/auth/logout.php [L,QSA]
+
+RewriteRule ^api/blog/posts/?$ /api/blog/posts.php [L,QSA]
+RewriteRule ^api/blog/posts/([0-9]+)/?$ /api/blog/posts_detail.php?id=$1 [L,QSA]
+
+RewriteRule ^api/blog/categories/?$ /api/blog/categories.php [L,QSA]
+RewriteRule ^api/blog/categories/([0-9]+)/?$ /api/blog/categories_detail.php?id=$1 [L,QSA]
+
+RewriteRule ^api/blog/authors/?$ /api/blog/authors.php [L,QSA]
+RewriteRule ^api/blog/upload/?$ /api/blog/upload.php [L,QSA]
+
+# ---------------------------------------------------------------------------
+# Dynamic blog post fallback if static folder does not exist yet
+# ---------------------------------------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^blogs/([a-zA-Z0-9_-]+)/?$ /blog-post.php?slug=$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^blog/([a-zA-Z0-9_-]+)/?$ /blog-post.php?slug=$1 [L,QSA]
+
+# ---------------------------------------------------------------------------
+# Clean URL resolution for static HTML files generated by Next.js
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.*)$ $1/index.html [L]
+</IfModule>
+
+# Long browser caching for hashed build assets and images.
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/css "access plus 1 year"
+ExpiresByType application/javascript "access plus 1 year"
+ExpiresByType image/webp "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/svg+xml "access plus 1 month"
+ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+<IfModule mod_headers.c>
+<FilesMatch "\.html$">
+Header set Cache-Control "no-cache"
+</FilesMatch>
+</IfModule>
+
+# Protect .env files from direct browser access
+<FilesMatch "^\.env">
+Order allow,deny
+Deny from all
+</FilesMatch>

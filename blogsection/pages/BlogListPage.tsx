@@ -3,9 +3,6 @@ import { getBlogs, getCategories, getAuthors, query } from "../lib/db";
 import BlogListClient from "../components/public/BlogListClient";
 import type { Author } from "../lib/types";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
 export const metadata: Metadata = {
   title: "Yoga Journal: Poses, Pranayama & Teacher Training | Siddhant School of Yoga",
   description:

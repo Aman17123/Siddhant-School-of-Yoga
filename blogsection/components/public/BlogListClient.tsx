@@ -58,22 +58,35 @@ export default function BlogListClient({
   popularBlogs,
   popularTags,
 }: Props) {
+  const [blogs, setBlogs] = useState<Blog[]>(initialBlogs);
   const [selectedCat, setSelectedCat] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
+  // Client-side fetch to keep live posts synced with Hostinger MySQL
+  useEffect(() => {
+    fetch("/api/blog/posts?status=published")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data && data.success && Array.isArray(data.blogs) && data.blogs.length > 0) {
+          setBlogs(data.blogs);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   // Featured hero slides: Top 5 most viewed blogs automatically
   const heroSlides = useMemo<HeroSlide[]>(() => {
     if (popularBlogs && popularBlogs.length > 0) return popularBlogs.slice(0, 5);
-    return [...initialBlogs]
+    return [...blogs]
       .sort((a, b) => (Number(b.views) || 0) - (Number(a.views) || 0))
       .slice(0, 5);
-  }, [popularBlogs, initialBlogs]);
+  }, [popularBlogs, blogs]);
 
   // Filter blogs
   const filteredBlogs = useMemo(() => {
-    return initialBlogs.filter((blog) => {
+    return blogs.filter((blog) => {
       const matchesCat =
         selectedCat === "all" ||
         blog.category_name?.toLowerCase() === selectedCat.toLowerCase() ||
@@ -94,7 +107,7 @@ export default function BlogListClient({
 
       return matchesCat && matchesSearch;
     });
-  }, [initialBlogs, selectedCat, searchQuery, categories]);
+  }, [blogs, selectedCat, searchQuery, categories]);
 
   // const handleSubscribe = (e: React.FormEvent) => {
   //   e.preventDefault();
@@ -177,10 +190,10 @@ export default function BlogListClient({
                 : "bg-[#f4efe6] text-stone-700 hover:bg-[#1c3b2b] hover:text-white border border-[#1c3b2b]/30"
             }`}
           >
-            All Blogs ({initialBlogs.length})
+            All Blogs ({blogs.length})
           </button>
           {categories.map((cat) => {
-            const count = initialBlogs.filter(
+            const count = blogs.filter(
               (b) => b.category_name?.toLowerCase() === cat.name.toLowerCase()
             ).length;
             const isSelected =
@@ -310,7 +323,7 @@ export default function BlogListClient({
           {/* Right Sidebar: Yoga TTC Courses & Latest Posts */}
           <aside className="space-y-6 sticky top-20">
             <SidebarTtcCourses />
-            <LatestBlogs posts={initialBlogs} />
+            <LatestBlogs posts={blogs} />
           </aside>
         </div>
         </div>

@@ -31,9 +31,6 @@ type RelatedPost = Pick<
   | "author"
 >;
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -170,10 +167,12 @@ export default async function BlogDetailPage({ params }: Props) {
   };
 
   // 2. Increment view count only when x-blog-view header is present from proxy (session-based)
-  const reqHeaders = await headers();
-  if (post.id && reqHeaders.get("x-blog-view") === "1") {
-    incrementBlogViews(post.id as number);
-  }
+  try {
+    const reqHeaders = await headers();
+    if (post.id && reqHeaders.get("x-blog-view") === "1") {
+      incrementBlogViews(post.id as number);
+    }
+  } catch {}
 
   // 3. Fetch related posts from MySQL
   let finalRelated: RelatedPost[] = [];

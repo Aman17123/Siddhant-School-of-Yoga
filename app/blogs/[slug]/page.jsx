@@ -3,8 +3,20 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 
-export const dynamic = "force-dynamic";
 export { generateMetadata };
+
+export async function generateStaticParams() {
+  try {
+    const { getBlogs } = await import("@/blogsection/lib/db");
+    const blogs = await getBlogs();
+    return blogs.map((b) => ({
+      slug: String(b.slug),
+    }));
+  } catch (e) {
+    console.warn("Could not fetch blogs for generateStaticParams:", e);
+    return [];
+  }
+}
 
 export default async function BlogDetailPageWrapper(props) {
   return (

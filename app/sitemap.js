@@ -8,6 +8,8 @@ const WHY_US_KEYS = [
   "nidra", "methodology", "practicum", "certification", "koshas", "gratitude",
 ];
 
+export const dynamic = "force-static";
+
 export default function sitemap() {
   const lastModified = new Date();
 

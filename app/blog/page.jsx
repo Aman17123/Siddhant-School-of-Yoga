@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 
-export const dynamic = "force-dynamic";
 export { metadata };
 
 export default function BlogPage() {
