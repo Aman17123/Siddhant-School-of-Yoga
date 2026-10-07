@@ -115,7 +115,7 @@ export default function BlogListClient({
           {/* Background Image with Dark Overlay */}
           <div className="absolute inset-0">
             <Image
-              src="/images/hero-bg.webp"
+              src="/images/blog-hero.webp"
               alt="Siddhant School of Yoga Blog"
               fill
               priority
