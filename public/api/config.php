@@ -180,6 +180,14 @@ function getAuthSession() {
         if (preg_match('/Bearer\s+(.*)$/i', $_SERVER['HTTP_AUTHORIZATION'], $matches)) {
             $token = $matches[1];
         }
+    } elseif (!empty($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+        if (preg_match('/Bearer\s+(.*)$/i', $_SERVER['REDIRECT_HTTP_AUTHORIZATION'], $matches)) {
+            $token = $matches[1];
+        }
+    } elseif (!empty($_SERVER['HTTP_X_AUTH_TOKEN'])) {
+        $token = trim($_SERVER['HTTP_X_AUTH_TOKEN']);
+    } elseif (!empty($_SERVER['HTTP_X_ADMIN_TOKEN'])) {
+        $token = trim($_SERVER['HTTP_X_ADMIN_TOKEN']);
     }
 
     if (!$token) return null;

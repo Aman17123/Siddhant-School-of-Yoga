@@ -1,10 +1,18 @@
-import BlogLoginPage from "@/blogsection/pages/DashboardLoginPage";
+"use client";
 
-export const metadata = {
-  title: "Blog Admin Login | Siddhant School of Yoga",
-  robots: "noindex, nofollow",
-};
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default function LoginRoute() {
-  return <BlogLoginPage />;
+export default function LegacyLoginRoute() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/blog/dashboard/login");
+  }, [router]);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-[#fdfbf7] font-sans text-stone-600">
+      <p>Redirecting to login...</p>
+    </div>
+  );
 }

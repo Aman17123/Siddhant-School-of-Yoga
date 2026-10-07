@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { proxyBlogImage } from "@/blogsection/lib/serverImageUtils";
+import { proxyBlogImage } from "@/blog_core/lib/serverImageUtils";
 
 export const dynamic = "force-dynamic";
 

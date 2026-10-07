@@ -1,1 +1,1 @@
-export { GET } from "@/blogsection/api/authors";
+export { GET } from "@/blog_core/api/authors";

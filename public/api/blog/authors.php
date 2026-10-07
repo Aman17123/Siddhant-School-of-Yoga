@@ -8,7 +8,7 @@ $authors = ['Siddhant School of Yoga'];
 
 try {
     $sql = "SELECT DISTINCT TRIM(`author`) AS author_name 
-            FROM `blogs` 
+            FROM `blog` 
             WHERE `author` IS NOT NULL AND TRIM(`author`) != ''
             UNION
             SELECT DISTINCT TRIM(`name`) AS author_name 

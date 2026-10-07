@@ -1,4 +1,4 @@
-import BlogListPage, { metadata } from "@/blogsection/pages/BlogListPage";
+import BlogListPage, { metadata } from "@/blog_core/pages/BlogListPage";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";

@@ -1,13 +1,18 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { COOKIE_NAME, verifyToken } from "@/blogsection/lib/token";
+import { COOKIE_NAME, verifyToken } from "@/blog_core/lib/token";
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Part C: View count tracking for blog single articles (/blogs/:slug)
-  if (pathname.startsWith("/blogs/")) {
-    const slug = pathname.replace(/^\/blogs\/?/, "").split("/")[0]?.trim();
+  // Part C: View count tracking for blog single articles (/blog/:slug)
+  if (
+    pathname.startsWith("/blog/") &&
+    !pathname.startsWith("/blog/dashboard") &&
+    !pathname.startsWith("/blog/blogdashboard") &&
+    !pathname.startsWith("/blog/images")
+  ) {
+    const slug = pathname.replace(/^\/blog\/?/, "").split("/")[0]?.trim();
     if (slug) {
       const rawCookie = request.cookies.get("blog_views")?.value || "";
       const viewedSlugs = rawCookie ? rawCookie.split("|").filter(Boolean) : [];
@@ -40,12 +45,20 @@ export function proxy(request: NextRequest) {
   }
 
   // Part A: Strictly admin-only protection for Dashboard and Blog APIs
-  const isDashboardRoute = pathname.startsWith("/blog/blogdashboard");
+  const isDashboardRoute =
+    pathname.startsWith("/blog/dashboard") ||
+    pathname.startsWith("/blog/blogdashboard");
   const isApiRoute = pathname.startsWith("/api/blog") || pathname === "/api/auth/me";
 
   if (isDashboardRoute || isApiRoute) {
     // Allow login page without authentication
-    if (pathname === "/blog/blogdashboard/login" || pathname.startsWith("/blog/blogdashboard/login/")) {
+    const isLoginPage =
+      pathname === "/blog/dashboard/login" ||
+      pathname.startsWith("/blog/dashboard/login/") ||
+      pathname === "/blog/blogdashboard/login" ||
+      pathname.startsWith("/blog/blogdashboard/login/");
+
+    if (isLoginPage) {
       return NextResponse.next();
     }
 
@@ -64,7 +77,7 @@ export function proxy(request: NextRequest) {
         );
       }
 
-      const loginUrl = new URL("/blog/blogdashboard/login", request.url);
+      const loginUrl = new URL("/blog/dashboard/login", request.url);
       return NextResponse.redirect(loginUrl);
     }
 
@@ -78,9 +91,10 @@ export default proxy;
 
 export const config = {
   matcher: [
+    "/blog/dashboard/:path*",
     "/blog/blogdashboard/:path*",
     "/api/blog/:path*",
     "/api/auth/me",
-    "/blogs/:slug",
+    "/blog/:slug",
   ],
 };

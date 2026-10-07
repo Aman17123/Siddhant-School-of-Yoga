@@ -1,1 +1,1 @@
-export { GET, POST } from "@/blogsection/api/categories";
+export { GET, POST } from "@/blog_core/api/categories";

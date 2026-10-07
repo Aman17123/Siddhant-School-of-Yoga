@@ -63,10 +63,10 @@ if ($method === 'DELETE') {
             $targetCat = $catStmt->fetch();
             $targetName = $targetCat ? $targetCat['name'] : 'General';
 
-            $upStmt = $db->prepare("UPDATE `blogs` SET `category_id` = :mid, `category_name` = :mname WHERE `category_id` = :id");
+            $upStmt = $db->prepare("UPDATE `blog` SET `category_id` = :mid, `category_name` = :mname WHERE `category_id` = :id");
             $upStmt->execute([':mid' => $moveToId, ':mname' => $targetName, ':id' => $id]);
         } else {
-            $upStmt = $db->prepare("UPDATE `blogs` SET `category_id` = NULL, `category_name` = 'Uncategorized' WHERE `category_id` = :id");
+            $upStmt = $db->prepare("UPDATE `blog` SET `category_id` = NULL, `category_name` = 'Uncategorized' WHERE `category_id` = :id");
             $upStmt->execute([':id' => $id]);
         }
 

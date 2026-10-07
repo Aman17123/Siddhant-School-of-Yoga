@@ -1,1 +1,1 @@
-export { GET } from "@/blogsection/api/authMe";
+export { GET } from "@/blog_core/api/authMe";

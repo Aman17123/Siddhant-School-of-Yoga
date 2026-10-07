@@ -8,7 +8,7 @@ if ($method === 'GET') {
     try {
         $sql = "SELECT c.*, COUNT(b.id) AS post_count 
                 FROM `categories` c 
-                LEFT JOIN `blogs` b ON b.category_id = c.id AND b.status = 'published'
+                LEFT JOIN `blog` b ON b.category_id = c.id AND b.status = 'published'
                 GROUP BY c.id 
                 ORDER BY c.name ASC";
         $stmt = $db->query($sql);

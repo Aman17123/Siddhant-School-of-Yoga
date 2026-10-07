@@ -16,7 +16,7 @@ if (empty($slug)) {
 
 $db = getDb();
 try {
-    $stmt = $db->prepare("SELECT * FROM `blogs` WHERE `slug` = :s AND `status` = 'published' LIMIT 1");
+    $stmt = $db->prepare("SELECT * FROM `blog` WHERE `slug` = :s AND `status` = 'published' LIMIT 1");
     $stmt->execute([':s' => $slug]);
     $blog = $stmt->fetch();
 
@@ -28,7 +28,7 @@ try {
 
     // Increment view counter
     try {
-        $upStmt = $db->prepare("UPDATE `blogs` SET `views` = `views` + 1 WHERE `id` = :id");
+        $upStmt = $db->prepare("UPDATE `blog` SET `views` = `views` + 1 WHERE `id` = :id");
         $upStmt->execute([':id' => $blog['id']]);
     } catch (Exception $e) {}
 
@@ -36,11 +36,15 @@ try {
     generateStaticBlogPost($blog);
 
     // Read and output the generated HTML
-    $targetDir = __DIR__ . '/blogs/' . $slug . '/index.html';
-    if (file_exists($targetDir)) {
-        header('Content-Type: text/html; charset=utf-8');
-        readfile($targetDir);
-        exit;
+    $candidates = [
+        __DIR__ . '/blog/' . $slug . '/index.html'
+    ];
+    foreach ($candidates as $cand) {
+        if (file_exists($cand)) {
+            header('Content-Type: text/html; charset=utf-8');
+            readfile($cand);
+            exit;
+        }
     }
 
     http_response_code(404);

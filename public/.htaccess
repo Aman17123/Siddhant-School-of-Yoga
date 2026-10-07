@@ -14,13 +14,9 @@ RewriteCond %{HTTP_HOST} ^www\.siddhantschoolofyoga\.com$ [NC]
 RewriteRule ^(.*)$ https://siddhantschoolofyoga.com/$1 [R=301,L]
 
 # ---------------------------------------------------------------------------
-# Redirect legacy /blog/:slug to /blogs/:slug/ (excluding blogdashboard and images)
-RewriteCond %{REQUEST_URI} !^/blog/blogdashboard [NC]
-RewriteCond %{REQUEST_URI} !^/blog/images [NC]
-RewriteRule ^blog/([a-zA-Z0-9_-]+)/?$ /blogs/$1/ [R=301,L]
-
-# Redirect /blogs/blogdashboard to /blog/blogdashboard/
-RewriteRule ^blogs/blogdashboard/?(.*)$ /blog/blogdashboard/$1 [R=301,L]
+# Redirect dashboard URLs to canonical /blog/dashboard/
+RewriteRule ^blog/blogdashboard/?(.*)$ /blog/dashboard/$1 [R=301,L]
+RewriteRule ^blog/dashboard$ /blog/dashboard/ [R=301,L]
 
 # ---------------------------------------------------------------------------
 # 301 redirects from the old PHP site (these used to live in next.config.mjs,
@@ -81,14 +77,32 @@ RewriteRule ^api/blog/categories/([0-9]+)/?$ /api/blog/categories_detail.php?id=
 
 RewriteRule ^api/blog/authors/?$ /api/blog/authors.php [L,QSA]
 RewriteRule ^api/blog/upload/?$ /api/blog/upload.php [L,QSA]
+RewriteRule ^api/blog/regenerate/?$ /api/blog/regenerate.php [L,QSA]
+
+# ---------------------------------------------------------------------------
+# Image Fallback Rules
+# If an image requested at /blog/images/xxx is missing on disk,
+# fallback to /images/xxx or /api/blog/images/xxx
+# ---------------------------------------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/images/$1 -f
+RewriteRule ^blog/images/(.+)$ /images/$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/api/blog/images/$1 -f
+RewriteRule ^blog/images/(.+)$ /api/blog/images/$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/blog/images/$1 -f
+RewriteRule ^images/(.+)$ /blog/images/$1 [L]
 
 # ---------------------------------------------------------------------------
 # Dynamic blog post fallback if static folder does not exist yet
+# (Explicitly exclude /blog/dashboard, /blog/blogdashboard, and /blog/images)
 # ---------------------------------------------------------------------------
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^blogs/([a-zA-Z0-9_-]+)/?$ /blog-post.php?slug=$1 [L,QSA]
-
+RewriteCond %{REQUEST_URI} !^/blog/dashboard
+RewriteCond %{REQUEST_URI} !^/blog/blogdashboard
+RewriteCond %{REQUEST_URI} !^/blog/images
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^blog/([a-zA-Z0-9_-]+)/?$ /blog-post.php?slug=$1 [L,QSA]

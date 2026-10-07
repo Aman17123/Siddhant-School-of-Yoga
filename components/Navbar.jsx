@@ -41,7 +41,7 @@ const navMenu = [
       { title: "Food & Accommodation", href: "/food-accommodation" },
       { title: "About Rishikesh", href: "/rishikesh-india" },
       { title: "FAQs", href: "/faq" },
-      { title: "Blogs", href: "/blog" },
+      { title: "blog", href: "/blog" },
     ],
   },
   {
@@ -96,7 +96,7 @@ const navMenu = [
   // {
   //   type: "external",
   //   key: "blog",
-  //   label: "Blogs",
+  //   label: "blog",
   //   href: "https://www.siddhantschoolofyoga.com/blog/",
   // },
   { type: "link", key: "contact", label: "Contact Us", href: "/contact" },
@@ -803,7 +803,7 @@ export default function Navbar() {
                   rel="noopener noreferrer"
                   className="inline-block py-2.5 px-3 lg:px-4 xl:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
                 >
-                  Blogs
+                  blog
                 </a>
                 <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
               </li> */}

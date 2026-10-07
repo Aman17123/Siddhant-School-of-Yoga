@@ -1,1 +1,1 @@
-export { PUT, DELETE } from "@/blogsection/api/categoryById";
+export { PUT, DELETE } from "@/blog_core/api/categoryById";

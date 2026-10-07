@@ -12,7 +12,7 @@ if (!$id) {
 
 if ($method === 'GET') {
     try {
-        $stmt = $db->prepare("SELECT * FROM `blogs` WHERE `id` = :id LIMIT 1");
+        $stmt = $db->prepare("SELECT * FROM `blog` WHERE `id` = :id LIMIT 1");
         $stmt->execute([':id' => $id]);
         $blog = $stmt->fetch();
 
@@ -60,12 +60,11 @@ if ($method === 'PUT') {
     $metaDesc = !empty($body['meta_description']) ? trim($body['meta_description']) : null;
     $metaKeywords = !empty($body['meta_keywords']) ? trim($body['meta_keywords']) : null;
     $popular = !empty($body['popular']) ? 1 : 0;
-    $seoScore = !empty($body['seo_score']) ? (int)$body['seo_score'] : 75;
 
     $faqs = isset($body['faqs']) ? (is_string($body['faqs']) ? $body['faqs'] : json_encode($body['faqs'])) : '[]';
     $tags = isset($body['tags']) ? (is_string($body['tags']) ? $body['tags'] : json_encode($body['tags'])) : '[]';
 
-    $sql = "UPDATE `blogs` SET
+    $sql = "UPDATE `blog` SET
         `title` = :title,
         `slug` = :slug,
         `category_id` = :cat_id,
@@ -82,7 +81,6 @@ if ($method === 'PUT') {
         `author` = :author,
         `published_at` = :pub_at,
         `status` = :status,
-        `seo_score` = :seo,
         `tags` = :tags
         WHERE `id` = :id";
 
@@ -106,11 +104,10 @@ if ($method === 'PUT') {
             ':author'     => $author,
             ':pub_at'     => $publishedAt,
             ':status'     => $status,
-            ':seo'        => $seoScore,
             ':tags'       => $tags,
         ]);
 
-        $fetchStmt = $db->prepare("SELECT * FROM `blogs` WHERE `id` = :id LIMIT 1");
+        $fetchStmt = $db->prepare("SELECT * FROM `blog` WHERE `id` = :id LIMIT 1");
         $fetchStmt->execute([':id' => $id]);
         $updatedBlog = $fetchStmt->fetch();
 
@@ -131,11 +128,11 @@ if ($method === 'DELETE') {
     $session = requireAdmin();
 
     try {
-        $fetchStmt = $db->prepare("SELECT slug FROM `blogs` WHERE `id` = :id LIMIT 1");
+        $fetchStmt = $db->prepare("SELECT slug FROM `blog` WHERE `id` = :id LIMIT 1");
         $fetchStmt->execute([':id' => $id]);
         $b = $fetchStmt->fetch();
 
-        $delStmt = $db->prepare("DELETE FROM `blogs` WHERE `id` = :id");
+        $delStmt = $db->prepare("DELETE FROM `blog` WHERE `id` = :id");
         $delStmt->execute([':id' => $id]);
 
         // Remove static html directory if exists
@@ -143,9 +140,9 @@ if ($method === 'DELETE') {
             $slug = $b['slug'];
             $root = dirname(__DIR__, 2);
             $dirs = [
-                $root . '/out/blogs/' . $slug,
                 $root . '/out/blog/' . $slug,
-                $root . '/public_html/blogs/' . $slug,
+                $root . '/out/blog/' . $slug,
+                $root . '/public_html/blog/' . $slug,
                 $root . '/public_html/blog/' . $slug
             ];
             foreach ($dirs as $d) {

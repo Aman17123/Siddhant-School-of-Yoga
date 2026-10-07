@@ -1,1 +1,1 @@
-export { POST } from "@/blogsection/api/upload";
+export { POST } from "@/blog_core/api/upload";

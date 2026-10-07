@@ -1,1 +1,1 @@
-export { POST } from "@/blogsection/api/authLogout";
+export { POST } from "@/blog_core/api/authLogout";

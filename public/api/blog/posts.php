@@ -10,7 +10,7 @@ if ($method === 'GET') {
     $category = isset($_GET['category']) ? trim($_GET['category']) : '';
     $status = isset($_GET['status']) ? trim($_GET['status']) : '';
 
-    $sql = "SELECT * FROM `blogs` WHERE 1=1";
+    $sql = "SELECT * FROM `blog` WHERE 1=1";
     $params = [];
 
     if (!empty($status)) {
@@ -55,9 +55,35 @@ if ($method === 'GET') {
             }
         }
 
-        sendJson(['success' => true, 'blogs' => $rows]);
+        // Auto-heal check: if any published blog has an obsolete template containing self.__next_f, regenerate it!
+        foreach ($rows as $postItem) {
+            if (!empty($postItem['slug']) && (!isset($postItem['status']) || $postItem['status'] === 'published')) {
+                $slug = $postItem['slug'];
+                $checkPaths = array_unique([
+                    dirname(__DIR__, 2) . '/blog/' . $slug . '/index.html',
+                    (isset($_SERVER['DOCUMENT_ROOT']) ? $_SERVER['DOCUMENT_ROOT'] . '/blog/' . $slug . '/index.html' : '')
+                ]);
+                $needsRegen = false;
+                $foundAny = false;
+                foreach ($checkPaths as $cp) {
+                    if (file_exists($cp)) {
+                        $foundAny = true;
+                        $content = file_get_contents($cp);
+                        if (str_contains($content, 'self.__next_f') || str_contains($content, 'BLOG_HEAD_PRE') || str_contains($content, 'blog-content-body')) {
+                            $needsRegen = true;
+                            break;
+                        }
+                    }
+                }
+                if (!$foundAny || $needsRegen) {
+                    generateStaticBlogPost($postItem);
+                }
+            }
+        }
+
+        sendJson(['success' => true, 'blog' => $rows]);
     } catch (Exception $e) {
-        sendJson(['success' => false, 'message' => 'Failed to fetch blogs', 'error' => $e->getMessage()], 500);
+        sendJson(['success' => false, 'message' => 'Failed to fetch blog', 'error' => $e->getMessage()], 500);
     }
 }
 
@@ -86,19 +112,18 @@ if ($method === 'POST') {
     $metaDesc = !empty($body['meta_description']) ? trim($body['meta_description']) : null;
     $metaKeywords = !empty($body['meta_keywords']) ? trim($body['meta_keywords']) : null;
     $popular = !empty($body['popular']) ? 1 : 0;
-    $seoScore = !empty($body['seo_score']) ? (int)$body['seo_score'] : 75;
 
     $faqs = isset($body['faqs']) ? (is_string($body['faqs']) ? $body['faqs'] : json_encode($body['faqs'])) : '[]';
     $tags = isset($body['tags']) ? (is_string($body['tags']) ? $body['tags'] : json_encode($body['tags'])) : '[]';
 
-    $sql = "INSERT INTO `blogs` (
+    $sql = "INSERT INTO `blog` (
         `title`, `slug`, `category_id`, `category_name`, `featured_image`, `featured_image_alt`,
         `short_description`, `content`, `faqs`, `meta_title`, `meta_description`, `meta_keywords`,
-        `popular`, `author`, `published_at`, `status`, `views`, `seo_score`, `tags`
+        `popular`, `author`, `published_at`, `status`, `views`, `tags`
     ) VALUES (
         :title, :slug, :cat_id, :cat_name, :img, :img_alt,
         :short_desc, :content, :faqs, :meta_t, :meta_d, :meta_k,
-        :pop, :author, :pub_at, :status, 0, :seo, :tags
+        :pop, :author, :pub_at, :status, 0, :tags
     )";
 
     try {
@@ -120,14 +145,13 @@ if ($method === 'POST') {
             ':author'     => $author,
             ':pub_at'     => $publishedAt,
             ':status'     => $status,
-            ':seo'        => $seoScore,
             ':tags'       => $tags,
         ]);
 
         $newId = (int)$db->lastInsertId();
 
         // Fetch inserted blog
-        $fetchStmt = $db->prepare("SELECT * FROM `blogs` WHERE `id` = :id LIMIT 1");
+        $fetchStmt = $db->prepare("SELECT * FROM `blog` WHERE `id` = :id LIMIT 1");
         $fetchStmt->execute([':id' => $newId]);
         $newBlog = $fetchStmt->fetch();
 

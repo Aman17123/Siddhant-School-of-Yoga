@@ -117,7 +117,7 @@ export default function sitemap() {
       priority: 0.7,
     },
     {
-      url: `${site.url}/blogs`,
+      url: `${site.url}/blog`,
       lastModified,
       changeFrequency: "daily",
       priority: 0.9,

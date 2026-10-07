@@ -1,12 +1,18 @@
-import BlogDashboardPage from "@/blogsection/pages/DashboardPage";
-import BlogDashboardLayout, { metadata } from "@/blogsection/pages/DashboardLayout";
+"use client";
 
-export { metadata };
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default function DashboardRoute() {
+export default function LegacyDashboardRoute() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/blog/dashboard");
+  }, [router]);
+
   return (
-    <BlogDashboardLayout>
-      <BlogDashboardPage />
-    </BlogDashboardLayout>
+    <div className="min-h-screen flex items-center justify-center bg-[#fdfbf7] font-sans text-stone-600">
+      <p>Redirecting to blog dashboard...</p>
+    </div>
   );
 }
