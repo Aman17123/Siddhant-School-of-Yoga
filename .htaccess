@@ -8,6 +8,13 @@ ErrorDocument 404 /404.html
 RewriteEngine On
 
 # ---------------------------------------------------------------------------
+# Pass HTTP Authorization header to PHP in Apache FastCGI/PHP-FPM environment
+# ---------------------------------------------------------------------------
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+# ---------------------------------------------------------------------------
 # One canonical host: https://siddhantschoolofyoga.com (no www). Without this, the www version
 # serves a full duplicate copy of the site. (HTTP -> HTTPS is already handled by Hostinger.)
 RewriteCond %{HTTP_HOST} ^www\.siddhantschoolofyoga\.com$ [NC]

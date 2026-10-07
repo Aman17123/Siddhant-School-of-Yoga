@@ -122,15 +122,26 @@ export default function BlogDashboardPage() {
     setTimeout(() => setToastMsg(null), 3500);
   };
 
+  const getAuthHeaders = (extraHeaders?: Record<string, string>) => {
+    const token = typeof window !== "undefined" ? localStorage.getItem("blog_admin_token") : null;
+    const headers: Record<string, string> = { ...extraHeaders };
+    if (token) {
+      headers["Authorization"] = `Bearer ${token}`;
+      headers["x-auth-token"] = token;
+    }
+    return headers;
+  };
+
   // Declared before the auth effect below that invokes it, so it is never
   // referenced from the temporal dead zone.
   const loadData = async () => {
     setLoadingData(true);
     try {
+      const headers = getAuthHeaders();
       const [bRes, cRes, aRes] = await Promise.all([
-        fetch("/api/blog/posts"),
-        fetch("/api/blog/categories"),
-        fetch("/api/blog/authors"),
+        fetch("/api/blog/posts", { headers, credentials: "include" }),
+        fetch("/api/blog/categories", { headers, credentials: "include" }),
+        fetch("/api/blog/authors", { headers, credentials: "include" }),
       ]);
       const bData = await bRes.json();
       const cData = await cRes.json();
@@ -436,23 +447,25 @@ export default function BlogDashboardPage() {
 
       const res = await fetch(url, {
         method,
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders({ "Content-Type": "application/json" }),
+        credentials: "include",
         body: JSON.stringify(payload),
       });
 
       const data = await res.json();
       if (res.ok && data.success) {
-        const savedStatus: PostFormStatus = data.status || "draft";
+        const savedStatus: PostFormStatus = data.status || data.blog?.status || "draft";
+        const savedId = Number(data.id || data.blog?.id || postForm.id);
         setPostForm((prev) => ({
           ...prev,
-          id: postForm.id === 0 ? data.id : prev.id,
+          id: savedId > 0 ? savedId : prev.id,
           status: savedStatus,
           slug: cleanSlug,
         }));
         setSaveState("All changes saved");
         showToast(
           savedStatus === "scheduled"
-            ? `Post scheduled for ${formatScheduledAt(data.published_at)}`
+            ? `Post scheduled for ${formatScheduledAt(data.published_at || data.blog?.published_at)}`
             : savedStatus === "published"
               ? "Post published!"
               : "Draft saved!",
@@ -514,7 +527,8 @@ export default function BlogDashboardPage() {
       const slug = slugify(name);
       const res = await fetch("/api/blog/categories", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders({ "Content-Type": "application/json" }),
+        credentials: "include",
         body: JSON.stringify({ name, slug, color: SWATCH_COLORS[0] }),
       });
       const data = await res.json();
@@ -523,9 +537,10 @@ export default function BlogDashboardPage() {
         setQuickCatName("");
         setQuickCatOpen(false);
         loadData();
+        const newCatId = data.id || data.category?.id;
         setPostForm((prev) => ({
           ...prev,
-          category_id: String(data.id),
+          category_id: String(newCatId || prev.category_id),
           category_name: name,
         }));
       } else {
@@ -631,7 +646,8 @@ export default function BlogDashboardPage() {
         selectedIds.map((id) =>
           fetch(`/api/blog/posts/${id}`, {
             method: "PATCH",
-            headers: { "Content-Type": "application/json" },
+            headers: getAuthHeaders({ "Content-Type": "application/json" }),
+            credentials: "include",
             body: JSON.stringify({ status: "draft" }),
           }).then((res) =>
             res.json().then((data) => ({ ok: res.ok && data.success, data })),
@@ -663,36 +679,6 @@ export default function BlogDashboardPage() {
     }
   };
 
-  const [popularBusyId, setPopularBusyId] = useState<number | null>(null);
-
-  // Mark/unmark a blog as "Most Popular" (shown in the swipeable slider on /blog).
-  // Uses PATCH because PUT fully replaces the row and would wipe content and views.
-  const handleTogglePopular = async (b: Blog) => {
-    const next = !b.popular;
-    setPopularBusyId(b.id);
-    try {
-      const res = await fetch(`/api/blog/posts/${b.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ popular: next }),
-      });
-      const data = await res.json().catch(() => ({}));
-
-      if (res.ok && data.success) {
-        setblog((prev) =>
-          prev.map((x) => (x.id === b.id ? { ...x, popular: next } : x)),
-        );
-        showToast(next ? "Added to Most Popular" : "Removed from Most Popular");
-      } else {
-        showToast(data.message || "Could not update popularity");
-      }
-    } catch {
-      showToast("Could not update popularity");
-    } finally {
-      setPopularBusyId(null);
-    }
-  };
-
   const handleBulkDelete = async () => {
     if (!selectedIds.length) {
       showToast("Select posts first");
@@ -702,7 +688,11 @@ export default function BlogDashboardPage() {
       try {
         await Promise.all(
           selectedIds.map((id) =>
-            fetch(`/api/blog/posts/${id}`, { method: "DELETE" }),
+            fetch(`/api/blog/posts/${id}`, {
+              method: "DELETE",
+              headers: getAuthHeaders(),
+              credentials: "include",
+            }),
           ),
         );
         showToast(`${selectedIds.length} post(s) deleted`);
@@ -720,6 +710,8 @@ export default function BlogDashboardPage() {
     try {
       const res = await fetch(`/api/blog/posts/${postToDelete.id}`, {
         method: "DELETE",
+        headers: getAuthHeaders(),
+        credentials: "include",
       });
       if (res.ok) {
         showToast("Post deleted");
@@ -762,7 +754,8 @@ export default function BlogDashboardPage() {
 
       const res = await fetch(url, {
         method,
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders({ "Content-Type": "application/json" }),
+        credentials: "include",
         body: JSON.stringify(payload),
       });
 
@@ -812,12 +805,18 @@ export default function BlogDashboardPage() {
   const confirmDeleteCategory = async () => {
     if (!catToDelete) return;
     try {
-      const res = await fetch(`/api/blog/categories/${catToDelete.id}`, {
+      const deleteUrl = catMoveTarget
+        ? `/api/blog/categories/${catToDelete.id}?moveToCategoryId=${encodeURIComponent(catMoveTarget)}`
+        : `/api/blog/categories/${catToDelete.id}`;
+      const res = await fetch(deleteUrl, {
         method: "DELETE",
+        headers: getAuthHeaders(),
+        credentials: "include",
       });
       if (res.ok) {
         showToast("Category deleted");
         setCatToDelete(null);
+        setCatMoveTarget("");
         loadData();
       } else {
         showToast("Delete category failed");
@@ -883,8 +882,6 @@ export default function BlogDashboardPage() {
               handleSelectAll={handleSelectAll}
               handleSelectRow={handleSelectRow}
               setPostToDelete={setPostToDelete}
-              handleTogglePopular={handleTogglePopular}
-              popularBusyId={popularBusyId}
               handleBulkDraft={handleBulkDraft}
               handleBulkDelete={handleBulkDelete}
             />

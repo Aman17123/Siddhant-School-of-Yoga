@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import {
   ChevronDown,
@@ -41,7 +42,7 @@ const navMenu = [
       { title: "Food & Accommodation", href: "/food-accommodation" },
       { title: "About Rishikesh", href: "/rishikesh-india" },
       { title: "FAQs", href: "/faq" },
-      { title: "blog", href: "/blog" },
+      { title: "Blog", href: "/blog" },
     ],
   },
   {
@@ -112,6 +113,21 @@ export default function Navbar() {
   const lastScrollY = useRef(0);
   const navRef = useRef(null);
   const [navHeight, setNavHeight] = useState(0);
+  const pathname = usePathname();
+
+  // Helper function to check if a path is active (exact match or starts with for dropdowns)
+  const isActiveLink = (href) => {
+    if (!pathname) return false;
+    if (href === "/") return pathname === "/";
+    // For dropdown children, check if pathname starts with href for more specific paths
+    return pathname === href || pathname.startsWith(href + "/");
+  };
+
+  // Helper function to check if any dropdown item is active
+  const isDropdownActive = (items) => {
+    if (!items || !pathname) return false;
+    return items.some((item) => isActiveLink(item.href));
+  };
 
   const handleMouseEnter = (menuKey) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -386,11 +402,19 @@ export default function Navbar() {
               <li className="border-l border-r border-[#e3dac9] relative group">
                 <Link
                   href="/"
-                  className="inline-block py-2.5 px-3 lg:px-4 xl:px-6 text-[#1c3b2b] font-bold hover:text-[#4c7c65] transition-colors font-jakarta tracking-wide"
+                  className={`inline-block py-2.5 px-3 lg:px-4 xl:px-6 transition-colors font-jakarta tracking-wide ${
+                    isActiveLink("/")
+                      ? "text-[#1c3b2b] font-bold"
+                      : "text-[#1F1E1D] hover:text-[#1c3b2b]"
+                  }`}
                 >
                   Home
                 </Link>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full scale-x-100 transition-transform duration-300" />
+                <span
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-300 origin-center ${
+                    isActiveLink("/") ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </li>
 
               {/* About Us (Smooth Dropdown) */}
@@ -407,7 +431,7 @@ export default function Navbar() {
                     )
                   }
                   className={`cursor-pointer py-2.5 px-3 lg:px-4 xl:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
-                    activeDropdown === "about"
+                    activeDropdown === "about" || isDropdownActive(navMenu.find((m) => m.key === "about")?.items)
                       ? "text-[#1c3b2b] font-bold"
                       : "text-[#1F1E1D] hover:text-[#1c3b2b]"
                   }`}
@@ -424,7 +448,7 @@ export default function Navbar() {
                 </button>
                 <span
                   className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-200 origin-center ${
-                    activeDropdown === "about"
+                    activeDropdown === "about" || isDropdownActive(navMenu.find((m) => m.key === "about")?.items)
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
                   }`}
@@ -490,7 +514,7 @@ export default function Navbar() {
                 </button>
                 <span
                   className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-200 origin-center ${
-                    activeDropdown === "yttc"
+                    activeDropdown === "yttc" || isDropdownActive(navMenu.find((m) => m.key === "yttc")?.items)
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
                   }`}
@@ -540,7 +564,7 @@ export default function Navbar() {
                     )
                   }
                   className={`cursor-pointer py-2.5 px-3 lg:px-4 xl:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
-                    activeDropdown === "kundalini"
+                    activeDropdown === "kundalini" || isDropdownActive(navMenu.find((m) => m.key === "kundalini")?.items)
                       ? "text-[#1c3b2b] font-bold"
                       : "text-[#1F1E1D] hover:text-[#1c3b2b]"
                   }`}
@@ -557,7 +581,7 @@ export default function Navbar() {
                 </button>
                 <span
                   className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-200 origin-center ${
-                    activeDropdown === "kundalini"
+                    activeDropdown === "kundalini" || isDropdownActive(navMenu.find((m) => m.key === "kundalini")?.items)
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
                   }`}
@@ -607,7 +631,7 @@ export default function Navbar() {
                     )
                   }
                   className={`cursor-pointer py-2.5 px-3 lg:px-4 xl:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
-                    activeDropdown === "online"
+                    activeDropdown === "online" || isDropdownActive(navMenu.find((m) => m.key === "online")?.items)
                       ? "text-[#1c3b2b] font-bold"
                       : "text-[#1F1E1D] hover:text-[#1c3b2b]"
                   }`}
@@ -624,7 +648,7 @@ export default function Navbar() {
                 </button>
                 <span
                   className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-200 origin-center ${
-                    activeDropdown === "online"
+                    activeDropdown === "online" || isDropdownActive(navMenu.find((m) => m.key === "online")?.items)
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
                   }`}
@@ -674,7 +698,7 @@ export default function Navbar() {
                     )
                   }
                   className={`cursor-pointer py-2.5 px-3 lg:px-4 xl:px-6 transition-colors duration-200 flex items-center gap-1.5 font-jakarta tracking-wide ${
-                    activeDropdown === "retreats"
+                    activeDropdown === "retreats" || isDropdownActive(navMenu.find((m) => m.key === "retreats")?.items)
                       ? "text-[#1c3b2b] font-bold"
                       : "text-[#1F1E1D] hover:text-[#1c3b2b]"
                   }`}
@@ -691,7 +715,7 @@ export default function Navbar() {
                 </button>
                 <span
                   className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-200 origin-center ${
-                    activeDropdown === "retreats"
+                    activeDropdown === "retreats" || isDropdownActive(navMenu.find((m) => m.key === "retreats")?.items)
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
                   }`}
@@ -777,22 +801,38 @@ export default function Navbar() {
               <li className="border-r border-[#e3dac9] relative group">
                 <Link
                   href="/gallery"
-                  className="inline-block py-2.5 px-3 lg:px-4 xl:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
+                  className={`inline-block py-2.5 px-3 lg:px-4 xl:px-6 transition-colors font-jakarta tracking-wide ${
+                    isActiveLink("/gallery")
+                      ? "text-[#1c3b2b] font-bold"
+                      : "hover:text-[#1c3b2b]"
+                  }`}
                 >
                   Gallery
                 </Link>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+                <span
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-300 origin-center ${
+                    isActiveLink("/gallery") ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </li>
 
               {/* Payment */}
               <li className="border-r border-[#e3dac9] relative group">
                 <Link
                   href="/yoga-course-payment"
-                  className="inline-block py-2.5 px-3 lg:px-4 xl:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
+                  className={`inline-block py-2.5 px-3 lg:px-4 xl:px-6 transition-colors font-jakarta tracking-wide ${
+                    isActiveLink("/yoga-course-payment")
+                      ? "text-[#1c3b2b] font-bold"
+                      : "hover:text-[#1c3b2b]"
+                  }`}
                 >
                   Payment
                 </Link>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+                <span
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-300 origin-center ${
+                    isActiveLink("/yoga-course-payment") ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </li>
 
               {/* Blog — commented out for now */}
@@ -812,11 +852,19 @@ export default function Navbar() {
               <li className="border-r border-[#e3dac9] relative group">
                 <Link
                   href="/contact"
-                  className="inline-block py-2.5 px-3 lg:px-4 xl:px-6 hover:text-[#1c3b2b] transition-colors font-jakarta tracking-wide"
+                  className={`inline-block py-2.5 px-3 lg:px-4 xl:px-6 transition-colors font-jakarta tracking-wide ${
+                    isActiveLink("/contact")
+                      ? "text-[#1c3b2b] font-bold"
+                      : "hover:text-[#1c3b2b]"
+                  }`}
                 >
                   Contact Us
                 </Link>
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-300 origin-center scale-x-0 group-hover:scale-x-100" />
+                <span
+                  className={`absolute bottom-0 left-3 right-3 h-[2px] bg-[#1c3b2b] rounded-full transition-transform duration-300 origin-center ${
+                    isActiveLink("/contact") ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </li>
             </ul>
           </div>
@@ -872,8 +920,8 @@ export default function Navbar() {
                       href={entry.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className={`py-3 px-3 rounded-xl transition-colors ${
-                        entry.key === "home"
-                          ? "text-[#1c3b2b] bg-[#f4efe6]"
+                        isActiveLink(entry.href)
+                          ? "text-[#1c3b2b] bg-[#f4efe6] font-bold"
                           : "hover:text-[#1c3b2b] hover:bg-[#f4efe6]"
                       }`}
                     >
@@ -899,6 +947,7 @@ export default function Navbar() {
 
                 // Dropdown group (accordion)
                 const isOpen = mobileOpenGroup === entry.key;
+                const groupActive = isDropdownActive(entry.items);
                 return (
                   <div key={entry.key} className="border-b border-[#f4efe6] last:border-b-0">
                     <button
@@ -907,8 +956,8 @@ export default function Navbar() {
                         setMobileOpenGroup(isOpen ? null : entry.key)
                       }
                       className={`w-full flex items-center justify-between py-3 px-3 rounded-xl transition-colors ${
-                        isOpen
-                          ? "text-[#1c3b2b] bg-[#f4efe6]"
+                        isOpen || groupActive
+                          ? "text-[#1c3b2b] bg-[#f4efe6] font-bold"
                           : "hover:text-[#1c3b2b] hover:bg-[#f4efe6]"
                       }`}
                     >
@@ -931,7 +980,11 @@ export default function Navbar() {
                             key={item.href}
                             href={item.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="group/item flex items-center gap-2.5 py-2.5 px-3 rounded-lg text-[14px] font-medium text-stone-600 hover:text-[#1c3b2b] hover:bg-[#f4efe6] transition-colors"
+                            className={`group/item flex items-center gap-2.5 py-2.5 px-3 rounded-lg text-[14px] font-medium transition-colors ${
+                              isActiveLink(item.href)
+                                ? "text-[#1c3b2b] bg-[#f4efe6] font-bold"
+                                : "text-stone-600 hover:text-[#1c3b2b] hover:bg-[#f4efe6]"
+                            }`}
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover/item:bg-[#1c3b2b] group-hover/item:scale-125 transition-all duration-150 shrink-0" />
                             <span>{item.title}</span>

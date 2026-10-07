@@ -16,8 +16,8 @@ export default function SidebarTtcCourses() {
   return (
     <div className="bg-[#fdfbf7] border border-[#e3dac9] rounded-2xl p-5 shadow-xs font-figtree">
       {/* Header with bottom accent line */}
-      <div className="mb-4 pb-2 border-b-2 border-[#b32025]">
-        <h3 className="font-belleza font-bold text-sm sm:text-base tracking-wider uppercase text-[#b32025]">
+      <div className="mb-4 pb-2 border-b-2 border-[#1c3b2b]">
+        <h3 className="font-belleza font-bold text-sm sm:text-base tracking-wider uppercase text-[#1c3b2b]">
           Yoga Teacher Training Courses
         </h3>
       </div>
@@ -53,14 +53,14 @@ export default function SidebarTtcCourses() {
                 )}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 
-                {/* Red Badge */}
-                <span className="absolute top-2 left-2 bg-[#b32025] text-white text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-sm shadow-xs uppercase tracking-wider">
+                {/* Brand Badge */}
+                <span className="absolute top-2 left-2 bg-[#1c3b2b]/90 backdrop-blur-xs text-white text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full shadow-xs uppercase tracking-wider">
                   {badgeText}
                 </span>
               </Link>
 
               {/* Course Title */}
-              <h4 className="font-belleza font-bold text-base leading-snug text-[#1e2422] group-hover:text-[#b32025] transition-colors line-clamp-2">
+              <h4 className="font-belleza font-bold text-base leading-snug text-[#1e2422] group-hover:text-[#1c3b2b] transition-colors line-clamp-2">
                 <Link href={`/${course.slug}`}>
                   {course.title} in Rishikesh
                 </Link>
@@ -68,7 +68,7 @@ export default function SidebarTtcCourses() {
 
               {/* Price & Meta info */}
               <div className="flex flex-wrap items-center gap-x-2 text-xs text-stone-500 mt-1 font-figtree">
-                <span className="font-bold text-[#b32025]">{course.price}</span>
+                <span className="font-bold text-[#b85c00]">{course.price}</span>
                 <span>•</span>
                 <span className="text-stone-600">{course.badge || "Yoga Alliance"}</span>
               </div>

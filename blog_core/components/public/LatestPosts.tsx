@@ -42,10 +42,12 @@ export default function Latestblog({ posts }: { posts: LatestBlog[] }) {
   const latest = pickLatest(posts || []);
 
   return (
-    <section className="px-5 py-5 bg-[#fdfbf7] rounded-3xl border border-[#e3dac9]">
-      <h2 className="font-belleza text-xl font-normal text-[#1e2422] mb-3 tracking-wide">
-        Latest Posts
-      </h2>
+    <section className="p-5 bg-[#fdfbf7] rounded-2xl border border-[#e3dac9] shadow-xs font-figtree">
+      <div className="mb-4 pb-2 border-b-2 border-[#1c3b2b]">
+        <h3 className="font-belleza font-bold text-sm sm:text-base tracking-wider uppercase text-[#1c3b2b]">
+          Latest Posts
+        </h3>
+      </div>
 
       {latest.length === 0 ? (
         <p className="font-figtree text-xs sm:text-sm text-stone-500 py-6 text-center">No posts published yet.</p>

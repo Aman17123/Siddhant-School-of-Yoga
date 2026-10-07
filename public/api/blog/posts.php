@@ -103,6 +103,7 @@ if ($method === 'POST') {
     $categoryName = !empty($body['category_name']) ? trim($body['category_name']) : 'General';
     $featuredImg = !empty($body['featured_image']) ? trim($body['featured_image']) : null;
     $featuredAlt = !empty($body['featured_image_alt']) ? trim($body['featured_image_alt']) : $title;
+    $featuredImgTitle = !empty($body['featured_image_title']) ? trim($body['featured_image_title']) : null;
     $shortDesc = !empty($body['short_description']) ? trim($body['short_description']) : null;
     $content = isset($body['content']) ? $body['content'] : '';
     $author = !empty($body['author']) ? trim($body['author']) : (!empty($session['name']) ? $session['name'] : 'Siddhant School of Yoga');
@@ -112,18 +113,26 @@ if ($method === 'POST') {
     $metaDesc = !empty($body['meta_description']) ? trim($body['meta_description']) : null;
     $metaKeywords = !empty($body['meta_keywords']) ? trim($body['meta_keywords']) : null;
     $popular = !empty($body['popular']) ? 1 : 0;
+    $focusKeyword = !empty($body['focus_keyword']) ? trim($body['focus_keyword']) : null;
+    $tldr = !empty($body['tldr']) ? trim($body['tldr']) : null;
+    $keyTakeaways = !empty($body['key_takeaways']) ? trim($body['key_takeaways']) : null;
+    $canonicalUrl = !empty($body['canonical_url']) ? trim($body['canonical_url']) : null;
+    $conclusion = !empty($body['conclusion']) ? trim($body['conclusion']) : null;
+    $schemaType = !empty($body['schema_type']) ? trim($body['schema_type']) : 'post';
 
     $faqs = isset($body['faqs']) ? (is_string($body['faqs']) ? $body['faqs'] : json_encode($body['faqs'])) : '[]';
     $tags = isset($body['tags']) ? (is_string($body['tags']) ? $body['tags'] : json_encode($body['tags'])) : '[]';
 
     $sql = "INSERT INTO `blog` (
-        `title`, `slug`, `category_id`, `category_name`, `featured_image`, `featured_image_alt`,
+        `title`, `slug`, `category_id`, `category_name`, `featured_image`, `featured_image_alt`, `featured_image_title`,
         `short_description`, `content`, `faqs`, `meta_title`, `meta_description`, `meta_keywords`,
-        `popular`, `author`, `published_at`, `status`, `views`, `tags`
+        `popular`, `author`, `published_at`, `status`, `views`, `tags`,
+        `focus_keyword`, `tldr`, `key_takeaways`, `canonical_url`, `conclusion`, `schema_type`
     ) VALUES (
-        :title, :slug, :cat_id, :cat_name, :img, :img_alt,
+        :title, :slug, :cat_id, :cat_name, :img, :img_alt, :img_title,
         :short_desc, :content, :faqs, :meta_t, :meta_d, :meta_k,
-        :pop, :author, :pub_at, :status, 0, :tags
+        :pop, :author, :pub_at, :status, 0, :tags,
+        :focus_kw, :tldr, :takeaways, :canon, :concl, :schema_t
     )";
 
     try {
@@ -135,6 +144,7 @@ if ($method === 'POST') {
             ':cat_name'   => $categoryName,
             ':img'        => $featuredImg,
             ':img_alt'    => $featuredAlt,
+            ':img_title'  => $featuredImgTitle,
             ':short_desc' => $shortDesc,
             ':content'    => $content,
             ':faqs'       => $faqs,
@@ -146,6 +156,12 @@ if ($method === 'POST') {
             ':pub_at'     => $publishedAt,
             ':status'     => $status,
             ':tags'       => $tags,
+            ':focus_kw'   => $focusKeyword,
+            ':tldr'       => $tldr,
+            ':takeaways'  => $keyTakeaways,
+            ':canon'      => $canonicalUrl,
+            ':concl'      => $conclusion,
+            ':schema_t'   => $schemaType,
         ]);
 
         $newId = (int)$db->lastInsertId();
@@ -155,13 +171,18 @@ if ($method === 'POST') {
         $fetchStmt->execute([':id' => $newId]);
         $newBlog = $fetchStmt->fetch();
 
-        // Generate static HTML files immediately!
-        generateStaticBlogPost($newBlog);
+        // Generate static HTML files immediately if published!
+        if ($newBlog && (!isset($newBlog['status']) || $newBlog['status'] === 'published')) {
+            generateStaticBlogPost($newBlog);
+        }
 
         sendJson([
-            'success' => true,
-            'message' => 'Blog published successfully!',
-            'blog'    => $newBlog
+            'success'      => true,
+            'message'      => 'Blog saved successfully!',
+            'id'           => $newId,
+            'status'       => $newBlog['status'] ?? $status,
+            'published_at' => $newBlog['published_at'] ?? $publishedAt,
+            'blog'         => $newBlog
         ]);
     } catch (Exception $e) {
         sendJson(['success' => false, 'message' => 'Failed to create blog: ' . $e->getMessage()], 500);

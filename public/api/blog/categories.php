@@ -55,6 +55,7 @@ if ($method === 'POST') {
         sendJson([
             'success'  => true,
             'message'  => 'Category added successfully!',
+            'id'       => $newId,
             'category' => $newCat
         ]);
     } catch (Exception $e) {

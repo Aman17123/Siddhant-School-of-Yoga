@@ -29,8 +29,6 @@ interface DashboardOverviewProps {
   handleSelectAll: (checked: boolean) => void;
   handleSelectRow: (id: number, checked: boolean) => void;
   setPostToDelete: (blog: Blog) => void;
-  handleTogglePopular?: (blog: Blog) => void;
-  popularBusyId?: number | null;
   handleBulkDraft: () => void;
   handleBulkDelete: () => void;
 }
@@ -58,8 +56,6 @@ export default function DashboardOverview({
   handleSelectAll,
   handleSelectRow,
   setPostToDelete,
-  handleTogglePopular,
-  popularBusyId,
   handleBulkDraft,
   handleBulkDelete,
 }: DashboardOverviewProps) {

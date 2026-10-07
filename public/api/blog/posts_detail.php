@@ -51,6 +51,7 @@ if ($method === 'PUT') {
     $categoryName = !empty($body['category_name']) ? trim($body['category_name']) : 'General';
     $featuredImg = !empty($body['featured_image']) ? trim($body['featured_image']) : null;
     $featuredAlt = !empty($body['featured_image_alt']) ? trim($body['featured_image_alt']) : $title;
+    $featuredImgTitle = !empty($body['featured_image_title']) ? trim($body['featured_image_title']) : null;
     $shortDesc = !empty($body['short_description']) ? trim($body['short_description']) : null;
     $content = isset($body['content']) ? $body['content'] : '';
     $author = !empty($body['author']) ? trim($body['author']) : (!empty($session['name']) ? $session['name'] : 'Siddhant School of Yoga');
@@ -60,6 +61,12 @@ if ($method === 'PUT') {
     $metaDesc = !empty($body['meta_description']) ? trim($body['meta_description']) : null;
     $metaKeywords = !empty($body['meta_keywords']) ? trim($body['meta_keywords']) : null;
     $popular = !empty($body['popular']) ? 1 : 0;
+    $focusKeyword = !empty($body['focus_keyword']) ? trim($body['focus_keyword']) : null;
+    $tldr = !empty($body['tldr']) ? trim($body['tldr']) : null;
+    $keyTakeaways = !empty($body['key_takeaways']) ? trim($body['key_takeaways']) : null;
+    $canonicalUrl = !empty($body['canonical_url']) ? trim($body['canonical_url']) : null;
+    $conclusion = !empty($body['conclusion']) ? trim($body['conclusion']) : null;
+    $schemaType = !empty($body['schema_type']) ? trim($body['schema_type']) : 'post';
 
     $faqs = isset($body['faqs']) ? (is_string($body['faqs']) ? $body['faqs'] : json_encode($body['faqs'])) : '[]';
     $tags = isset($body['tags']) ? (is_string($body['tags']) ? $body['tags'] : json_encode($body['tags'])) : '[]';
@@ -71,6 +78,7 @@ if ($method === 'PUT') {
         `category_name` = :cat_name,
         `featured_image` = :img,
         `featured_image_alt` = :img_alt,
+        `featured_image_title` = :img_title,
         `short_description` = :short_desc,
         `content` = :content,
         `faqs` = :faqs,
@@ -81,7 +89,13 @@ if ($method === 'PUT') {
         `author` = :author,
         `published_at` = :pub_at,
         `status` = :status,
-        `tags` = :tags
+        `tags` = :tags,
+        `focus_keyword` = :focus_kw,
+        `tldr` = :tldr,
+        `key_takeaways` = :takeaways,
+        `canonical_url` = :canon,
+        `conclusion` = :concl,
+        `schema_type` = :schema_t
         WHERE `id` = :id";
 
     try {
@@ -94,6 +108,7 @@ if ($method === 'PUT') {
             ':cat_name'   => $categoryName,
             ':img'        => $featuredImg,
             ':img_alt'    => $featuredAlt,
+            ':img_title'  => $featuredImgTitle,
             ':short_desc' => $shortDesc,
             ':content'    => $content,
             ':faqs'       => $faqs,
@@ -105,22 +120,120 @@ if ($method === 'PUT') {
             ':pub_at'     => $publishedAt,
             ':status'     => $status,
             ':tags'       => $tags,
+            ':focus_kw'   => $focusKeyword,
+            ':tldr'       => $tldr,
+            ':takeaways'  => $keyTakeaways,
+            ':canon'      => $canonicalUrl,
+            ':concl'      => $conclusion,
+            ':schema_t'   => $schemaType,
         ]);
 
         $fetchStmt = $db->prepare("SELECT * FROM `blog` WHERE `id` = :id LIMIT 1");
         $fetchStmt->execute([':id' => $id]);
         $updatedBlog = $fetchStmt->fetch();
 
-        // Regenerate static HTML files!
-        generateStaticBlogPost($updatedBlog);
+        // Regenerate static HTML files if published, or clean up if draft
+        if ($updatedBlog && (!isset($updatedBlog['status']) || $updatedBlog['status'] === 'published')) {
+            generateStaticBlogPost($updatedBlog);
+        } else if ($updatedBlog && $updatedBlog['status'] === 'draft') {
+            $slugClean = $updatedBlog['slug'];
+            $root = dirname(__DIR__, 2);
+            $dirs = [
+                $root . '/out/blog/' . $slugClean,
+                $root . '/public_html/blog/' . $slugClean,
+                $root . '/blog/' . $slugClean
+            ];
+            foreach ($dirs as $d) {
+                if (is_dir($d)) {
+                    @unlink($d . '/index.html');
+                    @rmdir($d);
+                }
+            }
+        }
 
         sendJson([
-            'success' => true,
-            'message' => 'Blog updated successfully!',
-            'blog'    => $updatedBlog
+            'success'      => true,
+            'message'      => 'Blog updated successfully!',
+            'id'           => $id,
+            'status'       => $updatedBlog['status'] ?? $status,
+            'published_at' => $updatedBlog['published_at'] ?? $publishedAt,
+            'blog'         => $updatedBlog
         ]);
     } catch (Exception $e) {
         sendJson(['success' => false, 'message' => 'Failed to update blog: ' . $e->getMessage()], 500);
+    }
+}
+
+if ($method === 'PATCH') {
+    $session = requireAdmin();
+    $body = getJsonBody();
+
+    $wantsStatus = isset($body['status']);
+    $wantsPopular = isset($body['popular']);
+    $wantsPublishedAt = isset($body['published_at']);
+
+    if (!$wantsStatus && !$wantsPopular && !$wantsPublishedAt) {
+        sendJson(['success' => false, 'message' => 'No updatable fields provided.'], 400);
+    }
+
+    $setParts = [];
+    $params = [':id' => $id];
+
+    if ($wantsPopular) {
+        $setParts[] = "`popular` = :pop";
+        $params[':pop'] = !empty($body['popular']) ? 1 : 0;
+    }
+
+    if ($wantsStatus) {
+        $statusVal = trim($body['status']) === 'draft' ? 'draft' : (trim($body['status']) === 'scheduled' ? 'scheduled' : 'published');
+        $setParts[] = "`status` = :status";
+        $params[':status'] = $statusVal;
+    }
+
+    if ($wantsPublishedAt) {
+        $setParts[] = "`published_at` = :pub_at";
+        $params[':pub_at'] = date('Y-m-d H:i:s', strtotime($body['published_at']));
+    }
+
+    try {
+        $sql = "UPDATE `blog` SET " . implode(', ', $setParts) . " WHERE `id` = :id";
+        $stmt = $db->prepare($sql);
+        $stmt->execute($params);
+
+        $fetchStmt = $db->prepare("SELECT * FROM `blog` WHERE `id` = :id LIMIT 1");
+        $fetchStmt->execute([':id' => $id]);
+        $updatedBlog = $fetchStmt->fetch();
+
+        if ($updatedBlog) {
+            if ($updatedBlog['status'] === 'published') {
+                generateStaticBlogPost($updatedBlog);
+            } else {
+                $slugClean = $updatedBlog['slug'];
+                $root = dirname(__DIR__, 2);
+                $dirs = [
+                    $root . '/out/blog/' . $slugClean,
+                    $root . '/public_html/blog/' . $slugClean,
+                    $root . '/blog/' . $slugClean
+                ];
+                foreach ($dirs as $d) {
+                    if (is_dir($d)) {
+                        @unlink($d . '/index.html');
+                        @rmdir($d);
+                    }
+                }
+            }
+        }
+
+        sendJson([
+            'success'      => true,
+            'message'      => 'Blog updated successfully!',
+            'id'           => $id,
+            'status'       => $updatedBlog['status'] ?? ($statusVal ?? 'published'),
+            'published_at' => $updatedBlog['published_at'] ?? null,
+            'blog'         => $updatedBlog
+        ]);
+    } catch (Exception $e) {
+        sendJson(['success' => false, 'message' => 'Failed to patch blog: ' . $e->getMessage()], 500);
     }
 }
 

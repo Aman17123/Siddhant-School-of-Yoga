@@ -22,7 +22,7 @@ try {
     $stmt->execute([':u1' => $username, ':u2' => $username]);
     $user = $stmt->fetch();
 
-    if ($user && $user['password'] === $password) {
+    if ($user && (password_verify($password, $user['password']) || $user['password'] === $password)) {
         $validatedUser = [
             'id'       => (int)$user['id'],
             'username' => $user['username'],
