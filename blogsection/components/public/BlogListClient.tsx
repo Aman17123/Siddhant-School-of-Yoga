@@ -238,8 +238,8 @@ export default function BlogListClient({
                           alt={blog.title}
                           onError={(e) => {
                             const img = e.currentTarget;
-                            if (img.src.endsWith("/images/yoga-and-meditation-retreat-riverside.jpg")) return;
-                            img.src = "/images/yoga-and-meditation-retreat-riverside.jpg";
+                            if (img.src.endsWith("/blog/images/yoga-and-meditation-retreat-riverside.jpg")) return;
+                            img.src = "/blog/images/yoga-and-meditation-retreat-riverside.jpg";
                           }}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           loading="lazy"

@@ -14,11 +14,46 @@ const MIME_MAP: Record<string, string> = {
 };
 
 /**
- * Serves an image file from local blogsection/images or public/images.
+ * Searches a directory for a file matching either the exact clean name
+ * or a legacy name ending with the clean name.
+ */
+async function findImageFile(dir: string, targetName: string): Promise<string | null> {
+  try {
+    const exact = path.join(dir, targetName);
+    const stat = await fs.stat(exact);
+    if (stat.isFile()) return exact;
+  } catch {}
+
+  try {
+    const files = await fs.readdir(dir);
+    const targetLower = targetName.toLowerCase();
+    const match = files.find((f) => {
+      const lower = f.toLowerCase();
+      if (lower === targetLower) return true;
+      if (lower.endsWith(`-${targetLower}`)) return true;
+      // Strip any "siddhant-blog-<timestamp>-" prefix
+      const stripped = lower.replace(/^siddhant-blog-\d+-/i, "").replace(/^siddhant-blog-/i, "");
+      return stripped === targetLower;
+    });
+    if (match) {
+      return path.join(dir, match);
+    }
+  } catch {}
+
+  return null;
+}
+
+/**
+ * Serves an image file from public/blog/images, blogsection/images, or public/images.
  */
 export async function proxyBlogImage(filename: string) {
+  let decoded = filename;
+  try {
+    decoded = decodeURIComponent(filename);
+  } catch {}
+
   // Sanitize filename to prevent directory traversal
-  const cleanName = filename.replace(/[^a-zA-Z0-9._-]/g, "");
+  const cleanName = path.basename(decoded).replace(/[^a-zA-Z0-9._-]/g, "");
   if (!cleanName) {
     return new NextResponse("Invalid image filename", { status: 400 });
   }
@@ -26,41 +61,30 @@ export async function proxyBlogImage(filename: string) {
   const ext = path.extname(cleanName).toLowerCase();
   const contentType = MIME_MAP[ext] || "image/jpeg";
 
-  // 1. Check local blogsection/images directory
-  try {
-    const localPath = path.join(process.cwd(), "blogsection", "images", cleanName);
-    const stat = await fs.stat(localPath);
-    if (stat.isFile()) {
-      const fileBuffer = await fs.readFile(localPath);
-      return new NextResponse(fileBuffer, {
-        status: 200,
-        headers: {
-          "Content-Type": contentType,
-          "Cache-Control": "public, max-age=31536000, immutable",
-          "X-Content-Type-Options": "nosniff",
-        },
-      });
-    }
-  } catch {}
+  const searchDirs = [
+    path.join(process.cwd(), "public", "blog", "images"),
+    path.join(process.cwd(), "blogsection", "images"),
+    path.join(process.cwd(), "public", "images"),
+  ];
 
-  // 2. Check public/images directory
-  try {
-    const publicPath = path.join(process.cwd(), "public", "images", cleanName);
-    const stat = await fs.stat(publicPath);
-    if (stat.isFile()) {
-      const fileBuffer = await fs.readFile(publicPath);
-      return new NextResponse(fileBuffer, {
-        status: 200,
-        headers: {
-          "Content-Type": contentType,
-          "Cache-Control": "public, max-age=31536000, immutable",
-          "X-Content-Type-Options": "nosniff",
-        },
-      });
+  for (const dir of searchDirs) {
+    const foundPath = await findImageFile(dir, cleanName);
+    if (foundPath) {
+      try {
+        const fileBuffer = await fs.readFile(foundPath);
+        return new NextResponse(fileBuffer, {
+          status: 200,
+          headers: {
+            "Content-Type": contentType,
+            "Cache-Control": "public, max-age=31536000, immutable",
+            "X-Content-Type-Options": "nosniff",
+          },
+        });
+      } catch {}
     }
-  } catch {}
+  }
 
-  // 3. Fallback for legacy filenames that might be requested
+  // Fallback for legacy filenames that might be requested
   if (cleanName.includes("retreat-banner") || cleanName.includes("sanskriti")) {
     try {
       const fallbackPath = path.join(process.cwd(), "public", "images", "yoga-and-meditation-retreat-riverside.jpg");

@@ -30,35 +30,58 @@ export async function POST(req: NextRequest) {
 
     const buffer = Buffer.from(await file.arrayBuffer());
     const originalName = file.name || "image.webp";
-    const ext = path.extname(originalName) || ".webp";
-    const baseName = path
+    const ext = (path.extname(originalName) || ".webp").toLowerCase();
+    const cleanBase = path
       .basename(originalName, ext)
       .toLowerCase()
+      .replace(/^siddhant-blog-\d+-/i, "")
+      .replace(/^siddhant-blog-/i, "")
       .replace(/[^a-z0-9_-]+/g, "-")
-      .replace(/^-+|-+$/g, "");
+      .replace(/^-+|-+$/g, "") || "image";
 
-    const uniqueName = `siddhant-blog-${Date.now()}-${baseName.slice(0, 40)}${ext}`;
-
-    // 1. Save to local storage inside blogsection/images folder
     const uploadDir = path.join(process.cwd(), "blogsection", "images");
+    const publicBlogImagesDir = path.join(process.cwd(), "public", "blog", "images");
+    const publicImagesDir = path.join(process.cwd(), "public", "images");
+
     await fs.mkdir(uploadDir, { recursive: true });
-    const filePath = path.join(uploadDir, uniqueName);
+    await fs.mkdir(publicBlogImagesDir, { recursive: true });
+    await fs.mkdir(publicImagesDir, { recursive: true });
+
+    let cleanName = `${cleanBase}${ext}`;
+    let counter = 1;
+    let filePath = path.join(uploadDir, cleanName);
+
+    while (true) {
+      try {
+        await fs.access(filePath);
+        cleanName = `${cleanBase}-${counter}${ext}`;
+        filePath = path.join(uploadDir, cleanName);
+        counter++;
+      } catch {
+        break;
+      }
+    }
+
+    // Save to local storage inside blogsection/images folder
     await fs.writeFile(filePath, buffer);
 
-    // 2. Also save to public/images for fast direct static serving
+    // Save to public/blog/images for direct static serving
     try {
-      const publicImagesDir = path.join(process.cwd(), "public", "images");
-      await fs.mkdir(publicImagesDir, { recursive: true });
-      await fs.writeFile(path.join(publicImagesDir, uniqueName), buffer);
+      await fs.writeFile(path.join(publicBlogImagesDir, cleanName), buffer);
     } catch {}
 
-    const cleanUrl = `/images/${uniqueName}`;
+    // Save to public/images for fallback compatibility
+    try {
+      await fs.writeFile(path.join(publicImagesDir, cleanName), buffer);
+    } catch {}
+
+    const cleanUrl = `/blog/images/${cleanName}`;
 
     return NextResponse.json({
       success: true,
       message: "Image uploaded successfully!",
       url: cleanUrl,
-      fileName: uniqueName,
+      fileName: cleanName,
     });
   } catch (error) {
     console.error("Upload error:", error);

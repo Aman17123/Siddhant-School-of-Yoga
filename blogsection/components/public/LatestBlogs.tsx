@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { toCleanBlogImageUrl } from "@/blogsection/lib/imageUtils";
 
@@ -10,7 +12,7 @@ interface LatestBlog {
   created_at?: string | null;
 }
 
-const FALLBACK_IMAGE = "/images/yoga-and-meditation-retreat-riverside.jpg";
+const FALLBACK_IMAGE = "/blog/images/yoga-and-meditation-retreat-riverside.jpg";
 const MAX_POSTS = 5;
 
 function formatDate(dateStr?: string | null) {

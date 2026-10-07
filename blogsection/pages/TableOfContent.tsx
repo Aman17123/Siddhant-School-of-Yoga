@@ -5,10 +5,10 @@ import React, { useState, useEffect, useCallback } from "react";
 export interface TocHeading {
   id: string;
   title: string;
-  level: number; // 2 for h2, 3 for h3
+  level: number; // 2 for h2
 }
 
-const DEFAULT_SELECTOR = "#prose h2, #prose h3";
+const DEFAULT_SELECTOR = "#prose h2";
 const HEADER_FALLBACK = 80;
 
 function slugify(text: string, taken: Set<string>): string {
@@ -42,7 +42,7 @@ export default function TableOfContent({
   const [headings, setHeadings] = useState<TocHeading[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
 
-  // 1. Extract h2/h3 from the blog content only (never the sidebar/footer),
+  // 1. Extract h2 from the blog content only (never the sidebar/footer),
   //    assigning a unique id to any heading that doesn't already have one.
   useEffect(() => {
     const injected: { el: HTMLElement; original: string | null }[] = [];
@@ -50,7 +50,7 @@ export default function TableOfContent({
     const scan = () => {
       const elements = Array.from(
         document.querySelectorAll<HTMLElement>(contentSelector),
-      );
+      ).filter((el) => el.tagName.toUpperCase() === "H2");
 
       const taken = new Set<string>();
       for (const el of elements) {
@@ -174,17 +174,10 @@ export default function TableOfContent({
           {headings.map((item, index) => {
             const isActive = index === activeIndex;
             const isPast = index < activeIndex;
-            const isSub = item.level >= 3;
 
-            // Heading level drives the base colour/weight so an h2 always reads
-            // darker than an h3; scroll state only adds emphasis on top of that.
             const tone = isActive
               ? "font-semibold text-[#1c3b2b]"
-              : isSub
-                ? isPast
-                  ? "font-medium text-stone-600 hover:text-[#1e2422]"
-                  : "font-normal text-stone-500 hover:text-stone-700"
-                : "font-medium text-[#1e2422] hover:text-[#1c3b2b]";
+              : "font-medium text-[#1e2422] hover:text-[#1c3b2b]";
 
             return (
               <li
@@ -212,7 +205,7 @@ export default function TableOfContent({
                     className="relative z-10 flex items-center justify-center w-3 h-3 mt-[4.5px] shrink-0"
                   >
                     <span
-                      className={`block rounded-full transition-all duration-300 ${isSub ? "w-2 h-2" : "w-2.5 h-2.5"} ${
+                      className={`block rounded-full transition-all duration-300 w-2.5 h-2.5 ${
                         isActive
                           ? "bg-[#b85c00] ring-[4px] ring-[#b85c00]/25 scale-110"
                           : isPast
@@ -222,11 +215,9 @@ export default function TableOfContent({
                     />
                   </span>
 
-                  {/* Text — h3 sits smaller and indented under its h2 */}
+                  {/* Text */}
                   <span
-                    className={`leading-[22px] ml-4 transition-colors duration-200 text-sm ${
-                      isSub ? "pl-3 text-xs sm:text-sm" : ""
-                    } ${tone}`}
+                    className={`leading-[22px] ml-4 transition-colors duration-200 text-sm ${tone}`}
                   >
                     {item.title}
                   </span>

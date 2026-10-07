@@ -135,9 +135,7 @@ export default function CourseInfiniteCarousel() {
               Yoga Teacher Training (TTC) in Rishikesh
             </h2>
           </div>
-          <p className="font-figtree text-sm sm:text-base text-stone-600 max-w-md">
-            Internationally certified Yoga Alliance USA courses (100h, 200h, 300h, 500h &amp; Kundalini) taught with authentic Vedic discipline.
-          </p>
+
         </div>
 
         <div className="relative">

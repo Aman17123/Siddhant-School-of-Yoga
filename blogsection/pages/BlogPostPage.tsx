@@ -11,6 +11,7 @@ import TableOfContent from "../pages/TableOfContent";
 import type { Author, Blog, FaqRow } from "../lib/types";
 import { toCleanBlogImageUrl, cleanHtmlImageUrls } from "../lib/imageUtils";
 import CourseInfiniteCarousel from "../components/public/CourseInfiniteCarousel";
+import FallbackImage from "../components/public/FallbackImage";
 
 type AuthorProfile = Pick<
   Author,
@@ -270,14 +271,10 @@ export default async function BlogDetailPage({ params }: Props) {
 
             <div className="flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm text-stone-600 pb-6 border-b border-[#e3dac9]/60 font-figtree">
               <div className="flex items-center gap-3">
-                <img
+                <FallbackImage
                   src={post.author_photo || "/images/acharya-siddhant.jpg"}
                   alt={post.author || "Author"}
-                  onError={(e) => {
-                    const img = e.currentTarget;
-                    if (img.src.endsWith("/logo/siddhant-logo.svg")) return;
-                    img.src = "/logo/siddhant-logo.svg";
-                  }}
+                  fallbackSrc="/logo/siddhant-logo.svg"
                   className="w-10 h-10 rounded-full object-cover border border-[#e3dac9] shadow-xs"
                 />
                 <div>
@@ -301,14 +298,10 @@ export default async function BlogDetailPage({ params }: Props) {
 
           {/* 2. POST HERO IMAGE */}
           <figure className="mb-10">
-            <img
+            <FallbackImage
               src={toCleanBlogImageUrl(post.featured_image, post.slug)}
               alt={post.featured_image_alt || post.title}
-              onError={(e) => {
-                const img = e.currentTarget;
-                if (img.src.endsWith("/images/yoga-and-meditation-retreat-riverside.jpg")) return;
-                img.src = "/images/yoga-and-meditation-retreat-riverside.jpg";
-              }}
+              fallbackSrc="/blog/images/yoga-and-meditation-retreat-riverside.jpg"
               className="w-full h-auto max-h-[520px] object-cover rounded-2xl shadow-md border border-[#e3dac9]/60"
             />
             {post.featured_image_title && (
@@ -384,14 +377,10 @@ export default async function BlogDetailPage({ params }: Props) {
 
           {/* AUTHOR BOX */}
           <div className="mt-12 p-6 sm:p-8 bg-[#fdfbf7] border border-[#e3dac9] rounded-2xl flex flex-col sm:flex-row items-center sm:items-start gap-6 shadow-xs">
-            <img
+            <FallbackImage
               src={post.author_photo || "/images/acharya-siddhant.jpg"}
               alt={post.author || "Author"}
-              onError={(e) => {
-                const img = e.currentTarget;
-                if (img.src.endsWith("/logo/siddhant-logo.svg")) return;
-                img.src = "/logo/siddhant-logo.svg";
-              }}
+              fallbackSrc="/logo/siddhant-logo.svg"
               className="w-20 h-20 rounded-full object-cover shrink-0 shadow-sm border-2 border-[#1c3b2b]/30"
             />
             <div>
@@ -446,14 +435,10 @@ export default async function BlogDetailPage({ params }: Props) {
                     aria-hidden="true"
                     className="block aspect-[16/10] overflow-hidden rounded-xl mb-4 bg-stone-100"
                   >
-                    <img
+                    <FallbackImage
                       src={toCleanBlogImageUrl(rel.featured_image, rel.slug)}
                       alt={rel.title}
-                      onError={(e) => {
-                        const img = e.currentTarget;
-                        if (img.src.endsWith("/images/yoga-and-meditation-retreat-riverside.jpg")) return;
-                        img.src = "/images/yoga-and-meditation-retreat-riverside.jpg";
-                      }}
+                      fallbackSrc="/blog/images/yoga-and-meditation-retreat-riverside.jpg"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />

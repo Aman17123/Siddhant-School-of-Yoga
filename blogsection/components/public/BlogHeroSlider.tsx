@@ -47,7 +47,7 @@ function BlogCard({ s }: { s: HeroSlide }) {
         <img
           src={imgSrc}
           alt={s.title}
-          onError={() => setImgSrc("/images/yoga-and-meditation-retreat-riverside.jpg")}
+          onError={() => setImgSrc("/blog/images/yoga-and-meditation-retreat-riverside.jpg")}
           loading="lazy"
           className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
         />
