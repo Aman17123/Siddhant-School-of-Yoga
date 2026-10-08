@@ -104,7 +104,7 @@ export default function DashboardOverview({
       </div>
 
       {/* Stats: one joined strip, each cell links to a filtered list */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#e6ded2] border border-[#e6ded2] rounded-xl overflow-hidden mb-7 shadow-xs">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-[#e6ded2] border border-[#e6ded2] rounded-xl overflow-hidden mb-7 shadow-xs">
         <button
           type="button"
           className={`p-4 sm:p-5 text-left transition-colors cursor-pointer ${
@@ -152,13 +152,6 @@ export default function DashboardOverview({
             {stats.scheduled}
           </strong>
         </button>
-
-        <div className="bg-white p-4 sm:p-5 text-left">
-          <p className="text-label font-bold text-[#6B5862] uppercase tracking-wider">Views (30 days)</p>
-          <strong className="block text-section font-bold tabular-nums mt-1 text-[#2A1621] font-display">
-            {stats.totalViews.toLocaleString()}
-          </strong>
-        </div>
       </div>
 
       {/* Recently edited panel */}
@@ -209,13 +202,6 @@ export default function DashboardOverview({
                   <b className="font-bold">{p.title}</b>
                 </a>
                 <div className="flex items-center gap-3 shrink-0">
-                  <span className="text-label text-[#6B5862] flex items-center gap-1 font-mono">
-                    <svg className="w-3.5 h-3.5 text-[#1c3b2b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                    {(Number(p.views) || 0).toLocaleString()}
-                  </span>
                   <span className={`text-label font-bold px-2.5 py-0.5 rounded-full border ${badgeCls}`}>
                     {badgeText}
                   </span>
@@ -321,7 +307,6 @@ export default function DashboardOverview({
                 <th className="px-4 py-3 text-label uppercase tracking-wider font-bold text-[#6B5862] bg-[#FAF6F0]/60 border-b border-[#e6ded2]">Title</th>
                 <th className="px-4 py-3 text-label uppercase tracking-wider font-bold text-[#6B5862] bg-[#FAF6F0]/60 border-b border-[#e6ded2]">Author</th>
                 <th className="px-4 py-3 text-label uppercase tracking-wider font-bold text-[#6B5862] bg-[#FAF6F0]/60 border-b border-[#e6ded2]">Category</th>
-                <th className="px-4 py-3 text-label uppercase tracking-wider font-bold text-[#6B5862] bg-[#FAF6F0]/60 border-b border-[#e6ded2]">Views</th>
                 <th className="px-4 py-3 text-label uppercase tracking-wider font-bold text-[#6B5862] bg-[#FAF6F0]/60 border-b border-[#e6ded2]">Status</th>
                 <th className="px-4 py-3 text-label uppercase tracking-wider font-bold text-[#6B5862] bg-[#FAF6F0]/60 border-b border-[#e6ded2]">Date</th>
               </tr>
@@ -329,7 +314,7 @@ export default function DashboardOverview({
             <tbody>
               {filteredblog.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="text-center py-12 text-body-sm text-[#6B5862]/70 font-medium">
+                  <td colSpan={6} className="text-center py-12 text-body-sm text-[#6B5862]/70 font-medium">
                     No posts match these filters.{" "}
                     <button
                       onClick={openWritePost}
@@ -415,15 +400,6 @@ export default function DashboardOverview({
                       </td>
                       <td className="px-4 py-3.5 border-b border-[#e6ded2] align-middle text-body-sm text-[#6B5862]">
                         {p.category_name || "General"}
-                      </td>
-                      <td className="px-4 py-3.5 border-b border-[#e6ded2] align-middle text-label font-semibold">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF6F0] border border-[#e6ded2] text-[#2A1621] font-mono">
-                          <svg className="w-3.5 h-3.5 text-[#1c3b2b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                          </svg>
-                          {(Number(p.views) || 0).toLocaleString()}
-                        </span>
                       </td>
                       <td className="px-4 py-3.5 border-b border-[#e6ded2] align-middle">
                         <span className={`text-label font-bold px-2.5 py-0.5 rounded-full border ${badgeCls}`}>

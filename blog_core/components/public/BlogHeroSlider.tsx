@@ -105,12 +105,7 @@ function BlogCard({ s }: { s: HeroSlide }) {
             </svg>
           </span>
 
-          {s.views ? (
-            <span className="font-figtree text-xs text-white/80 font-medium flex items-center gap-1">
-              <span>👁️</span>
-              <span>{s.views} reads</span>
-            </span>
-          ) : s.published_at ? (
+          {s.published_at ? (
             <span className="font-figtree text-xs text-white/80 font-medium">
               {formatDate(s.published_at)}
             </span>

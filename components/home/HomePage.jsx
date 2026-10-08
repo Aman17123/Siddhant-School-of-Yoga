@@ -17,9 +17,24 @@ import Testimonials from "./Testimonials";
 import VideoSection from "./VideoSection";
 import GalleryMarquee from "./GalleryMarquee";
 import FAQ from "./FAQ";
+import LatestBlogSection from "./LatestBlogSection";
 import CtaBanner from "./CtaBanner";
+import { query } from "@/blog_core/lib/db";
 
-export default function HomePage() {
+
+async function getLatestPosts() {
+  try {
+    return await query(
+      "SELECT id, title, slug, featured_image, short_description, category_name, author, published_at, views FROM `blog` WHERE `status` = 'published' ORDER BY `published_at` DESC, `id` DESC LIMIT 5"
+    );
+  } catch {
+    return [];
+  }
+}
+
+export default async function HomePage() {
+  const latestPosts = await getLatestPosts();
+
   return (
     <>
       {/* 1. Hero Section */}
@@ -79,7 +94,10 @@ export default function HomePage() {
       {/* 17. Frequently Asked Questions Accordion */}
       <FAQ />
 
-      {/* 18. Call to Action Banner */}
+      {/* 18. Latest Blog Posts */}
+      <LatestBlogSection initialPosts={latestPosts} />
+
+      {/* 19. Call to Action Banner */}
       <CtaBanner />
     </>
   );

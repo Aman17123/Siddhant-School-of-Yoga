@@ -2177,7 +2177,7 @@ export default function PostEditor({
           </div>
 
           <p className="text-right text-label text-[#6B5862]/80 mt-1.5 mb-4">
-            {wordCount.words} words, {wordCount.mins} min read
+            {wordCount.words} words
           </p>
 
           <div className="bg-white border border-[#e6ded2] rounded-xl p-5 mb-5 shadow-xs">

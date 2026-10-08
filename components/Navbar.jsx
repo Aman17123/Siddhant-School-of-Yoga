@@ -112,6 +112,9 @@ export default function Navbar() {
   const timeoutRef = useRef(null);
   const lastScrollY = useRef(0);
   const navRef = useRef(null);
+  const navAnchorRef = useRef(null);
+  const navTopRef = useRef(0);
+  const heroBottomRef = useRef(0);
   const [navHeight, setNavHeight] = useState(0);
   const pathname = usePathname();
 
@@ -147,28 +150,75 @@ export default function Navbar() {
     };
   }, []);
 
+  const updateMeasurements = () => {
+    if (navRef.current) {
+      setNavHeight(navRef.current.offsetHeight);
+    }
+    if (navAnchorRef.current) {
+      const anchorRect = navAnchorRef.current.getBoundingClientRect();
+      navTopRef.current = anchorRect.top + window.scrollY;
+    }
+    const heroEl = document.querySelector("main section, section");
+    if (heroEl) {
+      const heroRect = heroEl.getBoundingClientRect();
+      heroBottomRef.current = heroRect.bottom + window.scrollY;
+    } else {
+      heroBottomRef.current = (navTopRef.current || 115) + 400;
+    }
+  };
+
   useEffect(() => {
-    if (navRef.current) setNavHeight(navRef.current.offsetHeight);
+    updateMeasurements();
+    const t1 = setTimeout(updateMeasurements, 250);
+    const t2 = setTimeout(updateMeasurements, 800);
+
     const handleResize = () => {
-      if (navRef.current) setNavHeight(navRef.current.offsetHeight);
+      updateMeasurements();
     };
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentY = window.scrollY;
-      setIsScrolled(currentY > 20);
+      const currentY = Math.max(0, window.scrollY);
+      const navTop = navTopRef.current || 115;
+      const heroBottom = heroBottomRef.current || (navTop + 350);
 
-      if (currentY > lastScrollY.current && currentY > 10) {
-        setHideHeader(true);
-        setActiveDropdown(null);
-      } else {
+      // Phase 1: Top of page while logo is still visible
+      if (currentY < navTop) {
+        setIsScrolled(false);
         setHideHeader(false);
+      } 
+      // Phase 2: Logo has completely scrolled up out of view
+      else {
+        setIsScrolled(true);
+
+        // While still inside the Hero section: keep nav bar options visible!
+        if (currentY < heroBottom) {
+          setHideHeader(false);
+        } 
+        // Phase 3: Past Hero section — hide when scrolling down, reveal when scrolling up
+        else {
+          const scrollDiff = currentY - lastScrollY.current;
+          if (scrollDiff > 5) {
+            // Scrolling down: hide nav options
+            setHideHeader(true);
+            setActiveDropdown(null);
+          } else if (scrollDiff < -5) {
+            // Scrolling up: reveal nav options
+            setHideHeader(false);
+          }
+        }
       }
+
       lastScrollY.current = currentY;
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -383,10 +433,13 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Spacer to prevent content jump once the nav below becomes fixed */}
-        {isScrolled && (
-          <div className="hidden md:block" style={{ height: navHeight }} aria-hidden="true" />
-        )}
+        {/* Anchor & Spacer: stays in document flow to measure position and prevent layout shift when nav is fixed */}
+        <div
+          ref={navAnchorRef}
+          className="hidden md:block"
+          style={{ height: isScrolled ? navHeight : 0 }}
+          aria-hidden="true"
+        />
 
         {/* 3. MAIN NAVBAR — Architectural Tabular Grid with Smooth Animated Dropdowns */}
         <nav

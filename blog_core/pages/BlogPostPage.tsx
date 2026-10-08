@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getBlogByIdOrSlug, incrementBlogViews, query } from "../lib/db";
 import ShareButtons from "../components/public/ShareButtons";
-import ReadingProgress from "../components/public/ReadingProgress";
 import TrainWithUsCard from "../components/public/TrainWithUsCard";
 import FaqAccordion from "../components/public/FaqAccordion";
 import TableOfContent from "../pages/TableOfContent";
@@ -241,7 +240,6 @@ export default async function BlogDetailPage({ params }: Props) {
   return (
     <>
       <article className="bg-[#f4efe6] text-[#1e2422] font-figtree antialiased leading-relaxed min-h-screen">
-      <ReadingProgress />
 
       {/* Schema Injection */}
       <script
@@ -289,8 +287,6 @@ export default async function BlogDetailPage({ params }: Props) {
                 <time dateTime={post.published_at || post.created_at}>
                   {formatDate(post.published_at || post.created_at)}
                 </time>
-                <span>•</span>
-                <span>👁️ {post.views || 1} reads</span>
               </div>
             </div>
           </header>
