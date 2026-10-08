@@ -176,6 +176,226 @@ const CELL_FILL_COLORS = [
   { label: "Charcoal", value: "#2A1621" },
 ];
 
+/**
+ * Checks whether the clipboard HTML contains exclusively a standalone table,
+ * without surrounding prose, paragraphs, or headings.
+ */
+function isStandaloneTableHtml(html: string): boolean {
+  if (!html || !/<table[\s>]/i.test(html)) return false;
+  try {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const table = doc.querySelector("table");
+    if (!table) return false;
+
+    // Check if there are headings or paragraphs outside the table
+    const clone = doc.body.cloneNode(true) as HTMLElement;
+    clone.querySelectorAll("table").forEach((t) => t.remove());
+
+    if (clone.querySelector("h1, h2, h3, h4, h5, h6")) return false;
+
+    // Check remaining text content outside the table
+    const remainingText = (clone.textContent || "").trim();
+    return remainingText.length < 30;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Cleans HTML copied from Google Docs, Word, or web pages:
+ * 1. Unwraps Google Docs root `<b id="docs-internal-guid-...">` wrapper so text isn't globally bold.
+ * 2. Normalizes all `<h1...>` tags to `<h2>` (H1 is strictly reserved for the blog post title).
+ * 3. Preserves headings H2-H6, paragraphs `<p>`, lists `<ul>`/`<ol>`, and tables.
+ * 4. Normalizes styled spans (bold, italic, underline, strikethrough) into clean semantic tags.
+ * 5. Strips intrusive inline fonts (Arial, 11pt, line-heights, fixed margins).
+ * 6. Promotes first row of headerless tables to `<th>` for clean formatting.
+ */
+function cleanGoogleDocsHtml(html: string): string {
+  if (!html || typeof html !== "string") return html;
+
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+
+    // 1. Unwrap Google Docs wrapper <b id="docs-internal-guid-...">
+    const docGuids = doc.querySelectorAll('b[id^="docs-internal-guid-"]');
+    docGuids.forEach((b) => {
+      const parent = b.parentNode;
+      if (parent) {
+        while (b.firstChild) {
+          parent.insertBefore(b.firstChild, b);
+        }
+        parent.removeChild(b);
+      }
+    });
+
+    // 2. Convert any H1 to H2 (H1 is reserved for the blog post title)
+    const h1Elements = Array.from(doc.querySelectorAll("h1"));
+    h1Elements.forEach((h1) => {
+      const h2 = doc.createElement("h2");
+      while (h1.firstChild) {
+        h2.appendChild(h1.firstChild);
+      }
+      h1.parentNode?.replaceChild(h2, h1);
+    });
+
+    // 3. Process styled spans (convert inline font styles from Google Docs / Word to semantic tags)
+    const spans = Array.from(doc.querySelectorAll("span"));
+    spans.forEach((span) => {
+      const style = span.getAttribute("style") || "";
+      const fontWeight = span.style.fontWeight;
+      const fontStyle = span.style.fontStyle;
+      const textDecoration = span.style.textDecoration;
+      const color = span.style.color;
+
+      const isBold =
+        fontWeight === "bold" ||
+        Number(fontWeight) >= 600 ||
+        /font-weight:\s*(bold|[6-9]00)/i.test(style);
+      const isItalic =
+        fontStyle === "italic" || /font-style:\s*italic/i.test(style);
+      const isUnderline =
+        textDecoration.includes("underline") ||
+        /text-decoration(-line)?:\s*[^;]*underline/i.test(style);
+      const isStrike =
+        textDecoration.includes("line-through") ||
+        /text-decoration(-line)?:\s*[^;]*line-through/i.test(style);
+
+      // Wrap span content with semantic tags if needed
+      let target: HTMLElement = span;
+      if (isBold && !span.closest("strong, b, h1, h2, h3, h4, h5, h6")) {
+        const strong = doc.createElement("strong");
+        target.parentNode?.insertBefore(strong, target);
+        strong.appendChild(target);
+        target = strong;
+      }
+      if (isItalic && !span.closest("em, i")) {
+        const em = doc.createElement("em");
+        target.parentNode?.insertBefore(em, target);
+        em.appendChild(target);
+        target = em;
+      }
+      if (isUnderline && !span.closest("u")) {
+        const u = doc.createElement("u");
+        target.parentNode?.insertBefore(u, target);
+        u.appendChild(target);
+        target = u;
+      }
+      if (isStrike && !span.closest("s, del, strike")) {
+        const s = doc.createElement("s");
+        target.parentNode?.insertBefore(s, target);
+        s.appendChild(target);
+        target = s;
+      }
+
+      // Strip intrusive inline font/layout styles from span
+      span.style.fontFamily = "";
+      span.style.fontSize = "";
+      span.style.lineHeight = "";
+      span.style.backgroundColor = "";
+      span.style.verticalAlign = "";
+
+      // Strip default dark/black text colors so it inherits template style
+      if (
+        color === "rgb(0, 0, 0)" ||
+        color === "#000000" ||
+        color === "#000" ||
+        color === "rgb(32, 33, 36)" ||
+        color === "rgb(17, 17, 17)"
+      ) {
+        span.style.color = "";
+      }
+
+      if (!span.getAttribute("style")?.trim()) {
+        span.removeAttribute("style");
+      }
+    });
+
+    // 4. Strip intrusive font/margin styles from block elements
+    const blockElements = doc.querySelectorAll(
+      "p, h1, h2, h3, h4, h5, h6, li, ul, ol, blockquote"
+    );
+    blockElements.forEach((el) => {
+      const htmlEl = el as HTMLElement;
+      htmlEl.style.fontFamily = "";
+      htmlEl.style.fontSize = "";
+      htmlEl.style.lineHeight = "";
+      htmlEl.style.marginTop = "";
+      htmlEl.style.marginBottom = "";
+      htmlEl.style.marginLeft = "";
+      htmlEl.style.marginRight = "";
+      htmlEl.style.margin = "";
+      htmlEl.style.padding = "";
+
+      const color = htmlEl.style.color;
+      if (
+        color === "rgb(0, 0, 0)" ||
+        color === "#000000" ||
+        color === "#000" ||
+        color === "rgb(32, 33, 36)" ||
+        color === "rgb(17, 17, 17)"
+      ) {
+        htmlEl.style.color = "";
+      }
+
+      if (!htmlEl.getAttribute("style")?.trim()) {
+        htmlEl.removeAttribute("style");
+      }
+    });
+
+    // 5. Clean tables and promote bold header row to <th> if no <th> exists
+    const tables = doc.querySelectorAll("table");
+    tables.forEach((table) => {
+      table.style.fontFamily = "";
+      table.style.fontSize = "";
+      table.style.lineHeight = "";
+      table.style.width = "";
+      table.style.margin = "";
+      table.removeAttribute("width");
+
+      const ths = table.querySelectorAll("th");
+      const rows = table.querySelectorAll("tr");
+
+      // Promote first row to <th> if no <th> exists and table has multiple rows
+      if (ths.length === 0 && rows.length >= 2) {
+        const firstRow = rows[0];
+        const firstCells = Array.from(firstRow.querySelectorAll("td"));
+        const hasBold = firstCells.some(
+          (c) => c.querySelector("strong, b") || c.style.fontWeight === "bold",
+        );
+        if (hasBold || rows.length > 1) {
+          firstCells.forEach((td) => {
+            const th = doc.createElement("th");
+            while (td.firstChild) {
+              th.appendChild(td.firstChild);
+            }
+            if (td.style.backgroundColor)
+              th.style.backgroundColor = td.style.backgroundColor;
+            if (td.style.textAlign) th.style.textAlign = td.style.textAlign;
+            td.parentNode?.replaceChild(th, td);
+          });
+        }
+      }
+
+      table.querySelectorAll("th, td").forEach((cell) => {
+        const cellEl = cell as HTMLElement;
+        cellEl.style.fontFamily = "";
+        cellEl.style.fontSize = "";
+        cellEl.style.lineHeight = "";
+        cellEl.style.width = "";
+        cellEl.style.height = "";
+        cellEl.removeAttribute("width");
+        cellEl.removeAttribute("height");
+      });
+    });
+
+    return doc.body.innerHTML;
+  } catch (err) {
+    console.error("cleanGoogleDocsHtml error:", err);
+    return html;
+  }
+}
+
 interface PostEditorProps {
   postForm: PostFormState;
   setPostForm: React.Dispatch<React.SetStateAction<PostFormState>>;
@@ -379,6 +599,18 @@ export default function PostEditor({
   // Table UI state
   const tableFileInputRef = React.useRef<HTMLInputElement | null>(null);
   const editorRef = React.useRef<Editor | null>(null);
+  const [selectionTick, setSelectionTick] = React.useState(0);
+
+  // Link modal dialog state
+  const [linkModalOpen, setLinkModalOpen] = React.useState(false);
+  const [linkUrl, setLinkUrl] = React.useState("");
+  const [linkText, setLinkText] = React.useState("");
+  const [linkOpenInNewTab, setLinkOpenInNewTab] = React.useState(false);
+  const [isEditingExistingLink, setIsEditingExistingLink] = React.useState(false);
+  const linkSelectionRangeRef = React.useRef<{ from: number; to: number } | null>(null);
+  const linkUrlInputRef = React.useRef<HTMLInputElement | null>(null);
+  const openLinkModalRef = React.useRef<() => void>(() => {});
+
   const [tableMenuOpen, setTableMenuOpen] = React.useState(false);
   const [tablePicker, setTablePicker] = React.useState<{
     rows: number;
@@ -571,19 +803,18 @@ export default function PostEditor({
         const clipboard = event.clipboardData;
         if (!clipboard) return false;
 
-        // Copying a table from Word / Google Docs / a web page puts an
-        // image/png snapshot of the table on the clipboard alongside the real
-        // text/html. Prefer the markup, otherwise the paste lands as a picture.
-
-        // 1. A real <table> in the HTML payload.
         const html = clipboard.getData("text/html") || "";
-        const htmlGrid = parseHtmlTable(html);
-        if (htmlGrid && editorRef.current) {
-          event.preventDefault();
-          insertGridAsTable(editorRef.current, htmlGrid, {
-            withHeaderRow: true,
-          });
-          return true;
+
+        // 1. Standalone table: only a <table> on the clipboard (e.g. copied from Sheets or standalone table in Docs)
+        if (html && isStandaloneTableHtml(html)) {
+          const htmlGrid = parseHtmlTable(html);
+          if (htmlGrid && editorRef.current) {
+            event.preventDefault();
+            insertGridAsTable(editorRef.current, htmlGrid, {
+              withHeaderRow: true,
+            });
+            return true;
+          }
         }
 
         // 2. Tab-separated text from Excel / Google Sheets / Word.
@@ -597,7 +828,17 @@ export default function PostEditor({
           }
         }
 
-        // 3. Only now treat the clipboard as an image.
+        // 3. Rich HTML payload (Google Docs, Word, web pages with headings H2-H6, paragraphs, lists, and tables).
+        // Clean Google Docs wrappers (b#docs-internal-guid), normalize H1 -> H2, clean typography,
+        // and insert via TipTap content parser.
+        if (html && html.trim() && editorRef.current) {
+          event.preventDefault();
+          const cleaned = cleanGoogleDocsHtml(html);
+          editorRef.current.commands.insertContent(cleaned);
+          return true;
+        }
+
+        // 4. Image on clipboard (screenshots, copied files)
         for (const item of Array.from(clipboard.items || [])) {
           if (item.type.indexOf("image") === 0) {
             const file = item.getAsFile();
@@ -626,9 +867,26 @@ export default function PostEditor({
         }
         return false;
       },
+      handleKeyDown: (view, event) => {
+        if (
+          (event.metaKey || event.ctrlKey) &&
+          event.key.toLowerCase() === "k"
+        ) {
+          event.preventDefault();
+          openLinkModalRef.current();
+          return true;
+        }
+        return false;
+      },
     },
     onCreate: ({ editor: ed }) => {
       editorRef.current = ed;
+    },
+    onSelectionUpdate: () => {
+      setSelectionTick((t) => (t + 1) & 0xffff);
+    },
+    onTransaction: () => {
+      setSelectionTick((t) => (t + 1) & 0xffff);
     },
     onUpdate: ({ editor: ed }) => {
       const html = ed.getHTML();
@@ -688,9 +946,11 @@ export default function PostEditor({
     const { from, to, empty } = state.selection;
 
     const isHeading = /^h[1-6]$/.test(val);
-    const level = isHeading
+    const rawLevel = isHeading
       ? (Number(val.slice(1)) as 1 | 2 | 3 | 4 | 5 | 6)
       : null;
+    // H1 is strictly reserved for the blog post title, so map any H1 to H2
+    const level = rawLevel === 1 ? 2 : rawLevel;
     const listName = val === "bulletList" || val === "orderedList" ? val : null;
 
     const toggleWholeBlock = () => {
@@ -700,7 +960,7 @@ export default function PostEditor({
         editor.chain().focus().toggleOrderedList().run();
       else if (val === "quote") editor.chain().focus().toggleBlockquote().run();
       else if (level !== null)
-        editor.chain().focus().toggleHeading({ level }).run();
+        editor.chain().focus().setHeading({ level }).run();
       else editor.chain().focus().setParagraph().run();
     };
 
@@ -781,25 +1041,131 @@ export default function PostEditor({
     setSaveState("Unsaved changes");
   };
 
-  const handleLink = () => {
+  // Open custom link dialog modal
+  const handleOpenLinkModal = () => {
     if (!editor) return;
-    const prevUrl = editor.getAttributes("link").href;
-    const url = window.prompt(
-      "Enter link URL (e.g. https://...):",
-      prevUrl || "",
-    );
-    if (url === null) return;
-    if (url.trim() === "") {
+    const { from, to } = editor.state.selection;
+    linkSelectionRangeRef.current = { from, to };
+    const selectedText = editor.state.doc.textBetween(from, to, " ");
+    const linkAttrs = editor.getAttributes("link");
+    setLinkUrl(linkAttrs.href || "");
+    setLinkText(selectedText || "");
+    setLinkOpenInNewTab(linkAttrs.target === "_blank");
+    setIsEditingExistingLink(Boolean(linkAttrs.href));
+    setLinkModalOpen(true);
+  };
+
+  openLinkModalRef.current = handleOpenLinkModal;
+
+  const handleCloseLinkModal = () => {
+    setLinkModalOpen(false);
+    if (editor) {
+      editor.commands.focus();
+    }
+  };
+
+  const handleSaveLink = () => {
+    if (!editor) return;
+
+    const url = linkUrl.trim();
+    const text = linkText.trim();
+    const range = linkSelectionRangeRef.current;
+
+    editor.commands.focus();
+    if (range) {
+      editor.commands.setTextSelection({ from: range.from, to: range.to });
+    }
+
+    if (!url) {
       editor.chain().focus().extendMarkRange("link").unsetLink().run();
+      setLinkModalOpen(false);
+      setSaveState("Unsaved changes");
       return;
     }
-    editor
-      .chain()
-      .focus()
-      .extendMarkRange("link")
-      .setLink({ href: url.trim() })
-      .run();
+
+    let formattedUrl = url;
+    if (
+      !/^(https?:\/\/|mailto:|tel:|#|\/)/i.test(formattedUrl) &&
+      formattedUrl.includes(".")
+    ) {
+      formattedUrl = `https://${formattedUrl}`;
+    }
+
+    const linkAttrs = {
+      href: formattedUrl,
+      target: linkOpenInNewTab ? "_blank" : null,
+      rel: linkOpenInNewTab ? "noopener noreferrer" : null,
+    };
+
+    const hasSelection = range && range.from !== range.to;
+
+    if (hasSelection && text) {
+      editor
+        .chain()
+        .focus()
+        .insertContent({
+          type: "text",
+          text: text,
+          marks: [{ type: "link", attrs: linkAttrs }],
+        })
+        .run();
+    } else if (!hasSelection && text) {
+      editor
+        .chain()
+        .focus()
+        .insertContent({
+          type: "text",
+          text: text,
+          marks: [{ type: "link", attrs: linkAttrs }],
+        })
+        .run();
+    } else {
+      editor
+        .chain()
+        .focus()
+        .extendMarkRange("link")
+        .setLink(linkAttrs)
+        .run();
+    }
+
+    setLinkModalOpen(false);
+    setSaveState("Unsaved changes");
   };
+
+  const handleRemoveLink = () => {
+    if (!editor) return;
+    const range = linkSelectionRangeRef.current;
+    editor.commands.focus();
+    if (range) {
+      editor.commands.setTextSelection({ from: range.from, to: range.to });
+    }
+    editor.chain().focus().extendMarkRange("link").unsetLink().run();
+    setLinkModalOpen(false);
+    setSaveState("Unsaved changes");
+  };
+
+  React.useEffect(() => {
+    if (linkModalOpen) {
+      const timer = setTimeout(() => {
+        linkUrlInputRef.current?.focus();
+        linkUrlInputRef.current?.select();
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [linkModalOpen]);
+
+  // Current active block format (p, h2, h3, h4, h5, h6).
+  // Automatically re-evaluates on selection movements thanks to selectionTick.
+  const activeBlockFormat = React.useMemo(() => {
+    if (!editor) return "p";
+    if (editor.isActive("heading", { level: 2 })) return "h2";
+    if (editor.isActive("heading", { level: 3 })) return "h3";
+    if (editor.isActive("heading", { level: 4 })) return "h4";
+    if (editor.isActive("heading", { level: 5 })) return "h5";
+    if (editor.isActive("heading", { level: 6 })) return "h6";
+    if (editor.isActive("heading", { level: 1 })) return "h2";
+    return "p";
+  }, [editor, selectionTick]);
 
   return (
     <div className="max-w-[1320px] mx-auto w-full">
@@ -913,26 +1279,11 @@ export default function PostEditor({
               >
                 <select
                   aria-label="Text style"
-                  className="h-8 px-2 text-label font-semibold bg-white border border-[#e6ded2] rounded focus:outline-none focus:ring-1 focus:ring-[#1c3b2b] text-[#2A1621]"
-                  value={
-                    editor?.isActive("heading", { level: 1 })
-                      ? "h1"
-                      : editor?.isActive("heading", { level: 2 })
-                        ? "h2"
-                        : editor?.isActive("heading", { level: 3 })
-                          ? "h3"
-                          : editor?.isActive("heading", { level: 4 })
-                            ? "h4"
-                            : editor?.isActive("heading", { level: 5 })
-                              ? "h5"
-                              : editor?.isActive("heading", { level: 6 })
-                                ? "h6"
-                                : "p"
-                  }
+                  className="h-8 px-2 text-label font-semibold bg-white border border-[#e6ded2] rounded focus:outline-none focus:ring-1 focus:ring-[#1c3b2b] text-[#2A1621] cursor-pointer"
+                  value={activeBlockFormat}
                   onChange={(e) => applyBlockFormatToSelection(e.target.value)}
                 >
                   <option value="p">Paragraph</option>
-                  <option value="h1">Heading 1 (H1)</option>
                   <option value="h2">Heading 2 (H2)</option>
                   <option value="h3">Heading 3 (H3)</option>
                   <option value="h4">Heading 4 (H4)</option>
@@ -1092,8 +1443,8 @@ export default function PostEditor({
                       ? "bg-[#1c3b2b] text-white"
                       : "hover:bg-[#FAF6F0] text-[#2A1621]"
                   }`}
-                  onClick={handleLink}
-                  title="Link"
+                  onClick={handleOpenLinkModal}
+                  title="Insert or edit link (Ctrl+K / ⌘K)"
                 >
                   Link
                 </button>
@@ -2555,6 +2906,167 @@ export default function PostEditor({
           </section>
         </aside>
       </div>
+
+      {/* ===================== LINK DIALOG MODAL ===================== */}
+      {linkModalOpen && (
+        <div
+          className="fixed inset-0 bg-[#16271e]/70 backdrop-blur-xs flex items-center justify-center z-50 p-4 font-figtree animate-fade-in"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="link-dialog-title"
+          onClick={handleCloseLinkModal}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") handleCloseLinkModal();
+          }}
+        >
+          <div
+            className="bg-white rounded-2xl w-full max-w-md p-6 shadow-2xl border border-[#e3dac9] animate-fade-up relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between pb-3.5 border-b border-[#f0eae1]">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-[#FAF6F0] border border-[#e6ded2] flex items-center justify-center text-[#1c3b2b]">
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h2
+                    id="link-dialog-title"
+                    className="font-belleza text-xl text-[#1e2422]"
+                  >
+                    {isEditingExistingLink ? "Edit Link" : "Insert Link"}
+                  </h2>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={handleCloseLinkModal}
+                className="text-[#6B5862] hover:text-[#2A1621] p-1.5 rounded-lg hover:bg-[#FAF6F0] transition-colors cursor-pointer"
+                aria-label="Close modal"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSaveLink();
+              }}
+              className="mt-4 space-y-4"
+            >
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#6B5862] mb-1.5">
+                  Link URL <span className="text-red-500">*</span>
+                </label>
+                <input
+                  ref={linkUrlInputRef}
+                  type="text"
+                  value={linkUrl}
+                  onChange={(e) => setLinkUrl(e.target.value)}
+                  placeholder="https://example.com or /courses/..."
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#e3dac9] rounded-xl text-sm text-[#2A1621] placeholder:text-[#6B5862]/40 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/30 focus:border-[#1c3b2b] transition-all"
+                />
+                <p className="text-[11px] text-[#6B5862]/80 mt-1">
+                  Enter full web URL or internal page link like <code className="bg-[#FAF6F0] px-1 py-0.5 rounded text-[#1c3b2b]">/contact</code>
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#6B5862] mb-1.5">
+                  Text to Display
+                </label>
+                <input
+                  type="text"
+                  value={linkText}
+                  onChange={(e) => setLinkText(e.target.value)}
+                  placeholder="Link anchor text..."
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#e3dac9] rounded-xl text-sm text-[#2A1621] placeholder:text-[#6B5862]/40 focus:outline-none focus:ring-2 focus:ring-[#1c3b2b]/30 focus:border-[#1c3b2b] transition-all"
+                />
+              </div>
+
+              <label className="flex items-center gap-2.5 cursor-pointer select-none pt-1">
+                <input
+                  type="checkbox"
+                  checked={linkOpenInNewTab}
+                  onChange={(e) => setLinkOpenInNewTab(e.target.checked)}
+                  className="w-4 h-4 rounded border-[#e3dac9] text-[#1c3b2b] focus:ring-[#1c3b2b] accent-[#1c3b2b] cursor-pointer"
+                />
+                <span className="text-sm font-medium text-[#2A1621]">
+                  Open link in a new tab (<code className="text-xs text-[#6B5862]">target=&quot;_blank&quot;</code>)
+                </span>
+              </label>
+
+              <div className="flex items-center justify-between pt-4 border-t border-[#f0eae1] mt-5">
+                {isEditingExistingLink ? (
+                  <button
+                    type="button"
+                    onClick={handleRemoveLink}
+                    className="px-3.5 py-2 rounded-xl text-xs font-bold text-red-600 hover:bg-red-50 hover:text-red-700 transition-colors cursor-pointer inline-flex items-center gap-1.5"
+                  >
+                    <svg
+                      className="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                    Remove link
+                  </button>
+                ) : (
+                  <div />
+                )}
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleCloseLinkModal}
+                    className="px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-[#e3dac9] text-[#1e2422] hover:bg-[#FAF6F0] transition-colors cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#1c3b2b] hover:bg-[#14291e] text-white transition-colors shadow-sm cursor-pointer"
+                  >
+                    {isEditingExistingLink ? "Update Link" : "Add Link"}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+

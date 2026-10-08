@@ -1,8 +1,12 @@
 import mysql from "mysql2/promise";
 import { getAdminCredentials } from "./env";
 
-let pool: mysql.Pool | null = null;
-let initialized = false;
+declare global {
+  // eslint-disable-next-line no-var
+  var _mysqlPool: mysql.Pool | undefined;
+  // eslint-disable-next-line no-var
+  var _mysqlInitPromise: Promise<mysql.Pool> | undefined;
+}
 
 export function getDbConfig() {
   return {
@@ -18,17 +22,14 @@ export function getDbConfig() {
   };
 }
 
-let initPromise: Promise<mysql.Pool> | null = null;
-
 export async function initDatabase(): Promise<mysql.Pool> {
-  if (pool) return pool;
-  if (initPromise) return initPromise;
+  if (globalThis._mysqlPool) return globalThis._mysqlPool;
+  if (globalThis._mysqlInitPromise) return globalThis._mysqlInitPromise;
 
-  initPromise = (async () => {
+  globalThis._mysqlInitPromise = (async () => {
     const config = getDbConfig();
-    pool = mysql.createPool(config);
-
-    if (initialized) return pool;
+    const pool = mysql.createPool(config);
+    globalThis._mysqlPool = pool;
 
     try {
       // Create tables if not exist
@@ -182,7 +183,6 @@ export async function initDatabase(): Promise<mysql.Pool> {
     }
   }
 
-      initialized = true;
     } catch (err) {
       console.warn("[MySQL] Warning initializing tables:", err);
     }
@@ -190,7 +190,7 @@ export async function initDatabase(): Promise<mysql.Pool> {
     return pool;
   })();
 
-  return initPromise;
+  return globalThis._mysqlInitPromise;
 }
 
 export async function query<T = unknown[]>(sql: string, params: any = []): Promise<T> {

@@ -7,6 +7,7 @@ const toStash = [
   { from: path.join(root, "app", "api"), to: path.join(root, ".app_api_stash") },
   { from: path.join(root, "app", "images"), to: path.join(root, ".app_images_stash") },
   { from: path.join(root, "app", "blog", "images"), to: path.join(root, ".app_blog_images_stash") },
+  { from: path.join(root, "proxy.ts"), to: path.join(root, ".proxy_stash") },
 ];
 
 console.log(" Preparing static export for Hostinger...");
