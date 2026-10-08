@@ -27,7 +27,7 @@ export default async function BlogDetailPageWrapper(props) {
   return (
     <div className="flex flex-col min-h-screen relative selection:bg-[#1c3b2b]/30 selection:text-[#142b1e]">
       <Navbar />
-      <main className="flex-grow min-h-screen bg-white">
+      <main className="flex-grow min-h-screen bg-[#f4efe6]">
         <BlogDetailPage {...props} />
       </main>
       <Footer />

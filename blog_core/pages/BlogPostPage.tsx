@@ -240,7 +240,7 @@ export default async function BlogDetailPage({ params }: Props) {
 
   return (
     <>
-      <article className="bg-white text-[#1e2422] font-figtree antialiased leading-relaxed min-h-screen">
+      <article className="bg-[#f4efe6] text-[#1e2422] font-figtree antialiased leading-relaxed min-h-screen">
       <ReadingProgress />
 
       {/* Schema Injection */}
@@ -250,10 +250,10 @@ export default async function BlogDetailPage({ params }: Props) {
       />
 
       {/* 3. POST LAYOUT: ASIDE / TOC (left) | HEAD + HERO + PROSE (right) */}
-      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 lg:gap-12 items-start pt-10 sm:pt-14 pb-6">
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 lg:gap-12 items-start pt-10 sm:pt-14 pb-16">
 
-        {/* Right column: Post head, hero image and article content */}
-        <div className="min-w-0 max-w-4xl w-full">
+        {/* Right column: Post head, hero image and article content wrapped in website theme card */}
+        <div className="min-w-0 max-w-4xl w-full bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm border border-[#e3dac9]/70">
           {/* 1. POST HEAD */}
           <header className="pb-6">
             <nav className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-stone-600 mb-4 font-figtree font-medium" aria-label="Breadcrumb">
@@ -324,10 +324,103 @@ export default async function BlogDetailPage({ params }: Props) {
 
           {/* Prose Content */}
           <div
-            className="text-[#1e2422] [&>p]:font-figtree [&>p]:text-base sm:[&>p]:text-[17px] [&>p]:text-stone-700 [&>p]:leading-[1.8] [&>p]:font-medium [&>p]:text-justify [&>p]:mb-6 [&>h1]:font-belleza [&>h1]:font-normal [&>h1]:tracking-wide [&>h1]:text-2xl sm:[&>h1]:text-3xl lg:[&>h1]:text-[38px] [&>h1]:leading-[1.25] [&>h1]:text-[#1e2422] [&>h1]:mt-10 [&>h1]:mb-4 [&>h2]:font-belleza [&>h2]:font-normal [&>h2]:tracking-wide [&>h2]:text-xl sm:[&>h2]:text-2xl lg:[&>h2]:text-[30px] [&>h2]:leading-[1.3] [&>h2]:text-[#1e2422] [&>h2]:mt-10 [&>h2]:mb-4 [&>h3]:font-belleza [&>h3]:font-normal [&>h3]:tracking-wide [&>h3]:text-lg sm:[&>h3]:text-xl lg:[&>h3]:text-[24px] [&>h3]:leading-[1.35] [&>h3]:text-[#1c3b2b] [&>h3]:mt-8 [&>h3]:mb-3 [&>h4]:font-belleza [&>h4]:font-normal [&>h4]:tracking-wide [&>h4]:text-base sm:[&>h4]:text-lg lg:[&>h4]:text-[20px] [&>h4]:leading-[1.4] [&>h4]:text-[#1e2422] [&>h4]:mt-6 [&>h4]:mb-2 [&>h5]:font-figtree [&>h5]:font-semibold [&>h5]:text-base [&>h5]:leading-[1.4] [&>h5]:text-[#1e2422] [&>h5]:mt-4 [&>h5]:mb-2 [&>h6]:font-figtree [&>h6]:font-semibold [&>h6]:text-sm [&>h6]:leading-[1.4] [&>h6]:text-[#1e2422] [&>h6]:mt-3 [&>h6]:mb-1 [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:mb-6 [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:mb-6 [&>ul>li]:font-figtree [&>ul>li]:text-stone-700 [&>ul>li]:leading-[1.8] [&>ul>li]:mb-2 [&>ol>li]:font-figtree [&>ol>li]:text-stone-700 [&>ol>li]:leading-[1.8] [&>ol>li]:mb-2 [&>blockquote]:border-l-4 [&>blockquote]:border-[#1c3b2b] [&>blockquote]:pl-5 [&>blockquote]:pr-4 [&>blockquote]:py-3.5 [&>blockquote]:italic [&>blockquote]:my-6 [&>blockquote]:bg-[#f4efe6]/70 [&>blockquote]:text-stone-800 [&>blockquote]:font-figtree [&>blockquote]:text-base [&>blockquote]:leading-relaxed [&>blockquote]:rounded-r-xl [&>img]:rounded-2xl [&>img]:my-6 [&>img]:shadow-sm [&>img]:border [&>img]:border-[#e3dac9]/60 [&>a]:text-[#1c3b2b] [&>a]:font-semibold [&>a]:underline [&>a]:decoration-[#1c3b2b]/40 [&>a]:underline-offset-2 hover:[&>a]:text-[#142b1e] [&>a]:transition-colors [&>table]:block [&>table]:w-full [&>table]:max-w-full [&>table]:overflow-x-auto [&>table]:my-7 [&>table]:border-collapse [&>table]:text-sm [&>table]:whitespace-nowrap [&>table>thead>tr>th]:bg-[#f4efe6] [&>table>thead>tr>th]:border [&>table>thead>tr>th]:border-[#e3dac9] [&>table>thead>tr>th]:px-3.5 [&>table>thead>tr>th]:py-3 [&>table>thead>tr>th]:text-left [&>table>thead>tr>th]:font-belleza [&>table>thead>tr>th]:font-normal [&>table>thead>tr>th]:text-[#1e2422] [&>table>thead>tr>th]:tracking-wide [&>table>tbody>tr>td]:border [&>table>tbody>tr>td]:border-[#e3dac9] [&>table>tbody>tr>td]:px-3.5 [&>table>tbody>tr>td]:py-2.5 [&>table>tbody>tr>td]:align-top [&>table>tbody>tr>td]:text-stone-700 [&>table>tbody>tr>td]:font-figtree [&>table>tbody>tr:nth-child(even)]:bg-[#fdfbf7] [&>table>tbody>tr>th]:border [&>table>tbody>tr>th]:border-[#e3dac9] [&>table>tbody>tr>th]:bg-[#f4efe6] [&>table>tbody>tr>th]:px-3.5 [&>table>tbody>tr>th]:py-2.5 [&>table>tbody>tr>th]:text-left [&>table>tbody>tr>th]:font-belleza [&>table>tbody>tr>th]:font-normal [&>table>tbody>tr>th]:text-[#1e2422]"
+            className="text-[#1e2422] font-figtree [&_p]:font-figtree [&_p]:text-base sm:[&_p]:text-[17px] [&_p]:text-stone-700 [&_p]:leading-[1.8] [&_p]:font-medium [&_p]:text-justify [&_p]:mb-6 [&_h1]:font-belleza [&_h1]:font-normal [&_h1]:tracking-wide [&_h1]:text-2xl sm:[&_h1]:text-3xl lg:[&_h1]:text-[38px] [&_h1]:leading-[1.25] [&_h1]:text-[#1e2422] [&_h1]:mt-10 [&_h1]:mb-4 [&_h2]:font-belleza [&_h2]:font-normal [&_h2]:tracking-wide [&_h2]:text-xl sm:[&_h2]:text-2xl lg:[&_h2]:text-[30px] [&_h2]:leading-[1.3] [&_h2]:text-[#1e2422] [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:font-belleza [&_h3]:font-normal [&_h3]:tracking-wide [&_h3]:text-lg sm:[&_h3]:text-xl lg:[&_h3]:text-[24px] [&_h3]:leading-[1.35] [&_h3]:text-[#1c3b2b] [&_h3]:mt-8 [&_h3]:mb-3 [&_h4]:font-belleza [&_h4]:font-normal [&_h4]:tracking-wide [&_h4]:text-base sm:[&_h4]:text-lg lg:[&_h4]:text-[20px] [&_h4]:leading-[1.4] [&_h4]:text-[#1e2422] [&_h4]:mt-6 [&_h4]:mb-2 [&_h5]:font-figtree [&_h5]:font-semibold [&_h5]:text-base [&_h5]:leading-[1.4] [&_h5]:text-[#1e2422] [&_h5]:mt-4 [&_h5]:mb-2 [&_h6]:font-figtree [&_h6]:font-semibold [&_h6]:text-sm [&_h6]:leading-[1.4] [&_h6]:text-[#1e2422] [&_h6]:mt-3 [&_h6]:mb-1 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-6 [&_ul_li]:font-figtree [&_ul_li]:text-stone-700 [&_ul_li]:leading-[1.8] [&_ul_li]:mb-2 [&_ol_li]:font-figtree [&_ol_li]:text-stone-700 [&_ol_li]:leading-[1.8] [&_ol_li]:mb-2 [&_blockquote]:border-l-4 [&_blockquote]:border-[#1c3b2b] [&_blockquote]:pl-5 [&_blockquote]:pr-4 [&_blockquote]:py-3.5 [&_blockquote]:italic [&_blockquote]:my-6 [&_blockquote]:bg-[#f4efe6]/70 [&_blockquote]:text-stone-800 [&_blockquote]:font-figtree [&_blockquote]:text-base [&_blockquote]:leading-relaxed [&_blockquote]:rounded-r-xl [&_img]:rounded-2xl [&_img]:my-6 [&_img]:shadow-sm [&_img]:border [&_img]:border-[#e3dac9]/60 [&_a]:text-[#1c3b2b] [&_a]:font-semibold [&_a]:underline [&_a]:decoration-[#1c3b2b]/40 [&_a]:underline-offset-2 hover:[&_a]:text-[#142b1e] [&_a]:transition-colors [&_table]:block [&_table]:w-full [&_table]:max-w-full [&_table]:overflow-x-auto [&_table]:my-7 [&_table]:border-collapse [&_table]:text-sm [&_table]:whitespace-nowrap [&_th]:bg-[#f4efe6] [&_th]:border [&_th]:border-[#e3dac9] [&_th]:px-3.5 [&_th]:py-3 [&_th]:text-left [&_th]:font-belleza [&_th]:font-normal [&_th]:text-[#1e2422] [&_th]:tracking-wide [&_td]:border [&_td]:border-[#e3dac9] [&_td]:px-3.5 [&_td]:py-2.5 [&_td]:align-top [&_td]:text-stone-700 [&_td]:font-figtree [&_tr:nth-child(even)]:bg-[#fdfbf7]"
             id="prose"
             dangerouslySetInnerHTML={{ __html: cleanHtmlImageUrls(post.content, post.slug) }}
           />
+
+          <style dangerouslySetInnerHTML={{ __html: `
+            /* Website Theme & Typography Enforcement: Wipe out foreign Docs/Word blues */
+            #prose h1, #prose h1 *,
+            #prose h2, #prose h2 *,
+            #prose h4, #prose h4 *,
+            #prose h5, #prose h5 *,
+            #prose h6, #prose h6 * {
+              font-family: var(--font-belleza), "Belleza", Georgia, serif !important;
+              color: #1e2422 !important;
+            }
+            #prose h3, #prose h3 * {
+              font-family: var(--font-belleza), "Belleza", Georgia, serif !important;
+              color: #1c3b2b !important;
+            }
+            #prose p, #prose p *:not(a),
+            #prose li, #prose li *:not(a),
+            #prose td, #prose figcaption {
+              font-family: var(--font-figtree), "Figtree", sans-serif !important;
+            }
+            #prose a {
+              color: #1c3b2b !important;
+            }
+            #prose a:hover {
+              color: #142b1e !important;
+            }
+            #prose table th {
+              font-family: var(--font-belleza), "Belleza", serif !important;
+              background-color: #f4efe6 !important;
+              color: #1e2422 !important;
+              border-color: #e3dac9 !important;
+            }
+            #prose table td {
+              border-color: #e3dac9 !important;
+            }
+            #prose blockquote {
+              border-left-color: #1c3b2b !important;
+              background-color: rgba(244, 239, 230, 0.7) !important;
+              color: #1e2422 !important;
+            }
+            /* MS Word Style Image Floats, Wraps & Layouts - Support Custom Height & Width */
+            #prose img {
+              max-width: 100%;
+            }
+            #prose img:not([style*="height"]):not([height]) {
+              height: auto;
+            }
+            #prose img[style*="height"],
+            #prose img[height] {
+              object-fit: cover;
+            }
+            #prose img[style*="float: right"],
+            #prose img[style*="float:right"],
+            #prose img[data-align="right"] {
+              float: right !important;
+              margin: 8px 0 20px 24px !important;
+              display: inline-block !important;
+            }
+            #prose img[style*="float: left"],
+            #prose img[style*="float:left"],
+            #prose img[data-align="left"] {
+              float: left !important;
+              margin: 8px 24px 20px 0 !important;
+              display: inline-block !important;
+            }
+            #prose img[style*="display: inline-block"],
+            #prose img[style*="display:inline-block"],
+            #prose img[data-align="inline"] {
+              display: inline-block !important;
+              vertical-align: top !important;
+              margin: 8px 12px 16px 0 !important;
+            }
+            #prose img[data-align="center"] {
+              display: block !important;
+              margin: 24px auto !important;
+              clear: both !important;
+            }
+            #prose::after {
+              content: "";
+              display: table;
+              clear: both;
+            }
+            @media (max-width: 640px) {
+              #prose img {
+                float: none !important;
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                margin: 20px auto !important;
+              }
+            }
+          `}} />
 
           {/* Conclusion */}
           {conclusion && (

@@ -69,6 +69,20 @@ try {
       tpl = tpl.replace(/<link[^>]*href="\/_next\/static\/css\/[^"]*"[^>]*>\s*/gi, "");
       const newLinks = cssFiles.map(f => `<link rel="stylesheet" href="/_next/static/css/${f}" data-precedence="next"/>`).join("\n") + "\n";
       tpl = tpl.replace(/<\/head>/i, newLinks + "</head>");
+
+      // Update .htaccess CSS fallback rule to current main CSS hash
+      const mainCss = cssFiles[cssFiles.length - 1];
+      const updateHtaccessCssFallback = (filePath) => {
+        if (!fs.existsSync(filePath)) return;
+        let content = fs.readFileSync(filePath, "utf-8");
+        content = content.replace(
+          /RewriteRule \^_next\/static\/css\/\.\*\\\.css\$ \/_next\/static\/css\/[a-zA-Z0-9_-]+\.css \[L\]/,
+          `RewriteRule ^_next/static/css/.*\\.css$ /_next/static/css/${mainCss} [L]`
+        );
+        fs.writeFileSync(filePath, content, "utf-8");
+      };
+      updateHtaccessCssFallback(htaccessSrc);
+      updateHtaccessCssFallback(htaccessDest);
     }
 
     const slugChunkDir = path.join(root, "out", "_next", "static", "chunks", "app", "blog", "[slug]");

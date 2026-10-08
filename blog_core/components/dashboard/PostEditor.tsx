@@ -9,7 +9,7 @@ import {
   mergeAttributes,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import ImageExtension from "@tiptap/extension-image";
+import { ResizableImage } from "./ResizableImageExtension";
 import LinkExtension from "@tiptap/extension-link";
 import UnderlineExtension from "@tiptap/extension-underline";
 import PlaceholderExtension from "@tiptap/extension-placeholder";
@@ -229,7 +229,31 @@ function cleanGoogleDocsHtml(html: string): string {
       }
     });
 
-    // 2. Convert any H1 to H2 (H1 is reserved for the blog post title)
+    // 2. Parse <style> tags to extract class-level font sizes and weights (Google Docs and Word CSS definitions)
+    const classStyleMap = new Map<string, { fontSizePt?: number; isBold?: boolean }>();
+    doc.querySelectorAll("style").forEach((styleTag) => {
+      const css = styleTag.textContent || "";
+      const ruleRegex = /\.([a-zA-Z0-9_-]+)\s*\{([^}]+)\}/g;
+      let match;
+      while ((match = ruleRegex.exec(css)) !== null) {
+        const cls = match[1];
+        const decl = match[2];
+        let fontSizePt: number | undefined;
+        let isBold = false;
+        const sizeMatch = /font-size:\s*([\d.]+)(pt|px)/i.exec(decl);
+        if (sizeMatch) {
+          const val = parseFloat(sizeMatch[1]);
+          const unit = sizeMatch[2].toLowerCase();
+          fontSizePt = unit === "pt" ? val : val * 0.75;
+        }
+        if (/font-weight:\s*(bold|[6-9]00)/i.test(decl)) {
+          isBold = true;
+        }
+        classStyleMap.set(cls, { fontSizePt, isBold });
+      }
+    });
+
+    // 3. Convert any existing H1 to H2 (H1 is strictly reserved for the blog post title)
     const h1Elements = Array.from(doc.querySelectorAll("h1"));
     h1Elements.forEach((h1) => {
       const h2 = doc.createElement("h2");
@@ -239,7 +263,159 @@ function cleanGoogleDocsHtml(html: string): string {
       h1.parentNode?.replaceChild(h2, h1);
     });
 
-    // 3. Process styled spans (convert inline font styles from Google Docs / Word to semantic tags)
+    // 4. Detect Word & Google Docs headings formatted as <p> or <div> and convert to semantic <h2...h6>
+    const candidates = Array.from(doc.querySelectorAll("p, div"));
+    candidates.forEach((el) => {
+      if (!el.parentNode) return;
+
+      const styleAttr = el.getAttribute("style") || "";
+      const className = el.getAttribute("class") || "";
+      const role = el.getAttribute("role");
+      const ariaLevel = el.getAttribute("aria-level");
+
+      let headingLevel: number | null = null;
+
+      // 4a. Word outline level (e.g. style="mso-outline-level:1" or "mso-outline-level:2")
+      const msoOutline = /mso-outline-level:\s*([1-6])/i.exec(styleAttr);
+      if (msoOutline) {
+        const lvl = parseInt(msoOutline[1], 10);
+        headingLevel = lvl === 1 ? 2 : lvl; // Map H1 to H2
+      }
+
+      // 4b. ARIA role heading (e.g. Google Docs role="heading" aria-level="2")
+      if (!headingLevel && (role === "heading" || ariaLevel)) {
+        const lvl = parseInt(ariaLevel || "2", 10);
+        headingLevel = lvl === 1 ? 2 : Math.min(6, Math.max(2, lvl));
+      }
+
+      // 4c. Word / Document classes (MsoHeading1, Heading1, MsoTitle, etc.)
+      if (!headingLevel) {
+        if (/MsoHeading1|Heading1|heading_1/i.test(className)) {
+          headingLevel = 2; // H1 -> H2
+        } else if (/MsoHeading2|Heading2|heading_2/i.test(className)) {
+          headingLevel = 2;
+        } else if (/MsoHeading3|Heading3|heading_3/i.test(className)) {
+          headingLevel = 3;
+        } else if (/MsoHeading4|Heading4|heading_4/i.test(className)) {
+          headingLevel = 4;
+        } else if (/MsoHeading5|Heading5|heading_5/i.test(className)) {
+          headingLevel = 5;
+        } else if (/MsoHeading6|Heading6|heading_6/i.test(className)) {
+          headingLevel = 6;
+        } else if (/\b(MsoTitle|title)\b/i.test(className)) {
+          headingLevel = 2;
+        } else if (/\b(MsoSubtitle|subtitle)\b/i.test(className)) {
+          headingLevel = 3;
+        }
+      }
+
+      // 4d. Font-size and bold heuristic for Docs / pasted rich text without classes
+      if (!headingLevel) {
+        const text = el.textContent?.trim() || "";
+        // Headings are relatively concise (typically under 180 chars)
+        if (text.length > 0 && text.length < 180) {
+          let maxFontSizePt = 0;
+          let isBold = false;
+
+          // Check inline style on el
+          const elInlineSize = /font-size:\s*([\d.]+)(pt|px)/i.exec(styleAttr);
+          if (elInlineSize) {
+            const val = parseFloat(elInlineSize[1]);
+            const unit = elInlineSize[2].toLowerCase();
+            maxFontSizePt = Math.max(maxFontSizePt, unit === "pt" ? val : val * 0.75);
+          }
+          if (/font-weight:\s*(bold|[6-9]00)/i.test(styleAttr)) {
+            isBold = true;
+          }
+
+          // Check el classes
+          for (const c of className.split(/\s+/)) {
+            const info = classStyleMap.get(c);
+            if (info) {
+              if (info.fontSizePt) maxFontSizePt = Math.max(maxFontSizePt, info.fontSizePt);
+              if (info.isBold) isBold = true;
+            }
+          }
+
+          // Check child spans
+          const spans = el.querySelectorAll("span");
+          spans.forEach((sp) => {
+            const spStyle = sp.getAttribute("style") || "";
+            const spSize = /font-size:\s*([\d.]+)(pt|px)/i.exec(spStyle);
+            if (spSize) {
+              const val = parseFloat(spSize[1]);
+              const unit = spSize[2].toLowerCase();
+              maxFontSizePt = Math.max(maxFontSizePt, unit === "pt" ? val : val * 0.75);
+            }
+            if (/font-weight:\s*(bold|[6-9]00)/i.test(spStyle)) {
+              isBold = true;
+            }
+            for (const c of sp.className.split(/\s+/)) {
+              const info = classStyleMap.get(c);
+              if (info) {
+                if (info.fontSizePt) maxFontSizePt = Math.max(maxFontSizePt, info.fontSizePt);
+                if (info.isBold) isBold = true;
+              }
+            }
+          });
+
+          if (el.querySelector("b, strong")) {
+            isBold = true;
+          }
+
+          // Typical body text is 10-11pt (13-15px). Heading 2 is >= 17pt, Heading 3 is >= 13.5pt
+          if (isBold && maxFontSizePt >= 17) {
+            headingLevel = 2;
+          } else if (isBold && maxFontSizePt >= 13.5) {
+            headingLevel = 3;
+          } else if (isBold && maxFontSizePt >= 12.0 && text.length < 80) {
+            headingLevel = 4;
+          }
+        }
+      }
+
+      // If recognized as a heading, convert to <hX>
+      if (headingLevel) {
+        const hTag = doc.createElement(`h${headingLevel}`);
+        while (el.firstChild) {
+          hTag.appendChild(el.firstChild);
+        }
+        el.parentNode?.replaceChild(hTag, el);
+      }
+    });
+
+    // 5. Clean inside headings (strip inner redundant styles or nested block elements)
+    doc.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((heading) => {
+      const htmlEl = heading as HTMLElement;
+      htmlEl.style.fontFamily = "";
+      htmlEl.style.fontSize = "";
+      htmlEl.style.lineHeight = "";
+      htmlEl.style.marginTop = "";
+      htmlEl.style.marginBottom = "";
+      htmlEl.style.color = "";
+      htmlEl.removeAttribute("class");
+
+      // Recursively strip foreign colors and fonts from ALL child elements inside headings
+      heading.querySelectorAll("*").forEach((child) => {
+        const childEl = child as HTMLElement;
+        if (childEl.style) {
+          childEl.style.color = "";
+          childEl.style.fontFamily = "";
+          childEl.style.fontSize = "";
+          childEl.style.lineHeight = "";
+        }
+      });
+
+      // Unwrap any nested p / div inside heading
+      heading.querySelectorAll("p, div").forEach((nested) => {
+        while (nested.firstChild) {
+          nested.parentNode?.insertBefore(nested.firstChild, nested);
+        }
+        nested.parentNode?.removeChild(nested);
+      });
+    });
+
+    // 6. Process styled spans (convert inline font styles from Google Docs / Word to semantic tags)
     const spans = Array.from(doc.querySelectorAll("span"));
     spans.forEach((span) => {
       const style = span.getAttribute("style") || "";
@@ -295,13 +471,26 @@ function cleanGoogleDocsHtml(html: string): string {
       span.style.backgroundColor = "";
       span.style.verticalAlign = "";
 
-      // Strip default dark/black text colors so it inherits template style
+      // Strip default dark/black and Google Docs / Word blues so it inherits template style
+      const normalizedColor = (color || "").toLowerCase().replace(/\s+/g, "");
       if (
-        color === "rgb(0, 0, 0)" ||
-        color === "#000000" ||
-        color === "#000" ||
-        color === "rgb(32, 33, 36)" ||
-        color === "rgb(17, 17, 17)"
+        normalizedColor === "rgb(0,0,0)" ||
+        normalizedColor === "#000000" ||
+        normalizedColor === "#000" ||
+        normalizedColor === "rgb(32,33,36)" ||
+        normalizedColor === "rgb(17,17,17)" ||
+        normalizedColor === "rgb(47,84,150)" ||
+        normalizedColor === "#2f5496" ||
+        normalizedColor === "rgb(17,85,204)" ||
+        normalizedColor === "#1155cc" ||
+        normalizedColor === "rgb(66,133,244)" ||
+        normalizedColor === "#4285f4" ||
+        normalizedColor === "rgb(26,115,232)" ||
+        normalizedColor === "#1a73e8" ||
+        normalizedColor === "rgb(54,95,145)" ||
+        normalizedColor === "#365f91" ||
+        normalizedColor === "rgb(79,129,189)" ||
+        normalizedColor === "#4f81bd"
       ) {
         span.style.color = "";
       }
@@ -311,7 +500,7 @@ function cleanGoogleDocsHtml(html: string): string {
       }
     });
 
-    // 4. Strip intrusive font/margin styles from block elements
+    // 7. Strip intrusive font/margin styles from block elements
     const blockElements = doc.querySelectorAll(
       "p, h1, h2, h3, h4, h5, h6, li, ul, ol, blockquote"
     );
@@ -343,7 +532,7 @@ function cleanGoogleDocsHtml(html: string): string {
       }
     });
 
-    // 5. Clean tables and promote bold header row to <th> if no <th> exists
+    // 8. Clean tables and promote bold header row to <th> if no <th> exists
     const tables = doc.querySelectorAll("table");
     tables.forEach((table) => {
       table.style.fontFamily = "";
@@ -387,6 +576,33 @@ function cleanGoogleDocsHtml(html: string): string {
         cellEl.removeAttribute("width");
         cellEl.removeAttribute("height");
       });
+    });
+
+    // 9. Remove foreign classes, unwrap <font> tags, and strip ALL inline font-family
+    doc.querySelectorAll("font").forEach((font) => {
+      while (font.firstChild) {
+        font.parentNode?.insertBefore(font.firstChild, font);
+      }
+      font.parentNode?.removeChild(font);
+    });
+
+    doc.querySelectorAll("*").forEach((el) => {
+      const htmlEl = el as HTMLElement;
+      if (htmlEl.style && htmlEl.style.fontFamily) {
+        htmlEl.style.fontFamily = "";
+      }
+      if (htmlEl.tagName === "P" || htmlEl.tagName === "SPAN" || htmlEl.tagName === "DIV") {
+        htmlEl.removeAttribute("class");
+      }
+    });
+
+    // 10. Remove residual Word/Office garbage tags (<o:p>, <xml>, <meta>, <style>, <link>) from body
+    doc.body.querySelectorAll("style, meta, link, xml").forEach((el) => el.remove());
+    doc.body.querySelectorAll("o\\:p, op").forEach((op) => {
+      while (op.firstChild) {
+        op.parentNode?.insertBefore(op.firstChild, op);
+      }
+      op.parentNode?.removeChild(op);
     });
 
     return doc.body.innerHTML;
@@ -620,39 +836,85 @@ export default function PostEditor({
   const [importingTable, setImportingTable] = React.useState(false);
   const [cellFillMenuOpen, setCellFillMenuOpen] = React.useState(false);
 
-  // Manual image upload function (WordPress-like)
-  const uploadAndInsertImage = async (file: File) => {
-    if (!editor) return;
-    if (!file.type.startsWith("image/")) {
-      alert("Please upload a valid image file (JPG, PNG, WebP, GIF, SVG).");
-      return;
-    }
-    if (file.size > 10 * 1024 * 1024) {
-      alert("Image size must be less than 10MB.");
+  // Manual image upload function supporting multiple images at once & auto-collage layout
+  const uploadAndInsertImages = async (files: File[]) => {
+    if (!editor || files.length === 0) return;
+
+    const validFiles = files.filter(
+      (f) => f.type.startsWith("image/") && f.size <= 10 * 1024 * 1024
+    );
+
+    if (validFiles.length === 0) {
+      alert("Please upload valid image files under 10MB (JPG, PNG, WebP, GIF, SVG).");
       return;
     }
 
     setUploadingContentImage(true);
     setSaveState("Saving...");
     try {
-      const fd = new FormData();
-      fd.append("file", file);
-      const token = typeof window !== "undefined" ? localStorage.getItem("blog_admin_token") : null;
+      const token =
+        typeof window !== "undefined"
+          ? localStorage.getItem("blog_admin_token")
+          : null;
       const headers: Record<string, string> = {};
       if (token) {
         headers["Authorization"] = `Bearer ${token}`;
         headers["x-auth-token"] = token;
       }
-      const res = await fetch("/api/blog/upload", { method: "POST", body: fd, headers });
-      const data = await res.json();
-      if (res.ok && data.success && data.url) {
-        const altText = file.name
-          .replace(/\.[^/.]+$/, "")
-          .replace(/[-_]+/g, " ");
-        editor.chain().focus().setImage({ src: data.url, alt: altText }).run();
+
+      // Upload all selected files concurrently
+      const uploadPromises = validFiles.map(async (file) => {
+        const fd = new FormData();
+        fd.append("file", file);
+        const res = await fetch("/api/blog/upload", {
+          method: "POST",
+          body: fd,
+          headers,
+        });
+        const data = await res.json();
+        return {
+          file,
+          success: res.ok && data.success && data.url,
+          url: data.url,
+          name: file.name,
+        };
+      });
+
+      const results = await Promise.all(uploadPromises);
+      const successful = results.filter((r) => r.success && r.url);
+
+      if (successful.length > 0) {
+        // If multiple images are uploaded together:
+        // Automatically arrange them side-by-side as a clean collage!
+        const isMultiple = successful.length > 1;
+        const defaultWidth =
+          successful.length === 2
+            ? "48%"
+            : successful.length === 3
+            ? "31%"
+            : "48%"; // 4 images = 2x2 grid (48% each)
+        const defaultAlignment = isMultiple ? "inline" : "center";
+
+        successful.forEach((img) => {
+          const altText = img.name
+            .replace(/\.[^/.]+$/, "")
+            .replace(/[-_]+/g, " ");
+          editor
+            .chain()
+            .focus()
+            .setImage({
+              src: img.url,
+              alt: altText,
+              alignment: defaultAlignment,
+              width: isMultiple ? defaultWidth : "100%",
+              rounded: true,
+            } as any)
+            .run();
+        });
+
         setSaveState("Unsaved changes");
       } else {
-        alert(data.message || "Failed to upload image. Please try again.");
+        alert("Failed to upload images. Please check your connection and try again.");
       }
     } catch (err) {
       console.error("Editor image upload error:", err);
@@ -670,9 +932,9 @@ export default function PostEditor({
   const handleContentImageFileChange = (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      uploadAndInsertImage(file);
+    const files = Array.from(e.target.files || []);
+    if (files.length > 0) {
+      uploadAndInsertImages(files);
     }
   };
 
@@ -681,7 +943,11 @@ export default function PostEditor({
     setImageMenuOpen(false);
     const url = window.prompt("Enter image URL (https://...):");
     if (url && url.trim()) {
-      editor.chain().focus().setImage({ src: url.trim() }).run();
+      editor
+        .chain()
+        .focus()
+        .setImage({ src: url.trim(), alignment: "center", rounded: true } as any)
+        .run();
       setSaveState("Unsaved changes");
     }
   };
@@ -775,11 +1041,7 @@ export default function PostEditor({
           class: "text-[#1c3b2b] underline font-medium",
         },
       }),
-      ImageExtension.configure({
-        HTMLAttributes: {
-          class: "rounded-lg max-w-full my-3",
-        },
-      }),
+      ResizableImage,
       Table.configure({
         resizable: true,
         lastColumnResizable: false,
@@ -797,7 +1059,7 @@ export default function PostEditor({
     editorProps: {
       attributes: {
         class:
-          "min-h-[380px] p-5 font-serif text-lg leading-relaxed focus:outline-none text-[#2A1621] prose max-w-none [&_strong]:text-inherit [&_strong]:font-bold [&_b]:text-inherit [&_b]:font-bold [&_h1]:text-3xl sm:[&_h1]:text-4xl [&_h1]:font-bold [&_h1]:my-5 [&_h2]:text-2xl sm:[&_h2]:text-3xl [&_h2]:font-bold [&_h2]:my-4 [&_h3]:text-xl sm:[&_h3]:text-2xl [&_h3]:font-bold [&_h3]:my-3 [&_h4]:text-lg [&_h4]:font-bold [&_h4]:my-2 [&_h5]:text-base [&_h5]:font-bold [&_h5]:my-2 [&_h6]:text-sm [&_h6]:font-bold [&_h6]:my-2 [&_p]:mb-4 [&_blockquote]:border-l-4 [&_blockquote]:border-[#1c3b2b] [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:bg-[#FAF6F0] [&_blockquote]:py-2 [&_blockquote]:rounded-r [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:mb-4 [&_img]:rounded-lg [&_img]:max-w-full [&_img]:my-3 [&_table]:w-full [&_table]:border-collapse [&_table]:table-fixed [&_table]:my-5 [&_table]:text-sm [&_table]:overflow-x-auto [&_td]:border [&_td]:border-[#e6ded2] [&_td]:px-2 [&_td]:py-1.5 [&_td]:align-top [&_td]:min-w-[80px] [&_th]:border [&_th]:border-[#e6ded2] [&_th]:bg-[#FAF6F0] [&_th]:px-2 [&_th]:py-2 [&_th]:text-left [&_th]:font-bold [&_th]:align-top [&_.selectedCell]:outline [&_.selectedCell]:outline-2 [&_.selectedCell]:outline-[#1c3b2b] [&_.column-resize-handle]:bg-[#1c3b2b] [&_.column-resize-handle]:relative [&_.column-resize-handle]:after:absolute [&_.column-resize-handle]:after:right-[-2px] [&_.column-resize-handle]:after:top-0 [&_.column-resize-handle]:after:bottom-0 [&_.column-resize-handle]:after:w-[4px] [&_.column-resize-handle]:after:bg-black/20 [&_.column-resize-handle]:after:content-[''] [&_p.is-editor-empty:first-child]:before:content-[attr(data-placeholder)] [&_p.is-editor-empty:first-child]:before:float-left [&_p.is-editor-empty:first-child]:before:text-[#6B5862]/40 [&_p.is-editor-empty:first-child]:before:pointer-events-none [&_p.is-editor-empty:first-child]:before:h-0",
+          "min-h-[380px] p-5 font-figtree text-base sm:text-[17px] leading-[1.8] focus:outline-none text-[#1e2422] max-w-none [&_strong]:text-inherit [&_strong]:font-bold [&_b]:text-inherit [&_b]:font-bold [&_h1]:font-belleza [&_h1]:text-3xl sm:[&_h1]:text-4xl [&_h1]:font-normal [&_h1]:text-[#1e2422] [&_h1_*]:!text-[#1e2422] [&_h1]:my-5 [&_h2]:font-belleza [&_h2]:text-2xl sm:[&_h2]:text-3xl [&_h2]:font-normal [&_h2]:text-[#1e2422] [&_h2_*]:!text-[#1e2422] [&_h2]:my-4 [&_h3]:font-belleza [&_h3]:text-xl sm:[&_h3]:text-2xl [&_h3]:font-normal [&_h3]:text-[#1c3b2b] [&_h3_*]:!text-[#1c3b2b] [&_h3]:my-3 [&_h4]:font-belleza [&_h4]:text-lg [&_h4]:font-normal [&_h4]:text-[#1e2422] [&_h4_*]:!text-[#1e2422] [&_h4]:my-2 [&_h5]:font-figtree [&_h5]:text-base [&_h5]:font-semibold [&_h5]:text-[#1e2422] [&_h5]:my-2 [&_h6]:font-figtree [&_h6]:text-sm [&_h6]:font-semibold [&_h6]:text-[#1e2422] [&_h6]:my-2 [&_p]:font-figtree [&_p]:text-stone-700 [&_p]:mb-4 [&_p]:leading-[1.8] [&_blockquote]:border-l-4 [&_blockquote]:border-[#1c3b2b] [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:bg-[#f4efe6]/70 [&_blockquote]:py-2.5 [&_blockquote]:text-stone-800 [&_blockquote]:rounded-r-xl [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:mb-4 [&_img]:rounded-lg [&_img]:max-w-full [&_img]:my-3 [&_a]:text-[#1c3b2b] [&_a]:underline [&_a]:font-semibold [&_table]:w-full [&_table]:border-collapse [&_table]:table-fixed [&_table]:my-5 [&_table]:text-sm [&_table]:overflow-x-auto [&_td]:border [&_td]:border-[#e3dac9] [&_td]:px-3 [&_td]:py-2 [&_td]:align-top [&_td]:min-w-[80px] [&_td]:font-figtree [&_td]:text-stone-700 [&_th]:border [&_th]:border-[#e3dac9] [&_th]:bg-[#f4efe6] [&_th]:px-3 [&_th]:py-2 [&_th]:text-left [&_th]:font-belleza [&_th]:font-normal [&_th]:text-[#1e2422] [&_th]:align-top [&_.selectedCell]:outline [&_.selectedCell]:outline-2 [&_.selectedCell]:outline-[#1c3b2b] [&_.column-resize-handle]:bg-[#1c3b2b] [&_.column-resize-handle]:relative [&_.column-resize-handle]:after:absolute [&_.column-resize-handle]:after:right-[-2px] [&_.column-resize-handle]:after:top-0 [&_.column-resize-handle]:after:bottom-0 [&_.column-resize-handle]:after:w-[4px] [&_.column-resize-handle]:after:bg-black/20 [&_.column-resize-handle]:after:content-[''] [&_p.is-editor-empty:first-child]:before:content-[attr(data-placeholder)] [&_p.is-editor-empty:first-child]:before:float-left [&_p.is-editor-empty:first-child]:before:text-stone-400 [&_p.is-editor-empty:first-child]:before:pointer-events-none [&_p.is-editor-empty:first-child]:before:h-0",
       },
       handlePaste: (view, event) => {
         const clipboard = event.clipboardData;
@@ -829,25 +1091,31 @@ export default function PostEditor({
         }
 
         // 3. Rich HTML payload (Google Docs, Word, web pages with headings H2-H6, paragraphs, lists, and tables).
-        // Clean Google Docs wrappers (b#docs-internal-guid), normalize H1 -> H2, clean typography,
-        // and insert via TipTap content parser.
+        // Clean Google Docs wrappers (b#docs-internal-guid), normalize H1 -> H2, detect Word/Docs headings,
+        // clean typography, and insert via TipTap content parser.
         if (html && html.trim() && editorRef.current) {
           event.preventDefault();
           const cleaned = cleanGoogleDocsHtml(html);
-          editorRef.current.commands.insertContent(cleaned);
+          if (editorRef.current.isEmpty) {
+            editorRef.current.commands.setContent(cleaned);
+          } else {
+            editorRef.current.commands.insertContent(cleaned);
+          }
           return true;
         }
 
         // 4. Image on clipboard (screenshots, copied files)
+        const pastedFiles: File[] = [];
         for (const item of Array.from(clipboard.items || [])) {
           if (item.type.indexOf("image") === 0) {
             const file = item.getAsFile();
-            if (file) {
-              event.preventDefault();
-              uploadAndInsertImage(file);
-              return true;
-            }
+            if (file) pastedFiles.push(file);
           }
+        }
+        if (pastedFiles.length > 0) {
+          event.preventDefault();
+          uploadAndInsertImages(pastedFiles);
+          return true;
         }
 
         return false;
@@ -858,10 +1126,12 @@ export default function PostEditor({
           event.dataTransfer?.files &&
           event.dataTransfer.files.length > 0
         ) {
-          const file = event.dataTransfer.files[0];
-          if (file && file.type.startsWith("image/")) {
+          const droppedFiles = Array.from(event.dataTransfer.files).filter((f) =>
+            f.type.startsWith("image/")
+          );
+          if (droppedFiles.length > 0) {
             event.preventDefault();
-            uploadAndInsertImage(file);
+            uploadAndInsertImages(droppedFiles);
             return true;
           }
         }
@@ -1456,6 +1726,7 @@ export default function PostEditor({
                     ref={contentImageInputRef}
                     onChange={handleContentImageFileChange}
                     accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml"
+                    multiple
                     className="hidden"
                   />
                   <button
@@ -1463,7 +1734,7 @@ export default function PostEditor({
                     disabled={uploadingContentImage}
                     className="h-8 px-2.5 rounded-l font-bold text-label cursor-pointer inline-flex items-center gap-1.5 bg-[#FAF6F0] hover:bg-[#fff3f8] text-[#2A1621] hover:text-[#1c3b2b] border border-[#e6ded2] transition-colors disabled:opacity-50"
                     onClick={() => contentImageInputRef.current?.click()}
-                    title="Upload image from computer (WordPress-style)"
+                    title="Upload single or multiple images (creates instant side-by-side collage)"
                   >
                     {uploadingContentImage ? (
                       <>

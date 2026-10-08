@@ -85,7 +85,7 @@ export async function proxyBlogImage(filename: string) {
   }
 
   // Fallback for legacy filenames that might be requested
-  if (cleanName.includes("retreat-banner") || cleanName.includes("sanskriti")) {
+  if (cleanName.includes("retreat-banner") || cleanName.includes("siddhant")) {
     try {
       const fallbackPath = path.join(process.cwd(), "public", "images", "yoga-and-meditation-retreat-riverside.jpg");
       const fileBuffer = await fs.readFile(fallbackPath);

@@ -31,7 +31,7 @@ export function toCleanBlogImageUrl(
 
   // Strip domain if present
   let cleanUrl = url.replace(
-    /^https?:\/\/(?:www\.)?(?:sanskritiyogpeeth\.org|siddhantschoolofyoga\.com|localhost(?::\d+)?)/i,
+    /^https?:\/\/(?:www\.)?(?:siddhantschoolofyoga\.com|localhost(?::\d+)?)/i,
     ""
   );
 
@@ -76,23 +76,31 @@ export function cleanHtmlImageUrls(
 ): string {
   if (!html) return "";
 
-  // 1. Replace legacy cloud storage URLs
+  // 1. Strip foreign font-family and intrusive default inline colors (black, gray, and Google Docs/Word blues) to preserve website typography & theme
+  let cleaned = html
+    .replace(/font-family\s*:\s*[^;"]+;?/gi, "")
+    .replace(
+      /color\s*:\s*(?:#000(?:000)?|rgb\(0,\s*0,\s*0\)|rgb\(32,\s*33,\s*36\)|rgb\(17,\s*17,\s*17\)|windowtext|#2f5496|#1155cc|#1a73e8|#4285f4|#365f91|#4f81bd|#2b5797|rgb\(47,\s*84,\s*150\)|rgb\(17,\s*85,\s*204\)|rgb\(66,\s*133,\s*244\)|rgb\(26,\s*115,\s*232\)|rgb\(54,\s*95,\s*145\)|rgb\(79,\s*129,\s*189\));?/gi,
+      ""
+    );
+
+  // 2. Replace legacy cloud storage URLs
   const storageRegex =
     /https?:\/\/[a-z0-9.-]+\/storage\/v1\/object\/public\/blog-images\/([^"'\s>?#]+)(?:\?[^"'\s>]*)?/gi;
 
-  let cleaned = html.replace(storageRegex, (_match, filename) => {
+  cleaned = cleaned.replace(storageRegex, (_match, filename) => {
     return `/blog/images/${cleanImageFilename(filename)}`;
   });
 
   // 2. Replace any domain prefixes or legacy paths for blog images (/blog/slug/images, /images/blog, etc.)
   cleaned = cleaned.replace(
-    /(?:https?:\/\/(?:www\.)?(?:sanskritiyogpeeth\.org|siddhantschoolofyoga\.com|localhost(?::\d+)?))?(?:\/blog(?:\/[^/"'\s>]+)?\/images|\/images\/blog|\/blog\/images)\/([^"'\s>?#]+)/gi,
+    /(?:https?:\/\/(?:www\.)?(?:siddhantschoolofyoga\.com|localhost(?::\d+)?))?(?:\/blog(?:\/[^/"'\s>]+)?\/images|\/images\/blog|\/blog\/images)\/([^"'\s>?#]+)/gi,
     (_match, filename) => `/blog/images/${cleanImageFilename(filename)}`
   );
 
   // 3. Replace local /images/ paths that refer to blog images
   cleaned = cleaned.replace(
-    /(?:https?:\/\/(?:www\.)?(?:sanskritiyogpeeth\.org|siddhantschoolofyoga\.com|localhost(?::\d+)?))?\/images\/([^"'\s>?#]+\.(?:jpe?g|png|webp|gif|svg|avif))/gi,
+    /(?:https?:\/\/(?:www\.)?(?:siddhantschoolofyoga\.com|localhost(?::\d+)?))?\/images\/([^"'\s>?#]+\.(?:jpe?g|png|webp|gif|svg|avif))/gi,
     (_match, filename) => `/blog/images/${cleanImageFilename(filename)}`
   );
 
